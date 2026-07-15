@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/*
+  Sistema visual de Inflinds — primera identidad confirmada.
+  Marca:   #751CB4  (púrpura, color primario)
+  Acento:  #F8049C  (magenta, CTA principal)
+  Realce:  #FF8E00  (naranja, realce secundario + socio de degradado)
+  Neutro:  #343A40  (gris oscuro, texto de cuerpo / superficies oscuras)
+  Tipografía display: Raleway (900) · cuerpo: Lato
+*/
+
+@theme {
+  /* --- Escala de marca (púrpura) --- */
+  --color-brand-50: #f6effb;
+  --color-brand-100: #ead7f5;
+  --color-brand-200: #d6b3ec;
+  --color-brand-300: #bd88e0;
+  --color-brand-400: #9e52d0;
+  --color-brand-500: #8a2fc4;
+  --color-brand-600: #751cb4; /* base de marca */
+  --color-brand-700: #5f1793;
+  --color-brand-800: #491271;
+  --color-brand-900: #330c50;
+  --color-brand: #751cb4;
+
+  /* --- Acentos --- */
+  --color-magenta: #f8049c;
+  --color-magenta-600: #d40385;
+  --color-orange: #ff8e00;
+  --color-orange-600: #e07c00;
+
+  /* --- Neutros --- */
+  --color-ink: #343a40; /* gris oscuro dado por la marca */
+  --color-ink-900: #22262b; /* variante más profunda para superficies */
+  --color-ink-700: #4a525a;
+  --color-slate: #5b636b;
+  --color-muted: #6b7280;
+  --color-line: #e7e5ee;
+  --color-paper: #ffffff;
+  --color-paper-soft: #faf9fc; /* casi blanco con leve tinte púrpura */
+
+  /* --- Tipografía --- */
+  --font-display: var(--font-raleway);
+  --font-sans: var(--font-lato);
+
+  /* --- Radios --- */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #343a40;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lato), system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Degradado firma de Inflinds: púrpura -> magenta -> naranja */
+.text-gradient {
+  background: linear-gradient(100deg, #751cb4 0%, #f8049c 55%, #ff8e00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(120deg, #751cb4 0%, #f8049c 60%, #ff8e00 120%);
+}
+
+/* Malla suave para fondos hero */
+.hero-glow {
+  background:
+    radial-gradient(60% 55% at 15% 0%, rgba(117, 28, 180, 0.16) 0%, transparent 60%),
+    radial-gradient(50% 50% at 85% 10%, rgba(248, 4, 156, 0.12) 0%, transparent 55%),
+    radial-gradient(45% 45% at 70% 90%, rgba(255, 142, 0, 0.12) 0%, transparent 55%);
+}
+
+::selection {
+  background: rgba(248, 4, 156, 0.2);
+}
