@@ -59,7 +59,7 @@ export default function Footer() {
               <li>{site.country}</li>
               <li>
                 <a href={site.website} className="hover:text-white transition-colors">
-                  www.inflinds.com
+                  inflinds.com
                 </a>
               </li>
             </ul>
