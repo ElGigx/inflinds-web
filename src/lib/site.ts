@@ -9,7 +9,7 @@ export const site = {
   // Nota: el sitio en vivo actual es inflinds.com. Los canales de contacto
   // directo (correo/teléfono) no están confirmados en gigxOS todavía; el
   // formulario de /contacto es el canal funcional. Ver reporte de brechas.
-  website: "https://www.inflinds.com",
+  website: "https://inflinds.com",
   servicesPortal: "https://services.inflinds.com",
   country: "Colombia",
 };

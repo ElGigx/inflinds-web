@@ -21,7 +21,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.inflinds.com"),
+  metadataBase: new URL("https://inflinds.com"),
   title: {
     default: "Inflinds — Digital Product Studio",
     template: "%s · Inflinds",

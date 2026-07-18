@@ -42,7 +42,7 @@ export default function ContactoPage() {
                   {site.country}
                   <br />
                   <a href={site.website} className="text-brand-600 font-semibold hover:underline">
-                    www.inflinds.com
+                    inflinds.com
                   </a>
                 </dd>
               </div>
