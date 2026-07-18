@@ -6,17 +6,17 @@ import { projectTypes } from "@/lib/site";
 /**
  * Formulario de contacto.
  *
- * IMPORTANTE (pendiente / follow-up): todavía NO existe un endpoint backend.
- * Este formulario funciona 100% en el cliente: valida, simula el envío y muestra
- * un estado de éxito. Para ponerlo en producción hay que conectar `handleSubmit`
- * a un canal real, por ejemplo:
- *   - una función/Worker de Cloudflare Pages (POST a /api/contacto), o
- *   - un servicio de formularios (Formspree, Web3Forms, etc.), o
- *   - el CRM propio (Merez) vía su API.
- * Mientras tanto, los datos NO se envían a ningún lado.
+ * Envía cada solicitud como lead al CRM propio (Merez) vía
+ * POST {NEXT_PUBLIC_MEREZ_API_URL}/leads con el token de Sitio de Inflinds
+ * (NEXT_PUBLIC_MEREZ_LEADS_TOKEN). El token de Sitio solo autoriza crear
+ * leads para este sitio (scope limitado por diseño del API), pero no se
+ * versiona: se inyecta como variable de entorno en Vercel y en .env.local.
  */
 
-type FormState = "idle" | "submitting" | "success";
+const MEREZ_API_URL = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api";
+const MEREZ_LEADS_TOKEN = process.env.NEXT_PUBLIC_MEREZ_LEADS_TOKEN ?? "";
+
+type FormState = "idle" | "submitting" | "success" | "error";
 
 const fieldBase =
   "w-full rounded-xl border border-line bg-paper-soft px-4 py-3 text-ink placeholder:text-muted focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100 transition";
@@ -24,13 +24,38 @@ const fieldBase =
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
     setState("submitting");
 
-    // TODO (follow-up): reemplazar esta simulación por un envío real.
-    // Aquí solo simulamos latencia de red y pasamos al estado de éxito.
-    setTimeout(() => setState("success"), 700);
+    try {
+      const res = await fetch(`${MEREZ_API_URL}/leads`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${MEREZ_LEADS_TOKEN}`,
+        },
+        body: JSON.stringify({
+          // "tipo" para Merez es el canal del lead; el tipo de proyecto del
+          // select viaja como dato extra (termina en datos_json del lead).
+          tipo: "contacto",
+          nombre: data.get("nombre"),
+          email: data.get("email"),
+          empresa: data.get("empresa") || null,
+          tipo_proyecto: data.get("tipo"),
+          mensaje: data.get("mensaje"),
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Merez respondió ${res.status}`);
+      form.reset();
+      setState("success");
+    } catch {
+      setState("error");
+    }
   }
 
   if (state === "success") {
@@ -110,6 +135,16 @@ export default function ContactForm() {
           placeholder="Cuéntanos qué necesitas, en qué punto estás y qué objetivo persigues."
         />
       </div>
+
+      {state === "error" && (
+        <p
+          role="alert"
+          className="rounded-xl border border-magenta/30 bg-magenta/5 px-4 py-3 text-sm text-magenta"
+        >
+          No pudimos enviar tu mensaje. Inténtalo de nuevo en unos minutos o
+          escríbenos directamente.
+        </p>
+      )}
 
       <button
         type="submit"
