@@ -14,6 +14,17 @@ export const site = {
   country: "Colombia",
 };
 
+// Clientes reales del portafolio de Inflinds (fuente: /portafolio del sitio
+// actual en vivo). Se muestran como marcas de texto hasta tener logos.
+export const clients = [
+  "Fusion Pipe Tools",
+  "WonderSchool",
+  "Acertar",
+  "Amatu",
+  "Capitalex",
+  "Alternatura",
+];
+
 export const nav = [
   { href: "/", label: "Inicio" },
   { href: "/servicios/", label: "Servicios" },
@@ -122,6 +133,83 @@ export const merezModules = [
   { name: "Segmentación", desc: "Segmentación avanzada de contactos para acciones precisas." },
   { name: "Integraciones", desc: "Conectores con Siigo, Meta, GA4 y Clarity." },
   { name: "Pagos", desc: "Cobro en línea integrado (Wompi) conciliado con tus ventas." },
+];
+
+// Planes de proyecto para la página de precios. Los precios con cifra vienen
+// de Pricing.md v1.0.0 (precio base, ajustable por alcance); e-commerce y
+// personalizado no tienen tarifa fija -> se cotizan (price: null).
+export type Plan = {
+  slug: string;
+  name: string;
+  desc: string;
+  price: string | null; // null = a la medida
+  featuresIntro?: string;
+  features: string[];
+  cta: string;
+  popular?: boolean;
+};
+
+export const plans: Plan[] = [
+  {
+    slug: "landing",
+    name: "Landing Page",
+    desc: "Ideal para emprendedores que están comenzando.",
+    price: "$ 690.000",
+    features: [
+      "Página única enfocada en conversión",
+      "Diseño responsive",
+      "Desarrollo y publicación",
+      "Optimización básica",
+      "Formulario de contacto",
+    ],
+    cta: "Comenzar ahora",
+  },
+  {
+    slug: "sitio-informativo",
+    name: "Sitio informativo",
+    desc: "Para negocios que quieren verse profesionales y escalar.",
+    price: "$ 1.000.000",
+    popular: true,
+    featuresIntro: "Todo lo de Landing, más:",
+    features: [
+      "Diseño personalizado",
+      "Múltiples páginas",
+      "Desarrollo WordPress",
+      "Optimización y configuración inicial",
+      "Listo para crecer con tu negocio",
+    ],
+    cta: "Quiero este plan",
+  },
+  {
+    slug: "ecommerce",
+    name: "E-commerce",
+    desc: "Para vender en línea con catálogo y pagos.",
+    price: null,
+    featuresIntro: "Todo lo de Sitio informativo, más:",
+    features: [
+      "Tienda en WooCommerce o Shopify",
+      "Catálogo y gestión de productos",
+      "Pagos en línea",
+      "SEO técnico y rendimiento",
+      "Integraciones según tu operación",
+    ],
+    cta: "Comenzar ahora",
+  },
+  {
+    slug: "personalizado",
+    name: "Personalizado",
+    desc: "Soluciones a la medida para grandes desafíos.",
+    price: null,
+    featuresIntro: "Según tu proyecto:",
+    features: [
+      "Sistemas y plataformas a medida",
+      "APIs e integraciones",
+      "Automatización e IA aplicada",
+      "Arquitectura y stack a tu medida",
+      "Acompañamiento estratégico",
+    ],
+    cta: "Hablemos de tu proyecto",
+  },
 ];
 
 // --- PRECIOS (Pricing.md v1.0.0, COP) ---

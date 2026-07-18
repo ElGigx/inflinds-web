@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { pricingTables, customQuoted, futureServices } from "@/lib/site";
+import { plans, customQuoted, futureServices } from "@/lib/site";
+import Icon from "@/components/Icon";
 import {
   Container,
   SectionHeading,
@@ -11,106 +12,195 @@ import {
 export const metadata: Metadata = {
   title: "Precios",
   description:
-    "Precios base de Inflinds en pesos colombianos: desarrollo web, hosting, dominios, seguridad, correos, licencias, soporte y marketing digital.",
+    "Planes y precios de Inflinds en pesos colombianos: landing page, sitio informativo, e-commerce y proyectos personalizados.",
 };
 
-// Tablas que se destacan como oferta principal (desarrollo).
-const featured = pricingTables[0];
-const rest = pricingTables.slice(1);
+// Razones de valor del hero (columna derecha).
+const valueProps = [
+  {
+    icon: "trending",
+    title: "No solo entregamos un producto, construimos crecimiento.",
+    desc: "Estrategia, tecnología y diseño trabajando para tus objetivos.",
+  },
+  {
+    icon: "zap",
+    title: "Automatizamos y optimizamos para que ahorres tiempo y dinero.",
+    desc: "Menos procesos manuales, más productividad.",
+  },
+  {
+    icon: "sparkles",
+    title: "Integramos IA y datos para decisiones más inteligentes.",
+    desc: "Convierte información en ventajas competitivas.",
+  },
+  {
+    icon: "users",
+    title: "Te acompañamos en cada etapa.",
+    desc: "No te dejamos solo después del lanzamiento.",
+  },
+];
+
+const heroChecks = [
+  { k: "Precios claros", v: "sin letras pequeñas" },
+  { k: "Acompañamiento", v: "cercano y continuo" },
+  { k: "Enfoque en resultados", v: "y crecimiento" },
+];
 
 export default function PreciosPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 hero-glow" aria-hidden="true" />
+      {/* ---------- HERO (oscuro) ---------- */}
+      <section className="relative overflow-hidden bg-night text-white">
+        <div className="absolute inset-0 hero-glow-night" aria-hidden="true" />
         <Container className="relative py-16 sm:py-20">
-          <Eyebrow>Precios</Eyebrow>
-          <h1 className="mt-3 font-display font-black text-4xl sm:text-5xl leading-tight tracking-tight text-ink max-w-3xl">
-            Precios claros, en pesos, sin sorpresas
-          </h1>
-          <p className="mt-5 text-lg text-slate leading-relaxed max-w-2xl">
-            No vendemos horas: vendemos soluciones. Estos son los precios base de referencia —
-            se ajustan según el alcance, la complejidad y las necesidades reales de cada proyecto.
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <Eyebrow tone="dark">Precios transparentes</Eyebrow>
+              <h1 className="mt-4 font-display font-black text-4xl sm:text-5xl leading-[1.08] tracking-tight">
+                Soluciones a la medida de <span className="text-magenta">tu negocio</span> y tu
+                etapa de <span className="text-orange">crecimiento</span>.
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
+                Planes flexibles pensados para emprendedores, pymes y empresas que quieren
+                resultados reales con tecnología, diseño e IA.
+              </p>
+              <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
+                {heroChecks.map((c) => (
+                  <li key={c.k} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-yellow">
+                      <Icon name="tick" className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="text-sm leading-snug">
+                      <strong className="block font-bold text-white">{c.k}</strong>
+                      <span className="text-slate-400">{c.v}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-night-800/80 p-7 sm:p-8">
+              <h2 className="font-display font-bold text-lg text-white">
+                ¿Por qué nuestros precios son una inversión inteligente?
+              </h2>
+              <ul className="mt-6 space-y-5">
+                {valueProps.map((v) => (
+                  <li key={v.icon} className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-magenta">
+                      <Icon name={v.icon} className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-bold text-white leading-snug">{v.title}</p>
+                      <p className="mt-1 text-sm text-slate-400 leading-snug">{v.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ---------- PLANES ---------- */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Elige tu plan"
+            title="Planes diseñados para cada etapa de tu negocio"
+            intro="Precios base en pesos colombianos; se ajustan según el alcance y las necesidades reales de tu proyecto."
+          />
+          <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {plans.map((plan) =>
+              plan.popular ? (
+                /* Tarjeta destacada (oscura) */
+                <div
+                  key={plan.slug}
+                  className="flex flex-col overflow-hidden rounded-3xl bg-night text-white shadow-[0_30px_70px_-20px_rgba(117,28,180,0.55)] xl:-my-5"
+                >
+                  <p className="bg-gradient-cta py-2.5 text-center font-display text-xs font-bold uppercase tracking-[0.18em] text-white">
+                    Más popular
+                  </p>
+                  <div className="flex flex-1 flex-col p-8">
+                    <h3 className="font-display font-black text-2xl">{plan.name}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-300">{plan.desc}</p>
+                    <p className="mt-6 text-xs text-slate-400">Desde</p>
+                    <p className="font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
+                      {plan.price}{" "}
+                      <span className="text-sm font-bold text-orange">COP</span>
+                    </p>
+                    <hr className="my-5 border-white/10" />
+                    {plan.featuresIntro && (
+                      <p className="text-sm font-bold text-white">{plan.featuresIntro}</p>
+                    )}
+                    <ul className="mt-3 flex-1 space-y-2.5">
+                      {plan.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
+                          <span className="mt-0.5 text-magenta">
+                            <Icon name="tick" className="h-4 w-4" />
+                          </span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <PrimaryButton href="/contacto/" className="mt-7 w-full">
+                      {plan.cta} <span aria-hidden="true" className="ml-2">→</span>
+                    </PrimaryButton>
+                  </div>
+                </div>
+              ) : (
+                /* Tarjeta regular (clara) */
+                <div
+                  key={plan.slug}
+                  className="flex flex-col rounded-3xl border border-line bg-white p-7"
+                >
+                  <h3 className="font-display font-black text-2xl text-ink">{plan.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate">{plan.desc}</p>
+                  {plan.price ? (
+                    <>
+                      <p className="mt-6 text-xs text-muted">Desde</p>
+                      <p className="font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
+                        {plan.price}{" "}
+                        <span className="text-sm font-bold text-muted">COP</span>
+                      </p>
+                    </>
+                  ) : (
+                    <p className="mt-6 font-display font-black text-3xl text-brand-600">
+                      A la medida
+                    </p>
+                  )}
+                  <hr className="my-5 border-line" />
+                  {plan.featuresIntro && (
+                    <p className="text-sm font-bold text-ink">{plan.featuresIntro}</p>
+                  )}
+                  <ul className="mt-3 flex-1 space-y-2.5">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-slate">
+                        <span className="mt-0.5 text-magenta">
+                          <Icon name="tick" className="h-4 w-4" />
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <SecondaryButton href="/contacto/" className="mt-7 w-full">
+                    {plan.cta} <span aria-hidden="true" className="ml-2">→</span>
+                  </SecondaryButton>
+                </div>
+              )
+            )}
+          </div>
+          <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-muted">
+            <Icon name="check" className="h-4 w-4 shrink-0" />
+            Todos los planes incluyen: acompañamiento, seguridad y respaldo, y mejora continua.
           </p>
         </Container>
       </section>
 
-      {/* DESARROLLO (destacado) */}
-      <section className="pb-6">
-        <Container>
-          <SectionHeading eyebrow={featured.title} title="Desarrollo de tu presencia digital" intro={featured.subtitle} />
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {featured.rows.map((row, idx) => (
-              <div
-                key={row.name}
-                className={`rounded-3xl border p-8 flex flex-col ${
-                  idx === 1 ? "border-magenta/40 bg-white shadow-lg" : "border-line bg-white"
-                }`}
-              >
-                {idx === 1 && (
-                  <span className="self-start rounded-full bg-pink-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-magenta">
-                    Más completo
-                  </span>
-                )}
-                <h3 className="mt-2 font-display font-black text-2xl text-ink">{row.name}</h3>
-                <p className="mt-2 font-display font-black text-3xl text-gradient inline-block w-max">
-                  {row.price}
-                </p>
-                {row.note && <p className="mt-4 text-sm text-slate leading-relaxed flex-1">{row.note}</p>}
-                <div className="mt-6">
-                  <SecondaryButton href="/contacto/" className="w-full">
-                    Solicitar propuesta
-                  </SecondaryButton>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* TABLAS DE SERVICIOS RECURRENTES */}
-      <section className="py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Servicios y planes"
-            title="Hosting, dominios, correo, soporte y más"
-            intro="Todo lo que un proyecto necesita para vivir en línea, con tarifas de referencia por año o por mes."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((table) => (
-              <div key={table.title} className="rounded-2xl border border-line bg-white overflow-hidden flex flex-col">
-                <div className="bg-paper-soft px-5 py-4 border-b border-line">
-                  <h3 className="font-display font-black text-ink">{table.title}</h3>
-                  {table.subtitle && <p className="mt-1 text-xs text-slate">{table.subtitle}</p>}
-                </div>
-                <ul className="divide-y divide-line flex-1">
-                  {table.rows.map((row) => (
-                    <li key={row.name} className="px-5 py-4">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <span className="text-sm font-semibold text-ink">{row.name}</span>
-                        <span className="text-sm font-display font-black text-brand-600 whitespace-nowrap">
-                          {row.price}
-                        </span>
-                      </div>
-                      {row.note && <p className="mt-1 text-xs text-slate leading-relaxed">{row.note}</p>}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* COTIZADOS A MEDIDA + FUTUROS */}
-      <section className="py-16 bg-ink-900 text-white">
+      {/* ---------- COTIZADOS A MEDIDA + FUTUROS ---------- */}
+      <section className="bg-night py-16 text-white">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <span className="inline-block font-display font-bold text-xs uppercase tracking-[0.18em] text-orange">
-                Cotizados a medida
-              </span>
+              <Eyebrow tone="dark">Cotizados a medida</Eyebrow>
               <h2 className="mt-3 font-display font-black text-3xl leading-tight">
                 Proyectos sin tarifa fija
               </h2>
@@ -129,9 +219,7 @@ export default function PreciosPage() {
             </div>
 
             <div>
-              <span className="inline-block font-display font-bold text-xs uppercase tracking-[0.18em] text-orange">
-                En desarrollo
-              </span>
+              <Eyebrow tone="dark">En desarrollo</Eyebrow>
               <h2 className="mt-3 font-display font-black text-3xl leading-tight">
                 Servicios que estamos preparando
               </h2>
@@ -157,7 +245,7 @@ export default function PreciosPage() {
         </Container>
       </section>
 
-      {/* NOTAS / POLÍTICAS */}
+      {/* ---------- NOTAS / POLÍTICAS ---------- */}
       <section className="py-12">
         <Container>
           <div className="rounded-2xl border border-line bg-paper-soft p-6 text-sm text-slate leading-relaxed">

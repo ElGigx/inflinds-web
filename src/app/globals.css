@@ -5,7 +5,11 @@
   Marca:   #751CB4  (púrpura, color primario)
   Acento:  #F8049C  (magenta, CTA principal)
   Realce:  #FF8E00  (naranja, realce secundario + socio de degradado)
-  Neutro:  #343A40  (gris oscuro, texto de cuerpo / superficies oscuras)
+  Amarillo:#FFD80A  (acento de marca; SOLO como texto sobre fondos oscuros —
+           sobre blanco no cumple contraste, ahí se usa como chip/subrayado
+           con texto oscuro encima)
+  Neutro:  #343A40  (gris oscuro, texto de cuerpo)
+  Noche:   #0E0A1B  (superficie oscura violácea para hero/secciones dark)
   Tipografía display: Raleway (900) · cuerpo: Lato
 */
 
@@ -28,6 +32,17 @@
   --color-magenta-600: #d40385;
   --color-orange: #ff8e00;
   --color-orange-600: #e07c00;
+
+  /* Amarillo Inflinds. "yellow" pelado = el tono oficial, para texto sobre
+     fondos oscuros o como fondo de chip con texto oscuro. */
+  --color-yellow: #ffd80a;
+  --color-yellow-100: #fff6c4;
+  --color-yellow-600: #e6c100;
+
+  /* --- Superficies oscuras (hero / secciones dark) --- */
+  --color-night: #0e0a1b;
+  --color-night-800: #171130;
+  --color-night-700: #221a40;
 
   /* --- Neutros --- */
   --color-ink: #343a40; /* gris oscuro dado por la marca */
@@ -77,12 +92,38 @@ body {
   background: linear-gradient(120deg, #751cb4 0%, #f8049c 60%, #ff8e00 120%);
 }
 
+/* Variante cálida (magenta -> naranja) para palabras destacadas sobre fondo
+   oscuro, donde el arranque púrpura del degradado completo se pierde. */
+.text-gradient-warm {
+  background: linear-gradient(100deg, #f8049c 0%, #ff8e00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-cta {
+  background: linear-gradient(100deg, #f8049c 0%, #ff8e00 130%);
+}
+
+/* Banner CTA: naranja -> magenta -> púrpura, de izquierda a derecha. */
+.bg-gradient-banner {
+  background: linear-gradient(105deg, #ff8e00 -20%, #f8049c 30%, #751cb4 100%);
+}
+
 /* Malla suave para fondos hero */
 .hero-glow {
   background:
     radial-gradient(60% 55% at 15% 0%, rgba(117, 28, 180, 0.16) 0%, transparent 60%),
     radial-gradient(50% 50% at 85% 10%, rgba(248, 4, 156, 0.12) 0%, transparent 55%),
     radial-gradient(45% 45% at 70% 90%, rgba(255, 142, 0, 0.12) 0%, transparent 55%);
+}
+
+/* Resplandores del hero oscuro: orbe púrpura a la derecha + toque magenta. */
+.hero-glow-night {
+  background:
+    radial-gradient(45% 55% at 78% 45%, rgba(117, 28, 180, 0.45) 0%, transparent 65%),
+    radial-gradient(35% 40% at 95% 15%, rgba(248, 4, 156, 0.18) 0%, transparent 60%),
+    radial-gradient(30% 35% at 10% 90%, rgba(117, 28, 180, 0.2) 0%, transparent 60%);
 }
 
 ::selection {

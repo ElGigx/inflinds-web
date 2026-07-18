@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { services, methodology } from "@/lib/site";
+import { services } from "@/lib/site";
+import ProcessStrip from "@/components/ProcessStrip";
 import {
   Container,
   SectionHeading,
@@ -72,25 +73,15 @@ export default function ServiciosPage() {
       </section>
 
       {/* PROCESO */}
-      <section className="py-20 bg-paper-soft mt-8">
+      <section className="py-20 mt-8">
         <Container>
           <SectionHeading
-            eyebrow="Metodología"
-            title="Cómo entregamos, fase por fase"
-            intro="El mismo proceso de 10 fases sin importar el tamaño del proyecto. Cada fase deja documentación, no solo entregables."
+            eyebrow="Cómo trabajamos"
+            title="Un proceso de 10 fases, de la idea a la evolución"
+            intro="El mismo proceso sin importar el tamaño del proyecto. Cada fase deja documentación, no solo entregables."
           />
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
-            {methodology.map((step) => (
-              <div key={step.n} className="flex gap-4 rounded-2xl border border-line bg-white p-5">
-                <span className="font-display font-black text-2xl text-transparent bg-clip-text bg-gradient-brand shrink-0 w-10">
-                  {String(step.n).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display font-bold text-ink">{step.name}</h3>
-                  <p className="mt-1 text-sm text-slate leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="mt-12">
+            <ProcessStrip />
           </div>
         </Container>
       </section>

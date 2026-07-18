@@ -5,7 +5,7 @@ import { nav, services, site } from "@/lib/site";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-ink-900 text-slate-100">
+    <footer className="bg-night text-slate-100 border-t border-white/10">
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-1">
@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-white text-sm uppercase tracking-wider">
+            <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
               Navegación
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-white text-sm uppercase tracking-wider">
+            <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
               Servicios
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-white text-sm uppercase tracking-wider">
+            <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
               Estudio
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-slate-300/80">
@@ -65,7 +65,7 @@ export default function Footer() {
             </ul>
             <Link
               href="/contacto/"
-              className="mt-5 inline-flex items-center rounded-lg bg-gradient-brand px-4 py-2 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+              className="mt-5 inline-flex items-center rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
             >
               Iniciar un proyecto
             </Link>
