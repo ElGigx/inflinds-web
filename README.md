@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Variables de entorno
+
+El formulario de contacto envía leads al CRM Merez. Ambas variables se hornean
+en el bundle en build time (export estático); en Vercel ya están configuradas
+en el proyecto y para desarrollo local van en `.env.local` (no versionado):
+
+```
+NEXT_PUBLIC_MEREZ_API_URL=https://api.merez.co/api
+NEXT_PUBLIC_MEREZ_LEADS_TOKEN=<token de Sitio "inflinds" en Merez>
+```
+
+El token de Sitio solo autoriza `POST /leads` para el sitio inflinds; no da
+acceso de lectura ni a otros sitios.
+
 ## Getting Started
 
 First, run the development server:
