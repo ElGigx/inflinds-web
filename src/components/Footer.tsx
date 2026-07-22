@@ -74,7 +74,15 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>© {year} {site.legalName}. Todos los derechos reservados.</p>
-          <p>Parte del ecosistema Gigx.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacidad/" className="hover:text-white transition-colors">
+              Privacidad
+            </Link>
+            <Link href="/terminos/" className="hover:text-white transition-colors">
+              Términos
+            </Link>
+            <span>Parte del ecosistema Gigx.</span>
+          </div>
         </div>
       </div>
     </footer>
