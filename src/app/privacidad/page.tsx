@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const ACTUALIZADO = "22 de julio de 2026";
-const CONTACTO = "inflinds@gmail.com";
+const CONTACTO = "contacto@inflinds.com";
 
 export default function PrivacidadPage() {
   return (
