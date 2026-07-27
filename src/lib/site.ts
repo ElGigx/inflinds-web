@@ -27,9 +27,9 @@ export const clients = [
 
 export const nav = [
   { href: "/", label: "Inicio" },
-  { href: "/servicios/", label: "Servicios" },
-  { href: "/precios/", label: "Precios" },
-  { href: "/contacto/", label: "Contacto" },
+  { href: "/services/", label: "Servicios" },
+  { href: "/pricing/", label: "Precios" },
+  { href: "/contact/", label: "Contacto" },
 ];
 
 // Las 5 líneas de servicio (Services.md).

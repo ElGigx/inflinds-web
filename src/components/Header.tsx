@@ -34,7 +34,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/contacto/"
+            href="/contact/"
             className="ml-2 inline-flex items-center rounded-lg bg-gradient-cta px-4 py-2 text-sm font-bold text-white shadow-sm transition-transform hover:-translate-y-0.5"
           >
             Cuéntanos tu proyecto
@@ -75,7 +75,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/contacto/"
+            href="/contact/"
             onClick={() => setOpen(false)}
             className="mt-2 block text-center rounded-lg bg-gradient-cta px-4 py-3 text-base font-bold text-white"
           >

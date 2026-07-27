@@ -141,7 +141,7 @@ export default function PreciosPage() {
                         </li>
                       ))}
                     </ul>
-                    <PrimaryButton href="/contacto/" className="mt-7 w-full">
+                    <PrimaryButton href="/contact/" className="mt-7 w-full">
                       {plan.cta} <span aria-hidden="true" className="ml-2">→</span>
                     </PrimaryButton>
                   </div>
@@ -181,7 +181,7 @@ export default function PreciosPage() {
                       </li>
                     ))}
                   </ul>
-                  <SecondaryButton href="/contacto/" className="mt-7 w-full">
+                  <SecondaryButton href="/contact/" className="mt-7 w-full">
                     {plan.cta} <span aria-hidden="true" className="ml-2">→</span>
                   </SecondaryButton>
                 </div>
@@ -238,7 +238,7 @@ export default function PreciosPage() {
                 ))}
               </div>
               <div className="mt-8">
-                <PrimaryButton href="/contacto/">Solicitar cotización</PrimaryButton>
+                <PrimaryButton href="/contact/">Solicitar cotización</PrimaryButton>
               </div>
             </div>
           </div>

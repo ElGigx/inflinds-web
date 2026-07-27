@@ -156,10 +156,10 @@ export default function Home() {
                 final del proyecto: es donde empieza la evolución.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryButton href="/contacto/">
+                <PrimaryButton href="/contact/">
                   Cuéntanos tu proyecto <span aria-hidden="true" className="ml-2">→</span>
                 </PrimaryButton>
-                <SecondaryButton href="/servicios/" tone="dark">
+                <SecondaryButton href="/services/" tone="dark">
                   Ver servicios <span aria-hidden="true" className="ml-2">→</span>
                 </SecondaryButton>
               </div>
@@ -228,7 +228,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{s.summary}</p>
                 <Link
-                  href="/servicios/"
+                  href="/services/"
                   className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2"
                 >
                   Conocer más
@@ -310,13 +310,13 @@ export default function Home() {
             </div>
             <div className="mt-8 flex shrink-0 flex-wrap gap-4 lg:mt-0">
               <Link
-                href="/contacto/"
+                href="/contact/"
                 className="inline-flex items-center rounded-xl bg-white px-7 py-3 font-bold text-brand-700 shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 Iniciar un proyecto <span aria-hidden="true" className="ml-2">→</span>
               </Link>
               <Link
-                href="/precios/"
+                href="/pricing/"
                 className="inline-flex items-center rounded-xl border-2 border-white/70 px-7 py-3 font-bold text-white transition-colors hover:bg-white/10"
               >
                 Ver precios <span aria-hidden="true" className="ml-2">→</span>

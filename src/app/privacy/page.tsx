@@ -118,7 +118,7 @@ export default function PrivacidadPage() {
               Puedes solicitar la eliminación de tus datos personales, incluidos
               los recibidos a través de WhatsApp, escribiéndonos a{" "}
               <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a> o por nuestro{" "}
-              <a href="/contacto/">formulario de contacto</a>, indicando
+              <a href="/contact/">formulario de contacto</a>, indicando
               “Solicitud de eliminación de datos”. Atenderemos tu solicitud en
               los términos y plazos de la ley colombiana, salvo que exista una
               obligación legal de conservar la información.
@@ -143,7 +143,7 @@ export default function PrivacidadPage() {
             <p>
               Para ejercer tus derechos o resolver dudas, escríbenos a{" "}
               <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a> o usa nuestro{" "}
-              <a href="/contacto/">formulario de contacto</a>.
+              <a href="/contact/">formulario de contacto</a>.
             </p>
           </div>
         </div>

@@ -96,7 +96,7 @@ export default function ServiciosPage() {
             Cuéntanos tu objetivo y te proponemos el camino. La primera conversación no cuesta nada.
           </p>
           <div className="mt-8 flex justify-center">
-            <PrimaryButton href="/contacto/">Hablemos de tu proyecto</PrimaryButton>
+            <PrimaryButton href="/contact/">Hablemos de tu proyecto</PrimaryButton>
           </div>
         </Container>
       </section>

@@ -39,7 +39,7 @@ export default function Footer() {
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href="/servicios/"
+                    href="/services/"
                     className="text-slate-300/80 hover:text-white transition-colors"
                   >
                     {s.tag}
@@ -64,7 +64,7 @@ export default function Footer() {
               </li>
             </ul>
             <Link
-              href="/contacto/"
+              href="/contact/"
               className="mt-5 inline-flex items-center rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
             >
               Iniciar un proyecto
@@ -75,10 +75,10 @@ export default function Footer() {
         <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>© {year} {site.legalName}. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4">
-            <Link href="/privacidad/" className="hover:text-white transition-colors">
+            <Link href="/privacy/" className="hover:text-white transition-colors">
               Privacidad
             </Link>
-            <Link href="/terminos/" className="hover:text-white transition-colors">
+            <Link href="/terms/" className="hover:text-white transition-colors">
               Términos
             </Link>
             <span>Parte del ecosistema Gigx.</span>

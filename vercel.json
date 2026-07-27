@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/contacto", "destination": "/contact/", "permanent": true },
+    { "source": "/contacto/", "destination": "/contact/", "permanent": true },
+    { "source": "/precios", "destination": "/pricing/", "permanent": true },
+    { "source": "/precios/", "destination": "/pricing/", "permanent": true },
+    { "source": "/servicios", "destination": "/services/", "permanent": true },
+    { "source": "/servicios/", "destination": "/services/", "permanent": true },
+    { "source": "/privacidad", "destination": "/privacy/", "permanent": true },
+    { "source": "/privacidad/", "destination": "/privacy/", "permanent": true },
+    { "source": "/terminos", "destination": "/terms/", "permanent": true },
+    { "source": "/terminos/", "destination": "/terms/", "permanent": true }
+  ]
+}

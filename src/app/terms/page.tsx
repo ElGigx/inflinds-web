@@ -89,7 +89,7 @@ export default function TerminosPage() {
             <p>
               Tratamos la información del cliente de forma confidencial. El manejo
               de datos personales se rige por nuestra{" "}
-              <a href="/privacidad/">Política de Privacidad y Tratamiento de Datos</a>.
+              <a href="/privacy/">Política de Privacidad y Tratamiento de Datos</a>.
             </p>
 
             <h2>8. Servicios de terceros</h2>
@@ -103,7 +103,7 @@ export default function TerminosPage() {
             <p>
               Estos Términos se rigen por la ley colombiana. Para dudas, quejas o
               reclamos, escríbenos a <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>{" "}
-              o usa el <a href="/contacto/">formulario de contacto</a>. También
+              o usa el <a href="/contact/">formulario de contacto</a>. También
               puedes acudir a la Superintendencia de Industria y Comercio (SIC).
             </p>
           </div>
