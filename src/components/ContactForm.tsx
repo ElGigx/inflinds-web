@@ -39,12 +39,20 @@ export default function ContactForm() {
           Authorization: `Bearer ${MEREZ_LEADS_TOKEN}`,
         },
         body: JSON.stringify({
-          // "tipo" para Merez es el canal del lead; el tipo de proyecto del
-          // select viaja como dato extra (termina en datos_json del lead).
-          tipo: "contacto",
-          nombre: data.get("nombre"),
+          // Claves en INGLÉS (etapa 3 de ADR-006, en producción desde 2026-07-27).
+          // "type" para Merez es el CANAL del lead, no el tipo de proyecto.
+          //
+          // ⚠️ Solo se traducen las claves que el backend reconoce como campos
+          // directos (type, name, company, email, phone). El resto NO se toca:
+          // LeadController::store() vuelca todo lo que no reconoce en form_data,
+          // así que `tipo_proyecto` y `mensaje` son DATOS guardados con esa
+          // clave — traducirlos cambiaría lo que queda en la base de datos y
+          // rompería a quien los lea. El VALOR "contacto" tampoco se traduce:
+          // es un enum en español a propósito.
+          type: "contacto",
+          name: data.get("nombre"),
           email: data.get("email"),
-          empresa: data.get("empresa") || null,
+          company: data.get("empresa") || null,
           tipo_proyecto: data.get("tipo"),
           mensaje: data.get("mensaje"),
         }),
