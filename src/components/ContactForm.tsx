@@ -7,14 +7,24 @@ import { projectTypes } from "@/lib/site";
  * Formulario de contacto.
  *
  * Envía cada solicitud como lead al CRM propio (Merez) vía
- * POST {NEXT_PUBLIC_MEREZ_API_URL}/leads con el token de Sitio de Inflinds
- * (NEXT_PUBLIC_MEREZ_LEADS_TOKEN). El token de Sitio solo autoriza crear
- * leads para este sitio (scope limitado por diseño del API), pero no se
- * versiona: se inyecta como variable de entorno en Vercel y en .env.local.
+ * POST {NEXT_PUBLIC_MEREZ_API_URL}/leads, con la CLAVE DE INGEST del sitio
+ * (`NEXT_PUBLIC_MEREZ_INGEST_KEY`) dentro del cuerpo — la misma que usa
+ * MerezAnalytics para el latido de visitas.
+ *
+ * ⚠️ Antes iba con el token de Sitio en una cabecera `Authorization`, y eso
+ * estaba MAL: `NEXT_PUBLIC_` incrusta el valor en el bundle que descarga
+ * cualquier visitante, así que el token —con habilidades `*`— quedaba publicado
+ * en el JavaScript de inflinds.com. La clave de ingest está HECHA para ser
+ * pública: solo autoriza lo que su lista de habilidades diga (aquí, `leads`),
+ * solo desde los orígenes declarados, y se puede revocar y rotar desde el panel
+ * sin tocar el token del sitio.
+ *
+ * Regla que sigue en pie: nada que no pueda leer un visitante va en una variable
+ * `NEXT_PUBLIC_`.
  */
 
 const MEREZ_API_URL = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api";
-const MEREZ_LEADS_TOKEN = process.env.NEXT_PUBLIC_MEREZ_LEADS_TOKEN ?? "";
+const MEREZ_INGEST_KEY = process.env.NEXT_PUBLIC_MEREZ_INGEST_KEY ?? "";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -36,9 +46,12 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${MEREZ_LEADS_TOKEN}`,
         },
         body: JSON.stringify({
+          // La credencial va en el CUERPO, no en una cabecera: es lo que permite
+          // que el mismo endpoint lo llame un SDK de navegador. El backend la
+          // excluye antes de volcar el resto del formulario en `form_data`.
+          site_key: MEREZ_INGEST_KEY,
           // Claves en INGLÉS (etapa 3 de ADR-006, en producción desde 2026-07-27).
           // "type" para Merez es el CANAL del lead, no el tipo de proyecto.
           //
