@@ -29,6 +29,11 @@ export const metadata: Metadata = {
   },
   description:
     "Inflinds es un Digital Product Studio: diseño, desarrollo, automatización e IA para acelerar la transformación digital de empresas y emprendedores.",
+  // Canónico por página, resuelto contra `metadataBase` (el apex, que es el host
+  // canónico: `www` redirige 308 aquí). Sin esto no se emitía NINGÚN
+  // `<link rel="canonical">` y el buscador tenía que adivinar entre los dos
+  // hosts, que sirven exactamente lo mismo.
+  alternates: { canonical: "./" },
   keywords: [
     "digital product studio",
     "diseño UX/UI",
