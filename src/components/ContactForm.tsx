@@ -60,9 +60,12 @@ export default function ContactForm() {
           // LeadController::store() vuelca todo lo que no reconoce en form_data,
           // así que `tipo_proyecto` y `mensaje` son DATOS guardados con esa
           // clave — traducirlos cambiaría lo que queda en la base de datos y
-          // rompería a quien los lea. El VALOR "contacto" tampoco se traduce:
-          // es un enum en español a propósito.
-          type: "contacto",
+          // rompería a quien los lea.
+          //
+          // El VALOR pasa a inglés en la fase D grupo 7 (2026-07-28). El backend
+          // sigue aceptando "contacto" mientras duren los alias, así que el orden
+          // de despliegue no puede perder envíos.
+          type: "contact",
           name: data.get("nombre"),
           email: data.get("email"),
           company: data.get("empresa") || null,
