@@ -23,7 +23,7 @@ import { projectTypes } from "@/lib/site";
  * `NEXT_PUBLIC_`.
  */
 
-const MEREZ_API_URL = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api";
+const MEREZ_API_URL = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api/v1";
 const MEREZ_INGEST_KEY = process.env.NEXT_PUBLIC_MEREZ_INGEST_KEY ?? "";
 
 type FormState = "idle" | "submitting" | "success" | "error";

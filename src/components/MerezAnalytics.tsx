@@ -22,7 +22,7 @@ import { usePathname } from "next/navigation";
  * queda callado en vez de fallar.
  */
 
-const API = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api";
+const API = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api/v1";
 const KEY = process.env.NEXT_PUBLIC_MEREZ_INGEST_KEY ?? "";
 const COOKIE = "merez_vid";
 
