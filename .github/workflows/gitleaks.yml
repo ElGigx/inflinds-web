@@ -1,0 +1,31 @@
+name: gitleaks — ningún secreto en el repo
+
+# ADR-029.6: una puerta de CI rechaza patrones de secreto. Corre en cada push y PR,
+# aparte del deploy (no lo bloquea todavía; surfacea en el mismo push). Escanea el
+# ÁRBOL ya commiteado (--no-git), no toda la historia: caza lo que está en el repo
+# HOY sin ponerse rojo por ruido viejo. --redact para no imprimir el valor en el log.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar gitleaks (versión fijada)
+        run: |
+          VER=8.18.4
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VER}/gitleaks_${VER}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          sudo install gitleaks /usr/local/bin/gitleaks
+          gitleaks version
+
+      - name: Escanear el árbol en busca de secretos (redactado)
+        run: gitleaks detect --no-git --redact --verbose
