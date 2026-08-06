@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MerezAnalytics from "@/components/MerezAnalytics";
+import MerezSdk from "@/components/MerezSdk";
 
 // Display: Raleway (usamos hasta el peso Black 900 para titulares).
 const raleway = Raleway({
@@ -62,6 +63,7 @@ export default function RootLayout({
       className={`${raleway.variable} ${lato.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
+        <MerezSdk />
         <MerezAnalytics />
         <Header />
         <main className="flex-1">{children}</main>

@@ -6,25 +6,17 @@ import { projectTypes } from "@/lib/site";
 /**
  * Formulario de contacto.
  *
- * Envía cada solicitud como lead al CRM propio (Merez) vía
- * POST {NEXT_PUBLIC_MEREZ_API_URL}/leads, con la CLAVE DE INGEST del sitio
- * (`NEXT_PUBLIC_MEREZ_INGEST_KEY`) dentro del cuerpo — la misma que usa
- * MerezAnalytics para el latido de visitas.
+ * Envía cada solicitud como lead al CRM propio (Merez) a través del SDK de Merez
+ * (`window.Merez.lead`, cargado por `MerezSdk` desde cdn.merez.co). El SDK lleva la
+ * clave de ingest, el endpoint `/leads` y el protocolo de red (credencial en el
+ * CUERPO, `text/plain` para evitar el preflight de CORS). Antes esta lógica estaba
+ * duplicada aquí; hoy es una sola fuente de verdad, la misma que usa MerezAnalytics
+ * y los sitios de los clientes.
  *
- * ⚠️ Antes iba con el token de Sitio en una cabecera `Authorization`, y eso
- * estaba MAL: `NEXT_PUBLIC_` incrusta el valor en el bundle que descarga
- * cualquier visitante, así que el token —con habilidades `*`— quedaba publicado
- * en el JavaScript de inflinds.com. La clave de ingest está HECHA para ser
- * pública: solo autoriza lo que su lista de habilidades diga (aquí, `leads`),
- * solo desde los orígenes declarados, y se puede revocar y rotar desde el panel
- * sin tocar el token del sitio.
- *
- * Regla que sigue en pie: nada que no pueda leer un visitante va en una variable
- * `NEXT_PUBLIC_`.
+ * La clave de ingest es pública por diseño (ligada a orígenes + habilidad `leads`,
+ * revocable desde el panel), a diferencia del token de Sitio que NUNCA va al
+ * navegador. Si el SDK aún no cargó al enviar, se avisa en vez de perder el lead.
  */
-
-const MEREZ_API_URL = process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api/v1";
-const MEREZ_INGEST_KEY = process.env.NEXT_PUBLIC_MEREZ_INGEST_KEY ?? "";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -38,40 +30,30 @@ export default function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    // El SDK debería estar cargado (afterInteractive) mucho antes de que alguien
+    // rellene y envíe. Si por lo que sea no está, avisamos en vez de perder el lead.
+    if (!window.Merez) {
+      setState("error");
+      return;
+    }
+
     setState("submitting");
 
     try {
-      const res = await fetch(`${MEREZ_API_URL}/leads`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          // La credencial va en el CUERPO, no en una cabecera: es lo que permite
-          // que el mismo endpoint lo llame un SDK de navegador. El backend la
-          // excluye antes de volcar el resto del formulario en `form_data`.
-          site_key: MEREZ_INGEST_KEY,
-          // Claves en INGLÉS (etapa 3 de ADR-006, en producción desde 2026-07-27).
-          // "type" para Merez es el CANAL del lead, no el tipo de proyecto.
-          //
-          // ⚠️ Solo se traducen las claves que el backend reconoce como campos
-          // directos (type, name, company, email, phone). El resto NO se toca:
-          // LeadController::store() vuelca todo lo que no reconoce en form_data,
-          // así que `tipo_proyecto` y `mensaje` son DATOS guardados con esa
-          // clave — traducirlos cambiaría lo que queda en la base de datos y
-          // rompería a quien los lea.
-          //
-          // El VALOR pasa a inglés en la fase D grupo 7 (2026-07-28). El backend
-          // sigue aceptando "contacto" mientras duren los alias, así que el orden
-          // de despliegue no puede perder envíos.
-          type: "contact",
-          name: data.get("nombre"),
-          email: data.get("email"),
-          company: data.get("empresa") || null,
-          tipo_proyecto: data.get("tipo"),
-          mensaje: data.get("mensaje"),
-        }),
+      // "type" para Merez es el CANAL del lead, no el tipo de proyecto.
+      //
+      // ⚠️ Solo las claves que el backend reconoce como campos directos (type,
+      // name, company, email) se traducen. `tipo_proyecto` y `mensaje` NO:
+      // LeadController::store() vuelca lo que no reconoce en `form_data` con esa
+      // clave, así que renombrarlas cambiaría lo que queda en la base de datos.
+      const res = await window.Merez.lead({
+        type: "contact",
+        name: String(data.get("nombre") ?? ""),
+        email: String(data.get("email") ?? ""),
+        company: (data.get("empresa") as string) || null,
+        tipo_proyecto: String(data.get("tipo") ?? ""),
+        mensaje: String(data.get("mensaje") ?? ""),
       });
 
       if (!res.ok) throw new Error(`Merez respondió ${res.status}`);
