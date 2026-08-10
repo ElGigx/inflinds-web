@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { projectTypes } from "@/lib/site";
+import { POLICY_VERSION } from "@/lib/policy";
 
 /**
  * Formulario de contacto.
@@ -18,7 +19,7 @@ import { projectTypes } from "@/lib/site";
  * navegador. Si el SDK aún no cargó al enviar, se avisa en vez de perder el lead.
  */
 
-type FormState = "idle" | "submitting" | "success" | "error";
+type FormState = "idle" | "submitting" | "success" | "error" | "sin-autorizar";
 
 const fieldBase =
   "w-full rounded-xl border border-line bg-paper-soft px-4 py-3 text-ink placeholder:text-muted focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100 transition";
@@ -38,6 +39,11 @@ export default function ContactForm() {
       return;
     }
 
+    if (data.get("consent_granted") !== "1") {
+      setState("sin-autorizar");
+      return;
+    }
+
     setState("submitting");
 
     try {
@@ -54,6 +60,9 @@ export default function ContactForm() {
         company: (data.get("empresa") as string) || null,
         tipo_proyecto: String(data.get("tipo") ?? ""),
         mensaje: String(data.get("mensaje") ?? ""),
+        consent_granted: true,
+        marketing_consent: data.get("marketing_consent") === "1",
+        consent_policy_version: POLICY_VERSION,
       });
 
       if (!res.ok) throw new Error(`Merez respondió ${res.status}`);
@@ -142,6 +151,45 @@ export default function ContactForm() {
         />
       </div>
 
+      <div className="space-y-3">
+        <label className="flex items-start gap-3 text-sm text-ink">
+          <input
+            type="checkbox"
+            name="consent_granted"
+            value="1"
+            className="mt-1 h-4 w-4 shrink-0 accent-magenta"
+          />
+          <span>
+            Autorizo a Inflinds a tratar mis datos para atender esta solicitud, según la{" "}
+            <a href="/privacy" target="_blank" rel="noopener" className="font-semibold underline">
+              Política de Privacidad
+            </a>
+            .
+          </span>
+        </label>
+
+        <label className="flex items-start gap-3 text-sm text-ink">
+          <input
+            type="checkbox"
+            name="marketing_consent"
+            value="1"
+            className="mt-1 h-4 w-4 shrink-0 accent-magenta"
+          />
+          <span>
+            También quiero recibir novedades. <span className="text-muted">Opcional.</span>
+          </span>
+        </label>
+      </div>
+
+      {state === "sin-autorizar" && (
+        <p
+          role="alert"
+          className="rounded-xl border border-magenta/30 bg-magenta/5 px-4 py-3 text-sm text-magenta"
+        >
+          Para enviar la solicitud necesitamos tu autorización para tratar tus datos.
+        </p>
+      )}
+
       {state === "error" && (
         <p
           role="alert"
@@ -161,8 +209,7 @@ export default function ContactForm() {
       </button>
 
       <p className="text-xs text-muted leading-relaxed">
-        Al enviar, aceptas que Inflinds use tus datos para responder tu solicitud. No compartimos tu
-        información con terceros.
+        No compartimos tu información con terceros.
       </p>
     </form>
   );

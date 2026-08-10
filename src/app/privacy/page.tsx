@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Eyebrow } from "@/components/ui";
 import { site } from "@/lib/site";
+import { POLICY_UPDATED } from "@/lib/policy";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     "Política de Privacidad y Tratamiento de Datos Personales de Inflinds, conforme a la Ley 1581 de 2012 de Colombia (Habeas Data).",
 };
 
-const ACTUALIZADO = "22 de julio de 2026";
+const ACTUALIZADO = POLICY_UPDATED;
 const CONTACTO = "contacto@inflinds.com";
 
 export default function PrivacidadPage() {
