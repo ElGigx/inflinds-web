@@ -47,9 +47,40 @@ export const metadata: Metadata = {
     title: "Inflinds — Digital Product Studio",
     description:
       "Diseño, desarrollo, automatización e IA. Construimos productos digitales, no solo páginas web.",
+    url: "https://inflinds.com",
+    siteName: "Inflinds",
     type: "website",
     locale: "es_CO",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://inflinds.com/#organization",
+      name: "Inflinds",
+      url: "https://inflinds.com",
+      logo: "https://inflinds.com/icon.svg",
+      description:
+        "Digital Product Studio: diseño, desarrollo, automatización e IA para la transformación digital de empresas y emprendedores.",
+      areaServed: "CO",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://inflinds.com/#website",
+      url: "https://inflinds.com",
+      name: "Inflinds",
+      inLanguage: "es-CO",
+      publisher: { "@id": "https://inflinds.com/#organization" },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -59,10 +90,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="es-CO"
       className={`${raleway.variable} ${lato.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <MerezSdk />
         <MerezAnalytics />
         <Header />
