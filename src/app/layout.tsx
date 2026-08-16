@@ -52,6 +52,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_CO",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Inflinds — Digital Product Studio",
+    description:
+      "Diseño, desarrollo, automatización e IA. Construimos productos digitales, no solo páginas web.",
+  },
   robots: {
     index: true,
     follow: true,
