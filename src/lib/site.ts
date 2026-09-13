@@ -131,7 +131,7 @@ export const merezModules = [
   { name: "Blog / SEO", desc: "Motor de contenido con validación SEO para tráfico orgánico." },
   { name: "Analítica", desc: "Métricas de embudo, conversión y actividad en un solo lugar." },
   { name: "Segmentación", desc: "Segmentación avanzada de contactos para acciones precisas." },
-  { name: "Integraciones", desc: "Conectores con Siigo, Meta, GA4 y Clarity." },
+  { name: "Integraciones", desc: "Conectores con Meta, GA4 y Clarity." },
   { name: "Pagos", desc: "Cobro en línea integrado (Wompi) conciliado con tus ventas." },
 ];
 
