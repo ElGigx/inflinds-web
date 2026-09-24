@@ -90,14 +90,27 @@ export default function PrivacidadPage() {
             <p>
               Nos apoyamos en proveedores que procesan datos por nuestra cuenta
               bajo estándares de seguridad, entre ellos: infraestructura y
-              hosting (Vercel, Hostinger), mensajería (Meta/WhatsApp),
+              hosting (Vercel, Hostinger), mensajería y publicidad (Meta),
               inteligencia artificial (OpenAI) y analítica. Algunos pueden estar
               fuera de Colombia, por lo que puede existir transferencia o
               transmisión internacional de datos con las garantías que exige la
               ley.
             </p>
 
-            <h2>6. Derechos del titular (Habeas Data)</h2>
+            <h2>6. Cookies y medición publicitaria</h2>
+            <p>
+              Usamos cookies propias para medir las visitas y saber de qué
+              campaña llegaste (por ejemplo, un anuncio en redes sociales), y el{" "}
+              <strong>píxel de Meta</strong> para medir la efectividad de nuestros
+              anuncios y mostrar publicidad relevante a quienes ya visitaron el
+              sitio. Cuando envías un formulario, compartimos con Meta tu correo y
+              teléfono <strong>cifrados</strong> (no legibles) para medir la
+              conversión. Puedes borrar o bloquear las cookies desde la
+              configuración de tu navegador y gestionar los anuncios que ves desde
+              la configuración de tu cuenta de Meta.
+            </p>
+
+            <h2>7. Derechos del titular (Habeas Data)</h2>
             <p>Como titular de tus datos tienes derecho a:</p>
             <ul>
               <li>Conocer, actualizar y rectificar tus datos personales.</li>
@@ -114,7 +127,7 @@ export default function PrivacidadPage() {
               <li>Acceder de forma gratuita a tus datos personales.</li>
             </ul>
 
-            <h2 id="eliminacion">7. Eliminación de datos</h2>
+            <h2 id="eliminacion">8. Eliminación de datos</h2>
             <p>
               Puedes solicitar la eliminación de tus datos personales, incluidos
               los recibidos a través de WhatsApp, escribiéndonos a{" "}
@@ -125,7 +138,7 @@ export default function PrivacidadPage() {
               obligación legal de conservar la información.
             </p>
 
-            <h2>8. Seguridad de la información</h2>
+            <h2>9. Seguridad de la información</h2>
             <p>
               Aplicamos medidas técnicas y administrativas razonables —control de
               acceso, cifrado de credenciales sensibles y buenas prácticas de
@@ -133,14 +146,14 @@ export default function PrivacidadPage() {
               pérdida o alteración.
             </p>
 
-            <h2>9. Vigencia y cambios</h2>
+            <h2>10. Vigencia y cambios</h2>
             <p>
               Esta Política rige desde su publicación y puede actualizarse; los
               cambios se publicarán en esta misma página con su fecha de
               actualización.
             </p>
 
-            <h2>10. Contacto</h2>
+            <h2>11. Contacto</h2>
             <p>
               Para ejercer tus derechos o resolver dudas, escríbenos a{" "}
               <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a> o usa nuestro{" "}

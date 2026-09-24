@@ -22,4 +22,5 @@ interface MerezSdk {
 
 interface Window {
   Merez?: MerezSdk;
+  fbq?: (command: "track" | "trackCustom" | "init", name: string, params?: Record<string, unknown>) => void;
 }
