@@ -107,7 +107,9 @@ export default function PrivacidadPage() {
               teléfono <strong>cifrados</strong> (no legibles) para medir la
               conversión. Puedes borrar o bloquear las cookies desde la
               configuración de tu navegador y gestionar los anuncios que ves desde
-              la configuración de tu cuenta de Meta.
+              la configuración de tu cuenta de Meta. En los correos que te enviamos
+              medimos si se abren y en qué enlaces se hace clic, para saber qué te
+              sirve; al final de cada correo tienes un enlace para darte de baja.
             </p>
 
             <h2>7. Derechos del titular (Habeas Data)</h2>
