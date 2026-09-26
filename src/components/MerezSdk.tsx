@@ -19,7 +19,7 @@ export default function MerezSdk() {
           chat: {
             partner: PORTAL_PARTNER,
             title: "Inflinds",
-            greeting: "Hola, soy el asistente de Inflinds. Cuéntanos qué necesitas: sitio web, tienda, campañas o soporte.",
+            greeting: "Hola, soy el asistente de Inflinds. Cuéntame qué necesitas: tu sitio web, vender en línea o ayuda con tu servicio.",
             policyUrl: "/privacy/",
             policyVersion: POLICY_VERSION,
           },
