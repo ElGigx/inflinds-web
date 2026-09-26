@@ -13,7 +13,11 @@ interface MerezLeadFields {
 
 interface MerezSdk {
   /** Fija la clave de ingest y la base de la API; mide la primera vista. */
-  init(cfg: { key: string; api?: string }): void;
+  init(cfg: {
+    key: string;
+    api?: string;
+    chat?: { partner?: string; title?: string; greeting?: string; policyUrl?: string; policyVersion?: string };
+  }): void;
   /** Latido de la vista actual. No reintenta. */
   track(): void;
   /** Envía un lead. Devuelve la respuesta del backend (200 al crear). */

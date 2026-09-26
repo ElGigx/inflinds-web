@@ -149,6 +149,18 @@ body {
   }
 }
 
+.mzc {
+  --mzp-accent: var(--color-brand);
+  --mzp-accent-text: #ffffff;
+  --mzp-surface: var(--color-paper);
+  --mzp-text: var(--color-ink);
+  --mzp-line: var(--color-line);
+  --mzp-soft: var(--color-paper-soft);
+  --mzp-muted: var(--color-ink-700);
+  --mzp-radius: var(--radius-xl);
+  font-family: var(--font-sans, inherit);
+}
+
 .client-portal.mzp {
   --mzp-accent: var(--color-brand);
   --mzp-accent-text: #ffffff;

@@ -1,7 +1,8 @@
 "use client";
 
 import Script from "next/script";
-import { MEREZ_API, MEREZ_INGEST_KEY, MEREZ_SDK_URL } from "@/lib/merez";
+import { MEREZ_API, MEREZ_INGEST_KEY, MEREZ_SDK_URL, PORTAL_PARTNER } from "@/lib/merez";
+import { POLICY_VERSION } from "@/lib/policy";
 
 export default function MerezSdk() {
   if (!MEREZ_INGEST_KEY) return null;
@@ -11,7 +12,19 @@ export default function MerezSdk() {
       id="merez-sdk"
       src={MEREZ_SDK_URL}
       strategy="afterInteractive"
-      onReady={() => window.Merez?.init({ key: MEREZ_INGEST_KEY, api: MEREZ_API })}
+      onReady={() =>
+        window.Merez?.init({
+          key: MEREZ_INGEST_KEY,
+          api: MEREZ_API,
+          chat: {
+            partner: PORTAL_PARTNER,
+            title: "Inflinds",
+            greeting: "Hola, soy el asistente de Inflinds. Cuéntanos qué necesitas: sitio web, tienda, campañas o soporte.",
+            policyUrl: "/privacy/",
+            policyVersion: POLICY_VERSION,
+          },
+        })
+      }
     />
   );
 }
