@@ -54,10 +54,10 @@ export const services = [
     tag: "Desarrollo",
     title: "Desarrollo web y de plataformas",
     summary:
-      "Sitios web, landing pages, e-commerce, WordPress, Shopify, sistemas web a la medida, APIs y plataformas administrativas.",
+      "Sitios web, landing pages, tiendas en línea, sistemas web a la medida, APIs y plataformas administrativas.",
     points: [
       "Landing pages y sitios corporativos optimizados",
-      "E-commerce (WooCommerce, Shopify) y catálogos digitales",
+      "Tiendas en línea y catálogos digitales, sobre Merez o a la medida",
       "Sistemas web a medida, paneles administrativos y APIs",
       "Rendimiento, SEO técnico y buenas prácticas de accesibilidad",
     ],
@@ -85,7 +85,7 @@ export const services = [
       "Consultoría, automatizaciones con IA, asistentes conversacionales e integración de modelos generativos en tu negocio.",
     points: [
       "Consultoría de IA orientada a resultados de negocio",
-      "Asistentes y agentes conversacionales (incluido WhatsApp)",
+      "Agente de ventas para el chat de tu sitio y asistentes a la medida",
       "Automatizaciones potenciadas por modelos generativos",
       "Integración de modelos e IA en productos y procesos existentes",
     ],
@@ -125,7 +125,7 @@ export const methodology = [
 // Se presentan como capacidad de plataforma, NO como pricing de Merez.
 export const merezModules = [
   { name: "CRM Inteligente", desc: "Pipeline de leads, seguimiento y gestión comercial centralizada." },
-  { name: "Agentes de IA (WhatsApp)", desc: "Asistentes conversacionales que atienden y califican clientes." },
+  { name: "Agente de ventas", desc: "Vende en el chat de tu sitio con tus precios, capta el lead y llena su ficha. WhatsApp se suma cuando conectes tu número." },
   { name: "Automatizaciones", desc: "Flujos que eliminan tareas manuales y conectan tu operación." },
   { name: "Cotizaciones PDF", desc: "Generación de cotizaciones formales con consecutivo y control." },
   { name: "Email Marketing", desc: "Campañas segmentadas y comunicación masiva medible." },
@@ -175,7 +175,7 @@ export const plans: Plan[] = [
     features: [
       "Diseño personalizado",
       "Múltiples páginas",
-      "Desarrollo WordPress",
+      "Desarrollo a la medida, rápido y seguro",
       "Optimización y configuración inicial",
       "Listo para crecer con tu negocio",
     ],
@@ -184,11 +184,11 @@ export const plans: Plan[] = [
   {
     slug: "ecommerce",
     name: "E-commerce",
-    desc: "Para vender en línea con catálogo y pagos.",
+    desc: "Para vender en línea con catálogo, pedidos y pagos.",
     price: null,
     featuresIntro: "Todo lo de Sitio informativo, más:",
     features: [
-      "Tienda en WooCommerce o Shopify",
+      "Tienda sobre Merez con checkout Bre-B",
       "Catálogo y gestión de productos",
       "Pagos en línea",
       "SEO técnico y rendimiento",
@@ -213,97 +213,6 @@ export const plans: Plan[] = [
   },
 ];
 
-// --- PRECIOS (Pricing.md v1.0.0, COP) ---
-export type PriceRow = { name: string; price: string; note?: string };
-export type PriceTable = { title: string; subtitle?: string; rows: PriceRow[] };
-
-export const pricingTables: PriceTable[] = [
-  {
-    title: "Desarrollo web",
-    subtitle: "Precio base; se ajusta según alcance y complejidad.",
-    rows: [
-      {
-        name: "Landing Page",
-        price: "690.000 COP",
-        note: "Diseño responsive, desarrollo, optimización básica, formulario de contacto y publicación.",
-      },
-      {
-        name: "Sitio Web Corporativo",
-        price: "1.000.000 COP",
-        note: "Diseño personalizado, desarrollo WordPress, múltiples páginas, optimización y configuración inicial.",
-      },
-    ],
-  },
-  {
-    title: "Hosting",
-    subtitle: "Tarifa anual.",
-    rows: [
-      { name: "Hosting Estático", price: "150.000 COP/año" },
-      { name: "Hosting Común", price: "200.000 COP/año" },
-      { name: "Hosting Robusto", price: "295.000 COP/año" },
-      { name: "Cloud Hosting", price: "1.300.000 COP/año" },
-    ],
-  },
-  {
-    title: "Dominios",
-    subtitle: "Registro anual.",
-    rows: [
-      { name: ".COM", price: "95.000 COP/año" },
-      { name: ".CO", price: "165.000 COP/año" },
-    ],
-  },
-  {
-    title: "Seguridad",
-    rows: [{ name: "Certificado SSL", price: "65.000 COP/año" }],
-  },
-  {
-    title: "Correos corporativos",
-    rows: [
-      { name: "Correo 1 GB", price: "35.000 COP/año" },
-      { name: "Correo 15 GB", price: "84.000 COP/año" },
-      { name: "Google Workspace", price: "870.000 COP/año" },
-    ],
-  },
-  {
-    title: "Licencias",
-    rows: [{ name: "Elementor PRO", price: "572.000 COP/año" }],
-  },
-  {
-    title: "Soporte",
-    rows: [
-      {
-        name: "Plan de Soporte",
-        price: "21.000 COP/mes",
-        note: "Actualizaciones menores, revisión general y soporte básico.",
-      },
-    ],
-  },
-  {
-    title: "Páginas adicionales",
-    subtitle: "Para ampliar un sitio existente.",
-    rows: [
-      { name: "Página Simple", price: "95.000 COP" },
-      { name: "Página Normal", price: "147.500 COP" },
-      { name: "Página Especial", price: "505.000 COP" },
-    ],
-  },
-  {
-    title: "Marketing digital",
-    rows: [
-      {
-        name: "Gestión de Campañas",
-        price: "500.000 COP/mes",
-        note: "Duración mínima recomendada: 3 meses.",
-      },
-      {
-        name: "Presupuesto sugerido de pauta (Facebook Ads)",
-        price: "600.000 COP/mes",
-        note: "Independiente del servicio de gestión.",
-      },
-    ],
-  },
-];
-
 // Cotizados a medida (sin tarifa fija).
 export const customQuoted = [
   {
@@ -323,7 +232,7 @@ export const customQuoted = [
 // Servicios en desarrollo (sin precio aún).
 export const futureServices = [
   "Consultoría en IA",
-  "Implementación de agentes IA",
+  "Agente de ventas en WhatsApp",
   "Automatización empresarial",
   "Arquitectura digital",
   "Diseño de productos SaaS",

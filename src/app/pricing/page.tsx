@@ -106,7 +106,7 @@ export default function PricingPage() {
           <SectionHeading
             eyebrow="Elige tu plan"
             title="Planes diseñados para cada etapa de tu negocio"
-            intro="Precios base en pesos colombianos; se ajustan según el alcance y las necesidades reales de tu proyecto."
+            intro="Precios base de desarrollo a la medida, en pesos colombianos; se ajustan según el alcance de tu proyecto. Si prefieres que montemos tu sitio sobre Merez, con CRM, tienda y pagos, pregúntale a nuestro asesor en el chat."
           />
           <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
             {plans.map((plan) =>

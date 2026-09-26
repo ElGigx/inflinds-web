@@ -74,16 +74,21 @@ export default function PrivacyPage() {
               </li>
             </ul>
 
-            <h2>4. Mensajería de WhatsApp e inteligencia artificial</h2>
+            <h2>4. Chat del sitio, WhatsApp e inteligencia artificial</h2>
             <p>
-              Nuestro asistente de WhatsApp recibe tus mensajes a través de la{" "}
+              Nuestro asesor virtual te atiende en el chat de este sitio y por
+              WhatsApp. Procesamos lo que nos escribes para responderte,
+              registrar tu solicitud y completar tus datos de contacto (nombre,
+              correo o WhatsApp, negocio y lo que necesitas). La conversación se
+              guarda en <strong>Merez</strong>, nuestra plataforma, y para
+              redactar las respuestas usamos proveedores de{" "}
+              <strong>inteligencia artificial</strong> (DeepSeek y, como
+              respaldo, OpenAI). Solo se procesa la información necesaria para
+              atenderte; no se emplea para fines ajenos a la atención. Si nos
+              dejas tus datos en el chat, te pedimos tu autorización expresa. Por
+              WhatsApp, los mensajes llegan a través de la{" "}
               <strong>WhatsApp Business Platform de Meta Platforms, Inc.</strong>{" "}
-              y los procesa para registrar tu solicitud y responderte. Para
-              redactar las respuestas podemos usar proveedores de{" "}
-              <strong>inteligencia artificial</strong> (por ejemplo, OpenAI).
-              Solo se procesa la información necesaria para atender la
-              conversación; no se emplea para fines ajenos a la atención. El uso
-              de WhatsApp se rige además por las políticas de Meta/WhatsApp.
+              y su uso se rige además por las políticas de Meta/WhatsApp.
             </p>
 
             <h2>5. Encargados y terceros</h2>
@@ -91,7 +96,8 @@ export default function PrivacyPage() {
               Nos apoyamos en proveedores que procesan datos por nuestra cuenta
               bajo estándares de seguridad, entre ellos: infraestructura y
               hosting (Vercel, Hostinger), mensajería y publicidad (Meta),
-              inteligencia artificial (OpenAI) y analítica. Algunos pueden estar
+              inteligencia artificial (DeepSeek y OpenAI), nuestra plataforma
+              Merez y analítica. Algunos pueden estar
               fuera de Colombia, por lo que puede existir transferencia o
               transmisión internacional de datos con las garantías que exige la
               ley.
