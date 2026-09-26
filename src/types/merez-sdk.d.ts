@@ -18,6 +18,7 @@ interface MerezSdk {
   track(): void;
   /** Envía un lead. Devuelve la respuesta del backend (200 al crear). */
   lead(fields?: MerezLeadFields): Promise<Response>;
+  mountPortal?(target: string | HTMLElement, cfg: { partner: string; api?: string }): void;
 }
 
 interface Window {

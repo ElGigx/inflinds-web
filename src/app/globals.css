@@ -148,3 +148,21 @@ body {
     @apply rounded bg-ink/5 px-1 py-0.5 text-sm;
   }
 }
+
+.client-portal.mzp {
+  --mzp-accent: var(--color-brand);
+  --mzp-accent-text: #ffffff;
+  --mzp-surface: var(--color-paper);
+  --mzp-line: var(--color-line);
+  --mzp-soft: var(--color-paper-soft);
+  --mzp-muted: var(--color-ink-700);
+  --mzp-radius: var(--radius-xl);
+  color: var(--color-ink);
+  max-width: none;
+}
+
+.client-portal.mzp h2 {
+  font-family: var(--font-display, inherit);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
