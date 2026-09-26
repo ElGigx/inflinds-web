@@ -45,7 +45,7 @@ const heroChecks = [
   { k: "Enfoque en resultados", v: "y crecimiento" },
 ];
 
-export default function PreciosPage() {
+export default function PricingPage() {
   return (
     <>
       {/* ---------- HERO (oscuro) ---------- */}

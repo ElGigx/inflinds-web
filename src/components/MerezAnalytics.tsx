@@ -18,11 +18,11 @@ import { usePathname } from "next/navigation";
  */
 export default function MerezAnalytics() {
   const pathname = usePathname();
-  const primera = useRef(true);
+  const isFirst = useRef(true);
 
   useEffect(() => {
-    if (primera.current) {
-      primera.current = false;
+    if (isFirst.current) {
+      isFirst.current = false;
       return;
     }
     window.Merez?.track();

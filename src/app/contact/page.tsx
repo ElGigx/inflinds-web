@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Cuéntanos sobre tu proyecto: diseño, desarrollo, automatización o IA. Te respondemos para diseñar la solución correcta.",
 };
 
-export default function ContactoPage() {
+export default function ContactPage() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 hero-glow" aria-hidden="true" />

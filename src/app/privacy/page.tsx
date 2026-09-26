@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     "Política de Privacidad y Tratamiento de Datos Personales de Inflinds, conforme a la Ley 1581 de 2012 de Colombia (Habeas Data).",
 };
 
-const ACTUALIZADO = POLICY_UPDATED;
-const CONTACTO = "contacto@inflinds.com";
+const UPDATED = POLICY_UPDATED;
+const CONTACT_EMAIL = "contacto@inflinds.com";
 
-export default function PrivacidadPage() {
+export default function PrivacyPage() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 hero-glow" aria-hidden="true" />
@@ -22,7 +22,7 @@ export default function PrivacidadPage() {
           <h1 className="mt-3 font-display font-black text-4xl sm:text-5xl leading-tight tracking-tight text-ink">
             Política de Privacidad y Tratamiento de Datos
           </h1>
-          <p className="mt-4 text-sm text-slate">Última actualización: {ACTUALIZADO}</p>
+          <p className="mt-4 text-sm text-slate">Última actualización: {UPDATED}</p>
 
           <div className="legal-prose mt-10 space-y-6 text-slate">
             <p>
@@ -40,7 +40,7 @@ export default function PrivacidadPage() {
               los datos que los usuarios entregan a través de{" "}
               <code>inflinds.com</code>, de nuestros canales de contacto y de
               nuestro agente de atención por WhatsApp. Contacto:{" "}
-              <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>.
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
             </p>
 
             <h2>2. Datos que recolectamos</h2>
@@ -133,7 +133,7 @@ export default function PrivacidadPage() {
             <p>
               Puedes solicitar la eliminación de tus datos personales, incluidos
               los recibidos a través de WhatsApp, escribiéndonos a{" "}
-              <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a> o por nuestro{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> o por nuestro{" "}
               <a href="/contact/">formulario de contacto</a>, indicando
               “Solicitud de eliminación de datos”. Atenderemos tu solicitud en
               los términos y plazos de la ley colombiana, salvo que exista una
@@ -158,7 +158,7 @@ export default function PrivacidadPage() {
             <h2>11. Contacto</h2>
             <p>
               Para ejercer tus derechos o resolver dudas, escríbenos a{" "}
-              <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a> o usa nuestro{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> o usa nuestro{" "}
               <a href="/contact/">formulario de contacto</a>.
             </p>
           </div>

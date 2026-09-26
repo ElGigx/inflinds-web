@@ -18,7 +18,7 @@ export const dynamic = "force-static";
 
 const BASE = "https://inflinds.com";
 
-const RUTAS: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
+const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "monthly" },
   { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/pricing/", priority: 0.9, changeFrequency: "monthly" },
@@ -30,7 +30,7 @@ const RUTAS: { path: string; priority: number; changeFrequency: MetadataRoute.Si
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return RUTAS.map(({ path, priority, changeFrequency }) => ({
+  return ROUTES.map(({ path, priority, changeFrequency }) => ({
     url: `${BASE}${path}`,
     lastModified,
     changeFrequency,

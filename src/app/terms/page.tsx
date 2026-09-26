@@ -8,10 +8,10 @@ export const metadata: Metadata = {
     "Términos y Condiciones de los servicios de Inflinds (INFLINDS S.A.S.), Digital Product Studio en Colombia.",
 };
 
-const ACTUALIZADO = "22 de julio de 2026";
-const CONTACTO = "contacto@inflinds.com";
+const UPDATED = "22 de julio de 2026";
+const CONTACT_EMAIL = "contacto@inflinds.com";
 
-export default function TerminosPage() {
+export default function TermsPage() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 hero-glow" aria-hidden="true" />
@@ -21,7 +21,7 @@ export default function TerminosPage() {
           <h1 className="mt-3 font-display font-black text-4xl sm:text-5xl leading-tight tracking-tight text-ink">
             Términos y Condiciones
           </h1>
-          <p className="mt-4 text-sm text-slate">Última actualización: {ACTUALIZADO}</p>
+          <p className="mt-4 text-sm text-slate">Última actualización: {UPDATED}</p>
 
           <div className="legal-prose mt-10 space-y-6 text-slate">
             <p>
@@ -102,7 +102,7 @@ export default function TerminosPage() {
             <h2>9. Ley aplicable y atención al consumidor</h2>
             <p>
               Estos Términos se rigen por la ley colombiana. Para dudas, quejas o
-              reclamos, escríbenos a <a href={`mailto:${CONTACTO}`}>{CONTACTO}</a>{" "}
+              reclamos, escríbenos a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>{" "}
               o usa el <a href="/contact/">formulario de contacto</a>. También
               puedes acudir a la Superintendencia de Industria y Comercio (SIC).
             </p>

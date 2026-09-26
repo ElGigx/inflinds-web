@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Diseño UX/UI, desarrollo web y de plataformas, automatización de procesos, inteligencia artificial aplicada y consultoría de transformación digital.",
 };
 
-export default function ServiciosPage() {
+export default function ServicesPage() {
   return (
     <>
       {/* HERO */}
