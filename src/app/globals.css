@@ -149,6 +149,41 @@ body {
   }
 }
 
+.article-prose {
+  @apply text-lg leading-relaxed text-ink;
+}
+.article-prose > * + * {
+  @apply mt-5;
+}
+.article-prose h2 {
+  @apply mt-12 font-display text-2xl font-black leading-snug text-ink;
+}
+.article-prose h3 {
+  @apply mt-8 font-display text-xl font-bold text-ink;
+}
+.article-prose ul {
+  @apply list-disc space-y-2 pl-6 marker:text-magenta;
+}
+.article-prose ol {
+  @apply list-decimal space-y-2 pl-6 marker:text-magenta;
+}
+.article-prose a {
+  @apply font-semibold text-magenta underline underline-offset-2 hover:text-magenta-600;
+}
+.article-prose blockquote {
+  @apply border-l-4 border-magenta pl-5 italic text-slate;
+}
+.article-prose table {
+  @apply w-full border-collapse text-base;
+}
+.article-prose th,
+.article-prose td {
+  @apply border border-line px-3 py-2 text-left;
+}
+.article-prose img {
+  @apply rounded-2xl border border-line;
+}
+
 .mzc {
   --mzp-accent: var(--color-brand);
   --mzp-accent-text: #ffffff;

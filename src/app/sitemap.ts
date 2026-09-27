@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
 
 /**
  * Sitemap del sitio. Se genera en build (export estático → sitemap.xml).
@@ -22,18 +23,35 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/", priority: 1.0, changeFrequency: "monthly" },
   { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/pricing/", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/blog/", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/log/", priority: 0.7, changeFrequency: "weekly" },
   { path: "/contact/", priority: 0.8, changeFrequency: "yearly" },
   { path: "/privacy/", priority: 0.3, changeFrequency: "yearly" },
   { path: "/terms/", priority: 0.3, changeFrequency: "yearly" },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const [posts, entries] = await Promise.all([allPosts(), allEntries()]);
 
-  return ROUTES.map(({ path, priority, changeFrequency }) => ({
-    url: `${BASE}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  return [
+    ...ROUTES.map(({ path, priority, changeFrequency }) => ({
+      url: `${BASE}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    })),
+    ...posts.map((p) => ({
+      url: `${BASE}${postPath(p)}`,
+      lastModified: new Date(p.updated_at ?? p.published_at ?? lastModified),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...entries.map((e) => ({
+      url: `${BASE}${entryPath(e)}`,
+      lastModified: new Date(e.updated_at ?? e.happened_on),
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    })),
+  ];
 }
