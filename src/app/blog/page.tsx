@@ -4,6 +4,8 @@ import { Container, Eyebrow } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 import { allPosts, longDate, postPath } from "@/lib/content";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Blog",
   description:

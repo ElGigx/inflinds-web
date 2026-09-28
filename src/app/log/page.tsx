@@ -4,6 +4,8 @@ import { Container, Eyebrow } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 import { allEntries, entryPath, longDate, paragraphs } from "@/lib/content";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Bitácora",
   description: "Los proyectos, lanzamientos y aprendizajes de Inflinds, contados a medida que pasan.",

@@ -1,6 +1,8 @@
 const API = (process.env.MEREZ_CONTENT_API_URL ?? process.env.NEXT_PUBLIC_MEREZ_API_URL ?? "https://api.merez.co/api/v1").replace(/\/$/, "");
 
-const TOKEN = process.env.MEREZ_SITE_TOKEN ?? "";
+const SITE = process.env.MEREZ_SITE_SLUG ?? "inflinds";
+
+export const REVALIDATE_SECONDS = 300;
 
 export const EMPTY_SLUG = "sin-publicaciones";
 
@@ -58,16 +60,17 @@ export interface LogEntry {
   updated_at: string | null;
 }
 
-export const hasContentToken = TOKEN !== "";
-
 async function get<T>(path: string): Promise<T | null> {
-  if (!hasContentToken) return null;
-  const response = await fetch(`${API}${path}`, {
-    headers: { Authorization: `Bearer ${TOKEN}`, Accept: "application/json" },
-    cache: "force-cache",
-  });
-  if (!response.ok) return null;
-  return (await response.json()) as T;
+  try {
+    const response = await fetch(`${API}/public/sites/${SITE}${path}`, {
+      headers: { Accept: "application/json" },
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+    if (!response.ok) return null;
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
 }
 
 async function paginate<T>(path: string): Promise<T[]> {

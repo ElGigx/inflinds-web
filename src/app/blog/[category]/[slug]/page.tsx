@@ -9,7 +9,9 @@ const BASE = "https://inflinds.com";
 
 type Params = { category: string; slug: string };
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+
+export const revalidate = 300;
 
 export async function generateStaticParams(): Promise<Params[]> {
   const posts = await allPosts();

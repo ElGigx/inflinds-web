@@ -1,7 +1,7 @@
 import { services, site } from "@/lib/site";
 import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
 
-export const dynamic = "force-static";
+export const revalidate = 300;
 
 const BASE = "https://inflinds.com";
 

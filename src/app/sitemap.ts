@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
 
 /**
- * Sitemap del sitio. Se genera en build (export estático → sitemap.xml).
+ * Sitemap del sitio. Se regenera cada 5 minutos para incluir lo que se publica en Merez.
  *
  * El host es el CANÓNICO: el apex `inflinds.com`. `www` redirige 308 aquí, así
  * que listar www duplicaría cada URL a ojos del buscador.
@@ -13,9 +13,7 @@ import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
  *
  * ⚠️ Al añadir una página nueva, añadirla aquí. No se descubre sola.
  */
-// Obligatorio con `output: export`: sin esto Next trata la ruta como dinámica
-// y el build falla. El sitemap se hornea en cada build, que es lo que queremos.
-export const dynamic = "force-static";
+export const revalidate = 300;
 
 const BASE = "https://inflinds.com";
 
