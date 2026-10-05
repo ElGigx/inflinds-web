@@ -68,11 +68,22 @@ export interface PostDetail extends PostCard {
   og_image: string | null;
 }
 
+export interface ImageCredit {
+  text?: string;
+  ai?: boolean;
+  author?: string;
+  author_url?: string;
+  provider?: string;
+  provider_url?: string;
+  source_url?: string;
+}
+
 export interface PostPage {
   post: PostDetail;
   contentHtml: string;
   readingMinutes: number;
   related: PostCard[];
+  imageCredit: ImageCredit | null;
 }
 
 export interface LogEntry {
@@ -124,11 +135,22 @@ export async function allPosts(): Promise<PostCard[]> {
 }
 
 export async function postPage(category: string, slug: string): Promise<PostPage | null> {
-  const data = await get<{ type: string; post: PostDetail; content_html: string; reading_minutes: number; related: PostCard[] }>(
-    `/blog/resolve?path=${encodeURIComponent(`${category}/${slug}`)}`,
-  );
+  const data = await get<{
+    type: string;
+    post: PostDetail;
+    content_html: string;
+    reading_minutes: number;
+    related: PostCard[];
+    featured_image_credit?: ImageCredit | null;
+  }>(`/blog/resolve?path=${encodeURIComponent(`${category}/${slug}`)}`);
   if (!data || data.type !== "post") return null;
-  return { post: data.post, contentHtml: data.content_html, readingMinutes: data.reading_minutes, related: data.related ?? [] };
+  return {
+    post: data.post,
+    contentHtml: data.content_html,
+    readingMinutes: data.reading_minutes,
+    related: data.related ?? [],
+    imageCredit: data.featured_image_credit ?? null,
+  };
 }
 
 export function authorPath(author: Pick<Author, "slug">): string {

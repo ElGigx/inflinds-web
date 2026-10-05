@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
   const { category, slug } = await params;
   const page = slug === EMPTY_SLUG ? null : await postPage(category, slug);
   if (!page) notFound();
-  const { post, contentHtml, readingMinutes, related } = page;
+  const { post, contentHtml, readingMinutes, related, imageCredit } = page;
   const url = `${BASE}${postPath(post)}`;
   const faq = post.faq ?? [];
   const sources = post.sources ?? [];
@@ -133,7 +133,33 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
         <Container className="max-w-3xl pb-16">
           {post.featured_image && (
-            <img src={post.featured_image} alt={post.featured_image_alt ?? ""} className="mb-10 w-full rounded-3xl border border-line object-cover" />
+            <figure className="mb-10">
+              <img src={post.featured_image} alt={post.featured_image_alt ?? ""} className="w-full rounded-3xl border border-line object-cover" />
+              {imageCredit && (
+                <figcaption className="mt-2 text-xs text-slate">
+                  {imageCredit.ai ? (
+                    "Imagen generada con IA"
+                  ) : imageCredit.author && imageCredit.provider ? (
+                    <>
+                      Foto de{" "}
+                      {imageCredit.author_url ? (
+                        <a href={imageCredit.author_url} target="_blank" rel="noopener" className="underline underline-offset-2">
+                          {imageCredit.author}
+                        </a>
+                      ) : (
+                        imageCredit.author
+                      )}{" "}
+                      en{" "}
+                      <a href={imageCredit.source_url ?? imageCredit.provider_url} target="_blank" rel="noopener" className="underline underline-offset-2">
+                        {imageCredit.provider}
+                      </a>
+                    </>
+                  ) : (
+                    imageCredit.text
+                  )}
+                </figcaption>
+              )}
+            </figure>
           )}
           <div className="article-prose" dangerouslySetInnerHTML={{ __html: contentHtml }} />
 
