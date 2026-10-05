@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
+import { allAuthors, allEntries, allPosts, authorPath, entryPath, postPath } from "@/lib/content";
 
 /**
  * Sitemap del sitio. Se regenera cada 5 minutos para incluir lo que se publica en Merez.
@@ -30,7 +30,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
-  const [posts, entries] = await Promise.all([allPosts(), allEntries()]);
+  const [posts, entries, authors] = await Promise.all([allPosts(), allEntries(), allAuthors()]);
 
   return [
     ...ROUTES.map(({ path, priority, changeFrequency }) => ({
@@ -44,6 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(p.updated_at ?? p.published_at ?? lastModified),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...authors.map((a) => ({
+      url: `${BASE}${authorPath(a)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.4,
     })),
     ...entries.map((e) => ({
       url: `${BASE}${entryPath(e)}`,

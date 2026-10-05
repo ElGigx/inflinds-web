@@ -1,5 +1,5 @@
 import { services, site } from "@/lib/site";
-import { allEntries, allPosts, entryPath, postPath } from "@/lib/content";
+import { allEntries, allPosts, CONTENT_TYPES, entryPath, postPath, TYPE_ORDER, typeOf } from "@/lib/content";
 
 export const revalidate = 300;
 
@@ -23,8 +23,17 @@ export async function GET() {
     `- [Bitácora](${BASE}/log/): proyectos entregados y novedades.`,
   ];
 
-  if (posts.length > 0) {
-    lines.push("", "## Artículos", ...posts.map((p) => `- [${p.title}](${BASE}${postPath(p)})${p.excerpt ? `: ${p.excerpt}` : ""}`));
+  for (const type of TYPE_ORDER) {
+    const items = posts.filter((p) => typeOf(p) === type);
+    if (items.length === 0) continue;
+    lines.push(
+      "",
+      `## ${CONTENT_TYPES[type].section}`,
+      ...items.map((p) => {
+        const who = p.written_by === "ai" ? `escrito con IA${p.reviewer ? `, revisado por ${p.reviewer.name}` : ""}` : `por ${p.author_profile?.name ?? "Inflinds"}`;
+        return `- [${p.title}](${BASE}${postPath(p)}) (${who})${p.excerpt ? `: ${p.excerpt}` : ""}`;
+      }),
+    );
   }
   if (entries.length > 0) {
     lines.push("", "## Bitácora", ...entries.slice(0, 50).map((e) => `- [${e.headline}](${BASE}${entryPath(e)})`));

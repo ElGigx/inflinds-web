@@ -2,7 +2,34 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
-import { allPosts, longDate, postPath } from "@/lib/content";
+import Byline from "@/components/Byline";
+import { allPosts, CONTENT_TYPES, longDate, postPath, TYPE_ORDER, typeOf, type PostCard } from "@/lib/content";
+
+function Card({ p }: { p: PostCard }) {
+  return (
+    <li>
+      <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-shadow hover:shadow-lg">
+        <Link href={postPath(p)} className="flex flex-1 flex-col">
+          {p.featured_image && (
+            <img src={p.featured_image} alt={p.featured_image_alt ?? ""} className="aspect-[16/9] w-full object-cover" loading="lazy" />
+          )}
+          <div className="flex flex-1 flex-col p-6">
+            <span className="text-xs font-bold uppercase tracking-wide text-magenta">
+              {CONTENT_TYPES[typeOf(p)].label}
+              {p.category ? ` · ${p.category.name}` : ""}
+            </span>
+            <h3 className="mt-2 font-display text-xl font-bold leading-snug text-ink">{p.title}</h3>
+            {p.excerpt && <p className="mt-3 text-sm leading-relaxed text-slate">{p.excerpt}</p>}
+          </div>
+        </Link>
+        <p className="px-6 pb-6 text-xs text-slate">
+          <Byline post={p} /> · {longDate(p.published_at)}
+          {p.reading_minutes ? ` · ${p.reading_minutes} min` : ""}
+        </p>
+      </article>
+    </li>
+  );
+}
 
 export const revalidate = 300;
 
@@ -14,6 +41,7 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await allPosts();
+  const sections = TYPE_ORDER.map((type) => ({ type, items: posts.filter((p) => typeOf(p) === type) })).filter((s) => s.items.length > 0);
 
   return (
     <>
@@ -55,29 +83,21 @@ export default async function BlogPage() {
           {posts.length === 0 ? (
             <p className="rounded-3xl border border-line bg-white p-8 text-slate">Muy pronto publicamos los primeros artículos.</p>
           ) : (
-            <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((p) => (
-                <li key={p.id}>
-                  <Link
-                    href={postPath(p)}
-                    className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-shadow hover:shadow-lg"
-                  >
-                    {p.featured_image && (
-                      <img src={p.featured_image} alt={p.featured_image_alt ?? ""} className="aspect-[16/9] w-full object-cover" loading="lazy" />
-                    )}
-                    <div className="flex flex-1 flex-col p-6">
-                      {p.category && <span className="text-xs font-bold uppercase tracking-wide text-magenta">{p.category.name}</span>}
-                      <h2 className="mt-2 font-display text-xl font-bold leading-snug text-ink">{p.title}</h2>
-                      {p.excerpt && <p className="mt-3 text-sm leading-relaxed text-slate">{p.excerpt}</p>}
-                      <span className="mt-auto pt-4 text-xs text-slate">
-                        {longDate(p.published_at)}
-                        {p.reading_minutes ? ` · ${p.reading_minutes} min de lectura` : ""}
-                      </span>
-                    </div>
-                  </Link>
-                </li>
+            <div className="space-y-16">
+              {sections.map(({ type, items }) => (
+                <section key={type} aria-labelledby={`seccion-${type}`}>
+                  <h2 id={`seccion-${type}`} className="font-display text-2xl font-black text-ink">
+                    {CONTENT_TYPES[type].section}
+                  </h2>
+                  <p className="mt-1 text-slate">{CONTENT_TYPES[type].blurb}</p>
+                  <ul className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {items.map((p) => (
+                      <Card key={p.id} p={p} />
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </div>
           )}
         </Container>
       </section>

@@ -16,12 +16,41 @@ export interface FaqItem {
   answer: string;
 }
 
+export type ContentType = "help" | "hero" | "timely" | "research";
+
+export const CONTENT_TYPES: Record<ContentType, { label: string; section: string; blurb: string }> = {
+  hero: { label: "Destacado", section: "Destacados", blurb: "Lanzamientos, hitos y las guías de referencia de Inflinds." },
+  timely: { label: "Actualidad", section: "Actualidad", blurb: "Lo que acaba de pasar y cómo te afecta." },
+  research: { label: "Investigación", section: "Investigación", blurb: "Datos y análisis propios, firmados por su autor." },
+  help: { label: "Guía", section: "Guías", blurb: "Respuestas claras para decidir y hacer." },
+};
+
+export const TYPE_ORDER: ContentType[] = ["hero", "timely", "research", "help"];
+
+export interface Author {
+  id?: number;
+  name: string;
+  slug: string;
+  role: string | null;
+  bio: string | null;
+  expertise: string | null;
+  photo_url: string | null;
+  same_as: string[] | null;
+  posts_count?: number;
+}
+
 export interface PostCard {
   id: number;
   title: string;
   slug: string;
   excerpt: string | null;
   author: string | null;
+  content_type?: ContentType;
+  written_by?: "ai" | "author";
+  byline?: string;
+  author_profile?: Author | null;
+  reviewer?: Author | null;
+  event_date?: string | null;
   featured_image: string | null;
   featured_image_alt: string | null;
   published_at: string | null;
@@ -100,6 +129,22 @@ export async function postPage(category: string, slug: string): Promise<PostPage
   );
   if (!data || data.type !== "post") return null;
   return { post: data.post, contentHtml: data.content_html, readingMinutes: data.reading_minutes, related: data.related ?? [] };
+}
+
+export function authorPath(author: Pick<Author, "slug">): string {
+  return `/authors/${author.slug}/`;
+}
+
+export async function allAuthors(): Promise<Author[]> {
+  return (await get<Author[]>("/blog/authors")) ?? [];
+}
+
+export async function authorPage(slug: string): Promise<{ author: Author; written: PostCard[]; reviewed: PostCard[] } | null> {
+  return get(`/blog/authors/${encodeURIComponent(slug)}`);
+}
+
+export function typeOf(post: Pick<PostCard, "content_type">): ContentType {
+  return post.content_type && post.content_type in CONTENT_TYPES ? post.content_type : "help";
 }
 
 export function entryPath(entry: Pick<LogEntry, "slug">): string {
