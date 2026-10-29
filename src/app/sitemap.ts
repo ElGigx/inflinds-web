@@ -26,6 +26,8 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/contact/", priority: 0.8, changeFrequency: "yearly" },
   { path: "/privacy/", priority: 0.3, changeFrequency: "yearly" },
   { path: "/terms/", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/gigx/", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/gigx/portfolio/", priority: 0.7, changeFrequency: "monthly" },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
