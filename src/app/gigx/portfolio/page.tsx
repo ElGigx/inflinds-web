@@ -6,13 +6,18 @@ import CaseSection from "../_components/CaseSection";
 import MerezInside from "../_components/MerezInside";
 import { Design, Products, Sites, Timeline } from "../_components/Sections";
 import { ChipRow, ExternalLink } from "../_components/parts";
-import { cases, profile } from "../_data";
+import { cases, ogImage, profile } from "../_data";
+
+const title = "Portafolio — Miguel Angel Yañez";
+const description =
+  "Portafolio de Miguel Angel Yañez, Design Engineer, Product Designer y Forward Deployed Engineer: casos de estudio, línea de tiempo, sitios, producto y diseño, de una idea a software en producción.";
 
 export const metadata: Metadata = {
-  title: "Portafolio — Miguel Angel Yañez",
-  description:
-    "Casos de estudio, línea de tiempo, sitios, producto y diseño de Miguel Angel Yañez: de una idea a software en producción.",
+  title,
+  description,
   alternates: { canonical: "/gigx/portfolio/" },
+  openGraph: { title, description, url: "/gigx/portfolio/", type: "website", siteName: "Inflinds", locale: "es_CO", images: [ogImage] },
+  twitter: { card: "summary_large_image", title, description, images: [ogImage.url] },
 };
 
 const index = [
@@ -43,6 +48,7 @@ export default function PortfolioPage() {
             Cinco casos a fondo, siete años de trabajo y el archivo de lo que se construyó en el camino:
             sitios, tiendas, prototipos y marca.
           </p>
+          <p className="mt-3 font-display font-bold text-brand-600">{profile.roles.join(" · ")}</p>
           <div className="mt-8">
             <ChipRow items={index} label="Índice del portafolio" />
           </div>

@@ -1,6 +1,8 @@
 export const profile = {
   name: "Miguel Angel Yañez",
   jobTitle: "Diseñador de soluciones",
+  // De lo más cercano a lo que hace hoy a lo menos.
+  roles: ["Design Engineer", "Product Designer", "Forward Deployed Engineer"],
   photo: "/gigx/miguel.jpg",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/gigx" },
@@ -9,6 +11,9 @@ export const profile = {
     { label: "X", href: "https://x.com/gigx" },
   ],
 } as const;
+
+// La imagen para compartir del sitio: al definir su propio openGraph, la página deja de heredarla.
+export const ogImage = { url: "/opengraph-image.png", width: 1200, height: 630 };
 
 export type Figure = { value: string; label: string };
 

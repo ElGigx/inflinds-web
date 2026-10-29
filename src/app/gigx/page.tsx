@@ -3,16 +3,18 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ChipRow, ExternalLink, Kicker } from "./_components/parts";
-import { doing, featured, path, profile, stack } from "./_data";
+import { doing, featured, ogImage, path, profile, stack } from "./_data";
 
-const title = "Miguel Angel Yañez — Diseñador de soluciones";
+const title = "Miguel Angel Yañez — Design Engineer · Product Designer";
 const description =
-  "Diseñador de soluciones y Founder & CTO de Inflinds. Más de 30 proyectos desde 2019: sitios, comercio electrónico, plataformas y un SaaS propio.";
+  "Diseñador de soluciones: Design Engineer, Product Designer y Forward Deployed Engineer. Founder & CTO de Inflinds. Más de 30 proyectos desde 2019: sitios, comercio electrónico, plataformas y un SaaS propio.";
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/gigx/" },
+  openGraph: { title, description, url: "/gigx/", type: "profile", siteName: "Inflinds", locale: "es_CO", images: [ogImage] },
+  twitter: { card: "summary_large_image", title, description, images: [ogImage.url] },
 };
 
 const jsonLd = {
@@ -21,7 +23,7 @@ const jsonLd = {
   mainEntity: {
     "@type": "Person",
     name: profile.name,
-    jobTitle: profile.jobTitle,
+    jobTitle: [profile.jobTitle, ...profile.roles],
     worksFor: { "@type": "Organization", name: "Inflinds", url: "https://inflinds.com" },
     image: "https://inflinds.com/gigx/miguel.jpg",
     url: "https://inflinds.com/gigx/",
@@ -86,13 +88,13 @@ export default function GigxPage() {
             <div className="mt-3">
               <ChipRow
                 label="Abierto a"
-                items={[
-                  { text: "Design Engineer" },
-                  { text: "Product Designer" },
-                  { text: "Forward Deployed Engineer" },
-                ]}
+                items={profile.roles.map((text) => ({ text }))}
               />
             </div>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
+              Como Forward Deployed Engineer trabajo junto al cliente: entiendo su operación, levanto las
+              necesidades y las llevo a desarrollo.
+            </p>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
