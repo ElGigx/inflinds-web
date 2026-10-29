@@ -12,11 +12,19 @@ export function Kicker({ children, dark = false }: { children: ReactNode; dark?:
   );
 }
 
-export function ChipRow({ items, label }: { items: { text: string; href?: string }[]; label: string }) {
+export function ChipRow({
+  items,
+  label,
+  wrap = false,
+}: {
+  items: { text: string; href?: string }[];
+  label: string;
+  wrap?: boolean;
+}) {
   const base =
     "inline-block whitespace-nowrap rounded-full border border-line px-4 py-2 font-display font-bold text-xs uppercase tracking-[0.18em] text-ink";
   return (
-    <ul aria-label={label} className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1">
+    <ul aria-label={label} className={wrap ? "flex flex-wrap gap-2" : "-mx-5 flex gap-2 overflow-x-auto px-5 pb-1"}>
       {items.map((it) => (
         <li key={it.text} className="shrink-0">
           {it.href ? (

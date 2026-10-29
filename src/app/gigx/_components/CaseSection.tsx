@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui";
 import type { CaseImage, CaseStudy } from "../_data";
-import { ExternalLink, Kicker } from "./parts";
+import { ChipRow, ExternalLink, Kicker } from "./parts";
 import { AiFlow, TokenSpecimen } from "./Visuals";
 
 const sizeClass: Record<CaseImage["size"], string> = {
@@ -98,6 +98,15 @@ export default function CaseSection({ study, index }: { study: CaseStudy; index:
               ))}
             </dl>
             {study.footnote && <p className="mt-3 text-xs text-muted">{study.footnote}</p>}
+
+            {study.stack && (
+              <>
+                <h4 className={`mt-8 ${subhead}`}>Stack</h4>
+                <div className="mt-3">
+                  <ChipRow label={`Stack de ${study.title}`} items={study.stack.map((text) => ({ text }))} wrap />
+                </div>
+              </>
+            )}
 
             {study.links && (
               <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2">

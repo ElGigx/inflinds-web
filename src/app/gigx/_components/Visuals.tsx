@@ -53,9 +53,9 @@ export function TokenSpecimen() {
 }
 
 const steps = [
-  { name: "Diseño", note: "Orquestador" },
+  { name: "Diseño", note: "Orquestador · Claude Opus" },
   { name: "Encargo", note: "Autocontenido" },
-  { name: "Modelo según costo", note: "Grande · mediano · pequeño" },
+  { name: "Modelo según costo", note: "Claude Sonnet · Claude Haiku · DeepSeek" },
   { name: "Verificación automática", note: "Tipos, pruebas, contrato, fidelidad" },
   { name: "Revisión", note: "Del diff" },
   { name: "Producción", note: "" },
@@ -78,7 +78,7 @@ export function AiFlow() {
       </ol>
 
       <div className="mt-8 border-t border-white/10 pt-6">
-        <Kicker dark>Salida generada por el modelo grande</Kicker>
+        <Kicker dark>Salida generada por Claude Opus</Kicker>
         <div className="mt-4 space-y-4">
           {[
             { label: "Antes", pct: 96, bar: "bg-white/40" },

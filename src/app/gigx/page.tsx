@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ChipRow, ExternalLink, Kicker } from "./_components/parts";
-import { doing, featured, path, profile } from "./_data";
+import { doing, featured, path, profile, stack } from "./_data";
 
 const title = "Miguel Angel Yañez — Diseñador de soluciones";
 const description =
@@ -136,6 +136,20 @@ export default function GigxPage() {
               </li>
             ))}
           </ol>
+
+          <div className="mt-10">
+            <Kicker>Herramientas</Kicker>
+            <dl className="mt-4">
+              {stack.map((g) => (
+                <div key={g.name} className="grid gap-2 border-t border-line py-4 md:grid-cols-[12rem_1fr] md:items-center">
+                  <dt className="font-display font-bold text-ink">{g.name}</dt>
+                  <dd className="min-w-0">
+                    <ChipRow label={g.name} items={g.items.map((text) => ({ text }))} wrap />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </Container>
       </section>
 

@@ -32,6 +32,7 @@ export type CaseStudy = {
   images: CaseImage[];
   links?: { label: string; href: string }[];
   visual?: "tokens" | "ai";
+  stack?: string[];
   footnote?: string;
 };
 
@@ -46,9 +47,9 @@ export const cases: CaseStudy[] = [
       "Los negocios pequeños pagan y conectan cinco herramientas que no se hablan entre sí.",
     did: [
       "Arquitectura modular multi-tenant: los módulos se activan por sitio.",
-      "Agentes de IA propios: asistente del panel, investigador y agente de ventas por canales de mensajería.",
+      "Agentes de IA propios sobre modelos de OpenAI y Anthropic: asistente del panel, investigador y agente de ventas por WhatsApp.",
       "Medición del costo de IA por llamada y por segmento, con techo para las cuentas en prueba.",
-      "Plugin para gestores de contenido y SDK para incrustar Merez en cualquier sitio.",
+      "Plugin de WordPress y SDK en TypeScript para incrustar Merez en cualquier sitio.",
       "Consola de operador para el equipo.",
     ],
     figures: [
@@ -74,6 +75,7 @@ export const cases: CaseStudy[] = [
       },
     ],
     links: [{ label: "Ver en vivo ↗", href: "https://merez.co" }],
+    stack: ["Laravel 13", "PHP 8.3", "MySQL", "React 19", "Vite", "Refine", "Next.js 16", "Tailwind CSS 4", "OpenAI", "Anthropic", "WhatsApp", "GitHub Actions"],
   },
   {
     id: "fusion-pipe-tools",
@@ -129,6 +131,7 @@ export const cases: CaseStudy[] = [
       },
     ],
     links: [{ label: "Ver en vivo ↗", href: "https://fusionpipetools.com" }],
+    stack: ["PHP", "API de Merez", "Hostinger", "Figma"],
   },
   {
     id: "panel",
@@ -152,6 +155,7 @@ export const cases: CaseStudy[] = [
     ],
     images: [],
     visual: "tokens",
+    stack: ["Figma", "React 19", "Tailwind CSS 4", "TypeScript", "Puppeteer", "Vitest"],
   },
   {
     id: "ia",
@@ -162,21 +166,22 @@ export const cases: CaseStudy[] = [
     problem:
       "Con un solo modelo grande haciéndolo todo, el modelo caro tecleaba código que ya estaba diseñado.",
     did: [
-      "Un agente orquestador diseña, parte el trabajo, escribe encargos autocontenidos y revisa el diff.",
-      "La implementación va a modelos medianos y pequeños según dificultad y costo, de dos proveedores en desarrollo.",
-      "En el producto, varios modelos de dos proveedores elegidos por tarea.",
+      "Claude Opus, como orquestador, diseña, parte el trabajo, escribe encargos autocontenidos y revisa el diff.",
+      "La implementación va a Claude Sonnet, Claude Haiku o DeepSeek según dificultad y costo.",
+      "En Merez, modelos de OpenAI (GPT, imagen y transcripción) y de Anthropic (Claude), elegidos por tarea.",
       "Verificaciones automáticas (tipos, suite de pruebas, contrato de API, fidelidad visual) antes de dar algo por hecho.",
       "El contexto se reutiliza con caché.",
     ],
     figures: [
-      { value: "−89 %", label: "salida diaria del modelo grande (de ~0,94 M a ~0,10 M tokens/día)" },
+      { value: "−89 %", label: "salida diaria de Claude Opus (de ~0,94 M a ~0,10 M tokens/día)" },
       { value: "26 %", label: "de la salida la generan modelos menores (antes < 4 %)" },
       { value: "98 %", label: "del contexto leído de caché" },
     ],
     images: [],
     visual: "ai",
+    stack: ["Claude Code", "Claude Opus", "Claude Sonnet", "Claude Haiku", "DeepSeek", "OpenAI", "Anthropic"],
     footnote:
-      "Medido sobre el uso propio de desarrollo, ago–oct 2026. No incluye el proveedor externo de implementación.",
+      "Medido sobre el uso propio de desarrollo en Claude Code, ago–oct 2026. No incluye DeepSeek.",
   },
   {
     id: "acertar",
@@ -226,6 +231,7 @@ export const cases: CaseStudy[] = [
       { label: "Ver la app ↗", href: "https://app.acertarsas.com" },
       { label: "Sitio ↗", href: "https://acertarsas.com" },
     ],
+    stack: ["PHP", "API de Merez", "Hostinger"],
   },
 ];
 
@@ -407,7 +413,7 @@ export const merezFeatures: Feature[] = [
 export const agents = [
   { name: "Castor", role: "Asistente del panel", text: "Opera leads, cotizaciones e inventario." },
   { name: "Búho", role: "Investigador", text: "Sale a la web por proveedores, precios y competencia." },
-  { name: "Colibrí", role: "Agente de ventas", text: "En los canales de mensajería atiende, cotiza y deja el lead listo." },
+  { name: "Colibrí", role: "Agente de ventas", text: "En WhatsApp atiende, cotiza y deja el lead listo." },
 ];
 
 export const toolGroups = [
@@ -427,9 +433,9 @@ export const memoryPoints = [
 ];
 
 export const doing = [
-  { title: "Diseño de producto", text: "Investigación con usuarios, arquitectura de información, flujos, prototipos y sistemas de diseño con tokens." },
-  { title: "Ingeniería", text: "Aplicaciones web de punta a punta en TypeScript y PHP, bases de datos SQL, APIs, arquitectura multi-tenant, despliegue continuo y pruebas automáticas." },
-  { title: "IA aplicada", text: "Agentes con herramientas y políticas de aprobación, memoria por cliente, extracción de datos desde documentos y fotos, costo medido por llamada." },
+  { title: "Diseño de producto", text: "Investigación con usuarios, arquitectura de información, flujos, prototipos en Figma y sistemas de diseño con tokens." },
+  { title: "Ingeniería", text: "Aplicaciones web de punta a punta: React y Next.js en TypeScript, Laravel en PHP, MySQL, APIs, arquitectura multi-tenant, despliegue continuo con GitHub Actions y pruebas automáticas." },
+  { title: "IA aplicada", text: "Agentes sobre OpenAI y Anthropic con herramientas y políticas de aprobación, memoria por cliente, extracción de datos desde documentos y fotos, costo medido por llamada." },
 ];
 
 export const featured = [
@@ -444,4 +450,13 @@ export const path = [
   { year: "2021", text: "Funda Inflinds" },
   { year: "2022–2024", text: "+20 sitios y tiendas" },
   { year: "2026", text: "Merez en producción" },
+];
+
+export const stack = [
+  { name: "Diseño", items: ["Figma", "Sistemas de tokens", "Prototipos"] },
+  { name: "Frontend", items: ["TypeScript", "React", "Next.js", "Vite", "Refine", "Tailwind CSS", "Tiptap", "Vitest"] },
+  { name: "Backend y datos", items: ["PHP", "Laravel", "MySQL", "APIs REST", "PHPUnit"] },
+  { name: "IA", items: ["OpenAI", "Anthropic", "Claude Code", "DeepSeek", "Agentes con herramientas"] },
+  { name: "Infraestructura", items: ["GitHub Actions", "Vercel", "Hostinger", "Cloudflare"] },
+  { name: "Integraciones", items: ["WhatsApp", "WordPress", "HubSpot", "Meta Conversions API"] },
 ];
