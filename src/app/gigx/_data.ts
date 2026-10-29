@@ -1,6 +1,5 @@
 export const profile = {
   name: "Miguel Angel Yañez",
-  jobTitle: "Diseñador de soluciones",
   // De lo más cercano a lo que hace hoy a lo menos.
   roles: ["Design Engineer", "Product Designer", "Forward Deployed Engineer"],
   photo: "/gigx/miguel.jpg",
