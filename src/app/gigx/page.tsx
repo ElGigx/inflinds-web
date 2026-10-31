@@ -129,12 +129,16 @@ export default function GigxPage() {
       <section className="py-16 sm:py-24">
         <Container>
           <Kicker>Qué hago</Kicker>
-          <ol className="mt-6 grid gap-x-10 md:grid-cols-3">
+          {/* En móvil, fila deslizable (se ve un bloque y asoma el siguiente); en escritorio, tres columnas. */}
+          <ol className="-mx-5 mt-6 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-0 md:overflow-visible md:px-0 md:pb-0">
             {doing.map((d, i) => (
-              <li key={d.title} className="border-t border-line py-6">
-                <span className="font-display font-black text-5xl leading-none text-brand-600">0{i + 1}</span>
-                <h2 className="mt-4 font-display font-black text-2xl text-ink">{d.title}</h2>
-                <p className="mt-3 leading-relaxed text-slate">{d.text}</p>
+              <li key={d.title} className="w-[82%] shrink-0 snap-start border-t border-line py-4 md:w-auto md:py-6">
+                <div className="flex items-baseline gap-3 md:block">
+                  <span className="font-display font-black text-3xl leading-none text-brand-600 md:text-5xl">0{i + 1}</span>
+                  <h2 className="font-display font-black text-xl text-ink md:mt-4 md:text-2xl">{d.title}</h2>
+                </div>
+                <p className="mt-2 leading-relaxed text-slate md:hidden">{d.short}</p>
+                <p className="mt-3 hidden leading-relaxed text-slate md:block">{d.text}</p>
               </li>
             ))}
           </ol>
