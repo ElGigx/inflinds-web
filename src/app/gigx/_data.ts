@@ -219,46 +219,57 @@ export const cases: CaseStudy[] = [
   },
   {
     id: "studio",
-    kicker: "2026 · Proceso de diseño y control de calidad",
-    title: "merez admin — quince prototipos y una revisión que encontró siete fallas",
+    kicker: "2026 · Arquitectura de estados y prototipos versionados",
+    title: "Los estados, una vez — y quince prototipos para no discutirlos dos veces",
     summary:
-      "Un proyecto de diseño con quince pantallas repartidas en tres versiones, y la revisión que convirtió siete desviaciones de implementación en herramientas para que no vuelvan a pasar.",
+      "Ocho estados, su copy exacto y quién decide cuál se pinta. Aprobado una sola vez, las seis plantillas lo consumen sin volver a discutirlo, y las 44 superficies de error escritas a mano pasan a ser una.",
     problem:
-      "Un prototipo que solo vive en una imagen no se puede comparar con lo construido. Cuando otro equipo —persona o agente— implementa tu diseño, la pregunta no es si se ve parecido: es en qué punto se desvió y por qué nadie lo notó hasta el final.",
+      "Cuando cada pantalla decide por su cuenta qué mostrar cuando falta un permiso, cuando carga o cuando algo falla, aparecen cuarenta y cuatro maneras de decir lo mismo. El problema no es visual: es que nadie sabe cuál gana cuando dos condiciones se cumplen a la vez.",
     did: [
-      "Quince prototipos en un solo proyecto, repartidos en versiones con nombre y alcance: v0.1 los estados e inventario, v0.2 seis frentes —inicio, móvil, superficie de operador, ajustes, funnel y sidebar compacto—, v0.2.1 el modo ficha y v0.2.2 Studio pantallas.",
-      "Una decisión de interfaz con nombre propio: los textos de ayuda ocupaban la pantalla. En vez de dejarlos o eliminarlos, pasaron al ícono de información. Y no al círculo con admiración —ese es de alertas—, sino a la i: 23 en la ficha y 7 en Studio.",
-      "Revisión de la implementación que hizo un agente a partir de esos prototipos: siete desviaciones encontradas y documentadas, no «se ve distinto» sino cada una con su motivo.",
-      "De las siete salieron las herramientas que faltaban: el diseño escrito en un archivo de datos —cada bloque con su texto exacto— y una prueba que compara el código contra ese archivo.",
-      "Y una página de muestra con la ficha en dos temas, escritorio y celular, para comparar contra capturas de los diseños: lo único que atrapa un error visual sin que alguien lo revise a ojo.",
-      "Encargos chicos y en orden, cada uno con su forma de comprobar que quedó hecho, en vez de un pedido grande que se entrega a medias.",
+      "Un modelo de ocho estados, con su copy exacto y la regla de quién decide cuál se pinta. Es lo que se aprueba una vez y consumen las seis plantillas.",
+      "**El orden de las comprobaciones es el diseño**: permiso primero —si no se puede ver, lo demás sobra—, módulo antes que carga, error y carga solo si no hay nada, y el filtro antes que el «no hay resultados». Ese orden vive en una función pura, y es lo que prueban las 27 pruebas.",
+      "44 superficies de error escritas a mano, cada una con su texto, convertidas en una sola salida del modelo. Menos código y, sobre todo, un solo lugar donde cambiarlo.",
+      "Quince prototipos en un proyecto, repartidos en versiones con nombre y alcance: v0.1 los estados e inventario, v0.2 seis frentes, v0.2.1 el modo ficha, v0.2.2 Studio con la ayuda en el ícono de información —23 en la ficha y 7 en Studio—.",
+      "Revisión de lo que un agente construyó a partir de esos prototipos: siete desviaciones documentadas, cada una con su motivo, no un «se ve distinto».",
+      "Y las herramientas que faltaban: el diseño en un archivo de datos, una prueba que compara el código contra él, y una página de muestra en dos temas, escritorio y celular, para comparar contra capturas.",
     ],
     figures: [
-      { value: "15", label: "prototipos en un solo proyecto" },
-      { value: "3", label: "versiones: v0.1, v0.2 y v0.2.2" },
-      { value: "7", label: "desviaciones encontradas al revisar lo construido" },
+      { value: "8", label: "estados definidos una vez, consumidos por seis plantillas" },
+      { value: "44 → 1", label: "superficies de error escritas a mano, convertidas en una" },
+      { value: "27", label: "pruebas sobre el orden de las comprobaciones" },
     ],
     tables: [
+      {
+        title: "El orden de las comprobaciones es el diseño",
+        head: ["Orden", "Regla", "Por qué"],
+        rows: [
+          ["1 · Permiso", "Si no se puede ver, lo demás sobra", "Mostrar «cargando» a quien no tiene acceso es mentirle"],
+          ["2 · Módulo", "Sin módulo no se pide nada", "Un esqueleto prometiendo datos que no vienen"],
+          ["3 · Error y carga", "Solo si no hay nada que mostrar", "Con contenido en pantalla son avisos, no estados"],
+          ["4 · Filtro", "Antes que «no hay resultados»", "Un filtro vacío no es un catálogo vacío, y confundirlos hace perder datos"],
+        ],
+      },
+      {
+        title: "Los quince prototipos, por versión",
+        head: ["Versión", "Páginas"],
+        rows: [
+          ["v0.1", "Los estados, una vez · Inventario y exploración"],
+          ["v0.2", "Inicio · Móvil · Superficie de operador · Inventario · Ajustes · Funnel de venta · Sidebar compacto"],
+          ["v0.2.1", "Modo ficha · Studio pantallas · Studio plantillas"],
+          ["v0.2.2", "Modo ficha · Studio pantallas · Studio plantillas"],
+        ],
+      },
       {
         title: "Las siete desviaciones que encontró la revisión",
         head: ["#", "Qué fallaba"],
         rows: [
-          ["1", "La ficha no existía: al abrir un producto seguía el formulario viejo, sin la barra de acciones ni el ícono de ayuda."],
-          ["2", "Un servicio aparecía «sin ficha técnica» aunque tuviera beneficios, y el agente lo repetía como si fuera cierto."],
-          ["3", "La IA escribía directo sobre el producto, sin pasar por la propuesta que la persona acepta o descarta."],
+          ["1", "La ficha no existía: seguía el formulario viejo, sin la barra de acciones ni el ícono de ayuda."],
+          ["2", "Un servicio aparecía «sin ficha técnica» aunque tuviera beneficios."],
+          ["3", "La IA escribía directo sobre el producto, sin pasar por la propuesta que se acepta o descarta."],
           ["4", "Seguía diciendo «IA» en textos que ve el cliente."],
-          ["5", "Los textos de ayuda de cada campo eran inventados, no los del diseño."],
+          ["5", "Los textos de ayuda de cada campo eran inventados."],
           ["6", "La categoría no contaba como dato faltante."],
           ["7", "Faltaban las nueve plantillas nuevas de Studio."],
-        ],
-      },
-      {
-        title: "Lo que salió de esa revisión",
-        head: ["Herramienta", "Para qué"],
-        rows: [
-          ["El diseño en un archivo de datos", "Cada bloque de la ficha con su texto exacto, no en prosa. Con eso se habrían atrapado tres de las siete fallas."],
-          ["Una prueba que compara código contra diseño", "Avisa cuando la implementación se separa del archivo, sin depender de que alguien lo note."],
-          ["Una página de muestra con capturas", "La ficha en dos temas, escritorio y celular: el único control que atrapa un error visual."],
         ],
       },
     ],
@@ -814,7 +825,6 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
-
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
