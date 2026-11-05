@@ -237,6 +237,53 @@ export const cases: CaseStudy[] = [
     stack: ["Illustrator", "Photoshop", "Manual de marca", "Vectorial"],
   },
   {
+    id: "arizas",
+    kicker: "2021–2022 · Marca, catálogo y video",
+    title: "Arizas Tools — la marca y el producto en movimiento",
+    summary:
+      "Identidad, catálogo técnico y piezas de video para un distribuidor de herramientas: la misma marca sirviendo en una ficha, en un flyer y en un short de 25 segundos.",
+    problem:
+      "Una herramienta se vende por lo que hace, no por su logo. La marca tenía que sostenerse en el catálogo, en la pieza de campaña y en el video, sin que cada soporte pareciera de otra empresa.",
+    did: [
+      "Logotipo y aplicaciones: tarjetas, flyers y piezas de campaña con la misma retícula.",
+      "Portafolio y fichas técnicas del catálogo, con el producto fotografiado y especificado.",
+      "Ocho shorts verticales y un corporativo de 1:18: piezas que muestran la herramienta trabajando.",
+      "Piezas cortas para WhatsApp, el canal donde de verdad se comparte el catálogo en Colombia.",
+    ],
+    figures: [
+      { value: "9", label: "piezas de video: ocho shorts y un corporativo" },
+      { value: "1:18", label: "el corporativo; los shorts, 25 segundos" },
+      { value: "1", label: "marca que aguanta ficha, flyer y video" },
+    ],
+    images: [
+      {
+        src: "/gigx/video/corp-35.jpg",
+        alt: "Fotograma del video corporativo de Arizas Tools con una herramienta en primer plano",
+        w: 1200,
+        h: 676,
+        size: "full",
+        caption: "Corporativo · 1:18",
+      },
+      {
+        src: "/gigx/video/arizas-short-1.jpg",
+        alt: "Fotograma de un short vertical de Arizas Tools",
+        w: 1600,
+        h: 900,
+        size: "half",
+        caption: "Short · 25 s",
+      },
+      {
+        src: "/gigx/video/arizas-short-3.jpg",
+        alt: "Fotograma de otro short de Arizas Tools",
+        w: 1600,
+        h: 900,
+        size: "half",
+        caption: "Short · producto en uso",
+      },
+    ],
+    stack: ["Illustrator", "Premiere", "After Effects", "Fotografía de producto"],
+  },
+  {
     id: "merez",
     kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
     title: "Merez",
@@ -663,10 +710,24 @@ export const path = [
 ];
 
 export const stack = [
-  { name: "Diseño", items: ["Figma", "Sistemas de tokens", "Prototipos"] },
+  { name: "Diseño", items: ["Figma", "Sistemas de tokens", "Prototipos", "Investigación con usuarios"] },
+  { name: "Diseño gráfico", items: ["Illustrator", "Photoshop", "InDesign", "Arte final y preimpresión"] },
+  { name: "Video", items: ["Premiere", "After Effects", "DaVinci Resolve", "Piezas verticales"] },
   { name: "Frontend", items: ["TypeScript", "React", "Next.js", "Vite", "Refine", "Tailwind CSS", "Tiptap", "Vitest"] },
   { name: "Backend y datos", items: ["PHP", "Laravel", "MySQL", "APIs REST", "PHPUnit"] },
   { name: "IA", items: ["OpenAI", "Anthropic", "Claude Code", "DeepSeek", "Agentes con herramientas"] },
   { name: "Infraestructura", items: ["GitHub Actions", "Vercel", "Hostinger", "Cloudflare"] },
   { name: "Integraciones", items: ["WhatsApp", "WordPress", "HubSpot", "Meta Conversions API"] },
+];
+
+// Lo que ha enseñado, con la evidencia que hay en su CV.
+export const teaching = [
+  {
+    place: "Universidad UNAN — Nicaragua",
+    what: "Capacitación a dos grupos de estudiantes en producción de multimedia.",
+  },
+  {
+    place: "Acertar",
+    what: "Formación de aprendices en trabajo seguro en alturas, dentro del producto que construí.",
+  },
 ];
