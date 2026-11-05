@@ -42,6 +42,55 @@ export type CaseStudy = {
 
 export const cases: CaseStudy[] = [
   {
+    id: "pantou",
+    kicker: "2023–2024 · Diseño UX/UI y design systems",
+    title: "PANTou — un sistema, siete marcas",
+    summary:
+      "Siete tiendas de relojería, moda y crédito con equipos pequeños: un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
+    problem:
+      "Cada marca rehacía lo mismo: componentes, estilos y patrones propios, sin base común y sin documentación. El costo no era diseñar: era repetirlo siete veces y volver a decidirlo cada vez.",
+    did: [
+      "Un sistema por marca: tokens, componentes y hoja de estilos, con las reglas escritas para que sobrevivieran a mi salida.",
+      "Mapa de pantallas de la tienda completa: el universo entero en un plano, antes de tocar ningún detalle.",
+      "Tokens en CSS implementables en Angular y Shopify, no solo dibujados en Figma.",
+      "Investigación con usuarios: mapas de calor, pruebas de usabilidad y grabaciones en Clarity, más card sorting para la arquitectura de información.",
+      "Plantillas de correo en HTML y MJML, parte del mismo sistema.",
+      "Archivos de Figma entregados editables: el sistema quedó como archivo vivo, no como lámina.",
+    ],
+    figures: [
+      { value: "7", label: "marcas con hoja de componentes" },
+      { value: "14", label: "meses, de febrero de 2023 a marzo de 2024" },
+      { value: "3", label: "plataformas: Angular, Shopify y correo" },
+    ],
+    images: [
+      {
+        src: "/gigx/pantou/ondademar-componentes.webp",
+        alt: "Hoja de componentes del sistema de diseño de OndadeMar: botones, campos, tarjetas, listados y navegación",
+        w: 2400,
+        h: 1734,
+        size: "full",
+        caption: "OndadeMar · hoja de componentes",
+      },
+      {
+        src: "/gigx/pantou/festina-componentes.webp",
+        alt: "Hoja de componentes de Festina en una tira panorámica",
+        w: 2400,
+        h: 785,
+        size: "half",
+        caption: "Festina · el mismo sistema, otra retícula",
+      },
+      {
+        src: "/gigx/pantou/kreditime-landing.webp",
+        alt: "Landing de Kreditime construida con el mismo sistema, aplicado a crédito y no a retail",
+        w: 2000,
+        h: 3026,
+        size: "half",
+        caption: "Kreditime · crédito, no retail",
+      },
+    ],
+    stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
+  },
+  {
     id: "merez",
     kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
     title: "Merez",
@@ -261,6 +310,15 @@ export const timeline: TimelineEntry[] = [
     ],
   },
   { year: "2022", title: "Más sitios y tiendas", items: ["Amatu", "César el Tributarista", "CEAMAC", "Estructálica"] },
+  {
+    year: "2023–2024",
+    title: "Design systems en PANTou",
+    items: [
+      "Siete marcas: OndadeMar, Festina, Invicta, Technomarine, Sometimes, Lokiero y Kreditime",
+      "Hoja de componentes y tokens CSS por marca, para Angular y Shopify",
+      "Investigación con Clarity, mapas de calor y card sorting",
+    ],
+  },
   { year: "2023", title: "Comercio electrónico", items: ["Suplementos Green Spot (e-commerce)"] },
   {
     year: "2024",
