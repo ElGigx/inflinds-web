@@ -482,6 +482,7 @@ export const cases: CaseStudy[] = [
       "Sitio con el portafolio dentro: catálogo, servicios y contacto en el mismo lugar, con su propio botón de portafolio.",
       "**Un flujo de venta completo, en tablero**: qué publicar en el marketplace, el copy por canal, los requisitos técnicos de cada fase y las preguntas que hay que responder en cada paso.",
       "**Métricas por etapa**: seguimiento a 24 horas y a 72, más un cross-selling opcional después del cierre. Sin eso el flujo es un dibujo; con eso es un proceso que se puede corregir.",
+      "Y se detuvo donde se detiene casi todo: en un dato que solo tenía el equipo del cliente. Sin esa información el paso siguiente no se puede diseñar, y prefiero dejarlo dicho antes que inventarlo.",
       "El tablero parte de un diagnóstico —un «detector de fugas» sobre conversaciones reales de WhatsApp— y no de una plantilla.",
     ],
     figures: [
@@ -531,7 +532,7 @@ export const cases: CaseStudy[] = [
     ],
     links: [{ label: "Ver el sitio ↗", href: "https://arizas.co" }],
     footnote:
-      "El flujo de venta quedó diseñado y no se implementó: el sitio y el portafolio sí. Lo que se entrega no siempre es todo lo que se diseña, y conviene decirlo.",
+      "El flujo se detuvo en el traspaso a WhatsApp: para diseñar el paso siguiente hacía falta información que solo tenía el equipo del cliente. La pedí varias veces y no llegó. Sin ese dato no se puede diseñar, así que se abandonó. El sitio y el portafolio sí se entregaron.",
     stack: ["FigJam", "Illustrator", "Photoshop", "WordPress", "Premiere"],
   },
   {
