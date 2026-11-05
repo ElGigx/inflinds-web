@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { plans, customQuoted, futureServices } from "@/lib/site";
+import { customQuoted, futureServices } from "@/lib/site";
+import { plansForPricing } from "@/lib/plans";
 import Icon from "@/components/Icon";
 import {
   Container,
@@ -45,7 +46,9 @@ const heroChecks = [
   { k: "Enfoque en resultados", v: "y crecimiento" },
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const pricingPlans = await plansForPricing();
+
   return (
     <>
       {/* ---------- HERO (oscuro) ---------- */}
@@ -106,10 +109,10 @@ export default function PricingPage() {
           <SectionHeading
             eyebrow="Elige tu plan"
             title="Planes diseñados para cada etapa de tu negocio"
-            intro="Precios base de desarrollo a la medida, en pesos colombianos; se ajustan según el alcance de tu proyecto. Si prefieres que montemos tu sitio sobre Merez, con CRM, tienda y pagos, pregúntale a nuestro asesor en el chat."
+            intro="Precios en pesos colombianos. Los dos primeros son de precio fijo; el e-commerce y los proyectos personalizados se cotizan según el alcance."
           />
           <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {plans.map((plan) =>
+            {pricingPlans.map((plan) =>
               plan.popular ? (
                 /* Tarjeta destacada (oscura) */
                 <div
@@ -122,8 +125,7 @@ export default function PricingPage() {
                   <div className="flex flex-1 flex-col p-8">
                     <h3 className="font-display font-black text-2xl">{plan.name}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-300">{plan.desc}</p>
-                    <p className="mt-6 text-xs text-slate-400">Desde</p>
-                    <p className="font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
+                    <p className="mt-6 font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
                       {plan.price}{" "}
                       <span className="text-sm font-bold text-orange">COP</span>
                     </p>
@@ -156,8 +158,7 @@ export default function PricingPage() {
                   <p className="mt-2 text-sm leading-relaxed text-slate">{plan.desc}</p>
                   {plan.price ? (
                     <>
-                      <p className="mt-6 text-xs text-muted">Desde</p>
-                      <p className="font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
+                      <p className="mt-6 font-display font-black text-[1.75rem] leading-tight text-magenta whitespace-nowrap">
                         {plan.price}{" "}
                         <span className="text-sm font-bold text-muted">COP</span>
                       </p>

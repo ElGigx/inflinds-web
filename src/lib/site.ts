@@ -138,8 +138,8 @@ export const merezModules = [
 ];
 
 // Planes de proyecto para la página de precios. Los precios con cifra vienen
-// de Pricing.md v1.0.0 (precio base, ajustable por alcance); e-commerce y
-// personalizado no tienen tarifa fija -> se cotizan (price: null).
+// de BRANDS/Inflinds/Precios-paquetes.json (vigente desde 2026-10-27);
+// e-commerce y personalizado no tienen tarifa fija -> se cotizan (price: null).
 export type Plan = {
   slug: string;
   name: string;
@@ -155,30 +155,33 @@ export const plans: Plan[] = [
   {
     slug: "landing",
     name: "Landing Page",
-    desc: "Ideal para emprendedores que están comenzando.",
-    price: "$ 690.000",
+    desc: "Para empezar a vender sin montar un sitio entero.",
+    price: "$ 990.000",
     features: [
-      "Página única enfocada en conversión",
-      "Diseño responsive",
-      "Desarrollo y publicación",
-      "Optimización básica",
-      "Formulario de contacto",
+      "Una sola página, diseñada para que el visitante escriba o te llame",
+      "Se ve bien en el celular, donde entra la mayoría de tus clientes",
+      "Dominio .com y alojamiento por un año, incluidos",
+      "Correo profesional y certificado de seguridad, incluidos",
+      "Formulario y botón de chat que llegan a alguien de verdad",
+      "Medición instalada: sabes de dónde llegan tus visitas y cuáles te escriben",
+      "Soporte durante los 12 meses siguientes",
+      "Entrega en 10 días hábiles desde que tenemos tus textos y fotos",
     ],
     cta: "Comenzar ahora",
   },
   {
     slug: "sitio-informativo",
     name: "Sitio informativo",
-    desc: "Para negocios que quieren verse profesionales y escalar.",
-    price: "$ 1.000.000",
+    desc: "Para que tu negocio se vea tan serio como es.",
+    price: "$ 1.530.000",
     popular: true,
     featuresIntro: "Todo lo de Landing, más:",
     features: [
-      "Diseño personalizado",
-      "Múltiples páginas",
-      "Desarrollo a la medida, rápido y seguro",
-      "Optimización y configuración inicial",
-      "Listo para crecer con tu negocio",
+      "Hasta 5 páginas: inicio, servicios, quiénes somos, contacto y blog",
+      "Tu marca aplicada: colores, tipografía y logo",
+      "Optimización para buscadores en la página de inicio",
+      "Dos correos profesionales en lugar de uno",
+      "Soporte durante los 12 meses siguientes",
     ],
     cta: "Quiero este plan",
   },
@@ -189,9 +192,9 @@ export const plans: Plan[] = [
     price: null,
     featuresIntro: "Todo lo de Sitio informativo, más:",
     features: [
-      "Tienda sobre Merez con checkout Bre-B",
-      "Catálogo y gestión de productos",
-      "Pagos en línea",
+      "Tienda sobre Merez, con pago por transferencia, tarjeta y débito bancario",
+      "Catálogo con fichas de producto que sí se leen",
+      "Gestión de pedidos y del inventario en el mismo lugar",
       "SEO técnico y rendimiento",
       "Integraciones según tu operación",
     ],
