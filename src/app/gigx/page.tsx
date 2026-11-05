@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ChipRow, ExternalLink, Kicker } from "./_components/parts";
-import { doing, featured, ogImage, path, profile, stack, teaching } from "./_data";
+import { doing, faq, featured, ogImage, path, profile, stack, teaching } from "./_data";
 
 const title = "Miguel Angel Yañez — Founder & Product Designer · Design Engineer";
 const description =
@@ -237,6 +237,28 @@ export default function GigxPage() {
               <div key={s.value} className="border-t border-line py-5">
                 <dt className="font-display font-black text-6xl leading-none text-brand-600">{s.value}</dt>
                 <dd className="mt-3 text-slate">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
+
+      <section className="border-t border-line py-16 sm:py-20">
+        <Container>
+          <Kicker>Preguntas que me hacen</Kicker>
+          <dl className="mt-6 max-w-3xl">
+            {faq.map((f) => (
+              <div key={f.q} className="border-t border-line py-5 last:border-b">
+                <dt className="font-display font-black text-xl text-ink">{f.q}</dt>
+                <dd className="mt-2 text-slate leading-relaxed">{f.a}</dd>
+                <dd className="mt-2">
+                  <Link
+                    href={f.href}
+                    className="font-display text-xs font-bold uppercase tracking-[0.16em] text-brand-600 underline-offset-4 hover:underline"
+                  >
+                    {f.link} →
+                  </Link>
+                </dd>
               </div>
             ))}
           </dl>

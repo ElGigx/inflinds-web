@@ -1097,6 +1097,45 @@ export const stack = [
 ];
 
 // Lo que ha enseñado, con la evidencia que hay en su CV.
+export const faq = [
+  {
+    q: "¿Diseñas o también construyes?",
+    a: "Las dos. Diseño el producto y lo llevo a producción: React, Next y Laravel. Merez es el caso completo, de la primera pantalla al último despliegue.",
+    href: "/gigx/portfolio/#merez",
+    link: "Ver Merez",
+  },
+  {
+    q: "¿Has hecho investigación con usuarios?",
+    a: "Medición de producto, sí, y con decisiones detrás. Investigación formal con usuarios la hice en PANTou —pruebas de usabilidad, mapas de calor y card sorting en Clarity— y de eso no se puede publicar el material. Prefiero decirlo así antes que adornarlo.",
+    href: "/gigx/portfolio/#medicion",
+    link: "Ver medición",
+  },
+  {
+    q: "¿Cómo trabajas con el equipo de ingeniería?",
+    a: "Con el diseño escrito donde se puede comparar. Reviso lo construido contra los prototipos y documento cada desviación; de ahí salen pruebas que comparan el código con el diseño, en vez de depender de que alguien lo note.",
+    href: "/gigx/portfolio/#studio",
+    link: "Ver el proceso",
+  },
+  {
+    q: "¿Cómo sabes si un diseño funcionó?",
+    a: "Midiendo antes y después. Un COUNT(*) contra producción cambió el rumbo de un proyecto; contar inodos cambió un modelo de precios. Los cinco hallazgos están en el portafolio con la decisión que provocaron.",
+    href: "/gigx/portfolio/#medicion",
+    link: "Ver los cinco hallazgos",
+  },
+  {
+    q: "¿Qué pasa cuando un proyecto no sale?",
+    a: "Se dice. En Arizas el flujo de venta quedó diseñado y no se implementó porque faltaba información que solo tenía el equipo del cliente: la pedí varias veces y no llegó. El sitio y el portafolio sí se entregaron.",
+    href: "/gigx/portfolio/#arizas",
+    link: "Ver Arizas",
+  },
+  {
+    q: "¿Cuál es tu relación con la IA?",
+    a: "Construyo con ella, no la uso de adorno: agentes con herramientas y aprobación humana, costo medido por proceso, y un sistema que hace que cada sesión no empiece de cero.",
+    href: "/gigx/portfolio/#gigxos",
+    link: "Ver gigxOS",
+  },
+];
+
 export const teaching = [
   {
     place: "Universidad UNAN — Nicaragua",
