@@ -706,40 +706,50 @@ export const cases: CaseStudy[] = [
 export type TimelineEntry = { year: string; title: string; items: string[] };
 
 export const timeline: TimelineEntry[] = [
-  { year: "2019", title: "Diseño gráfico", items: ["Piezas para telecomunicaciones y primeros encargos."] },
   {
-    year: "2020",
-    title: "Primeros sitios y marcas",
-    items: ["Wonder School (sitio)", "Wallo (prototipo de app de envíos)", "Marcas para Nicolás Rocha y Green Force"],
+    year: "2013",
+    title: "Primer trabajo",
+    items: ["Auxiliar contable en Calzado Caprino, en contrato de prácticas: seis meses."],
   },
   {
-    year: "2021",
-    title: "Nace Inflinds S.A.S.",
+    year: "2014–2015",
+    title: "Diseñador gráfico",
     items: [
-      "Fusion Pipe Tools",
-      "Green Work",
-      "Motor Clean",
-      "Llévalo (e-commerce avanzado)",
-      "Arizas Tools",
-      "Acertar (sitio + e-learning)",
+      "Maquinaria en Línea: rediseño del marketplace y manejo de sus redes.",
+      "Language Products, en paralelo.",
     ],
   },
-  { year: "2022", title: "Más sitios y tiendas", items: ["Amatu", "César el Tributarista", "CEAMAC", "Estructálica"] },
+  {
+    year: "2016–2018",
+    title: "Contenido y mercados hispanos",
+    items: ["Representante de talento en BroadcastTV: creadores y audiencia hispana."],
+  },
+  {
+    year: "2019–2021",
+    title: "ECOMM Agency",
+    items: [
+      "Tráfico, diseño web y dirección de contenidos.",
+      "Más de 30 sitios en WordPress y 10 campañas de Facebook Ads.",
+      "Prototipo de una fintech con 128 vistas en Figma.",
+      "Capacitación a dos grupos de la Universidad UNAN, Nicaragua.",
+    ],
+  },
+  { year: "2021", title: "Nace Inflinds S.A.S.", items: ["Fusion Pipe Tools", "Acertar (sitio + e-learning)", "Llévalo", "Arizas Tools"] },
+  {
+    year: "2022–2023",
+    title: "Pausa profesional",
+    items: ["Nueve meses dedicados al cuidado de mis hijos."],
+  },
   {
     year: "2023–2024",
     title: "Design systems en PANTou",
     items: [
-      "Siete marcas: OndadeMar, Festina, Invicta, Technomarine, Sometimes, Lokiero y Kreditime",
+      "Seis marcas: Onda de Mar, Festina, Invicta, Technomarine, Kreditime y Toktok",
       "Hoja de componentes y tokens CSS por marca, para Angular y Shopify",
       "Investigación con Clarity, mapas de calor y card sorting",
     ],
   },
-  { year: "2023", title: "Comercio electrónico", items: ["Suplementos Green Spot (e-commerce)"] },
-  {
-    year: "2024",
-    title: "Plataformas y marcas",
-    items: ["Capitalex (app web, prototipo)", "Plantación Tenampa", "Alternatura", "Ndevsoft", "La Imperial"],
-  },
+  { year: "2022–2024", title: "Más sitios y tiendas", items: ["Amatu", "César el Tributarista", "CEAMAC", "Estructálica", "Plantación Tenampa"] },
   {
     year: "2026",
     title: "Producto propio",
@@ -925,8 +935,9 @@ export const featured = [
 ];
 
 export const path = [
+  { year: "2014", text: "Primeros diseños" },
+  { year: "2019–2021", text: "ECOMM Agency" },
   { year: "2021", text: "Funda Inflinds" },
-  { year: "2022–2023", text: "+20 sitios y tiendas" },
   { year: "2023–2024", text: "Design systems en PANTou" },
   { year: "2026", text: "Merez en producción" },
 ];
