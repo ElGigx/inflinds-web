@@ -1,13 +1,13 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ChipRow, ExternalLink, Kicker } from "./_components/parts";
 import { doing, featured, ogImage, path, profile, stack, teaching } from "./_data";
 
-const title = "Miguel Angel YaÃ±ez â€” Design Engineer Â· Product Designer";
+const title = "Miguel Angel Yañez — Founder & Product Designer · Design Engineer";
 const description =
-  "Design Engineer, Product Designer y Forward Deployed Engineer. Founder & Product Designer. MÃ¡s de 30 proyectos desde 2019: sitios, comercio electrÃ³nico, plataformas y un SaaS propio.";
+  "Founder & Product Designer y Design Engineer en Bogotá. Cinco años y medio diseñando producto digital: design systems para siete marcas, identidad y empaque, investigación con usuarios, producto propio con agentes de IA y más de 30 proyectos en producción.";
 
 export const metadata: Metadata = {
   title,
@@ -37,17 +37,17 @@ const jsonLd = {
 };
 
 const stats = [
-  { value: "6", label: "disciplinas: producto, design systems, marca, cÃ³digo, IA y contenido" },
+  { value: "6", label: "disciplinas: producto, design systems, marca, código, IA y contenido" },
   { value: "7", label: "marcas con design system propio en PANTou" },
-  { value: "1", label: "SaaS multi-tenant en producciÃ³n" },
+  { value: "1", label: "SaaS multi-tenant en producción" },
 ];
 
 const principles = [
-  "Entiendo el negocio antes que la tecnologÃ­a.",
-  "DiseÃ±o y construyo, no entrego solo maquetas.",
-  "Orquesto modelos de IA como un equipo, con verificaciÃ³n y costo medido.",
-  "Mido antes de afirmar: pruebas, contratos de API y fidelidad visual automÃ¡ticas.",
-  "Documento las decisiones para que el equipo â€”humano o IAâ€” no las repita.",
+  "Entiendo el negocio antes que la tecnología.",
+  "Diseño y construyo, no entrego solo maquetas.",
+  "Orquesto modelos de IA como un equipo, con verificación y costo medido.",
+  "Mido antes de afirmar: pruebas, contratos de API y fidelidad visual automáticas.",
+  "Documento las decisiones para que el equipo —humano o IA— no las repita.",
 ];
 
 const ctaClass =
@@ -63,7 +63,7 @@ export default function GigxPage() {
         <Container className="relative py-16 sm:py-24">
           <img
             src={profile.photo}
-            alt="Retrato de Miguel Angel YaÃ±ez"
+            alt="Retrato de Miguel Angel Yañez"
             width={400}
             height={400}
             className="h-28 w-28 rounded-full border border-line object-cover"
@@ -75,12 +75,12 @@ export default function GigxPage() {
             {profile.name}
           </h1>
           <p className="mt-3 font-display font-bold text-lg text-brand-600">
-            {profile.title} Â· Design Engineer
+            {profile.title} · Design Engineer
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">
-            DiseÃ±o el problema, el producto y el sistema que lo construye. Cinco aÃ±os y medio llevando negocios
-            de una idea a software en producciÃ³n: mÃ¡s de 30 proyectos entre design systems, marca, empaque,
-            comercio electrÃ³nico, plataformas y un SaaS propio.
+            Diseño el problema, el producto y el sistema que lo construye. Cinco años y medio llevando negocios
+            de una idea a software en producción: más de 30 proyectos entre design systems, marca, empaque,
+            comercio electrónico, plataformas y un SaaS propio.
           </p>
 
           <div className="mt-8">
@@ -92,8 +92,8 @@ export default function GigxPage() {
               />
             </div>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
-              Del sistema de diseÃ±o a la implementaciÃ³n: entiendo la operaciÃ³n del cliente, levanto lo que
-              necesita y lo llevo a producciÃ³n.
+              Del sistema de diseño a la implementación: entiendo la operación del cliente, levanto lo que
+              necesita y lo llevo a producción.
             </p>
           </div>
 
@@ -112,7 +112,7 @@ export default function GigxPage() {
                     href={l.href}
                     className="font-display font-bold text-brand-600 underline-offset-4 hover:underline"
                   >
-                    {l.label} â†—
+                    {l.label} ↗
                   </ExternalLink>
                 </li>
               ))}
@@ -126,7 +126,7 @@ export default function GigxPage() {
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
             <Kicker>Ahora</Kicker>
             <span className="text-lg text-ink">
-              Construyo Merez, una plataforma SaaS con agentes de IA para pequeÃ±os negocios, y dirijo Inflinds.
+              Construyo Merez, una plataforma SaaS con agentes de IA para pequeños negocios, y dirijo Inflinds.
             </span>
           </div>
         </Container>
@@ -134,8 +134,8 @@ export default function GigxPage() {
 
       <section className="py-16 sm:py-24">
         <Container>
-          <Kicker>QuÃ© hago</Kicker>
-          {/* En mÃ³vil, fila deslizable (se ve un bloque y asoma el siguiente); en escritorio, tres columnas. */}
+          <Kicker>Qué hago</Kicker>
+          {/* En móvil, fila deslizable (se ve un bloque y asoma el siguiente); en escritorio, tres columnas. */}
           <ol className="-mx-5 mt-6 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-x-10 md:gap-y-0 md:overflow-visible md:px-0 md:pb-0">
             {doing.map((d, i) => (
               <li key={d.title} className="w-[82%] shrink-0 snap-start border-t border-line py-4 md:w-auto md:py-6">
@@ -185,7 +185,7 @@ export default function GigxPage() {
                   </h3>
                   <p className="mt-1 text-slate">{f.text}</p>
                   <span className="mt-2 inline-block font-display text-xs font-bold uppercase tracking-[0.18em] text-brand-600">
-                    Ver el caso â†’
+                    Ver el caso →
                   </span>
                 </Link>
               </li>
@@ -210,7 +210,7 @@ export default function GigxPage() {
               href="/gigx/portfolio/#linea-de-tiempo"
               className="font-display font-bold text-brand-600 underline-offset-4 hover:underline"
             >
-              Ver la lÃ­nea de tiempo completa â†’
+              Ver la línea de tiempo completa →
             </Link>
           </p>
         </Container>
@@ -218,7 +218,7 @@ export default function GigxPage() {
 
       <section className="border-t border-line py-14 sm:py-20">
         <Container>
-          <Kicker>FormaciÃ³n</Kicker>
+          <Kicker>Formación</Kicker>
           <dl className="mt-4">
             {teaching.map((t) => (
               <div key={t.place} className="grid gap-2 border-t border-line py-4 md:grid-cols-[16rem_1fr] md:items-baseline">
@@ -245,7 +245,7 @@ export default function GigxPage() {
 
       <section className="bg-night py-16 sm:py-20">
         <Container>
-          <Kicker dark>CÃ³mo trabajo</Kicker>
+          <Kicker dark>Cómo trabajo</Kicker>
           <ol className="mt-6 max-w-3xl">
             {principles.map((p, i) => (
               <li key={p} className="flex gap-5 border-t border-white/10 py-5">
@@ -259,31 +259,31 @@ export default function GigxPage() {
 
       <section className="py-16 sm:py-24">
         <Container>
-          <h2 className="font-display font-black text-3xl sm:text-4xl text-ink">Â¿Hablamos?</h2>
+          <h2 className="font-display font-black text-3xl sm:text-4xl text-ink">¿Hablamos?</h2>
           <p className="mt-3 max-w-xl text-lg text-slate">
-            Si tienes un problema de negocio que merece software, cuÃ©ntamelo.
+            Si tienes un problema de negocio que merece software, cuéntamelo.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
             <ExternalLink href="https://www.linkedin.com/in/gigx" className={ctaClass}>
-              LinkedIn â†—
+              LinkedIn ↗
             </ExternalLink>
             <ExternalLink
               href="https://x.com/gigx"
               className="inline-flex items-center justify-center rounded-xl border-2 border-brand-200 bg-white px-6 py-3 font-bold text-brand-600 transition-all hover:border-brand-600 hover:bg-brand-50"
             >
-              X â†—
+              X ↗
             </ExternalLink>
             <ExternalLink
               href="https://github.com/ElGigx"
               className="font-display font-bold text-brand-600 underline-offset-4 hover:underline"
             >
-              GitHub â†—
+              GitHub ↗
             </ExternalLink>
             <ExternalLink
               href="https://www.behance.net/miguelyaeza"
               className="font-display font-bold text-brand-600 underline-offset-4 hover:underline"
             >
-              Behance â†—
+              Behance ↗
             </ExternalLink>
           </div>
         </Container>

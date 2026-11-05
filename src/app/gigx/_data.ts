@@ -48,30 +48,44 @@ export type CaseStudy = {
 
 export const cases: CaseStudy[] = [
   {
-    id: "pantou",
-    kicker: "2023–2024 · Diseño UX/UI y design systems",
-    title: "PANTou — un sistema, siete marcas",
+    id: "merez",
+    kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
+    title: "Merez",
     summary:
-      "Siete tiendas de relojería, moda y crédito con equipos pequeños: un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
+      "Plataforma SaaS multi-tenant para pequeños negocios: sitio web, catálogo, CRM, cotizaciones, agente de ventas con IA y panel con asistente.",
     problem:
-      "Cada marca rehacía lo mismo: componentes, estilos y patrones propios, sin base común y sin documentación. El costo no era diseñar: era repetirlo siete veces y volver a decidirlo cada vez.",
+      "Los negocios pequeños pagan y conectan cinco herramientas que no se hablan entre sí.",
     did: [
-      "Un sistema por marca: tokens, componentes y hoja de estilos, con las reglas escritas para que sobrevivieran a mi salida.",
-      "Mapa de pantallas de la tienda completa: el universo entero en un plano, antes de tocar ningún detalle.",
-      "Tokens en CSS implementables en Angular y Shopify, no solo dibujados en Figma.",
-      "Investigación con usuarios: mapas de calor, pruebas de usabilidad y grabaciones en Clarity, más card sorting para la arquitectura de información.",
-      "Plantillas de correo en HTML y MJML, parte del mismo sistema.",
-      "Archivos de Figma entregados editables: el sistema quedó como archivo vivo, no como lámina.",
+      "Arquitectura modular multi-tenant: los módulos se activan por sitio.",
+      "Agentes de IA propios sobre modelos de OpenAI y Anthropic: asistente del panel, investigador y agente de ventas por WhatsApp.",
+      "Medición del costo de IA por llamada y por segmento, con techo para las cuentas en prueba.",
+      "Plugin de WordPress y SDK en TypeScript para incrustar Merez en cualquier sitio.",
+      "Consola de operador para el equipo.",
     ],
     figures: [
-      { value: "7", label: "marcas con hoja de componentes" },
-      { value: "14", label: "meses, de febrero de 2023 a marzo de 2024" },
-      { value: "3", label: "plataformas: Angular, Shopify y correo" },
+      { value: "31", label: "herramientas de agente" },
+      { value: "5", label: "niveles de riesgo" },
+      { value: "0,1", label: "créditos por completar una ficha" },
     ],
-    images: [],
-    confidential:
-      "Trabajo bajo acuerdo de confidencialidad con el cliente. Las pantallas y el archivo de Figma se muestran en entrevista; aquí queda el método y el resultado.",
-    stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
+    images: [
+      {
+        src: "/gigx/shots/merez-home.webp",
+        alt: "Página de inicio de Merez en escritorio, con el titular y los accesos al panel",
+        w: 1440,
+        h: 900,
+        size: "full",
+      },
+      {
+        src: "/gigx/shots/merez-home-m.webp",
+        alt: "Página de inicio de Merez en un teléfono",
+        w: 390,
+        h: 844,
+        size: "phone",
+        caption: "Versión móvil",
+      },
+    ],
+    links: [{ label: "Ver en vivo ↗", href: "https://merez.co" }],
+    stack: ["Laravel 13", "PHP 8.3", "MySQL", "React 19", "Vite", "Refine", "Next.js 16", "Tailwind CSS 4", "OpenAI", "Anthropic", "WhatsApp", "GitHub Actions"],
   },
   {
     id: "colibri",
@@ -119,54 +133,6 @@ export const cases: CaseStudy[] = [
       },
     ],
     stack: ["Illustrator", "Arte final", "Troquel", "Preimpresión"],
-  },
-  {
-    id: "wallo",
-    kicker: "2020–2021 · Producto digital y UX",
-    title: "Wallo — tarjetas de membresía en el teléfono",
-    summary:
-      "Una app para llevar las tarjetas de fidelidad del bolsillo al teléfono, con activación por NFC: el flujo completo, del registro al primer uso.",
-    problem:
-      "Las tarjetas de membresía se pierden, y el negocio no tiene forma de saber quién volvió. La app tenía que resolver el registro sin fricción y llegar rápido al momento en que la tarjeta sirve.",
-    did: [
-      "Flujo de entrada completo: registro con correo o redes, verificación por SMS y creación de PIN.",
-      "Activación de la tarjeta por NFC explicada en pantalla, en un paso, sin manual.",
-      "Inicio con las membresías como protagonistas: color por tarjeta y acceso en un toque.",
-      "Pantallas de estado para cada paso: código enviado, cuenta creada, huella autorizada.",
-      "Sistema visual mínimo —tipografía, color y componentes— para que las pantallas se sintieran de la misma app.",
-    ],
-    figures: [
-      { value: "35", label: "pantallas del flujo completo" },
-      { value: "6", label: "secciones: inicio, membresías, tarjeta, documentos, personalizado y tema oscuro" },
-      { value: "NFC", label: "activación de la tarjeta desde el teléfono" },
-    ],
-    images: [
-      {
-        src: "/gigx/wallo/flujo-inicio.webp",
-        alt: "Flujo de registro y activación de la app Wallo: registro, verificación por SMS, cuenta creada, NFC y PIN",
-        w: 2200,
-        h: 889,
-        size: "full",
-        caption: "Registro y activación",
-      },
-      {
-        src: "/gigx/wallo/membresias.webp",
-        alt: "Pantalla de membresías de Wallo con las tarjetas por color",
-        w: 2200,
-        h: 1365,
-        size: "half",
-        caption: "Membresías",
-      },
-      {
-        src: "/gigx/wallo/tarjeta.webp",
-        alt: "Pantalla de detalle de una tarjeta de membresía en Wallo",
-        w: 2200,
-        h: 1365,
-        size: "half",
-        caption: "La tarjeta",
-      },
-    ],
-    stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
   },
   {
     id: "greenforce",
@@ -263,44 +229,78 @@ export const cases: CaseStudy[] = [
     stack: ["Illustrator", "Premiere", "After Effects", "Fotografía de producto"],
   },
   {
-    id: "merez",
-    kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
-    title: "Merez",
+    id: "wallo",
+    kicker: "2020–2021 · Producto digital y UX",
+    title: "Wallo — tarjetas de membresía en el teléfono",
     summary:
-      "Plataforma SaaS multi-tenant para pequeños negocios: sitio web, catálogo, CRM, cotizaciones, agente de ventas con IA y panel con asistente.",
+      "Una app para llevar las tarjetas de fidelidad del bolsillo al teléfono, con activación por NFC: el flujo completo, del registro al primer uso.",
     problem:
-      "Los negocios pequeños pagan y conectan cinco herramientas que no se hablan entre sí.",
+      "Las tarjetas de membresía se pierden, y el negocio no tiene forma de saber quién volvió. La app tenía que resolver el registro sin fricción y llegar rápido al momento en que la tarjeta sirve.",
     did: [
-      "Arquitectura modular multi-tenant: los módulos se activan por sitio.",
-      "Agentes de IA propios sobre modelos de OpenAI y Anthropic: asistente del panel, investigador y agente de ventas por WhatsApp.",
-      "Medición del costo de IA por llamada y por segmento, con techo para las cuentas en prueba.",
-      "Plugin de WordPress y SDK en TypeScript para incrustar Merez en cualquier sitio.",
-      "Consola de operador para el equipo.",
+      "Flujo de entrada completo: registro con correo o redes, verificación por SMS y creación de PIN.",
+      "Activación de la tarjeta por NFC explicada en pantalla, en un paso, sin manual.",
+      "Inicio con las membresías como protagonistas: color por tarjeta y acceso en un toque.",
+      "Pantallas de estado para cada paso: código enviado, cuenta creada, huella autorizada.",
+      "Sistema visual mínimo —tipografía, color y componentes— para que las pantallas se sintieran de la misma app.",
     ],
     figures: [
-      { value: "31", label: "herramientas de agente" },
-      { value: "5", label: "niveles de riesgo" },
-      { value: "0,1", label: "créditos por completar una ficha" },
+      { value: "35", label: "pantallas del flujo completo" },
+      { value: "6", label: "secciones: inicio, membresías, tarjeta, documentos, personalizado y tema oscuro" },
+      { value: "NFC", label: "activación de la tarjeta desde el teléfono" },
     ],
     images: [
       {
-        src: "/gigx/shots/merez-home.webp",
-        alt: "Página de inicio de Merez en escritorio, con el titular y los accesos al panel",
-        w: 1440,
-        h: 900,
+        src: "/gigx/wallo/flujo-inicio.webp",
+        alt: "Flujo de registro y activación de la app Wallo: registro, verificación por SMS, cuenta creada, NFC y PIN",
+        w: 2200,
+        h: 889,
         size: "full",
+        caption: "Registro y activación",
       },
       {
-        src: "/gigx/shots/merez-home-m.webp",
-        alt: "Página de inicio de Merez en un teléfono",
-        w: 390,
-        h: 844,
-        size: "phone",
-        caption: "Versión móvil",
+        src: "/gigx/wallo/membresias.webp",
+        alt: "Pantalla de membresías de Wallo con las tarjetas por color",
+        w: 2200,
+        h: 1365,
+        size: "half",
+        caption: "Membresías",
+      },
+      {
+        src: "/gigx/wallo/tarjeta.webp",
+        alt: "Pantalla de detalle de una tarjeta de membresía en Wallo",
+        w: 2200,
+        h: 1365,
+        size: "half",
+        caption: "La tarjeta",
       },
     ],
-    links: [{ label: "Ver en vivo ↗", href: "https://merez.co" }],
-    stack: ["Laravel 13", "PHP 8.3", "MySQL", "React 19", "Vite", "Refine", "Next.js 16", "Tailwind CSS 4", "OpenAI", "Anthropic", "WhatsApp", "GitHub Actions"],
+    stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
+  },
+  {
+    id: "pantou",
+    kicker: "2023–2024 · Diseño UX/UI y design systems",
+    title: "PANTou — un sistema, siete marcas",
+    summary:
+      "Siete tiendas de relojería, moda y crédito con equipos pequeños: un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
+    problem:
+      "Cada marca rehacía lo mismo: componentes, estilos y patrones propios, sin base común y sin documentación. El costo no era diseñar: era repetirlo siete veces y volver a decidirlo cada vez.",
+    did: [
+      "Un sistema por marca: tokens, componentes y hoja de estilos, con las reglas escritas para que sobrevivieran a mi salida.",
+      "Mapa de pantallas de la tienda completa: el universo entero en un plano, antes de tocar ningún detalle.",
+      "Tokens en CSS implementables en Angular y Shopify, no solo dibujados en Figma.",
+      "Investigación con usuarios: mapas de calor, pruebas de usabilidad y grabaciones en Clarity, más card sorting para la arquitectura de información.",
+      "Plantillas de correo en HTML y MJML, parte del mismo sistema.",
+      "Archivos de Figma entregados editables: el sistema quedó como archivo vivo, no como lámina.",
+    ],
+    figures: [
+      { value: "7", label: "marcas con hoja de componentes" },
+      { value: "14", label: "meses, de febrero de 2023 a marzo de 2024" },
+      { value: "3", label: "plataformas: Angular, Shopify y correo" },
+    ],
+    images: [],
+    confidential:
+      "Trabajo bajo acuerdo de confidencialidad con el cliente. Las pantallas y el archivo de Figma se muestran en entrevista; aquí queda el método y el resultado.",
+    stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
   },
   {
     id: "fusion-pipe-tools",
@@ -458,6 +458,7 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
+
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
