@@ -109,6 +109,48 @@ export const cases: CaseStudy[] = [
     stack: ["Laravel 13", "PHP 8.3", "MySQL", "React 19", "Vite", "Refine", "Next.js 16", "Tailwind CSS 4", "OpenAI", "Anthropic", "WhatsApp", "GitHub Actions"],
   },
   {
+    id: "kreditime",
+    kicker: "2023–2024 · Fintech de compra a cuotas",
+    title: "Kreditime — compra ahora, paga después",
+    summary:
+      "De lo que más se construyó en PANTou y de lo que menos se puede enseñar: la fintech de crédito que se metía dentro de las tiendas de retail, con su propio sistema, su solicitud y su pasarela.",
+    problem:
+      "Meter crédito dentro de una tienda cambia tres cosas a la vez: el cliente que compra, el comercio que cobra y la entidad que arriesga. Si el flujo se siente como un formulario de banco, nadie lo termina; si se siente demasiado fácil, el riesgo se dispara.",
+    did: [
+      "Un sistema de diseño propio para la fintech, separado del de las tiendas: mismos tokens, otra voz.",
+      "El flujo completo de solicitud: registro con validación, verificación de identidad y respuesta en pantalla.",
+      "La pasarela de pago y el autoservicio del cliente, donde el crédito se vuelve una cuota que se entiende.",
+      "La pieza que se mete dentro de la tienda: «compra ahora, paga después» en el carrito, junto al producto que se está mirando.",
+      "Documentación del borde no visual: estados de la API y reglas, para que el equipo pudiera sostenerlo sin mí.",
+    ],
+    figures: [
+      { value: "1", label: "fintech con sistema de diseño propio" },
+      { value: "Dentro", label: "de las tiendas de retail, en el carrito" },
+      { value: "Poco", label: "se muestra; se explica en entrevista" },
+    ],
+    images: [
+      {
+        src: "/gigx/kreditime-detalle.webp",
+        alt: "Compra ahora y paga después de Kreditime dentro de la tienda de TechnoMarine",
+        w: 1000,
+        h: 514,
+        size: "full",
+        caption: "Dentro de la tienda",
+      },
+      {
+        src: "/gigx/kreditime/detalle-2.webp",
+        alt: "Detalle de la landing de Kreditime con las condiciones del crédito",
+        w: 1000,
+        h: 484,
+        size: "full",
+        caption: "Detalle · condiciones",
+      },
+    ],
+    confidential:
+      "Es el trabajo con más construcción y el menos publicable: del sistema y de la pasarela solo se muestran dos detalles, igual que en Behance. El resto se enseña en entrevista.",
+    stack: ["Figma", "Tokens CSS", "Diseño de flujos", "Pasarela de pago", "Autoservicio"],
+  },
+  {
     id: "colibri",
     kicker: "2021 · Publicidad y campaña de producto",
     title: "Colibri — la campaña que puso el sobre a competir",
@@ -203,51 +245,92 @@ export const cases: CaseStudy[] = [
     stack: ["Illustrator", "Photoshop", "Manual de marca", "Vectorial"],
   },
   {
-    id: "arizas",
-    kicker: "2021–2022 · Marca, catálogo y video",
-    title: "Arizas Tools — la marca y el producto en movimiento",
+    id: "ardipieles",
+    kicker: "2019–2021 · E-commerce, en Ecomm Agency",
+    title: "Ardipieles — la tienda que se sostuvo tres años",
     summary:
-      "Identidad, catálogo técnico y piezas de video para un distribuidor de herramientas: la misma marca sirviendo en una ficha, en un flyer y en un short de 25 segundos.",
+      "Calzado en cuero que vendía por WhatsApp y por catálogo suelto. Monté la tienda sobre WooCommerce, con sus categorías, sus banners y su fotografía, y la sostuve en producción tres años.",
     problem:
-      "Una herramienta se vende por lo que hace, no por su logo. La marca tenía que sostenerse en el catálogo, en la pieza de campaña y en el video, sin que cada soporte pareciera de otra empresa.",
+      "El catálogo existía en fotos y en conversaciones. Sin tienda, cada venta dependía de que alguien contestara el mensaje, y el inventario se actualizaba de memoria.",
     did: [
-      "Logotipo y aplicaciones: tarjetas, flyers y piezas de campaña con la misma retícula.",
-      "Portafolio y fichas técnicas del catálogo, con el producto fotografiado y especificado.",
-      "Nueve shorts verticales y un corporativo de 1:18: piezas que muestran la herramienta trabajando.",
-      "Piezas cortas para WhatsApp, el canal donde de verdad se comparte el catálogo en Colombia.",
+      "Montaje de la tienda sobre WooCommerce: tema, categorías, fichas de producto y flujo de compra.",
+      "Banners por línea de producto —bolsos, calzado—, cada uno con su jerarquía y su color.",
+      "Fotografía y retoque de producto, suficiente para que la ficha no dependiera de la descripción.",
+      "Tres años de mantenimiento: cambios de temporada, campañas y lo que se rompía.",
+      "Cuando el negocio creció, la tienda pasó a otro equipo con lo que ya estaba montado.",
     ],
     figures: [
-      { value: "9", label: "shorts verticales de 25 segundos" },
-      { value: "1:18", label: "el corporativo, en dos versiones" },
-      { value: "1", label: "marca que aguanta ficha, flyer y video" },
+      { value: "2019–2021", label: "tres años en producción" },
+      { value: "WooCommerce", label: "tienda montada desde cero" },
+      { value: "3", label: "líneas de producto con banner propio" },
     ],
     images: [
       {
+        src: "/gigx/ardipieles/banner-bolsos.webp",
+        alt: "Banner de la línea de bolsos de Ardipieles",
+        w: 1170,
+        h: 450,
+        size: "full",
+        caption: "Banner de línea",
+      },
+      {
+        src: "/gigx/ardipieles/banner-bolsos-2.webp",
+        alt: "Segundo banner de la línea de bolsos de Ardipieles",
+        w: 1170,
+        h: 450,
+        size: "full",
+        caption: "Otra temporada, mismo sistema",
+      },
+    ],
+    stack: ["WooCommerce", "WordPress", "Photoshop", "Fotografía de producto"],
+  },
+  {
+    id: "arizas",
+    kicker: "2021–2022 · Portafolio, fichas y sitio",
+    title: "Arizas Tools — el portafolio que vendía herramientas",
+    summary:
+      "Un distribuidor de herramientas para fusión de tuberías que vendía con un PDF suelto. Le construí el portafolio comercial, las fichas gráficas de cada línea y el sitio donde todo eso vive.",
+    problem:
+      "La herramienta se vende por lo que hace, y el vendedor la mostraba en un PDF que se veía igual en cualquier pantalla. Sin un portafolio con criterio y sin fichas por producto, cada cotización dependía de que el cliente imaginara.",
+    did: [
+      "Portafolio comercial: la línea completa presentada como catálogo, no como lista de precios.",
+      "Fichas gráficas por producto, con la referencia, la medida y el uso en una sola pieza que se envía por WhatsApp.",
+      "Sitio con el portafolio dentro: el catálogo, los servicios y el contacto en el mismo lugar, con su propio botón de portafolio.",
+      "Piezas cortas de video como apoyo de la ficha, cuando la herramienta se entiende mejor en movimiento que en una foto.",
+    ],
+    figures: [
+      { value: "1", label: "portafolio comercial completo" },
+      { value: "Fichas", label: "una pieza gráfica por producto" },
+      { value: "Sitio", label: "con el portafolio en línea, vivo hoy" },
+    ],
+    images: [
+      {
+        src: "/gigx/arizas/web.webp",
+        alt: "Sitio de Arizas Tools con el acceso al portafolio comercial",
+        w: 1440,
+        h: 820,
+        size: "full",
+        caption: "El sitio · portafolio incluido",
+      },
+      {
         src: "/gigx/video/corp-35.jpg",
-        alt: "Fotograma del video corporativo de Arizas Tools con una herramienta en primer plano",
+        alt: "Fotograma de una pieza de video de Arizas Tools con una herramienta en primer plano",
         w: 1200,
         h: 676,
-        size: "full",
-        caption: "Corporativo · 1:18",
+        size: "half",
+        caption: "Video de apoyo",
       },
       {
         src: "/gigx/video/arizas-short-1.jpg",
-        alt: "Fotograma de un short vertical de Arizas Tools",
+        alt: "Fotograma de un short de producto de Arizas Tools",
         w: 1600,
         h: 900,
         size: "half",
-        caption: "Short · 25 s",
-      },
-      {
-        src: "/gigx/video/arizas-short-3.jpg",
-        alt: "Fotograma de otro short de Arizas Tools",
-        w: 1600,
-        h: 900,
-        size: "half",
-        caption: "Short · producto en uso",
+        caption: "Pieza corta",
       },
     ],
-    stack: ["Illustrator", "Premiere", "After Effects", "Fotografía de producto"],
+    links: [{ label: "Ver el sitio ↗", href: "https://arizas.co" }],
+    stack: ["Illustrator", "Photoshop", "Premiere", "WordPress"],
   },
   {
     id: "wallo",
@@ -488,6 +571,7 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
+
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
@@ -698,7 +782,7 @@ export const memoryPoints = [
 
 export const doing = [
   { title: "Diseño de producto", text: "Investigación con usuarios, arquitectura de información, flujos, prototipos en Figma y pruebas de usabilidad con datos: mapas de calor, grabaciones y card sorting.", short: "Investigación, flujos, prototipos en Figma y pruebas de usabilidad." },
-  { title: "Design systems", text: "Tokens, componentes y hoja de estilos por marca, documentados para que el equipo los mantenga sin mí. En PANTou, siete tiendas de relojería, moda y crédito; en Merez, el sistema del panel con una regla de build que rechaza colores sueltos.", short: "Tokens, componentes y documentación por marca; siete e-commerce y el panel de Merez." },
+  
   { title: "Marca y empaque", text: "Identidad de principio a fin: logotipo y variantes, manual de uso, aplicaciones y piezas. Empaque con arte final, troquel y preimpresión listos para imprenta.", short: "Identidad, manual de marca y empaque con arte final." },
   { title: "Ingeniería", text: "Aplicaciones web de punta a punta: React y Next.js en TypeScript, Laravel en PHP, MySQL, APIs, arquitectura multi-tenant, despliegue continuo con GitHub Actions y pruebas automáticas.", short: "React y Next.js en TypeScript, Laravel y MySQL; multi-tenant, GitHub Actions y pruebas." },
   { title: "IA aplicada", text: "Agentes sobre OpenAI y Anthropic con herramientas y políticas de aprobación, memoria por cliente, extracción de datos desde documentos y fotos, costo medido por llamada.", short: "Agentes sobre OpenAI y Anthropic con aprobación humana, memoria por cliente y costo medido." },

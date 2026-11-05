@@ -37,7 +37,7 @@ const jsonLd = {
 };
 
 const stats = [
-  { value: "6", label: "disciplinas: producto, design systems, marca, código, IA y contenido" },
+  { value: "5", label: "disciplinas: producto, marca y empaque, código, IA y contenido" },
   { value: "6", label: "marcas con design system propio en PANTou" },
   { value: "1", label: "SaaS multi-tenant en producción" },
 ];
@@ -79,7 +79,7 @@ export default function GigxPage() {
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">
             Diseño el problema, el producto y el sistema que lo construye. Cinco años y medio llevando negocios
-            de una idea a software en producción: más de 30 proyectos entre design systems, marca, empaque,
+            de una idea a software en producción: más de 30 proyectos entre producto, marca, empaque,
             comercio electrónico, plataformas y un SaaS propio.
           </p>
 
