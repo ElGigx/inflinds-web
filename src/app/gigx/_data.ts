@@ -89,19 +89,20 @@ export const cases: CaseStudy[] = [
     ],
     images: [
       {
-        src: "/gigx/shots/merez-home.webp",
-        alt: "Página de inicio de Merez en escritorio, con el titular y los accesos al panel",
+        src: "/gigx/shots/merez-industrial.webp",
+        alt: "Landing de Merez para distribuidores industriales: cotiza, vende y cobra desde un solo lugar",
         w: 1440,
-        h: 900,
+        h: 680,
         size: "full",
+        caption: "Landing industrial",
       },
       {
-        src: "/gigx/shots/merez-home-m.webp",
-        alt: "Página de inicio de Merez en un teléfono",
+        src: "/gigx/shots/merez-industrial-movil.webp",
+        alt: "La misma landing de Merez en un teléfono",
         w: 390,
-        h: 844,
+        h: 660,
         size: "phone",
-        caption: "Versión móvil",
+        caption: "En móvil",
       },
     ],
     links: [{ label: "Ver en vivo ↗", href: "https://merez.co" }],
@@ -705,7 +706,7 @@ export const doing = [
 ];
 
 export const featured = [
-  { title: "Merez", text: "Plataforma SaaS con agentes de IA: veinte modulos, un modelo de cobro por creditos y 118 versiones en produccion.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/merez/panel-ficha.webp", alt: "Ficha de producto en el panel de Merez", w: 1440, h: 1100 } },
+  { title: "Merez", text: "Plataforma SaaS con agentes de IA: veinte modulos, un modelo de cobro por creditos y 118 versiones en produccion.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/shots/merez-industrial.webp", alt: "Landing de Merez para distribuidores industriales", w: 1440, h: 680 } },
   { title: "Fusion Pipe Tools", text: "Un catalogo en PDF convertido en 41 fichas tecnicas y un flujo de cotizacion con CRM.", href: "/gigx/portfolio/#fusion-pipe-tools", image: { src: "/gigx/shots/fusion-home.webp", alt: "Pagina de inicio de Fusion Pipe Tools", w: 1440, h: 900 } },
   { title: "Kreditime", text: "Compra ahora y paga despues: el sistema de diseno aplicado a credito dentro de las tiendas de retail.", href: "/gigx/portfolio/#pantou", image: { src: "/gigx/kreditime-detalle.webp", alt: "Landing de Kreditime: compra ahora y paga despues, dentro de una tienda de retail", w: 1000, h: 514 } },
 ];
