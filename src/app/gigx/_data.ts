@@ -91,6 +91,101 @@ export const cases: CaseStudy[] = [
     stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
   },
   {
+    id: "colibri",
+    kicker: "2021 · Diseño de empaque y arte final",
+    title: "Colibri — empaque para una línea de jabón líquido",
+    summary:
+      "Tres referencias de un mismo producto que la gente elige por el sobre: arte final con troquel, contenido neto y una jerarquía que se entiende a un metro de distancia.",
+    problem:
+      "El sachet de 100 ml se ve del tamaño de una mano y compite en una vitrina llena de bolsas parecidas. Si el nombre del producto no se lee primero, la marca no existe.",
+    did: [
+      "Jerarquía en tres niveles: marca, tipo de jabón y beneficio. En ese orden y a ese tamaño.",
+      "El color como diferenciador de referencia: azul, ropa y multiusos, cada uno con su paleta.",
+      "Arte final preparado para producción: troquel, zona de sellado, contenido neto y sangrado.",
+      "Aplicación a las piezas de la marca: portada y foto de perfil para redes.",
+    ],
+    figures: [
+      { value: "3", label: "referencias con el mismo sistema" },
+      { value: "100 ml", label: "sachet con troquel y zona de sellado" },
+      { value: "1", label: "arte final por referencia, listo para imprenta" },
+    ],
+    images: [
+      {
+        src: "/gigx/colibri/jabon-azul.webp",
+        alt: "Arte final del sachet de jabón azul líquido Colibri, con troquel y contenido neto",
+        w: 1051,
+        h: 1654,
+        size: "full",
+        caption: "Jabón azul · arte final",
+      },
+      {
+        src: "/gigx/colibri/jabon-ropa.webp",
+        alt: "Sachet de la referencia para ropa de la línea Colibri",
+        w: 1051,
+        h: 1654,
+        size: "half",
+        caption: "Ropa",
+      },
+      {
+        src: "/gigx/colibri/multiusos.webp",
+        alt: "Sachet de la referencia multiusos de la línea Colibri",
+        w: 1051,
+        h: 1654,
+        size: "half",
+        caption: "Multiusos",
+      },
+    ],
+    stack: ["Illustrator", "Arte final", "Troquel", "Preimpresión"],
+  },
+  {
+    id: "wallo",
+    kicker: "2020–2021 · Producto digital y UX",
+    title: "Wallo — tarjetas de membresía en el teléfono",
+    summary:
+      "Una app para llevar las tarjetas de fidelidad del bolsillo al teléfono, con activación por NFC: el flujo completo, del registro al primer uso.",
+    problem:
+      "Las tarjetas de membresía se pierden, y el negocio no tiene forma de saber quién volvió. La app tenía que resolver el registro sin fricción y llegar rápido al momento en que la tarjeta sirve.",
+    did: [
+      "Flujo de entrada completo: registro con correo o redes, verificación por SMS y creación de PIN.",
+      "Activación de la tarjeta por NFC explicada en pantalla, en un paso, sin manual.",
+      "Inicio con las membresías como protagonistas: color por tarjeta y acceso en un toque.",
+      "Pantallas de estado para cada paso: código enviado, cuenta creada, huella autorizada.",
+      "Sistema visual mínimo —tipografía, color y componentes— para que las pantallas se sintieran de la misma app.",
+    ],
+    figures: [
+      { value: "35", label: "pantallas del flujo completo" },
+      { value: "6", label: "secciones: inicio, membresías, tarjeta, documentos, personalizado y tema oscuro" },
+      { value: "NFC", label: "activación de la tarjeta desde el teléfono" },
+    ],
+    images: [
+      {
+        src: "/gigx/wallo/flujo-inicio.webp",
+        alt: "Flujo de registro y activación de la app Wallo: registro, verificación por SMS, cuenta creada, NFC y PIN",
+        w: 2200,
+        h: 889,
+        size: "full",
+        caption: "Registro y activación",
+      },
+      {
+        src: "/gigx/wallo/membresias.webp",
+        alt: "Pantalla de membresías de Wallo con las tarjetas por color",
+        w: 2200,
+        h: 1365,
+        size: "half",
+        caption: "Membresías",
+      },
+      {
+        src: "/gigx/wallo/tarjeta.webp",
+        alt: "Pantalla de detalle de una tarjeta de membresía en Wallo",
+        w: 2200,
+        h: 1365,
+        size: "half",
+        caption: "La tarjeta",
+      },
+    ],
+    stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
+  },
+  {
     id: "merez",
     kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
     title: "Merez",
