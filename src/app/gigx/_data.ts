@@ -42,6 +42,8 @@ export type CaseStudy = {
   visual?: "tokens" | "ai";
   stack?: string[];
   footnote?: string;
+  /** Caso de cliente con acuerdo de confidencialidad: se cuenta, no se ilustra. */
+  confidential?: string;
 };
 
 export const cases: CaseStudy[] = [
@@ -66,32 +68,9 @@ export const cases: CaseStudy[] = [
       { value: "14", label: "meses, de febrero de 2023 a marzo de 2024" },
       { value: "3", label: "plataformas: Angular, Shopify y correo" },
     ],
-    images: [
-      {
-        src: "/gigx/pantou/ondademar-componentes.webp",
-        alt: "Hoja de componentes del sistema de diseño de OndadeMar: botones, campos, tarjetas, listados y navegación",
-        w: 2400,
-        h: 1734,
-        size: "full",
-        caption: "OndadeMar · hoja de componentes",
-      },
-      {
-        src: "/gigx/pantou/festina-componentes.webp",
-        alt: "Hoja de componentes de Festina en una tira panorámica",
-        w: 2400,
-        h: 785,
-        size: "half",
-        caption: "Festina · el mismo sistema, otra retícula",
-      },
-      {
-        src: "/gigx/pantou/kreditime-landing.webp",
-        alt: "Landing de Kreditime construida con el mismo sistema, aplicado a crédito y no a retail",
-        w: 2000,
-        h: 3026,
-        size: "half",
-        caption: "Kreditime · crédito, no retail",
-      },
-    ],
+    images: [],
+    confidential:
+      "Trabajo bajo acuerdo de confidencialidad con el cliente. Las pantallas y el archivo de Figma se muestran en entrevista; aquí queda el método y el resultado.",
     stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
   },
   {
@@ -697,9 +676,9 @@ export const doing = [
 ];
 
 export const featured = [
-  { title: "PANTou", text: "Un sistema de diseño para siete marcas de relojería, moda y crédito.", href: "/gigx/portfolio/#pantou", image: { src: "/gigx/pantou/ondademar-componentes.webp", alt: "Hoja de componentes del sistema de diseño de OndadeMar", w: 2400, h: 1734 } },
   { title: "Merez", text: "Plataforma SaaS con agentes de IA para pequeños negocios.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/merez/panel-ficha.webp", alt: "Ficha de producto en el panel de Merez", w: 1440, h: 1100 } },
   { title: "Colibri", text: "Empaque de una línea de jabón líquido: arte final y troquel.", href: "/gigx/portfolio/#colibri", image: { src: "/gigx/colibri/jabon-azul.webp", alt: "Arte final del sachet de jabón azul de Colibri", w: 1051, h: 1654 } },
+  { title: "Green Force", text: "Identidad y manual: las reglas para no romper la marca.", href: "/gigx/portfolio/#greenforce", image: { src: "/gigx/marca/uso-correcto.webp", alt: "Lámina de uso correcto del logotipo de Green Force", w: 1600, h: 900 } },
 ];
 
 export const path = [
