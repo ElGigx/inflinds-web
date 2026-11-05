@@ -38,7 +38,7 @@ const jsonLd = {
 
 const stats = [
   { value: "5", label: "disciplinas: producto, marca y empaque, código, IA y contenido" },
-  { value: "6", label: "marcas con design system propio en PANTou" },
+  { value: "6", label: "marcas con design system propio en PANTOU" },
   { value: "1", label: "SaaS multi-tenant en producción" },
 ];
 

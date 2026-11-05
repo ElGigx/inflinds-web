@@ -115,7 +115,7 @@ export const cases: CaseStudy[] = [
     kicker: "2023–2024 · Fintech de compra a cuotas",
     title: "Kreditime — compra ahora, paga después",
     summary:
-      "De lo que más se construyó en PANTou y de lo que menos se puede enseñar: la fintech de crédito que se metía dentro de las tiendas de retail, con su propio sistema, su solicitud y su cobro.",
+      "De lo que más se construyó en PANTOU y de lo que menos se puede enseñar: la fintech de crédito que se metía dentro de las tiendas de retail, con su propio sistema, su solicitud y su cobro.",
     problem:
       "Meter crédito dentro de una tienda cambia tres cosas a la vez: el cliente que compra, el comercio que cobra y la entidad que arriesga. Si el flujo se siente como un formulario de banco, nadie lo termina; si se siente demasiado fácil, el riesgo se dispara.",
     did: [
@@ -570,7 +570,7 @@ export const cases: CaseStudy[] = [
   {
     id: "pantou",
     kicker: "2023–2024 · Diseño UX/UI y design systems",
-    title: "PANTou — un sistema, seis marcas",
+    title: "PANTOU — un sistema, seis marcas",
     summary:
       "Onda de Mar, Festina, Invicta, Technomarine, Kreditime y Toktok: seis tiendas con equipos pequeños y un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
     problem:
@@ -885,7 +885,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2023–2024",
-    title: "Design systems en PANTou",
+    title: "Design systems en PANTOU",
     items: [
       "Seis marcas: Onda de Mar, Festina, Invicta, Technomarine, Kreditime y Toktok",
       "Hoja de componentes y tokens CSS por marca, para Angular y Shopify",
@@ -1081,7 +1081,7 @@ export const path = [
   { year: "2014", text: "Primeros diseños" },
   { year: "2019–2021", text: "ECOMM Agency" },
   { year: "2021", text: "Funda Inflinds" },
-  { year: "2023–2024", text: "Design systems en PANTou" },
+  { year: "2023–2024", text: "Design systems en PANTOU" },
   { year: "2026", text: "Merez en producción" },
 ];
 
@@ -1106,7 +1106,7 @@ export const faq = [
   },
   {
     q: "¿Has hecho investigación con usuarios?",
-    a: "Medición de producto, sí, y con decisiones detrás. Investigación formal con usuarios la hice en PANTou —pruebas de usabilidad, mapas de calor y card sorting en Clarity— y de eso no se puede publicar el material. Prefiero decirlo así antes que adornarlo.",
+    a: "Medición de producto, sí, y con decisiones detrás. Investigación formal con usuarios la hice en PANTOU —pruebas de usabilidad, mapas de calor y card sorting en Clarity— y de eso no se puede publicar el material. Prefiero decirlo así antes que adornarlo.",
     href: "/gigx/portfolio/#medicion",
     link: "Ver medición",
   },
