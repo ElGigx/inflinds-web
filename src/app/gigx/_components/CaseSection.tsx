@@ -47,6 +47,15 @@ function Media({ study }: { study: CaseStudy }) {
     );
   }
 
+  const nota = study.confidential ? (
+    <div className="mt-4 border border-line bg-paper-soft p-5">
+      <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-muted">
+        Material bajo confidencialidad
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-slate">{study.confidential}</p>
+    </div>
+  ) : null;
+
   const [main, ...rest] = study.images;
   const phone = rest.find((i) => i.size === "phone");
   const below = rest.filter((i) => i.size !== "phone");
@@ -66,6 +75,7 @@ function Media({ study }: { study: CaseStudy }) {
           ))}
         </div>
       )}
+      {nota}
     </div>
   );
 }
@@ -111,6 +121,36 @@ export default function CaseSection({ study, index }: { study: CaseStudy; index:
               ))}
             </dl>
             {study.footnote && <p className="mt-3 text-xs text-muted">{study.footnote}</p>}
+
+            {study.evolution && (
+              <>
+                <h4 className={`mt-8 ${subhead}`}>Cómo evolucionó</h4>
+                <ol className="mt-2">
+                  {study.evolution.map((e) => (
+                    <li key={e.when} className="flex flex-wrap gap-x-4 gap-y-1 border-t border-line py-2.5 last:border-b">
+                      <span className="font-display text-xs font-bold uppercase tracking-[0.16em] text-brand-600 sm:min-w-[7.5rem]">
+                        {e.when}
+                      </span>
+                      <span className="min-w-0 flex-1 basis-48 text-slate leading-relaxed">{e.what}</span>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
+
+            {study.model && (
+              <>
+                <h4 className={`mt-8 ${subhead}`}>Cómo se cobra</h4>
+                <dl className="mt-2">
+                  {study.model.map((m) => (
+                    <div key={m.label} className="flex flex-wrap gap-x-4 gap-y-1 border-t border-line py-2.5 last:border-b">
+                      <dt className="font-display text-sm font-bold text-ink sm:min-w-[7.5rem]">{m.label}</dt>
+                      <dd className="min-w-0 flex-1 basis-48 text-slate leading-relaxed">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            )}
 
             {study.stack && (
               <>

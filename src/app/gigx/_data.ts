@@ -42,6 +42,10 @@ export type CaseStudy = {
   visual?: "tokens" | "ai";
   stack?: string[];
   footnote?: string;
+  /** Cómo se cobra el producto: parejas etiqueta/valor. */
+  model?: { label: string; value: string }[];
+  /** Línea de evolución del producto. */
+  evolution?: { when: string; what: string }[];
   /** Caso de cliente con acuerdo de confidencialidad: se cuenta, no se ilustra. */
   confidential?: string;
 };
@@ -49,23 +53,39 @@ export type CaseStudy = {
 export const cases: CaseStudy[] = [
   {
     id: "merez",
-    kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
-    title: "Merez",
+    kicker: "2026 · Fundador, diseño de producto, negocio y arquitectura",
+    title: "Merez — el sistema operativo que un negocio pequeño no puede pagar",
     summary:
-      "Plataforma SaaS multi-tenant para pequeños negocios: sitio web, catálogo, CRM, cotizaciones, agente de ventas con IA y panel con asistente.",
+      "Nació de una pregunta: por qué un negocio de barrio paga cinco herramientas que no se hablan entre sí. Hoy es una plataforma multi-tenant con veinte módulos, agentes de IA y un modelo de cobro por créditos, en producción.",
     problem:
-      "Los negocios pequeños pagan y conectan cinco herramientas que no se hablan entre sí.",
+      "Un negocio pequeño no tiene sistema: tiene un WordPress para el sitio, un Excel para el catálogo, un cuaderno para las cotizaciones, WhatsApp para vender y una agencia para todo lo demás. Nada se habla, y cada cosa nueva es otro proveedor. Montar el sistema de una empresa mediana cuesta lo que ese negocio factura en un año.",
     did: [
-      "Arquitectura modular multi-tenant: los módulos se activan por sitio.",
-      "Agentes de IA propios sobre modelos de OpenAI y Anthropic: asistente del panel, investigador y agente de ventas por WhatsApp.",
-      "Medición del costo de IA por llamada y por segmento, con techo para las cuentas en prueba.",
-      "Plugin de WordPress y SDK en TypeScript para incrustar Merez en cualquier sitio.",
-      "Consola de operador para el equipo.",
+      "Un solo producto modular: sitio, catálogo, CRM, cotizaciones, pedidos, pagos, inventario, correo, blog y agentes. Los módulos se activan por sitio; el negocio paga por lo que usa, no por un paquete cerrado.",
+      "Arquitectura multi-tenant con frontera de módulos: cada capacidad es una pieza que se enciende sin tocar el núcleo, y ninguna importa a otra.",
+      "Agentes con herramientas y niveles de riesgo: leer es libre, escribir se propone y una persona lo aprueba en el mismo chat. Castor opera el panel, Búho investiga afuera, Colibrí vende por WhatsApp.",
+      "Créditos prepagados en vez de suscripción por asiento: cada proceso de IA se cobra por lo que cuesta. Un motor deriva el precio de cada tarifa y compara lo derivado con lo cobrado; si no cuadra, falla.",
+      "Studio: el estudio de marca dentro del panel. La IA aprende el logo, los colores y la voz del negocio, y con eso se componen piezas y se distribuyen en el sitio y en las redes sin salir del producto.",
+      "IA híbrida: lo que el cliente ya paga —WhatsApp, pasarela— lo conecta con su propia cuenta; lo que no, lo cubre Merez con créditos. Así el costo variable no se come el margen.",
+      "Ciclo de entrega propio: 118 versiones publicadas, cada una con changelog, pruebas automáticas y puertas de contrato de API antes de desplegar.",
     ],
     figures: [
-      { value: "31", label: "herramientas de agente" },
-      { value: "5", label: "niveles de riesgo" },
-      { value: "0,1", label: "créditos por completar una ficha" },
+      { value: "118", label: "versiones publicadas, de la 0.1.0 a la 0.88.0" },
+      { value: "1.162", label: "commits en el backend; 91.000 líneas de PHP" },
+      { value: "31", label: "herramientas de agente en cinco niveles de riesgo" },
+    ],
+    evolution: [
+      { when: "2026-07", what: "Concepto y documentos: qué es, a quién le sirve y cuánto cuesta. Primer modelo de negocio antes de la primera línea de producto." },
+      { when: "jul 2026", what: "v0.1.0, compilación 58. Medición de IA por llamada y agente de WhatsApp conectado." },
+      { when: "ago–sep", what: "Los módulos que un negocio pide de verdad: catálogo, CRM, cotizaciones, pagos, inventario y correo. El sitio deja de ser un tema aparte y pasa a ser otro módulo." },
+      { when: "oct 2026", what: "Agentes con riesgo por herramienta, créditos por proceso y Studio. v0.88.0, compilación 331." },
+      { when: "nov 2026", what: "El producto deja de pintar sitios: cada sitio vive en su repositorio y lee a Merez por la API pública. Se retiran 4.778 líneas." },
+    ],
+    model: [
+      { label: "Planes", value: "Raíz, Semilla, Cosecha, Dorado y A medida. El plan define cupo de créditos; los módulos se activan aparte." },
+      { label: "Plazo", value: "Seis meses en pago único, o un año en cuatro cuotas sin interés. El descuento anual es del 15 %. No hay cobro mes a mes." },
+      { label: "Créditos", value: "Prepagados: cada proceso de IA y cada activación de módulo tiene tarifa. Se acabaron los créditos, se compran más; no hay sorpresa en la factura." },
+      { label: "Dominio", value: "Incluido en .com y atado al compromiso anual: el negocio no tiene que contratar hosting ni DNS por su cuenta." },
+      { label: "Tradicional vs IA", value: "Antes: cinco proveedores y una agencia por tarea. Con Merez: un panel, un crédito por proceso y un agente que propone; la persona aprueba." },
     ],
     images: [
       {
@@ -89,50 +109,50 @@ export const cases: CaseStudy[] = [
   },
   {
     id: "colibri",
-    kicker: "2021 · Diseño de empaque y arte final",
-    title: "Colibri — empaque para una línea de jabón líquido",
+    kicker: "2021 · Publicidad y campaña de producto",
+    title: "Colibri — la campaña que puso el sobre a competir",
     summary:
-      "Tres referencias de un mismo producto que la gente elige por el sobre: arte final con troquel, contenido neto y una jerarquía que se entiende a un metro de distancia.",
+      "El empaque no lo diseñé yo: hice la publicidad. Portada, perfil y piezas de campaña para una línea de jabón líquido que se vende en sachet de 100 ml.",
     problem:
-      "El sachet de 100 ml se ve del tamaño de una mano y compite en una vitrina llena de bolsas parecidas. Si el nombre del producto no se lee primero, la marca no existe.",
+      "El sachet es el formato que más se ve y menos se recuerda: compite en una vitrina llena de bolsas parecidas y en un feed donde nadie lee. La marca tenía que reconocerse en un segundo.",
     did: [
-      "Jerarquía en tres niveles: marca, tipo de jabón y beneficio. En ese orden y a ese tamaño.",
-      "El color como diferenciador de referencia: azul, ropa y multiusos, cada uno con su paleta.",
-      "Arte final preparado para producción: troquel, zona de sellado, contenido neto y sangrado.",
-      "Aplicación a las piezas de la marca: portada y foto de perfil para redes.",
+      "Jerarquía de campaña: qué se lee primero en cada pieza —marca, producto y beneficio— y a qué tamaño.",
+      "El color como diferenciador de referencia: azul, ropa y multiusos, cada uno con su paleta, para que el cliente reconozca la que ya usa.",
+      "Portada y perfil de Facebook pensados para el recorte: la marca sobrevive al formato cuadrado del avatar.",
+      "Piezas de campaña con el producto en uso, no el sobre flotando: el sachet se entiende cuando se ve el resultado.",
     ],
     figures: [
-      { value: "3", label: "referencias con el mismo sistema" },
-      { value: "100 ml", label: "sachet con troquel y zona de sellado" },
-      { value: "1", label: "arte final por referencia, listo para imprenta" },
+      { value: "3", label: "referencias, cada una con su color" },
+      { value: "2", label: "formatos: portada y pieza de feed" },
+      { value: "100 ml", label: "el formato que hay que hacer recordar" },
     ],
     images: [
       {
-        src: "/gigx/colibri/jabon-azul.webp",
-        alt: "Arte final del sachet de jabón azul líquido Colibri, con troquel y contenido neto",
-        w: 1051,
-        h: 1654,
+        src: "/gigx/colibri/portada-facebook.webp",
+        alt: "Portada de Facebook de la campaña de Colibri, con la marca y el producto",
+        w: 1600,
+        h: 835,
         size: "full",
-        caption: "Jabón azul · arte final",
+        caption: "Portada · campaña",
       },
       {
-        src: "/gigx/colibri/jabon-ropa.webp",
-        alt: "Sachet de la referencia para ropa de la línea Colibri",
-        w: 1051,
-        h: 1654,
+        src: "/gigx/colibri/pieza-facebook.webp",
+        alt: "Pieza de feed de la campaña de Colibri",
+        w: 1080,
+        h: 1080,
         size: "half",
-        caption: "Ropa",
+        caption: "Pieza de feed",
       },
       {
-        src: "/gigx/colibri/multiusos.webp",
-        alt: "Sachet de la referencia multiusos de la línea Colibri",
-        w: 1051,
-        h: 1654,
+        src: "/gigx/colibri/sobre.webp",
+        alt: "Sobre de 100 ml de la línea Colibri, como referencia del producto que se anunciaba",
+        w: 1500,
+        h: 1500,
         size: "half",
-        caption: "Multiusos",
+        caption: "El producto (empaque de otro equipo)",
       },
     ],
-    stack: ["Illustrator", "Arte final", "Troquel", "Preimpresión"],
+    stack: ["Photoshop", "Illustrator", "Meta Ads", "Redes"],
   },
   {
     id: "greenforce",
@@ -279,11 +299,11 @@ export const cases: CaseStudy[] = [
   {
     id: "pantou",
     kicker: "2023–2024 · Diseño UX/UI y design systems",
-    title: "PANTou — un sistema, siete marcas",
+    title: "PANTou — un sistema, seis marcas",
     summary:
-      "Siete tiendas de relojería, moda y crédito con equipos pequeños: un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
+      "Onda de Mar, Festina, Invicta, Technomarine, Kreditime y Toktok: seis tiendas con equipos pequeños y un sistema de diseño por marca, documentado para que el equipo lo mantuviera sin mí.",
     problem:
-      "Cada marca rehacía lo mismo: componentes, estilos y patrones propios, sin base común y sin documentación. El costo no era diseñar: era repetirlo siete veces y volver a decidirlo cada vez.",
+      "Cada marca rehacía lo mismo: componentes, estilos y patrones propios, sin base común y sin documentación. El costo no era diseñar: era repetirlo seis veces y volver a decidirlo cada vez.",
     did: [
       "Un sistema por marca: tokens, componentes y hoja de estilos, con las reglas escritas para que sobrevivieran a mi salida.",
       "Mapa de pantallas de la tienda completa: el universo entero en un plano, antes de tocar ningún detalle.",
@@ -293,13 +313,22 @@ export const cases: CaseStudy[] = [
       "Archivos de Figma entregados editables: el sistema quedó como archivo vivo, no como lámina.",
     ],
     figures: [
-      { value: "7", label: "marcas con hoja de componentes" },
+      { value: "6", label: "marcas con hoja de componentes" },
       { value: "14", label: "meses, de febrero de 2023 a marzo de 2024" },
       { value: "3", label: "plataformas: Angular, Shopify y correo" },
     ],
-    images: [],
+    images: [
+      {
+        src: "/gigx/pantou-detalle.webp",
+        alt: "Detalle del sistema de navegación de una de las tiendas: menús, categorías y estructura",
+        w: 900,
+        h: 813,
+        size: "full",
+        caption: "Detalle · navegación y arquitectura",
+      },
+    ],
     confidential:
-      "Trabajo bajo acuerdo de confidencialidad con el cliente. Las pantallas y el archivo de Figma se muestran en entrevista; aquí queda el método y el resultado.",
+      "Solo se publica un detalle, igual que en Behance. Las hojas de componentes, el mapa de pantallas y los archivos de Figma se muestran en entrevista.",
     stack: ["Figma", "Tokens CSS", "Angular", "Shopify", "MJML", "Clarity"],
   },
   {
@@ -458,7 +487,6 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
-
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
