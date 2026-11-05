@@ -1,7 +1,11 @@
 export const profile = {
   name: "Miguel Angel Yañez",
-  // De lo más cercano a lo que hace hoy a lo menos.
-  roles: ["Design Engineer", "Product Designer", "Forward Deployed Engineer"],
+  // El cargo que se ofrece primero: lo que hará en el equipo, no la jerarquía que tiene.
+  title: "Founder & Product Designer",
+  roles: ["Product Designer", "Design Engineer", "UX/UI"],
+  // A lo que está abierto, que es más ancho que los tres cargos de arriba.
+  openTo: ["Product Designer", "UX/UI Designer", "Design Systems", "Design Engineer", "Implementation / Solutions"],
+  cv: "/gigx/miguel-yanez-cv.pdf",
   photo: "/gigx/miguel.jpg",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/gigx" },
@@ -590,22 +594,24 @@ export const memoryPoints = [
 ];
 
 export const doing = [
-  { title: "Diseño de producto", text: "Investigación con usuarios, arquitectura de información, flujos, prototipos en Figma y sistemas de diseño con tokens.", short: "Investigación, flujos, prototipos en Figma y sistemas de diseño con tokens." },
+  { title: "Diseño de producto", text: "Investigación con usuarios, arquitectura de información, flujos, prototipos en Figma y pruebas de usabilidad con datos: mapas de calor, grabaciones y card sorting.", short: "Investigación, flujos, prototipos en Figma y pruebas de usabilidad." },
+  { title: "Design systems", text: "Tokens, componentes y hoja de estilos por marca, documentados para que el equipo los mantenga sin mí. En PANTou, siete tiendas de relojería, moda y crédito; en Merez, el sistema del panel con una regla de build que rechaza colores sueltos.", short: "Tokens, componentes y documentación por marca; siete e-commerce y el panel de Merez." },
+  { title: "Marca y empaque", text: "Identidad de principio a fin: logotipo y variantes, manual de uso, aplicaciones y piezas. Empaque con arte final, troquel y preimpresión listos para imprenta.", short: "Identidad, manual de marca y empaque con arte final." },
   { title: "Ingeniería", text: "Aplicaciones web de punta a punta: React y Next.js en TypeScript, Laravel en PHP, MySQL, APIs, arquitectura multi-tenant, despliegue continuo con GitHub Actions y pruebas automáticas.", short: "React y Next.js en TypeScript, Laravel y MySQL; multi-tenant, GitHub Actions y pruebas." },
   { title: "IA aplicada", text: "Agentes sobre OpenAI y Anthropic con herramientas y políticas de aprobación, memoria por cliente, extracción de datos desde documentos y fotos, costo medido por llamada.", short: "Agentes sobre OpenAI y Anthropic con aprobación humana, memoria por cliente y costo medido." },
+  { title: "Contenido y video", text: "Guion, edición y piezas verticales para redes: videos de producto, cortos de campaña y portadas. El mismo criterio de jerarquía que en una pantalla, aplicado a un formato que se ve sin sonido.", short: "Guion, edición y piezas verticales para redes." },
 ];
 
 export const featured = [
+  { title: "PANTou", text: "Un sistema de diseño para siete marcas de relojería, moda y crédito.", href: "/gigx/portfolio/#pantou", image: { src: "/gigx/pantou/ondademar-componentes.webp", alt: "Hoja de componentes del sistema de diseño de OndadeMar", w: 2400, h: 1734 } },
   { title: "Merez", text: "Plataforma SaaS con agentes de IA para pequeños negocios.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/merez/panel-ficha.webp", alt: "Ficha de producto en el panel de Merez", w: 1440, h: 1100 } },
-  { title: "Fusion Pipe Tools", text: "Un catálogo en PDF convertido en 41 fichas y un flujo de cotización.", href: "/gigx/portfolio/#fusion-pipe-tools", image: { src: "/gigx/shots/fusion-home.webp", alt: "Página de inicio de Fusion Pipe Tools", w: 1440, h: 900 } },
-  { title: "Acertar", text: "Cursos en línea y certificados verificables en una app propia.", href: "/gigx/portfolio/#acertar", image: { src: "/gigx/shots/acertar-app.webp", alt: "App de Acertar con cursos y certificados", w: 1440, h: 900 } },
+  { title: "Colibri", text: "Empaque de una línea de jabón líquido: arte final y troquel.", href: "/gigx/portfolio/#colibri", image: { src: "/gigx/colibri/jabon-azul.webp", alt: "Arte final del sachet de jabón azul de Colibri", w: 1051, h: 1654 } },
 ];
 
 export const path = [
-  { year: "2019", text: "Diseño gráfico" },
-  { year: "2020", text: "Primeros sitios" },
   { year: "2021", text: "Funda Inflinds" },
-  { year: "2022–2024", text: "+20 sitios y tiendas" },
+  { year: "2022–2023", text: "+20 sitios y tiendas" },
+  { year: "2023–2024", text: "Design systems en PANTou" },
   { year: "2026", text: "Merez en producción" },
 ];
 

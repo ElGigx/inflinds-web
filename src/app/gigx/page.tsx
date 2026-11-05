@@ -37,9 +37,9 @@ const jsonLd = {
 };
 
 const stats = [
-  { value: "30+", label: "proyectos desde 2019" },
+  { value: "6", label: "disciplinas: producto, design systems, marca, código, IA y contenido" },
+  { value: "7", label: "marcas con design system propio en PANTou" },
   { value: "1", label: "SaaS multi-tenant en producción" },
-  { value: "3", label: "disciplinas: diseño, código y operación con IA" },
 ];
 
 const principles = [
@@ -75,12 +75,12 @@ export default function GigxPage() {
             {profile.name}
           </h1>
           <p className="mt-3 font-display font-bold text-lg text-brand-600">
-            {profile.roles.join(" · ")} · Founder &amp; Product Designer
+            {profile.title} · Design Engineer
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">
-            Diseño el problema, el producto y el sistema que lo construye. Llevo desde 2019 llevando negocios de
-            una idea a software en producción: más de 30 proyectos entre sitios, comercio electrónico,
-            plataformas y un SaaS propio.
+            Diseño el problema, el producto y el sistema que lo construye. Cinco años y medio llevando negocios
+            de una idea a software en producción: más de 30 proyectos entre design systems, marca, empaque,
+            comercio electrónico, plataformas y un SaaS propio.
           </p>
 
           <div className="mt-8">
@@ -88,17 +88,23 @@ export default function GigxPage() {
             <div className="mt-3">
               <ChipRow
                 label="Abierto a"
-                items={profile.roles.map((text) => ({ text }))}
+                items={profile.openTo.map((text) => ({ text }))}
               />
             </div>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
-              Como Forward Deployed Engineer trabajo junto al cliente: entiendo su operación, levanto las
-              necesidades y las llevo a desarrollo.
+              Del sistema de diseño a la implementación: entiendo la operación del cliente, levanto lo que
+              necesita y lo llevo a producción.
             </p>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
             <PrimaryButton href="/gigx/portfolio/">Ver portafolio</PrimaryButton>
+            <ExternalLink
+              href={profile.cv}
+              className="inline-flex items-center justify-center rounded-xl border-2 border-brand-200 bg-white px-6 py-3 font-bold text-brand-600 transition-all hover:border-brand-600 hover:bg-brand-50"
+            >
+              Descargar CV (PDF)
+            </ExternalLink>
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {profile.links.map((l) => (
                 <li key={l.label}>
