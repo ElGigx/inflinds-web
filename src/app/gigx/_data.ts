@@ -161,6 +161,63 @@ export const cases: CaseStudy[] = [
     stack: ["Figma", "Tokens", "Documentación de sistema", "Pasarela de pago", "Autoservicio"],
   },
   {
+    id: "medicion",
+    kicker: "2026 · Medición de producto y decisiones",
+    title: "Medir antes de diseñar — cinco hallazgos que cambiaron la decisión",
+    summary:
+      "Antes de construir, contar. Así se cayeron tres supuestos propios y se corrigieron dos piezas de software que ya estaban en producción.",
+    problem:
+      "Un diseñador puede pasar semanas afinando una pantalla que nadie usa, o un modelo de precios que el mercado no paga como uno cree. La diferencia entre criterio y opinión es un número, y ese número casi nunca está en el chat: está en la base de datos, en el servidor o en el vocabulario de quien usa el producto.",
+    did: [
+      "Contar antes de creer: un COUNT(*) contra producción mostró 43 productos, 3 pedidos y cero leads. El sitio que se creía «la tienda» era un escaparate, y el código que se creía desplegado no era el que servía.",
+      "Mirar el recurso que de verdad se agota: en el panel de hosting no era el disco ni la memoria, eran los inodos, al 87 %. Eso invalidó las dos propuestas que había para el eje de precios y dejó uno solo: créditos.",
+      "Leer el chat real de los clientes: una acción del agente era imposible de alcanzar —solo funcionaba para un cliente reconocido y solo por WhatsApp—. No fallaba el modelo; fallaba el camino hasta él.",
+      "Escuchar el vocabulario del oficio: en tubería, una pulgada nominal son 32 mm y no 25,4. El catálogo no necesitaba otra etiqueta, necesitaba otro dato: medida, norma y sinónimos.",
+      "Probar el producto como usuario: «lo veo como si me lo dejara guardar, pero recargo la página y el dato no aparece». La pantalla nunca había leído nada; el guardado era mudo.",
+      "Y dejar escrito lo que no se sabe: la encuesta de disposición a pagar está diseñada y **no ejecutada**. El documento dice, con esas palabras, que aún no hay dato primario.",
+    ],
+    figures: [
+      { value: "5", label: "hallazgos que cambiaron una decisión, no solo una pantalla" },
+      { value: "3", label: "supuestos propios que se cayeron al contar" },
+      { value: "0", label: "datos inventados: lo que no se midió, se declara" },
+    ],
+    tables: [
+      {
+        title: "De la medición a la decisión",
+        head: ["Qué se midió", "Qué encontró", "Qué cambió"],
+        rows: [
+          ["COUNT(*) en producción", "43 productos, 3 pedidos, 0 leads", "El sitio es escaparate, no tienda; se corrigió el despliegue"],
+          ["Panel de hosting", "El 87 % del recurso agotado son inodos", "Se cayó el eje de precios propuesto: queda uno, créditos"],
+          ["Chat real de clientes", "La acción del agente era inalcanzable", "Solicitud del cliente con tipo, dueño y fecha, en dos canales"],
+          ["El vocabulario del oficio", "1\" de tubo son 32 mm, no 25,4", "El catálogo cambió de modelo de datos, no de etiqueta"],
+          ["Prueba manual del panel", "El guardado no leía lo que escribía", "La pantalla se conectó y el guardado dejó de ser mudo"],
+        ],
+      },
+      {
+        title: "Lo que esta práctica no es",
+        head: ["No es", "Por qué se dice"],
+        rows: [
+          ["Investigación con usuarios", "No hay entrevistas ni pruebas de usabilidad registradas. Hay medición de producto, que es otra cosa y sirve para otras preguntas."],
+          ["Un tablero de métricas", "Cada número de esta lista terminó cambiando una decisión concreta; los que no cambiaron nada no aparecen."],
+          ["Datos completos", "La encuesta de disposición a pagar está diseñada y sin ejecutar. Se declara en el documento, no se disimula."],
+        ],
+      },
+    ],
+    images: [
+      {
+        src: "/gigx/medicion-cadena.svg",
+        alt: "Cadena de evidencia: qué se midió, qué encontró y qué cambió en cuatro casos",
+        w: 1200,
+        h: 430,
+        size: "full",
+        caption: "La cadena · medición, hallazgo y decisión",
+      },
+    ],
+    footnote:
+      "Regla de la casa: si un número no se puede verificar en un archivo o en un sitio en vivo, no se publica.",
+    stack: ["SQL", "Producción", "Analítica", "Documentación de hallazgos"],
+  },
+  {
     id: "studio",
     kicker: "2026 · Proceso de diseño y control de calidad",
     title: "merez admin — quince prototipos y una revisión que encontró siete fallas",
