@@ -161,6 +161,63 @@ export const cases: CaseStudy[] = [
     stack: ["Figma", "Tokens", "Documentación de sistema", "Pasarela de pago", "Autoservicio"],
   },
   {
+    id: "studio",
+    kicker: "2026 · Proceso de diseño y control de calidad",
+    title: "merez admin — quince prototipos y una revisión que encontró siete fallas",
+    summary:
+      "Un proyecto de diseño con quince pantallas repartidas en tres versiones, y la revisión que convirtió siete desviaciones de implementación en herramientas para que no vuelvan a pasar.",
+    problem:
+      "Un prototipo que solo vive en una imagen no se puede comparar con lo construido. Cuando otro equipo —persona o agente— implementa tu diseño, la pregunta no es si se ve parecido: es en qué punto se desvió y por qué nadie lo notó hasta el final.",
+    did: [
+      "Quince prototipos en un solo proyecto, repartidos en versiones con nombre y alcance: v0.1 los estados e inventario, v0.2 seis frentes —inicio, móvil, superficie de operador, ajustes, funnel y sidebar compacto—, v0.2.1 el modo ficha y v0.2.2 Studio pantallas.",
+      "Una decisión de interfaz con nombre propio: los textos de ayuda ocupaban la pantalla. En vez de dejarlos o eliminarlos, pasaron al ícono de información. Y no al círculo con admiración —ese es de alertas—, sino a la i: 23 en la ficha y 7 en Studio.",
+      "Revisión de la implementación que hizo un agente a partir de esos prototipos: siete desviaciones encontradas y documentadas, no «se ve distinto» sino cada una con su motivo.",
+      "De las siete salieron las herramientas que faltaban: el diseño escrito en un archivo de datos —cada bloque con su texto exacto— y una prueba que compara el código contra ese archivo.",
+      "Y una página de muestra con la ficha en dos temas, escritorio y celular, para comparar contra capturas de los diseños: lo único que atrapa un error visual sin que alguien lo revise a ojo.",
+      "Encargos chicos y en orden, cada uno con su forma de comprobar que quedó hecho, en vez de un pedido grande que se entrega a medias.",
+    ],
+    figures: [
+      { value: "15", label: "prototipos en un solo proyecto" },
+      { value: "3", label: "versiones: v0.1, v0.2 y v0.2.2" },
+      { value: "7", label: "desviaciones encontradas al revisar lo construido" },
+    ],
+    tables: [
+      {
+        title: "Las siete desviaciones que encontró la revisión",
+        head: ["#", "Qué fallaba"],
+        rows: [
+          ["1", "La ficha no existía: al abrir un producto seguía el formulario viejo, sin la barra de acciones ni el ícono de ayuda."],
+          ["2", "Un servicio aparecía «sin ficha técnica» aunque tuviera beneficios, y el agente lo repetía como si fuera cierto."],
+          ["3", "La IA escribía directo sobre el producto, sin pasar por la propuesta que la persona acepta o descarta."],
+          ["4", "Seguía diciendo «IA» en textos que ve el cliente."],
+          ["5", "Los textos de ayuda de cada campo eran inventados, no los del diseño."],
+          ["6", "La categoría no contaba como dato faltante."],
+          ["7", "Faltaban las nueve plantillas nuevas de Studio."],
+        ],
+      },
+      {
+        title: "Lo que salió de esa revisión",
+        head: ["Herramienta", "Para qué"],
+        rows: [
+          ["El diseño en un archivo de datos", "Cada bloque de la ficha con su texto exacto, no en prosa. Con eso se habrían atrapado tres de las siete fallas."],
+          ["Una prueba que compara código contra diseño", "Avisa cuando la implementación se separa del archivo, sin depender de que alguien lo note."],
+          ["Una página de muestra con capturas", "La ficha en dos temas, escritorio y celular: el único control que atrapa un error visual."],
+        ],
+      },
+    ],
+    images: [
+      {
+        src: "/gigx/studio-versiones.svg",
+        alt: "Escalera de versiones de los prototipos: v0.1, v0.2, v0.2.1 y v0.2.2, con lo que cambió en cada una",
+        w: 1200,
+        h: 470,
+        size: "full",
+        caption: "Las versiones · qué cambió en cada una",
+      },
+    ],
+    stack: ["Claude Design", "Prototipos HTML", "Figma", "React", "Pruebas de fidelidad"],
+  },
+  {
     id: "colibri",
     kicker: "2021 · Publicidad y campaña de producto",
     title: "Colibri — la campaña que puso el sobre a competir",
