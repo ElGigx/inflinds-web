@@ -554,7 +554,7 @@ export const sites: Site[] = [
   { name: "Motor Clean", year: 2021, type: "Landing", image: { src: "/gigx/legacy/motorclean-site.jpg", w: 511, h: 683 } },
   { name: "Llévalo", year: 2021, type: "E-commerce avanzado", image: { src: "/gigx/legacy/Llevalo-pagina-2.jpg", w: 512, h: 683 } },
   { name: "Arizas Tools", year: 2021, type: "E-commerce", image: shot("site-arizas"), href: "https://arizas.co" },
-  { name: "CEAMAC", year: 2022, type: "Sitio empresarial" },
+  { name: "CEAMAC", year: 2022, type: "Sitio empresarial", image: shot("site-ceamac"), href: "https://ceamac.edu.co" },
   { name: "Amatu", year: 2022, type: "E-commerce", image: shot("site-amatumascota"), href: "https://amatumascota.co" },
   { name: "César el Tributarista", year: 2022, type: "Landing", image: shot("site-cesareltributarista"), href: "https://cesareltributarista.com" },
   { name: "Estructálica", year: 2022, type: "Landing", image: shot("site-estructalica"), href: "https://estructalica.com.co" },
