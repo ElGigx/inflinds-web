@@ -470,22 +470,38 @@ export const cases: CaseStudy[] = [
   },
   {
     id: "arizas",
-    kicker: "2021–2022 · Portafolio, fichas y sitio",
-    title: "Arizas Tools — el portafolio que vendía herramientas",
+    kicker: "2021–2022 · Portafolio, sitio y flujo de venta",
+    title: "Arizas Tools — el portafolio que vendía herramientas, y el flujo que no llegó a tiempo",
     summary:
-      "Un distribuidor de herramientas para fusión de tuberías que vendía con un PDF suelto. Le construí el portafolio comercial, las fichas gráficas de cada línea y el sitio donde todo eso vive.",
+      "Un distribuidor de herramientas para fusión de tuberías que vendía con un PDF suelto. Le construí el portafolio comercial, las fichas de cada línea y el sitio. Y diseñé, además, el flujo de venta completo: ese no llegó a implementarse.",
     problem:
-      "La herramienta se vende por lo que hace, y el vendedor la mostraba en un PDF que se veía igual en cualquier pantalla. Sin un portafolio con criterio y sin fichas por producto, cada cotización dependía de que el cliente imaginara.",
+      "La herramienta se vende por lo que hace, y el vendedor la mostraba en un PDF que se veía igual en cualquier pantalla. Pero había un problema anterior al catálogo: la venta ocurría en WhatsApp, sin etapas, sin copy y sin forma de saber en qué punto se caía el cliente.",
     did: [
       "Portafolio comercial: la línea completa presentada como catálogo, no como lista de precios.",
       "Fichas gráficas por producto, con la referencia, la medida y el uso en una sola pieza que se envía por WhatsApp.",
-      "Sitio con el portafolio dentro: el catálogo, los servicios y el contacto en el mismo lugar, con su propio botón de portafolio.",
-      "Piezas cortas de video como apoyo de la ficha, cuando la herramienta se entiende mejor en movimiento que en una foto.",
+      "Sitio con el portafolio dentro: catálogo, servicios y contacto en el mismo lugar, con su propio botón de portafolio.",
+      "**Un flujo de venta completo, en tablero**: qué publicar en el marketplace, el copy por canal, los requisitos técnicos de cada fase y las preguntas que hay que responder en cada paso.",
+      "**Métricas por etapa**: seguimiento a 24 horas y a 72, más un cross-selling opcional después del cierre. Sin eso el flujo es un dibujo; con eso es un proceso que se puede corregir.",
+      "El tablero parte de un diagnóstico —un «detector de fugas» sobre conversaciones reales de WhatsApp— y no de una plantilla.",
     ],
     figures: [
       { value: "1", label: "portafolio comercial completo" },
       { value: "Fichas", label: "una pieza gráfica por producto" },
-      { value: "Sitio", label: "con el portafolio en línea, vivo hoy" },
+      { value: "1", label: "flujo de venta diseñado, no implementado" },
+    ],
+    tables: [
+      {
+        title: "El flujo de venta, por etapas",
+        head: ["Etapa", "Qué resuelve", "Cómo se mide"],
+        rows: [
+          ["Diagnóstico", "«Detector de fugas» sobre conversaciones reales: dónde se cae el cliente", "Lectura de los chats, sin instrumento previo"],
+          ["Publicación", "Qué decir en el marketplace para que lleguen consultas útiles", "Copy por canal, con el requisito técnico de cada pieza"],
+          ["Traspaso a WhatsApp", "El paso donde se pierde el contexto de la consulta", "Preguntas clave definidas antes de escribir"],
+          ["Presentación y cierre", "Qué se muestra y en qué orden para que la conversación avance", "Requisitos técnicos por fase"],
+          ["Seguimiento", "El mensaje que casi nadie manda, a las 24 y a las 72 horas", "Métrica de seguimiento en cada ventana"],
+          ["Después del cierre", "Cross-selling opcional, cuando ya hay confianza", "Etapa aparte, para no ensuciar la venta"],
+        ],
+      },
     ],
     images: [
       {
@@ -514,7 +530,9 @@ export const cases: CaseStudy[] = [
       },
     ],
     links: [{ label: "Ver el sitio ↗", href: "https://arizas.co" }],
-    stack: ["Illustrator", "Photoshop", "Premiere", "WordPress"],
+    footnote:
+      "El flujo de venta quedó diseñado y no se implementó: el sitio y el portafolio sí. Lo que se entrega no siempre es todo lo que se diseña, y conviene decirlo.",
+    stack: ["FigJam", "Illustrator", "Photoshop", "WordPress", "Premiere"],
   },
   {
     id: "wallo",
