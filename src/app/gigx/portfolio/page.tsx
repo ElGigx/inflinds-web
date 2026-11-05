@@ -48,7 +48,7 @@ export default function PortfolioPage() {
             {cases.length} casos a fondo, cinco años y medio de trabajo y el archivo de lo que se construyó en el
             camino: design systems, marca, empaque, sitios, tiendas y producto propio.
           </p>
-          <p className="mt-3 font-display font-bold text-brand-600">{profile.roles.join(" · ")}</p>
+          <p className="mt-3 font-display font-bold text-brand-600">{profile.title} · Design Engineer</p>
           <div className="mt-8">
             <ChipRow items={index} label="Índice del portafolio" />
           </div>
