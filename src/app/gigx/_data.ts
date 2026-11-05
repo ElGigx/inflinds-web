@@ -213,12 +213,12 @@ export const cases: CaseStudy[] = [
     did: [
       "Logotipo y aplicaciones: tarjetas, flyers y piezas de campaña con la misma retícula.",
       "Portafolio y fichas técnicas del catálogo, con el producto fotografiado y especificado.",
-      "Ocho shorts verticales y un corporativo de 1:18: piezas que muestran la herramienta trabajando.",
+      "Nueve shorts verticales y un corporativo de 1:18: piezas que muestran la herramienta trabajando.",
       "Piezas cortas para WhatsApp, el canal donde de verdad se comparte el catálogo en Colombia.",
     ],
     figures: [
-      { value: "9", label: "piezas de video: ocho shorts y un corporativo" },
-      { value: "1:18", label: "el corporativo; los shorts, 25 segundos" },
+      { value: "9", label: "shorts verticales de 25 segundos" },
+      { value: "1:18", label: "el corporativo, en dos versiones" },
       { value: "1", label: "marca que aguanta ficha, flyer y video" },
     ],
     images: [
@@ -265,7 +265,7 @@ export const cases: CaseStudy[] = [
       "Sistema visual mínimo —tipografía, color y componentes— para que las pantallas se sintieran de la misma app.",
     ],
     figures: [
-      { value: "35", label: "pantallas del flujo completo" },
+      { value: "62", label: "pantallas e imágenes del proyecto" },
       { value: "6", label: "secciones: inicio, membresías, tarjeta, documentos, personalizado y tema oscuro" },
       { value: "NFC", label: "activación de la tarjeta desde el teléfono" },
     ],
