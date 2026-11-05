@@ -648,7 +648,7 @@ export const cases: CaseStudy[] = [
     ],
     footnote:
       "La puerta no se cree al README: cuenta el arbol. Hoy la prosa dice \"siete reglas\" y hay ocho, y la linea base declara 753 documentos cuando hay 967. El mecanismo sigue exacto porque mide archivos, no lo que dicen de si mismos.",
-    stack: ["Markdown", "Obsidian", "Git", "Python", "GitHub Actions", "Agentes de IA"],
+    stack: ["Markdown", "Git", "Python", "GitHub Actions", "Agentes de IA"],
   },
   {
     id: "acertar",
