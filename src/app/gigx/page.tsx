@@ -7,7 +7,7 @@ import { doing, featured, ogImage, path, profile, stack } from "./_data";
 
 const title = "Miguel Angel Yañez — Design Engineer · Product Designer";
 const description =
-  "Design Engineer, Product Designer y Forward Deployed Engineer. Founder & CTO de Inflinds. Más de 30 proyectos desde 2019: sitios, comercio electrónico, plataformas y un SaaS propio.";
+  "Design Engineer, Product Designer y Forward Deployed Engineer. Founder & Product Designer. Más de 30 proyectos desde 2019: sitios, comercio electrónico, plataformas y un SaaS propio.";
 
 export const metadata: Metadata = {
   title,
@@ -75,7 +75,7 @@ export default function GigxPage() {
             {profile.name}
           </h1>
           <p className="mt-3 font-display font-bold text-lg text-brand-600">
-            {profile.roles.join(" · ")} · Founder &amp; CTO de Inflinds
+            {profile.roles.join(" · ")} · Founder &amp; Product Designer
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">
             Diseño el problema, el producto y el sistema que lo construye. Llevo desde 2019 llevando negocios de
