@@ -45,7 +45,7 @@ export default function PortfolioPage() {
             De una idea a software en producción
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
-            Seis casos a fondo, cinco años y medio de trabajo y el archivo de lo que se construyó en el
+            {cases.length} casos a fondo, cinco años y medio de trabajo y el archivo de lo que se construyó en el
             camino: design systems, marca, empaque, sitios, tiendas y producto propio.
           </p>
           <p className="mt-3 font-display font-bold text-brand-600">{profile.roles.join(" · ")}</p>

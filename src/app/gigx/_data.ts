@@ -190,6 +190,53 @@ export const cases: CaseStudy[] = [
     stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
   },
   {
+    id: "greenforce",
+    kicker: "2020 · Identidad y manual de marca",
+    title: "Green Force — la marca y las reglas para usarla",
+    summary:
+      "Logotipo, versiones y las láminas de uso correcto e incorrecto: lo que un equipo necesita para no romper la marca cuando ya no está el diseñador.",
+    problem:
+      "Una marca que solo existe como archivo de logo se rompe en la primera campaña: cada pieza usa otra versión, otro color y otro espacio. El manual no es un adorno, es lo que evita eso.",
+    did: [
+      "Tres versiones del logotipo según el fondo donde va a vivir: color, monocromo y escala de grises.",
+      "Láminas comparadas de uso correcto e incorrecto: la regla se explica con el ejemplo al lado, no con un párrafo.",
+      "Aplicación a piezas de campaña para redes, integrando la marca a la fotografía en vez de pegarla encima.",
+      "Entrega en vectorial y PNG por versión, para que el logo sirva igual en imprenta y en pantalla.",
+    ],
+    figures: [
+      { value: "3", label: "versiones del logotipo" },
+      { value: "2", label: "láminas de uso: correcto e incorrecto" },
+      { value: "1", label: "manual que el equipo puede aplicar sin mí" },
+    ],
+    images: [
+      {
+        src: "/gigx/marca/logo.webp",
+        alt: "Logotipo de Green Force en su versión principal",
+        w: 1400,
+        h: 1684,
+        size: "full",
+        caption: "Logotipo · versión principal",
+      },
+      {
+        src: "/gigx/marca/uso-correcto.webp",
+        alt: "Lámina de uso correcto del logotipo de Green Force sobre fotografía",
+        w: 1600,
+        h: 900,
+        size: "half",
+        caption: "Uso correcto",
+      },
+      {
+        src: "/gigx/marca/uso-incorrecto.webp",
+        alt: "Lámina de uso incorrecto del logotipo de Green Force",
+        w: 1600,
+        h: 900,
+        size: "half",
+        caption: "Uso incorrecto",
+      },
+    ],
+    stack: ["Illustrator", "Photoshop", "Manual de marca", "Vectorial"],
+  },
+  {
     id: "merez",
     kicker: "2026 · Fundador, diseño de producto, arquitectura y desarrollo",
     title: "Merez",
