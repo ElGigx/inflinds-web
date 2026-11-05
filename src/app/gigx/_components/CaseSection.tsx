@@ -36,11 +36,13 @@ function Media({ study }: { study: CaseStudy }) {
 
   if (study.confidential && study.images.length === 0) {
     return (
-      <div className="border border-line bg-paper-soft p-6 sm:p-8">
-        <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-muted">
-          Material bajo confidencialidad
-        </p>
-        <p className="mt-3 leading-relaxed text-slate">{study.confidential}</p>
+      <div className="flex min-h-[24rem] items-center lg:min-h-[32rem]">
+        <div className="w-full border border-line bg-paper-soft p-6 sm:p-8">
+          <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-muted">
+            Material bajo confidencialidad
+          </p>
+          <p className="mt-3 leading-relaxed text-slate">{study.confidential}</p>
+        </div>
       </div>
     );
   }
