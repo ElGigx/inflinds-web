@@ -705,9 +705,9 @@ export const doing = [
 ];
 
 export const featured = [
-  { title: "Merez", text: "Plataforma SaaS con agentes de IA para pequeños negocios.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/merez/panel-ficha.webp", alt: "Ficha de producto en el panel de Merez", w: 1440, h: 1100 } },
-  { title: "Colibri", text: "Empaque de una línea de jabón líquido: arte final y troquel.", href: "/gigx/portfolio/#colibri", image: { src: "/gigx/colibri/jabon-azul.webp", alt: "Arte final del sachet de jabón azul de Colibri", w: 1051, h: 1654 } },
-  { title: "Green Force", text: "Identidad y manual: las reglas para no romper la marca.", href: "/gigx/portfolio/#greenforce", image: { src: "/gigx/marca/uso-correcto.webp", alt: "Lámina de uso correcto del logotipo de Green Force", w: 1600, h: 900 } },
+  { title: "Merez", text: "Plataforma SaaS con agentes de IA: veinte modulos, un modelo de cobro por creditos y 118 versiones en produccion.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/merez/panel-ficha.webp", alt: "Ficha de producto en el panel de Merez", w: 1440, h: 1100 } },
+  { title: "Fusion Pipe Tools", text: "Un catalogo en PDF convertido en 41 fichas tecnicas y un flujo de cotizacion con CRM.", href: "/gigx/portfolio/#fusion-pipe-tools", image: { src: "/gigx/shots/fusion-home.webp", alt: "Pagina de inicio de Fusion Pipe Tools", w: 1440, h: 900 } },
+  { title: "Kreditime", text: "Compra ahora y paga despues: el sistema de diseno aplicado a credito dentro de las tiendas de retail.", href: "/gigx/portfolio/#pantou", image: { src: "/gigx/kreditime-detalle.webp", alt: "Landing de Kreditime: compra ahora y paga despues, dentro de una tienda de retail", w: 1000, h: 514 } },
 ];
 
 export const path = [
