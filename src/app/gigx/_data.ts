@@ -393,10 +393,10 @@ export const cases: CaseStudy[] = [
   },
   {
     id: "wallo",
-    kicker: "2020–2021 · Producto digital y UX",
+    kicker: "2020–2021 · Producto digital y UX, en Ecomm Agency",
     title: "Wallo — tarjetas de membresía en el teléfono",
     summary:
-      "Una app para llevar las tarjetas de fidelidad del bolsillo al teléfono, con activación por NFC: el flujo completo, del registro al primer uso.",
+      "Una app para llevar las tarjetas de fidelidad del bolsillo al teléfono, con activación por NFC: el flujo completo, del registro al primer uso. Se hizo dentro del equipo de Ecomm Agency.",
     problem:
       "Las tarjetas de membresía se pierden, y el negocio no tiene forma de saber quién volvió. La app tenía que resolver el registro sin fricción y llegar rápido al momento en que la tarjeta sirve.",
     did: [
@@ -730,7 +730,7 @@ export const timeline: TimelineEntry[] = [
     items: [
       "Tráfico, diseño web y dirección de contenidos.",
       "Más de 30 sitios en WordPress y 10 campañas de Facebook Ads.",
-      "Prototipo de una fintech con 128 vistas en Figma.",
+      "Wallo: prototipo de la app de membresías, 128 vistas en Figma.",
       "Capacitación a dos grupos de la Universidad UNAN, Nicaragua.",
     ],
   },
