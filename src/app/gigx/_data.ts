@@ -39,11 +39,13 @@ export type CaseStudy = {
   figures: Figure[];
   images: CaseImage[];
   links?: { label: string; href: string }[];
-  visual?: "tokens" | "ai";
+  visual?: "tokens" | "ai" | "system";
   stack?: string[];
   footnote?: string;
   /** Cómo se cobra el producto: parejas etiqueta/valor. */
   model?: { label: string; value: string }[];
+  /** Tablas de referencia: cabecera y filas. */
+  tables?: { title: string; head: string[]; rows: string[][] }[];
   /** Línea de evolución del producto. */
   evolution?: { when: string; what: string }[];
   /** Caso de cliente con acuerdo de confidencialidad: se cuenta, no se ilustra. */
@@ -564,6 +566,80 @@ export const cases: CaseStudy[] = [
       "Medido sobre el uso propio de desarrollo en Claude Code, ago–oct 2026. No incluye DeepSeek.",
   },
   {
+    id: "gigxos",
+    kicker: "2026 · Sistema propio, en uso diario",
+    title: "gigxOS — la memoria que sobrevive a cada sesión",
+    summary:
+      "No es una app: es el sistema con el que trabajo con IA sin perder el hilo. Un vault como fuente única, decisiones que quedan escritas y un verificador que impide que la deuda de documentación crezca.",
+    problem:
+      "Trabajar con agentes de IA tiene un fallo de origen: la sesión termina y el contexto se va. Se repiten decisiones ya tomadas, se contradice lo aprobado la semana pasada y cada sesión vuelve a empezar de cero. Un asistente sin memoria no es un equipo: es un becario nuevo todos los días.",
+    did: [
+      "Un vault como fuente única de verdad: 1.101 notas donde el proyecto vive, no en el chat. Cada documento de entidad declara ocho campos obligatorios, entre ellos en qué estado está y cuánto se puede confiar en él.",
+      "88 decisiones de arquitectura con su contexto, las alternativas que se descartaron y las consecuencias. Un ADR aceptado no se edita para cambiar de opinión: se escribe otro que lo marca como reemplazado.",
+      "71 checkpoints como traspaso entre sesiones. El borrador lo emite un script leyendo el git de cada repositorio —ramas, commits sin empujar, archivos sucios— y después se cura a mano, porque el git dice qué se hizo y no por qué.",
+      "22 playbooks con procedimientos ya pagados: desplegar, migrar un DNS con correo vivo, montar un sitio de cliente. Lo que se resolvió una vez no se vuelve a improvisar.",
+      "Un buzón entre agentes con protocolo: entrada con formato, estado pendiente o hecho, y una sola sesión escribiendo a la vez para que dos no se pisen.",
+      "Un verificador de ocho reglas que corre en cada push y cada pull request. No exige cero hallazgos: exige que la deuda no crezca contra una línea base guardada en el repositorio.",
+      "47 skills como instrucciones reutilizables: el procedimiento se escribe una vez y se ejecuta igual cada vez, por mí o por un agente.",
+    ],
+    figures: [
+      { value: "1.101", label: "notas: el proyecto vive en el vault, no en el chat" },
+      { value: "88", label: "decisiones con contexto, alternativas y consecuencias" },
+      { value: "8", label: "reglas en cada push, con trinquete contra la línea base" },
+    ],
+    tables: [
+      {
+        title: "El ciclo de una sesión",
+        head: ["Paso", "Qué pasa"],
+        rows: [
+          ["1 · Arranque", "Se lee el Context Pack de la entidad: 7 packs con el estado compacto de cada proyecto."],
+          ["2 · Coordinación", "El buzón dice quién está trabajando y en qué, antes de tocar nada."],
+          ["3 · Trabajo", "Se abre el documento fuente; el modelo no responde de memoria."],
+          ["4 · Verificación", "El verificador mira el vault entero y compara contra la línea base."],
+          ["5 · Cierre", "Un checkpoint deja el traspaso: ramas, commits, pendientes y cómo retomar."],
+          ["6 · Decisión", "Si hubo una decisión de peso, queda como ADR con su motivo."],
+        ],
+      },
+      {
+        title: "Los ocho campos que declara cada entidad",
+        head: ["Campo", "Valores o función"],
+        rows: [
+          ["numeric_id y slug", "Identidad estable: el número no cambia aunque cambie el nombre."],
+          ["supername", "El nombre legible del documento."],
+          ["domain", "A qué parte del ecosistema pertenece: IDENTITY, BRANDS, VENTURES, SPEC, SYSTEM…"],
+          ["lifecycle", "draft · active · deprecated · archived — en construcción, vigente, en desuso o retirado."],
+          ["trust_level", "speculative · provisional · verified — hipótesis, a medias, o comprobado contra fuente."],
+          ["created y updated", "La fecha de creación no cambia nunca; la de actualización, solo en cambios sustantivos."],
+        ],
+      },
+      {
+        title: "Las ocho reglas del verificador",
+        head: ["Regla", "Qué rechaza", "Norma"],
+        rows: [
+          ["R1", "Documento de entidad sin frontmatter", "GOS-005"],
+          ["R2", "Enlace que no resuelve, en Markdown o en wikilink", "ADR-003 / ADR-013"],
+          ["R3", "`supersedes` que apunta a un documento que no existe", "ADR-008"],
+          ["R4", "Carpeta sin README", "Constitución, art. 8"],
+          ["R5", "`lifecycle` o `trust_level` fuera del vocabulario", "GOS-001 / ADR-004"],
+          ["R6", "Documento vigente que enlaza a uno retirado sin marcarlo", "ADR-008"],
+          ["R7", "Contenido retirado que no bajó su señal de confianza", "ADR-008, enmienda"],
+          ["R8", "Dato de tercera parte fuera de la carpeta privada", "Arq-Business-OS § 11"],
+        ],
+      },
+    ],
+    images: [
+      {
+        src: "/gigx/gigxos-mapa.svg",
+        alt: "Mapa conceptual del vault: context packs, decisiones, checkpoints, playbooks, buzón, marcas, automatización, contrato de IA, ontología, constitución y archivo",
+        w: 1200,
+        h: 460,
+        size: "full",
+        caption: "El mapa · qué guarda cada parte",
+      },
+    ],
+    stack: ["Markdown", "Obsidian", "Git", "Python", "GitHub Actions", "Agentes de IA"],
+  },
+  {
     id: "acertar",
     kicker: "2021 → 2026 · UX/UI, desarrollo y administración",
     title: "Acertar",
@@ -613,6 +689,7 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
+
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };

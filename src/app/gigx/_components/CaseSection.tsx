@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui";
 import type { CaseImage, CaseStudy } from "../_data";
 import { ChipRow, ExternalLink, Kicker } from "./parts";
-import { AiFlow, TokenSpecimen } from "./Visuals";
+import { AiFlow, SystemFlow, TokenSpecimen } from "./Visuals";
 
 const sizeClass: Record<CaseImage["size"], string> = {
   full: "w-full",
@@ -33,6 +33,7 @@ function Figure({ image }: { image: CaseImage }) {
 function Media({ study }: { study: CaseStudy }) {
   if (study.visual === "tokens") return <TokenSpecimen />;
   if (study.visual === "ai") return <AiFlow />;
+  if (study.visual === "system") return <SystemFlow />;
 
   if (study.confidential && study.images.length === 0) {
     return (
@@ -137,6 +138,44 @@ export default function CaseSection({ study, index }: { study: CaseStudy; index:
                 </ol>
               </>
             )}
+
+            {study.tables?.map((tabla) => (
+              <div key={tabla.title} className="mt-8">
+                <h4 className={subhead}>{tabla.title}</h4>
+                <div className="mt-2 overflow-x-auto">
+                  <table className="w-full border-collapse text-left text-sm">
+                    <thead>
+                      <tr>
+                        {tabla.head.map((h) => (
+                          <th
+                            key={h}
+                            className="border-b border-ink py-2 pr-4 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink"
+                          >
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tabla.rows.map((fila) => (
+                        <tr key={fila.join("|")}>
+                          {fila.map((celda, i) => (
+                            <td
+                              key={`${i}-${celda}`}
+                              className={`border-b border-line py-2 pr-4 align-top leading-relaxed ${
+                                i === 0 ? "font-bold text-ink" : "text-slate"
+                              }`}
+                            >
+                              {celda}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
 
             {study.model && (
               <>

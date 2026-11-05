@@ -52,6 +52,59 @@ export function TokenSpecimen() {
   );
 }
 
+const ciclo = [
+  { name: "Context Pack", note: "Arranque compacto por entidad: 11" },
+  { name: "Buzón", note: "Una sesión escribe a la vez; Estado: pendiente o hecho" },
+  { name: "Trabajo", note: "Con el documento fuente abierto, no de memoria" },
+  { name: "Verificador", note: "8 reglas: enlaces, frontmatter, confianza, datos de terceros" },
+  { name: "Checkpoint", note: "Traspaso a la siguiente sesión: 72" },
+  { name: "ADR", note: "La decisión queda con fecha y motivo: 96" },
+];
+
+const reglas = [
+  "Frontmatter ausente en documento de entidad",
+  "Enlace que no resuelve (Markdown y [[ ]])",
+  "supersedes apunta a la nada",
+  "Carpeta sin README",
+  "lifecycle o trust_level fuera del vocabulario",
+  "Documento activo enlaza a uno retirado sin marcarlo",
+  "Contenido retirado que no bajó su señal de confianza",
+  "Dato de tercero fuera de PRIVATE/",
+];
+
+export function SystemFlow() {
+  return (
+    <div className="bg-night p-6 sm:p-8 text-white">
+      <Kicker dark>El ciclo de una sesión</Kicker>
+      <ol className="mt-4">
+        {ciclo.map((s, i) => (
+          <li key={s.name} className="flex items-baseline gap-4 border-t border-white/10 py-3">
+            <span className="w-8 shrink-0 font-display font-black text-2xl text-yellow">{i + 1}</span>
+            <span>
+              <span className="block font-display font-bold">{s.name}</span>
+              <span className="block text-sm text-slate-300">{s.note}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <div className="mt-8 border-t border-white/10 pt-6">
+        <Kicker dark>Lo que el verificador rechaza</Kicker>
+        <ul className="mt-4 space-y-2">
+          {reglas.map((r) => (
+            <li key={r} className="flex gap-3 text-sm text-slate-300">
+              <span className="text-yellow" aria-hidden="true">
+                ✗
+              </span>
+              <span>{r}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 const steps = [
   { name: "Diseño", note: "Orquestador · Claude Opus" },
   { name: "Encargo", note: "Autocontenido" },
