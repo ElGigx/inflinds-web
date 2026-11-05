@@ -285,6 +285,55 @@ export const cases: CaseStudy[] = [
     stack: ["WooCommerce", "WordPress", "Photoshop", "Fotografía de producto"],
   },
   {
+    id: "amatu",
+    kicker: "2022 · E-commerce y calculadora a medida",
+    title: "Amatu — la calculadora que evita que el cliente compre mal",
+    summary:
+      "Comida natural para perros que se vende por peso. El problema no era la tienda: era que nadie sabe cuánto come su perro. Construí la calculadora de ración, con sus dos caminos.",
+    problem:
+      "Si el cliente no sabe cuánta comida necesita su perro, escoge por precio o por tamaño del empaque, y el perro come mal. Una tienda de comida a peso vive o muere en esa cuenta: acertar la ración fideliza, equivocarla devuelve el producto.",
+    did: [
+      "La calculadora como función propia, no un formulario de contacto: mascota, salud, peso ideal, tamaño adulto, raza, etapa y actividad.",
+      "Los dos caminos separados desde la primera pregunta. Si la salud es normal, la calculadora devuelve la ración diaria; si no, no inventa una cifra.",
+      "Los comodines que evitan el abandono: «Criollo» y «No tengo idea» en la raza, y una tabla de peso al lado del campo para quien no lo sabe.",
+      "El camino de salud termina en una solicitud: qué problema tiene, datos de contacto y el aviso de que el veterinario arma la dieta —recetas magistrales, no alimento medicado—.",
+      "Etapas con rango explícito —cachorro de 2 a 12 meses, adulto de 1 a 6 años, senior de 7 o más— y actividad con descripción, no solo la palabra.",
+    ],
+    figures: [
+      { value: "2", label: "caminos: ración calculada o dieta con veterinario" },
+      { value: "8", label: "variables de entrada, con dos comodines" },
+      { value: "0", label: "cifras inventadas cuando la salud no es normal" },
+    ],
+    images: [
+      {
+        src: "/gigx/amatu/calculadora.webp",
+        alt: "Calculadora de ración de Amatu en el sitio: elige tu mascota y avisa que faltan datos",
+        w: 1440,
+        h: 1000,
+        size: "full",
+        caption: "La calculadora, en vivo",
+      },
+      {
+        src: "/gigx/amatu/camino-sano.webp",
+        alt: "Formulario de la calculadora cuando el perro tiene salud normal: peso ideal, tamaño, raza, etapa y actividad",
+        w: 900,
+        h: 1377,
+        size: "half",
+        caption: "Camino normal · calcula la ración",
+      },
+      {
+        src: "/gigx/amatu/camino-salud.webp",
+        alt: "Camino de salud de la calculadora: problema, datos de contacto y solicitud de dieta al veterinario",
+        w: 900,
+        h: 1377,
+        size: "half",
+        caption: "Camino de salud · deriva al veterinario",
+      },
+    ],
+    links: [{ label: "Ver la calculadora ↗", href: "https://amatumascota.co/calculadora/" }],
+    stack: ["WooCommerce", "WordPress", "Diseño de flujos", "Formularios", "Figma"],
+  },
+  {
     id: "arizas",
     kicker: "2021–2022 · Portafolio, fichas y sitio",
     title: "Arizas Tools — el portafolio que vendía herramientas",
@@ -354,28 +403,12 @@ export const cases: CaseStudy[] = [
     ],
     images: [
       {
-        src: "/gigx/wallo/flujo-inicio.webp",
-        alt: "Flujo de registro y activación de la app Wallo: registro, verificación por SMS, cuenta creada, NFC y PIN",
-        w: 2200,
-        h: 889,
+        src: "/gigx/wallo/tablero.webp",
+        alt: "Tablero con todas las vistas del proyecto Wallo: secciones, tarjetas y estados del flujo de membresías",
+        w: 2242,
+        h: 1130,
         size: "full",
-        caption: "Registro y activación",
-      },
-      {
-        src: "/gigx/wallo/membresias.webp",
-        alt: "Pantalla de membresías de Wallo con las tarjetas por color",
-        w: 2200,
-        h: 1365,
-        size: "half",
-        caption: "Membresías",
-      },
-      {
-        src: "/gigx/wallo/tarjeta.webp",
-        alt: "Pantalla de detalle de una tarjeta de membresía en Wallo",
-        w: 2200,
-        h: 1365,
-        size: "half",
-        caption: "La tarjeta",
+        caption: "El proyecto entero · secciones, tarjetas y estados",
       },
     ],
     stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
@@ -403,12 +436,12 @@ export const cases: CaseStudy[] = [
     ],
     images: [
       {
-        src: "/gigx/pantou-detalle.webp",
-        alt: "Detalle del sistema de navegación de una de las tiendas: menús, categorías y estructura",
-        w: 900,
-        h: 813,
+        src: "/gigx/pantou-estilos.webp",
+        alt: "Guía de estilos del sistema: paletas tonales por nivel (primaria, secundaria, peligro y neutra) y la tipografía con sus pesos",
+        w: 1200,
+        h: 1872,
         size: "full",
-        caption: "Detalle · navegación y arquitectura",
+        caption: "Sistema · paletas y tipografía",
       },
     ],
     confidential:
@@ -420,20 +453,21 @@ export const cases: CaseStudy[] = [
     kicker: "2021 → 2026 · Diseño UX/UI, desarrollo y CRM",
     title: "Fusion Pipe Tools",
     summary:
-      "Distribuidor industrial B2B de herramientas para termofusión y electrofusión.",
+      "Distribuidor industrial B2B de herramientas para termofusión y electrofusión. El catálogo vivía en un PDF; hoy es un buscador que piensa como el técnico que va a comprar.",
     problem:
-      "El catálogo vivía en un PDF y cotizar dependía de llamadas y correos sueltos.",
+      "El catálogo era un PDF de 41 fichas y cotizar dependía de llamadas y correos sueltos. Pero el problema de fondo era otro: un instalador no busca «raspador», busca la herramienta que le sirva para un tubo de media pulgada. Si el catálogo no lo deja filtrar por eso, tiene que abrir el PDF, leer la ficha y adivinar si le sirve.",
     did: [
-      "2021: primer sitio de la empresa.",
-      "2026: rediseño completo, con el PDF convertido en 41 fichas técnicas filtrables por tecnología, medida y serie.",
-      "Buscador por medida.",
-      "Blog con SEO.",
-      "Mini-CRM que une leads, correo y cotizaciones formales en PDF.",
+      "El PDF convertido en 41 fichas técnicas filtrables, cada una con los atributos que de verdad se usan: tecnología, medida y serie. Sin ese dato, buscar es imposible.",
+      "Buscador por medida con las cinco que se venden —1/2\" (20 mm), 3/4\" (25 mm), 1\" (32 mm), 2\" (63 mm) y 110 mm—, mostrando la equivalencia en pulgadas y en milímetros, porque el técnico piensa en pulgadas y el catálogo está en milímetros.",
+      "La medida vive en la dirección (`/store/?medida=63`), no en el estado del navegador: el vendedor le manda el enlace al cliente por WhatsApp y el cliente cae en el mismo resultado, filtrado. Un filtro que no se puede compartir no sirve en una venta que se hace por chat.",
+      "Filtro por serie y por tecnología, para el que ya sabe qué referencia quiere y no quiere leer fichas.",
+      "Blog con SEO: cada medida y cada tecnología tiene su página, y la búsqueda orgánica llega por ahí.",
+      "Mini-CRM que une leads, correo y cotizaciones formales en PDF, para que la cotización deje de depender de un correo suelto.",
     ],
     figures: [
-      { value: "41", label: "fichas desde un PDF" },
-      { value: "1", label: "flujo de cotización" },
-      { value: "2021 → 2026", label: "de sitio a sistema" },
+      { value: "41", label: "fichas desde un PDF, con atributos filtrables" },
+      { value: "5", label: "medidas, en pulgadas y milímetros" },
+      { value: "1", label: "enlace que se comparte con el filtro puesto" },
     ],
     images: [
       {
@@ -453,7 +487,7 @@ export const cases: CaseStudy[] = [
       },
       {
         src: "/gigx/shots/fusion-store.webp",
-        alt: "Listado del catálogo de Fusion Pipe Tools con filtros por tecnología y medida",
+        alt: "Catálogo de Fusion Pipe Tools filtrado por medida y tecnología",
         w: 1440,
         h: 900,
         size: "half",
@@ -571,7 +605,6 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
-
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
