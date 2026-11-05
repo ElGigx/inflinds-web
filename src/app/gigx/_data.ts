@@ -412,11 +412,11 @@ export const cases: CaseStudy[] = [
     images: [
       {
         src: "/gigx/wallo/tablero.webp",
-        alt: "Tablero con todas las vistas del proyecto Wallo: secciones, tarjetas y estados del flujo de membresías",
-        w: 2242,
-        h: 1130,
+        alt: "Tableros de sección del proyecto Wallo: inicio, membresías, tarjetas, documentos, personalizado, procesamiento y tema oscuro, cada uno con decenas de pantallas",
+        w: 1352,
+        h: 2272,
         size: "full",
-        caption: "El proyecto entero · secciones, tarjetas y estados",
+        caption: "El proyecto entero · siete secciones, decenas de vistas",
       },
     ],
     stack: ["Figma", "Prototipo", "iOS", "Android", "NFC"],
