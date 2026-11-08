@@ -200,7 +200,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                   {group.items.map((tool) => (
                     <Link
                       key={tool.slug}
-                      href={`/herramientas/${tool.slug}/`}
+                      href={`/tools/${tool.slug}/`}
                       className={`group flex items-center gap-3 rounded-xl border border-line bg-white p-2.5 transition ${meta.hover} ${
                         activeFilter ? "" : "min-w-[250px] snap-start sm:min-w-0"
                       }`}

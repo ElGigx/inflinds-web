@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchA: Tool[] = [
   {
-    slug: "cuotas-de-credito",
+    slug: "credit-installments",
     title: "Cuotas de crédito",
     eyebrow: "Crédito",
     promise: "Cuánto queda la cuota y cuánto se va en intereses.",
@@ -22,7 +22,7 @@ export const batchA: Tool[] = [
     },
   },
   {
-    slug: "descuentos-en-cascada",
+    slug: "stacked-discounts",
     title: "Descuentos en cascada",
     eyebrow: "Precio",
     promise: "Qué queda de verdad cuando dos descuentos se suman.",
@@ -42,7 +42,7 @@ export const batchA: Tool[] = [
     },
   },
   {
-    slug: "propina-y-cuenta",
+    slug: "tip-and-bill",
     title: "Propina y cuenta",
     eyebrow: "Cuenta",
     promise: "Dividir la cuenta sin discutir por cincuenta pesos.",
@@ -62,7 +62,7 @@ export const batchA: Tool[] = [
     },
   },
   {
-    slug: "costo-por-viaje",
+    slug: "cost-per-trip",
     title: "Costo por viaje",
     eyebrow: "Transporte",
     promise: "Lo que cuesta un viaje de verdad, no solo el tanque.",
@@ -82,7 +82,7 @@ export const batchA: Tool[] = [
     },
   },
   {
-    slug: "redondeo-de-precios",
+    slug: "price-rounding",
     title: "Redondeo de precios",
     eyebrow: "Precio",
     promise: "Un precio redondo sin perder el margen.",
@@ -102,7 +102,7 @@ export const batchA: Tool[] = [
     },
   },
   {
-    slug: "conversion-de-medidas",
+    slug: "unit-conversion",
     title: "Conversión de medidas",
     eyebrow: "Medidas",
     promise: "Pasar kilos a libras, litros a galones y unidades a docenas.",

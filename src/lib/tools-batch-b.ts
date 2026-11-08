@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchB: Tool[] = [
   {
-    slug: "enlace-de-whatsapp",
+    slug: "whatsapp-link",
     title: "Enlace de WhatsApp",
     eyebrow: "Ventas",
     promise: "Un enlace que abre el chat con el mensaje ya escrito.",
@@ -22,7 +22,7 @@ export const batchB: Tool[] = [
     },
   },
   {
-    slug: "normalizar-telefonos",
+    slug: "phone-normalizer",
     title: "Normalizar teléfonos",
     eyebrow: "Datos",
     promise: "Una lista suelta convertida a un solo formato.",
@@ -42,7 +42,7 @@ export const batchB: Tool[] = [
     },
   },
   {
-    slug: "caracteres-para-redes",
+    slug: "social-character-count",
     title: "Caracteres para redes",
     eyebrow: "Contenido",
     promise: "Cuánto falta o sobra para el límite de cada red.",
@@ -62,7 +62,7 @@ export const batchB: Tool[] = [
     },
   },
   {
-    slug: "digito-de-verificacion-nit",
+    slug: "nit-check-digit",
     title: "Dígito de verificación del NIT",
     eyebrow: "Trámites",
     promise: "El DV del NIT con el algoritmo de la DIAN.",
@@ -82,12 +82,12 @@ export const batchB: Tool[] = [
     },
   },
   {
-    slug: "firma-de-correo",
+    slug: "email-signature",
     title: "Firma de correo",
     eyebrow: "Marca personal",
     promise: "Una firma en texto plano que se copia y se pega.",
     description:
-      "Llena nombre, cargo, empresa, teléfono, correo y sitio. Te devuelve la firma sin HTML, para que se lea igual en cualquier cliente de correo.",
+      "Llena nombre, cargo, company, teléfono, correo y sitio. Te devuelve la firma sin HTML, para que se lea igual en cualquier cliente de correo.",
     category: "diario",
     minutes: 1,
     inflinds: {
@@ -102,7 +102,7 @@ export const batchB: Tool[] = [
     },
   },
   {
-    slug: "comisiones-de-venta",
+    slug: "sales-commissions",
     title: "Comisiones de venta",
     eyebrow: "Ventas",
     promise: "Comisión base, bono por meta y total a pagar.",

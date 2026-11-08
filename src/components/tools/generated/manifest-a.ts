@@ -1,16 +1,16 @@
 import type { ComponentType } from "react";
-import CuotasCreditoTool from "./CuotasCreditoTool";
-import DescuentosCascadaTool from "./DescuentosCascadaTool";
-import PropinaCuentaTool from "./PropinaCuentaTool";
-import CostoViajeTool from "./CostoViajeTool";
-import RedondeoPreciosTool from "./RedondeoPreciosTool";
-import ConversionMedidasTool from "./ConversionMedidasTool";
+import CreditInstallmentsTool from "./CreditInstallmentsTool";
+import StackedDiscountsTool from "./StackedDiscountsTool";
+import TipAndBillTool from "./TipAndBillTool";
+import CostPerTripTool from "./CostPerTripTool";
+import PriceRoundingTool from "./PriceRoundingTool";
+import UnitConversionTool from "./UnitConversionTool";
 
 export const manifestA: Record<string, ComponentType> = {
-  "cuotas-de-credito": CuotasCreditoTool,
-  "descuentos-en-cascada": DescuentosCascadaTool,
-  "propina-y-cuenta": PropinaCuentaTool,
-  "costo-por-viaje": CostoViajeTool,
-  "redondeo-de-precios": RedondeoPreciosTool,
-  "conversion-de-medidas": ConversionMedidasTool,
+  "credit-installments": CreditInstallmentsTool,
+  "stacked-discounts": StackedDiscountsTool,
+  "tip-and-bill": TipAndBillTool,
+  "cost-per-trip": CostPerTripTool,
+  "price-rounding": PriceRoundingTool,
+  "unit-conversion": UnitConversionTool,
 };

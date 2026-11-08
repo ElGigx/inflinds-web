@@ -786,7 +786,7 @@ export const cases: CaseStudy[] = [
     images: [
       {
         src: "/gigx/gigxos-mapa.svg",
-        alt: "Mapa conceptual del vault: context packs, decisiones, checkpoints, playbooks, buzón, marcas, automatización, contrato de IA, ontología, constitución y archivo",
+        alt: "Mapa conceptual del vault: context packs, decisions, checkpoints, playbooks, buzón, marcas, automatización, contrato de IA, ontología, constitución y archivo",
         w: 1200,
         h: 460,
         size: "full",

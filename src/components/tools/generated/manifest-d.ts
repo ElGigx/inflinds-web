@@ -1,16 +1,16 @@
 import type { ComponentType } from "react";
-import CostoContratarTool from "./CostoContratarTool";
-import ProvisionPrestacionesTool from "./ProvisionPrestacionesTool";
-import LiquidacionVacacionesTool from "./LiquidacionVacacionesTool";
-import PrimaServiciosTool from "./PrimaServiciosTool";
-import CesantiasInteresesTool from "./CesantiasInteresesTool";
-import HorasExtraTool from "./HorasExtraTool";
+import HiringCostTool from "./HiringCostTool";
+import BenefitsProvisionTool from "./BenefitsProvisionTool";
+import VacationPayoutTool from "./VacationPayoutTool";
+import ServiceBonusTool from "./ServiceBonusTool";
+import SeveranceInterestTool from "./SeveranceInterestTool";
+import OvertimeTool from "./OvertimeTool";
 
 export const manifestD: Record<string, ComponentType> = {
-  "costo-de-contratar": CostoContratarTool,
-  "provision-prestaciones": ProvisionPrestacionesTool,
-  "liquidacion-vacaciones": LiquidacionVacacionesTool,
-  "prima-de-servicios": PrimaServiciosTool,
-  "cesantias-e-intereses": CesantiasInteresesTool,
-  "horas-extra": HorasExtraTool,
+  "hiring-cost": HiringCostTool,
+  "benefits-provision": BenefitsProvisionTool,
+  "vacation-payout": VacationPayoutTool,
+  "service-bonus": ServiceBonusTool,
+  "severance-and-interest": SeveranceInterestTool,
+  "overtime": OvertimeTool,
 };

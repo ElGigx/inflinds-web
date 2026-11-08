@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchC: Tool[] = [
   {
-    slug: "dias-entre-fechas",
+    slug: "days-between-dates",
     title: "Días entre fechas",
     eyebrow: "Plazos",
     promise: "Cuánto pasó entre dos fechas, en días, semanas y hábiles.",
@@ -22,7 +22,7 @@ export const batchC: Tool[] = [
     },
   },
   {
-    slug: "edad-de-cartera",
+    slug: "receivables-age",
     title: "Edad de cartera",
     eyebrow: "Cobranza",
     promise: "Cuántos días lleva vencida una factura y cuánto suma la mora.",
@@ -42,7 +42,7 @@ export const batchC: Tool[] = [
     },
   },
   {
-    slug: "costo-promedio-ponderado",
+    slug: "weighted-average-cost",
     title: "Costo promedio",
     eyebrow: "Inventario",
     promise: "El costo real por unidad cuando compras a precios distintos.",
@@ -62,7 +62,7 @@ export const batchC: Tool[] = [
     },
   },
   {
-    slug: "margen-real",
+    slug: "real-margin",
     title: "Margen real",
     eyebrow: "Precios",
     promise: "Qué margen queda después del descuento, no antes.",
@@ -82,7 +82,7 @@ export const batchC: Tool[] = [
     },
   },
   {
-    slug: "precio-por-libra",
+    slug: "price-per-pound",
     title: "Precio por libra",
     eyebrow: "Precios",
     promise: "El precio por kilo en libras, y de vuelta, sin regla de tres.",
@@ -102,7 +102,7 @@ export const batchC: Tool[] = [
     },
   },
   {
-    slug: "promedio-ventas",
+    slug: "sales-average",
     title: "Promedio de ventas",
     eyebrow: "Ventas",
     promise: "Cómo se reparte la semana: total, promedio, mejor y peor día.",

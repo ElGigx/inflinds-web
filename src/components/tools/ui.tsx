@@ -2,10 +2,6 @@
 
 import { useId } from "react";
 
-/**
- * Campo compacto: la ayuda ya no ocupa una línea debajo; vive en un icono de
- * información con tooltip, para que el bloque pese lo mismo con o sin ayuda.
- */
 export function Field({
   label,
   value,

@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchE: Tool[] = [
   {
-    slug: "retencion-en-la-fuente",
+    slug: "withholding-tax",
     title: "Retención en la fuente",
     eyebrow: "DIAN",
     promise: "Cuánto te retienen y cuánto le pagas al proveedor.",
@@ -22,7 +22,7 @@ export const batchE: Tool[] = [
     },
   },
   {
-    slug: "ica-y-reteica",
+    slug: "ica-tax",
     title: "ICA y reteICA",
     eyebrow: "ICA",
     promise: "El ICA de tu actividad y lo que te retiene el cliente.",
@@ -42,7 +42,7 @@ export const batchE: Tool[] = [
     },
   },
   {
-    slug: "factura-con-retenciones",
+    slug: "invoice-with-withholdings",
     title: "Factura con retenciones",
     eyebrow: "Facturación",
     promise: "El neto que de verdad entra a la cuenta.",
@@ -62,7 +62,7 @@ export const batchE: Tool[] = [
     },
   },
   {
-    slug: "costo-de-crear-empresa",
+    slug: "company-setup-cost",
     title: "Costo de crear empresa",
     eyebrow: "Empresa",
     promise: "Cuánto cuesta montarla y cuánto capital necesitas.",
@@ -72,7 +72,7 @@ export const batchE: Tool[] = [
     minutes: 2,
     inflinds: {
       title: "Arrancar en orden",
-      text: "Si vas a montar la empresa, ordenamos la parte legal y la operación desde el primer mes.",
+      text: "Si vas a montar la company, ordenamos la parte legal y la operación desde el primer mes.",
       href: "/services/#consultoria",
     },
     merez: {
@@ -82,7 +82,7 @@ export const batchE: Tool[] = [
     },
   },
   {
-    slug: "aportes-seguridad-social",
+    slug: "social-security",
     title: "Aportes de seguridad social",
     eyebrow: "Nómina",
     promise: "Qué cuesta la nómina además del salario.",
@@ -102,7 +102,7 @@ export const batchE: Tool[] = [
     },
   },
   {
-    slug: "costo-sgsst",
+    slug: "sgsst-cost",
     title: "Costo de SG-SST",
     eyebrow: "SG-SST",
     promise: "El presupuesto anual de seguridad y salud en el trabajo.",

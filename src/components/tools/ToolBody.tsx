@@ -19,17 +19,17 @@ import { manifestD } from "./generated/manifest-d";
 import { manifestE } from "./generated/manifest-e";
 
 const core: Record<string, ComponentType> = {
-  "iva-y-totales": IvaTool,
+  "vat-and-totals": IvaTool,
   porcentajes: PercentTool,
   divisas: CurrencyTool,
-  "dias-habiles": BusinessDaysTool,
-  "punto-de-reorden": ReorderTool,
-  "precio-por-unidad": UnitPriceTool,
-  "precio-de-venta": SalePriceTool,
-  "costo-real-de-un-crm": CrmCostTool,
-  "pasarela-o-breb": PaymentsTool,
-  "horas-que-se-pierden": AutomationTool,
-  "punto-de-equilibrio": BreakEvenTool,
+  "business-days": BusinessDaysTool,
+  "reorder-point": ReorderTool,
+  "unit-price": UnitPriceTool,
+  "sale-price": SalePriceTool,
+  "true-crm-cost": CrmCostTool,
+  "gateway-or-breb": PaymentsTool,
+  "lost-hours": AutomationTool,
+  "break-even": BreakEvenTool,
 };
 
 const registry: Record<string, ComponentType> = {

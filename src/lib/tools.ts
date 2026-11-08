@@ -17,9 +17,8 @@ export type Tool = {
 };
 
 const coreTools: Tool[] = [
-  // ---------- Día a día ----------
   {
-    slug: "iva-y-totales",
+    slug: "vat-and-totals",
     title: "IVA y totales",
     eyebrow: "Facturación",
     promise: "Sumar o quitar el IVA sin equivocarse en la base.",
@@ -39,7 +38,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "porcentajes",
+    slug: "percentages",
     title: "Porcentajes y variaciones",
     eyebrow: "Cuentas",
     promise: "El porcentaje de un valor, y cuánto cambió entre dos.",
@@ -59,7 +58,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "divisas",
+    slug: "currency",
     title: "Dólares y pesos",
     eyebrow: "Divisas",
     promise: "Convertir con la tasa que usas hoy, sin buscar en otra pestaña.",
@@ -79,7 +78,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "dias-habiles",
+    slug: "business-days",
     title: "Días hábiles y vencimientos",
     eyebrow: "Plazos",
     promise: "A qué fecha cae un plazo de N días hábiles.",
@@ -99,7 +98,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "punto-de-reorden",
+    slug: "reorder-point",
     title: "Punto de reorden",
     eyebrow: "Inventario",
     promise: "Con cuánto stock pedir, antes de quedarte sin producto.",
@@ -119,7 +118,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "precio-por-unidad",
+    slug: "unit-price",
     title: "Precio por unidad",
     eyebrow: "Compras",
     promise: "Cuál presentación sale más barata, sin cuentas mentales.",
@@ -139,9 +138,8 @@ const coreTools: Tool[] = [
     },
   },
 
-  // ---------- Decisiones de negocio ----------
   {
-    slug: "precio-de-venta",
+    slug: "sale-price",
     title: "Precio de venta y margen",
     eyebrow: "Precio",
     promise: "Cuánto cobrar para que el margen no se lo coma el descuento.",
@@ -161,7 +159,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "costo-real-de-un-crm",
+    slug: "true-crm-cost",
     title: "Costo real de un CRM",
     eyebrow: "CRM",
     promise: "La factura a doce meses, no el precio de la lista.",
@@ -181,7 +179,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "pasarela-o-breb",
+    slug: "gateway-or-breb",
     title: "Pasarela o Bre-B",
     eyebrow: "Cobros",
     promise: "Cuánto cuesta cobrar con pasarela y cuándo Bre-B deja de alcanzar.",
@@ -201,7 +199,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "horas-que-se-pierden",
+    slug: "lost-hours",
     title: "Horas que se pierden",
     eyebrow: "Automatización",
     promise: "Qué cuesta seguir haciendo a mano lo que se puede automatizar.",
@@ -221,7 +219,7 @@ const coreTools: Tool[] = [
     },
   },
   {
-    slug: "punto-de-equilibrio",
+    slug: "break-even",
     title: "Punto de equilibrio",
     eyebrow: "Operación",
     promise: "Cuánto hay que vender para no perder.",
@@ -242,7 +240,6 @@ const coreTools: Tool[] = [
   },
 ];
 
-// Los lotes los generó el trabajo por frentes: cada batch vive en su archivo.
 export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE];
 
 export function getTool(slug: string): Tool | undefined {

@@ -1,16 +1,16 @@
 import type { ComponentType } from "react";
-import DiasEntreFechasTool from "./DiasEntreFechasTool";
-import EdadCarteraTool from "./EdadCarteraTool";
-import CostoPromedioTool from "./CostoPromedioTool";
-import MargenRealTool from "./MargenRealTool";
-import PrecioPorLibraTool from "./PrecioPorLibraTool";
-import PromedioVentasTool from "./PromedioVentasTool";
+import DaysBetweenDatesTool from "./DaysBetweenDatesTool";
+import ReceivablesAgeTool from "./ReceivablesAgeTool";
+import WeightedAverageCostTool from "./WeightedAverageCostTool";
+import RealMarginTool from "./RealMarginTool";
+import PricePerPoundTool from "./PricePerPoundTool";
+import SalesAverageTool from "./SalesAverageTool";
 
 export const manifestC: Record<string, ComponentType> = {
-  "dias-entre-fechas": DiasEntreFechasTool,
-  "edad-de-cartera": EdadCarteraTool,
-  "costo-promedio-ponderado": CostoPromedioTool,
-  "margen-real": MargenRealTool,
-  "precio-por-libra": PrecioPorLibraTool,
-  "promedio-ventas": PromedioVentasTool,
+  "days-between-dates": DaysBetweenDatesTool,
+  "receivables-age": ReceivablesAgeTool,
+  "weighted-average-cost": WeightedAverageCostTool,
+  "real-margin": RealMarginTool,
+  "price-per-pound": PricePerPoundTool,
+  "sales-average": SalesAverageTool,
 };

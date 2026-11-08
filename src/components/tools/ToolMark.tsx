@@ -3,11 +3,6 @@
 import Icon from "@/components/Icon";
 import { FAMILIES, familyOf, iconOf } from "@/lib/tool-taxonomy";
 
-/**
- * Marca de cada herramienta: baldosa con el color de su categoría, su icono y
- * un acento propio (posición derivada del slug) para que dos herramientas de la
- * misma familia no se lean iguales.
- */
 export default function ToolMark({
   slug,
   size = 44,

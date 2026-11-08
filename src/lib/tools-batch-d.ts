@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchD: Tool[] = [
   {
-    slug: "costo-de-contratar",
+    slug: "hiring-cost",
     title: "Costo de contratar",
     eyebrow: "Nómina",
     promise: "Lo que cuesta de verdad un salario, con aportes y prestaciones.",
@@ -22,7 +22,7 @@ export const batchD: Tool[] = [
     },
   },
   {
-    slug: "provision-prestaciones",
+    slug: "benefits-provision",
     title: "Provisión de prestaciones",
     eyebrow: "Prestaciones",
     promise: "Cuánto separar cada mes para prima, cesantías, intereses y vacaciones.",
@@ -42,7 +42,7 @@ export const batchD: Tool[] = [
     },
   },
   {
-    slug: "liquidacion-vacaciones",
+    slug: "vacation-payout",
     title: "Vacaciones",
     eyebrow: "Vacaciones",
     promise: "Cuánto vale un día de vacaciones y cuánto se paga por los días tomados.",
@@ -62,7 +62,7 @@ export const batchD: Tool[] = [
     },
   },
   {
-    slug: "prima-de-servicios",
+    slug: "service-bonus",
     title: "Prima de servicios",
     eyebrow: "Prestaciones",
     promise: "La prima del semestre y cuánto provisionar por mes.",
@@ -82,7 +82,7 @@ export const batchD: Tool[] = [
     },
   },
   {
-    slug: "cesantias-e-intereses",
+    slug: "severance-and-interest",
     title: "Cesantías e intereses",
     eyebrow: "Cesantías",
     promise: "Cuánto va a cesantías y cuánto generan de intereses.",
@@ -102,7 +102,7 @@ export const batchD: Tool[] = [
     },
   },
   {
-    slug: "horas-extra",
+    slug: "overtime",
     title: "Horas extra y recargos",
     eyebrow: "Recargos",
     promise: "El valor de cada hora extra y el total del período con recargos.",
