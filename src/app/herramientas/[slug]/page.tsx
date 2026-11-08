@@ -5,7 +5,7 @@ import Icon from "@/components/Icon";
 import ToolBody from "@/components/tools/ToolBody";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getTool, tools } from "@/lib/tools";
-import { FAMILIES, familyOf, relatedSlugs } from "@/lib/tool-taxonomy";
+import { FAMILIES, familyOf, iconOf, relatedSlugs } from "@/lib/tool-taxonomy";
 
 export const dynamicParams = false;
 
@@ -101,7 +101,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 hero-glow" aria-hidden="true" />
-        <Container className="relative py-12 sm:py-16">
+        <Container className="relative py-9 sm:py-12">
           <nav aria-label="Ruta" className="flex items-center gap-1.5 text-xs font-semibold text-slate">
             <Link href="/" className="hover:text-ink">
               Inicio
@@ -123,7 +123,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate">{tool.description}</p>
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate">
             <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${family.chip}`}>
-              <Icon name={family.icon} className="h-3 w-3" />
+              <Icon name={iconOf(slug)} className="h-3 w-3" />
               {family.label}
             </span>
             <span>Sin cuenta · {tool.minutes} min · los datos no salen de tu navegador</span>
@@ -131,13 +131,13 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </Container>
       </section>
 
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-10">
         <Container>
           <ToolBody slug={tool.slug} />
         </Container>
       </section>
 
-      <section className="border-y border-line bg-paper-soft py-12 sm:py-16">
+      <section className="border-y border-line bg-paper-soft py-9 sm:py-12">
         <Container>
           <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-magenta">
             Cómo se conecta

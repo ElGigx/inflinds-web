@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Icon from "@/components/Icon";
-import { FAMILIES, FAMILY_ORDER, type FamilyKey } from "@/lib/tool-taxonomy";
+import { FAMILIES, FAMILY_ORDER, iconOf, type FamilyKey } from "@/lib/tool-taxonomy";
 
 export type ExplorerTool = {
   slug: string;
@@ -77,7 +77,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar: IVA, descuento, WhatsApp, cartera, teléfonos…"
+            placeholder="Buscar: IVA, descuento, WhatsApp, cartera, telÃ©fonosâ€¦"
             className="w-full bg-transparent py-2 text-base text-ink outline-none placeholder:text-slate/70"
             autoComplete="off"
           />
@@ -104,7 +104,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
               family === "todas" ? "bg-night text-white" : "bg-paper-soft text-ink hover:bg-line/60"
             }`}
           >
-            Todas · {tools.length}
+            Todas Â· {tools.length}
           </button>
           {FAMILY_ORDER.map((key) => {
             const meta = FAMILIES[key];
@@ -121,7 +121,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                 }`}
               >
                 <Icon name={meta.icon} className="h-3.5 w-3.5" />
-                {meta.label} · {count}
+                {meta.label} Â· {count}
               </button>
             );
           })}
@@ -130,7 +130,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
 
       <p className="mt-4 text-sm text-slate" aria-live="polite">
         {results.length} herramienta{results.length === 1 ? "" : "s"}
-        {query.trim() && <> para «{query.trim()}»</>}
+        {query.trim() && <> para Â«{query.trim()}Â»</>}
         {family !== "todas" && <> en {FAMILIES[family].label}</>}
       </p>
 
@@ -138,7 +138,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
         <div className="mt-6 rounded-2xl border border-dashed border-line bg-white p-8 text-center">
           <p className="font-display text-lg font-bold text-ink">No hay una herramienta con eso.</p>
           <p className="mt-2 text-sm text-slate">
-            Prueba con «IVA», «plazo», «inventario» o «WhatsApp». También puedes limpiar el filtro.
+            Prueba con Â«IVAÂ», Â«plazoÂ», Â«inventarioÂ» o Â«WhatsAppÂ». TambiÃ©n puedes limpiar el filtro.
           </p>
           <button
             type="button"
@@ -182,8 +182,8 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                           <Icon name={meta.icon} className="h-3 w-3" />
                           {meta.label}
                         </span>
-                        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate">
-                          {tool.minutes} min
+                        <span className={`grid h-7 w-7 place-items-center rounded-lg ${meta.tile}`}>
+                          <Icon name={iconOf(tool.slug)} className="h-4 w-4" />
                         </span>
                       </div>
                       <h3 className="mt-3 font-display text-lg font-black leading-tight text-ink group-hover:text-magenta">
@@ -191,7 +191,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                       </h3>
                       <p className="mt-1.5 text-sm font-semibold text-ink">{tool.promise}</p>
                       <p className="mt-1.5 text-sm leading-relaxed text-slate">{tool.description}</p>
-                      <span className="mt-auto pt-4 text-sm font-bold text-magenta">Abrir →</span>
+                      <span className="mt-auto pt-4 text-sm font-bold text-magenta">Abrir â†’</span>
                     </Link>
                   ))}
                 </div>
@@ -210,9 +210,10 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
           }}
           className="mt-8 text-sm font-semibold text-slate underline underline-offset-2 hover:text-magenta"
         >
-          Limpiar búsqueda y ver las {tools.length}
+          Limpiar bÃºsqueda y ver las {tools.length}
         </button>
       )}
     </div>
   );
 }
+

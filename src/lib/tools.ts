@@ -1,6 +1,8 @@
 import { batchA } from "./tools-batch-a";
 import { batchB } from "./tools-batch-b";
 import { batchC } from "./tools-batch-c";
+import { batchD } from "./tools-batch-d";
+import { batchE } from "./tools-batch-e";
 
 export type Tool = {
   slug: string;
@@ -241,7 +243,7 @@ const coreTools: Tool[] = [
 ];
 
 // Los lotes los generó el trabajo por frentes: cada batch vive en su archivo.
-export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC];
+export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE];
 
 export function getTool(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);
