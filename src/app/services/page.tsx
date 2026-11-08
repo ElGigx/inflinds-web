@@ -257,12 +257,20 @@ export default function ServicesPage() {
                         {detail.proof}
                       </div>
 
-                      <Link
-                        href="/contact/"
-                        className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-magenta hover:underline"
-                      >
-                        {detail.cta} →
-                      </Link>
+                      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                        <Link
+                          href={`/services/${service.slug}/`}
+                          className="inline-flex items-center gap-1 text-sm font-bold text-magenta hover:underline"
+                        >
+                          Ver servicio completo →
+                        </Link>
+                        <Link
+                          href="/contact/"
+                          className="inline-flex items-center gap-1 text-sm font-bold text-ink transition hover:text-magenta"
+                        >
+                          {detail.cta} →
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </article>

@@ -20,6 +20,11 @@ const BASE = "https://inflinds.com";
 const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "monthly" },
   { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/diseno/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/desarrollo/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/automatizacion/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/inteligencia-artificial/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/consultoria/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/tools/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/tools/vat-and-totals/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/tools/percentages/", priority: 0.8, changeFrequency: "monthly" },

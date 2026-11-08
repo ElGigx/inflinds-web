@@ -14,7 +14,7 @@ export async function GET() {
     `> ${site.name} (${site.legalName}) es un ${site.tagline} en ${site.country}: diseño, desarrollo web y de plataformas, automatización e inteligencia artificial aplicada para empresas y emprendedores. Construye sobre Merez, su plataforma de gestión para negocios.`,
     "",
     "## Servicios",
-    ...services.map((s) => `- [${s.title}](${BASE}/services/#${s.slug}): ${s.summary}`),
+    ...services.map((s) => `- [${s.title}](${BASE}/services/${s.slug}/): ${s.summary}`),
     "",
     "## Páginas",
     `- [Precios](${BASE}/pricing/): planes y precios de desarrollo a la medida y sobre Merez.`,
