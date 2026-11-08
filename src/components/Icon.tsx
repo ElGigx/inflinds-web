@@ -258,6 +258,7 @@ const ICON_PATHS: Record<string, ReactNode> = {
       <line x1="10" y1="14" x2="21" y2="3" />
     </>
   ),
+  "chevron-down": <polyline points="6 9 12 15 18 9" />,
 };
 
 export default function Icon({ name, className = "h-5 w-5" }: { name: string; className?: string }) {

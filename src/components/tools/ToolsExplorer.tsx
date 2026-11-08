@@ -66,7 +66,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
   return (
     <div>
       {/* Buscador */}
-      <div className="rounded-2xl border border-line bg-white p-3 sm:p-4">
+      <div className="sticky top-16 z-30 rounded-2xl border border-line bg-paper/95 p-3 shadow-sm backdrop-blur-md sm:p-4">
         <div className="flex items-center gap-3">
           <Icon name="search" className="h-5 w-5 shrink-0 text-magenta" />
           <label htmlFor="tool-search" className="sr-only">
@@ -157,7 +157,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
           {grouped.map((group) => {
             const meta = FAMILIES[group.key];
             return (
-              <section key={group.key} aria-labelledby={`familia-${group.key}`}>
+              <section key={group.key} aria-labelledby={`familia-${group.key}`} className="scroll-mt-44">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <h2
                     id={`familia-${group.key}`}
