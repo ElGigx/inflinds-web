@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Página no encontrada",
@@ -19,8 +18,7 @@ export default function NotFound() {
   return (
     <div className="bg-night text-slate-100">
       <section className="mx-auto max-w-6xl px-5 py-20 md:py-28">
-        <Logo light />
-        <p className="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-magenta">Error 404</p>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-magenta">Error 404</p>
         <p className="mt-2 font-display text-[6rem] font-black leading-none text-white/15 md:text-[9rem]">
           404
         </p>
