@@ -13,7 +13,7 @@ export default function ServiceArt({ slug }: { slug: string }) {
   const color = palette[key];
 
   return (
-    <svg viewBox="0 0 320 220" className={`h-auto w-full ${color.stroke}`} aria-hidden="true" fill="none">
+    <svg viewBox="0 0 320 220" className={`h-full w-full ${color.stroke}`} aria-hidden="true" fill="none">
       {key === "diseno" && (
         <>
           <rect x="18" y="24" width="120" height="76" rx="10" className={color.soft} />

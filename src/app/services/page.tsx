@@ -175,7 +175,7 @@ export default function ServicesPage() {
                     href={`#${service.slug}`}
                     className="rounded-2xl border border-line p-3 transition hover:border-magenta"
                   >
-                    <span className="block h-14 w-full">
+                    <span className="block h-16 w-full">
                       <ServiceArt slug={service.slug} />
                     </span>
                     <span className="mt-1 block text-xs font-bold text-ink">{service.tag}</span>
@@ -217,7 +217,7 @@ export default function ServicesPage() {
                         </span>
                         <span className="h-2 w-2 rounded-full bg-magenta" />
                       </div>
-                      <div className="mt-2">
+                      <div className="mt-2 h-44 sm:h-52">
                         <ServiceArt slug={service.slug} />
                       </div>
                     </div>
