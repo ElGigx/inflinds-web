@@ -25,6 +25,7 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inflinds.com"),
+  manifest: "/manifest.webmanifest",
   title: {
     default: "Inflinds — Digital Product Studio",
     template: "%s · Inflinds",
