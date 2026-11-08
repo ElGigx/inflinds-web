@@ -26,6 +26,8 @@ function normalize(value: string) {
 export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
   const [query, setQuery] = useState("");
   const [family, setFamily] = useState<FamilyKey | "todas">("todas");
+  const [compact, setCompact] = useState(false);
+  const [panel, setPanel] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -42,6 +44,20 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setCompact(window.scrollY > 160));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const results = useMemo(() => {
@@ -65,68 +81,105 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
 
   return (
     <div>
-      {/* Buscador */}
-      <div className="sticky top-16 z-30 rounded-2xl border border-line bg-paper/95 p-3 shadow-sm backdrop-blur-md sm:p-4">
-        <div className="flex items-center gap-3">
-          <Icon name="search" className="h-5 w-5 shrink-0 text-magenta" />
-          <label htmlFor="tool-search" className="sr-only">
-            Buscar herramienta
-          </label>
-          <input
-            ref={inputRef}
-            id="tool-search"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar: IVA, nómina, retención, WhatsApp, cartera…"
-            className="w-full bg-transparent py-2 text-base text-ink outline-none placeholder:text-slate/70"
-            autoComplete="off"
-          />
-          {query && (
+      <div className="sticky top-16 z-30">
+        {compact && !panel ? (
+          <div className="flex items-center gap-2 rounded-full border border-line bg-paper/95 p-1.5 shadow-sm backdrop-blur-md">
             <button
               type="button"
-              onClick={() => setQuery("")}
-              className="shrink-0 rounded-lg border border-line px-2 py-1 text-xs font-semibold text-slate hover:border-magenta hover:text-magenta"
+              onClick={() => setPanel(true)}
+              className="flex min-w-0 flex-1 items-center gap-2 rounded-full px-3 py-1.5 text-left text-sm text-ink"
             >
-              Limpiar
+              <Icon name="search" className="h-4 w-4 shrink-0 text-magenta" />
+              <span className="truncate">
+                {query.trim() || (family !== "todas" ? FAMILIES[family].label : "Buscar o filtrar")}
+              </span>
             </button>
-          )}
-          <kbd className="hidden shrink-0 rounded-md border border-line bg-paper-soft px-2 py-1 font-mono text-[11px] text-slate sm:block">
-            /
-          </kbd>
-        </div>
+            <span className="rounded-full bg-night px-2 py-0.5 text-[11px] font-bold text-white">
+              {results.length}
+            </span>
+            <button
+              type="button"
+              onClick={() => setPanel(true)}
+              aria-label="Abrir buscador y filtros"
+              className="grid h-9 w-9 place-items-center rounded-full bg-night text-white"
+            >
+              <Icon name="filter" className="h-4 w-4" />
+            </button>
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-line bg-paper/95 p-3 shadow-sm backdrop-blur-md sm:p-4">
+            <div className="flex items-center gap-3">
+              <Icon name="search" className="h-5 w-5 shrink-0 text-magenta" />
+              <label htmlFor="tool-search" className="sr-only">
+                Buscar herramienta
+              </label>
+              <input
+                ref={inputRef}
+                id="tool-search"
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Buscar: IVA, nómina, retención, WhatsApp, cartera…"
+                className="w-full bg-transparent py-2 text-base text-ink outline-none placeholder:text-slate/70"
+                autoComplete="off"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="shrink-0 rounded-lg border border-line px-2 py-1 text-xs font-semibold text-slate hover:border-magenta hover:text-magenta"
+                >
+                  Limpiar
+                </button>
+              )}
+              <kbd className="hidden shrink-0 rounded-md border border-line bg-paper-soft px-2 py-1 font-mono text-[11px] text-slate sm:block">
+                /
+              </kbd>
+            </div>
 
-        <div className="mt-3 flex flex-wrap gap-2 border-t border-line pt-3">
-          <button
-            type="button"
-            onClick={() => setFamily("todas")}
-            aria-pressed={family === "todas"}
-            className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
-              family === "todas" ? "bg-night text-white" : "bg-paper-soft text-ink hover:bg-line/60"
-            }`}
-          >
-            Todas · {tools.length}
-          </button>
-          {FAMILY_ORDER.map((key) => {
-            const meta = FAMILIES[key];
-            const count = tools.filter((tool) => tool.family === key).length;
-            const active = family === key;
-            return (
+            <div className="mt-3 flex flex-wrap gap-2 border-t border-line pt-3">
               <button
-                key={key}
                 type="button"
-                onClick={() => setFamily(active ? "todas" : key)}
-                aria-pressed={active}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition ${
-                  active ? "bg-night text-white" : `${meta.chip} hover:brightness-95`
+                onClick={() => setFamily("todas")}
+                aria-pressed={family === "todas"}
+                className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                  family === "todas" ? "bg-night text-white" : "bg-paper-soft text-ink hover:bg-line/60"
                 }`}
               >
-                <Icon name={meta.icon} className="h-3.5 w-3.5" />
-                {meta.label} · {count}
+                Todas · {tools.length}
               </button>
-            );
-          })}
-        </div>
+              {FAMILY_ORDER.map((key) => {
+                const meta = FAMILIES[key];
+                const count = tools.filter((tool) => tool.family === key).length;
+                const active = family === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setFamily(active ? "todas" : key)}
+                    aria-pressed={active}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                      active ? "bg-night text-white" : `${meta.chip} hover:brightness-95`
+                    }`}
+                  >
+                    <Icon name={meta.icon} className="h-3.5 w-3.5" />
+                    {meta.label} · {count}
+                  </button>
+                );
+              })}
+            </div>
+
+            {compact && (
+              <button
+                type="button"
+                onClick={() => setPanel(false)}
+                className="mt-3 w-full rounded-lg bg-night py-2 text-xs font-bold text-white sm:w-auto sm:px-4"
+              >
+                Ver resultados
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       <p className="mt-4 text-sm text-slate" aria-live="polite">

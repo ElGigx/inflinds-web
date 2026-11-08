@@ -98,32 +98,56 @@ export default function Header() {
                 {expanded && (
                   <div
                     className={`absolute left-0 top-full mt-2 rounded-2xl border border-white/10 bg-night-800 p-3 shadow-2xl ${
-                      key === "services" ? "w-[460px]" : "w-[420px]"
+                      key === "services" ? "w-[620px]" : "w-[600px]"
                     }`}
                   >
                     {key === "services" && (
-                      <div className="grid grid-cols-2 gap-1">
-                        {services.map((service) => (
-                          <Link
-                            key={service.slug}
-                            href={`/services/#${service.slug}`}
+                      <div className="flex gap-3">
+                        <div className="grid flex-1 grid-cols-2 gap-1">
+                          {services.map((service) => (
+                            <Link
+                              key={service.slug}
+                              href={`/services/#${service.slug}`}
+                              onClick={() => setMenu(null)}
+                              className="rounded-xl p-3 transition hover:bg-white/5"
+                            >
+                              <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">
+                                {service.tag}
+                              </span>
+                              <span className="mt-1 block text-sm font-semibold leading-snug text-white">
+                                {service.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="w-[200px] shrink-0 rounded-xl bg-white/5 p-3">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">Destacado</p>
+                          <p className="mt-1 font-display text-sm font-bold text-white">Merez · la plataforma</p>
+                          <p className="mt-1 text-[11px] leading-relaxed text-slate-400">
+                            La operación completa, sin cobro por usuario.
+                          </p>
+                          <a
+                            href="https://www.merez.co/"
                             onClick={() => setMenu(null)}
-                            className="rounded-xl p-3 transition hover:bg-white/5"
+                            className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-yellow hover:underline"
                           >
-                            <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">
-                              {service.tag}
-                            </span>
-                            <span className="mt-1 block text-sm font-semibold leading-snug text-white">
-                              {service.title}
-                            </span>
+                            Conocer Merez
+                            <span aria-hidden="true">→</span>
+                          </a>
+                          <Link
+                            href="/contact/"
+                            onClick={() => setMenu(null)}
+                            className="mt-3 block rounded-lg bg-gradient-cta px-3 py-2 text-center text-[11px] font-bold text-white"
+                          >
+                            Cuéntanos tu proyecto
                           </Link>
-                        ))}
+                        </div>
                       </div>
                     )}
 
                     {key === "tools" && (
-                      <>
-                        <div className="grid grid-cols-2 gap-1">
+                      <div className="flex gap-3">
+                        <div className="grid flex-1 grid-cols-2 gap-1">
                           {counts.map(({ key: familyKey, count }) => {
                             const meta = FAMILIES[familyKey];
                             return (
@@ -146,16 +170,46 @@ export default function Header() {
                             );
                           })}
                         </div>
-                        <Link
-                          href="/tools/"
-                          onClick={() => setMenu(null)}
-                          className="mt-2 flex items-center justify-between rounded-xl bg-white/5 px-3 py-2.5 text-sm font-bold text-yellow transition hover:bg-white/10"
-                        >
-                          Ver las {tools.length} herramientas
-                          <span aria-hidden="true">→</span>
-                        </Link>
-                      </>
+                        <div className="w-[200px] shrink-0 rounded-xl bg-white/5 p-3">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">Empieza aquí</p>
+                          <ul className="mt-1 space-y-0.5">
+                            {["vat-and-totals", "invoice-with-withholdings", "hiring-cost"].map((slug) => {
+                              const pick = tools.find((tool) => tool.slug === slug);
+                              if (!pick) return null;
+                              return (
+                                <li key={slug}>
+                                  <Link
+                                    href={`/tools/${slug}/`}
+                                    onClick={() => setMenu(null)}
+                                    className="block rounded-md px-1.5 py-1 text-[11px] font-semibold text-slate-200 hover:bg-white/10 hover:text-white"
+                                  >
+                                    {pick.title}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                          <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">Destacado</p>
+                          <a
+                            href="https://www.merez.co/"
+                            onClick={() => setMenu(null)}
+                            className="mt-1 flex items-center justify-between rounded-lg bg-night px-2 py-1.5 text-[11px] font-bold text-white hover:bg-night-700"
+                          >
+                            Merez
+                            <span aria-hidden="true">→</span>
+                          </a>
+                        </div>
+                      </div>
                     )}
+
+                    <Link
+                      href="/tools/"
+                      onClick={() => setMenu(null)}
+                      className="mt-2 flex items-center justify-between rounded-xl bg-white/5 px-3 py-2.5 text-sm font-bold text-yellow transition hover:bg-white/10"
+                    >
+                      Ver las {tools.length} herramientas
+                      <span aria-hidden="true">→</span>
+                    </Link>
                   </div>
                 )}
               </div>
