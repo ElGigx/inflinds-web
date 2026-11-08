@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 
@@ -19,7 +19,7 @@ const staticRoutes = [
   "/tools/",
 ];
 
-const serviceSlugs = ["diseno", "desarrollo", "automatizacion", "inteligencia-artificial", "consultoria"];
+const serviceSlugs = ["diseno", "desarrollo", "automatizacion", "inteligencia-artificial", "consultoria", "seo-geo"];
 
 function readExisting() {
   if (!fs.existsSync(outFile)) return {};
@@ -101,3 +101,4 @@ const lines = Object.entries(dates)
 
 fs.writeFileSync(outFile, `export const CONTENT_DATES: Record<string, string> = {\n${lines}\n};\n`);
 console.log(`content-dates: ${Object.keys(dates).length} rutas`);
+

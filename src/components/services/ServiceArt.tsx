@@ -1,4 +1,4 @@
-type ArtKey = "diseno" | "desarrollo" | "automatizacion" | "inteligencia-artificial" | "consultoria";
+type ArtKey = "diseno" | "desarrollo" | "automatizacion" | "inteligencia-artificial" | "consultoria" | "seo-geo";
 
 const palette: Record<ArtKey, { stroke: string; fill: string; soft: string }> = {
   diseno: { stroke: "text-brand-600", fill: "fill-brand-600", soft: "fill-brand-100" },
@@ -6,6 +6,7 @@ const palette: Record<ArtKey, { stroke: string; fill: string; soft: string }> = 
   automatizacion: { stroke: "text-orange-600", fill: "fill-orange", soft: "fill-orange/10" },
   "inteligencia-artificial": { stroke: "text-brand-700", fill: "fill-brand-700", soft: "fill-brand-100" },
   consultoria: { stroke: "text-night", fill: "fill-night", soft: "fill-slate/10" },
+  "seo-geo": { stroke: "text-brand-800", fill: "fill-brand-800", soft: "fill-brand-100" },
 };
 
 export default function ServiceArt({ slug }: { slug: string }) {
@@ -86,6 +87,21 @@ export default function ServiceArt({ slug }: { slug: string }) {
           <circle cx="70" cy="160" r="5" className={color.fill} />
           <circle cx="250" cy="160" r="5" className={color.fill} />
           <circle cx="86" cy="56" r="5" className="stroke-current" strokeWidth="2" />
+        </>
+      )}
+      {key === "seo-geo" && (
+        <>
+          <rect x="18" y="24" width="284" height="26" rx="13" className="stroke-current" strokeWidth="2" />
+          <circle cx="38" cy="37" r="5" className={color.fill} />
+          <line x1="54" y1="37" x2="150" y2="37" className="stroke-current" strokeWidth="2" />
+          <rect x="18" y="64" width="150" height="26" rx="13" className="stroke-current" strokeWidth="2" />
+          <rect x="18" y="104" width="196" height="26" rx="13" className={color.soft} />
+          <line x1="34" y1="117" x2="150" y2="117" className="stroke-current" strokeWidth="2" />
+          <rect x="18" y="144" width="120" height="26" rx="13" className="stroke-current" strokeWidth="2" />
+          <circle cx="236" cy="124" r="34" className="stroke-current" strokeWidth="3" />
+          <line x1="260" y1="150" x2="288" y2="180" className="stroke-current" strokeWidth="4" />
+          <path d="M220 132l10-12 8 8 12-16" className="stroke-current" strokeWidth="3" fill="none" />
+          <circle cx="232" cy="76" r="6" className={color.fill} />
         </>
       )}
     </svg>

@@ -13,6 +13,7 @@ export const CONTENT_DATES: Record<string, string> = {
   "/services/desarrollo/": "2026-11-08",
   "/services/diseno/": "2026-11-08",
   "/services/inteligencia-artificial/": "2026-11-08",
+  "/services/seo-geo/": "2026-11-08",
   "/terms/": "2026-09-26",
   "/tools/": "2026-11-08",
   "/tools/benefits-provision/": "2026-11-08",

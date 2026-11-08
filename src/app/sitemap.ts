@@ -27,6 +27,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/services/automatizacion/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/inteligencia-artificial/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/consultoria/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/seo-geo/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/tools/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/tools/vat-and-totals/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/tools/percentages/", priority: 0.8, changeFrequency: "monthly" },

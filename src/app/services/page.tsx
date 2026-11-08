@@ -9,7 +9,7 @@ import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Diseño de producto, desarrollo, automatización, IA y consultoría: cinco líneas que se combinan según el problema de tu negocio.",
+    "Diseño, desarrollo, automatización, IA, consultoría y visibilidad en buscadores: seis líneas que se combinan según el problema.",
   alternates: { canonical: "https://inflinds.com/services/" },
 };
 
@@ -53,6 +53,14 @@ const details: Record<string, { signal: string[]; proof: string; cta: string }> 
     ],
     proof: "El diagnóstico termina en una hoja de ruta con costos y una recomendación: qué se hace, qué no, y por qué.",
     cta: "Necesito rumbo",
+  },
+  "seo-geo": {
+    signal: [
+      "Buscas lo que vendes en Google y no apareces",
+      "Le preguntas a un asistente por tu categoría y no te menciona",
+    ],
+    proof: "Lo aplicamos en nuestros sitios: 74 y 62 URLs con lastmod por página, datos estructurados y llms.txt verificables hoy.",
+    cta: "Quiero aparecer",
   },
 };
 
@@ -135,7 +143,7 @@ export default function ServicesPage() {
             <div>
               <Eyebrow>Servicios</Eyebrow>
               <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.05] tracking-tight text-ink sm:text-5xl">
-                Cinco formas de construir producto. Una sola conversación.
+                Seis formas de construir producto. Una sola conversación.
               </h1>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate">
                 No vendemos una lista de servicios: elegimos la línea que resuelve el problema.
@@ -154,7 +162,7 @@ export default function ServicesPage() {
               <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-5">
                 <div>
                   <dt className="text-xs text-slate">Líneas</dt>
-                  <dd className="font-display text-2xl font-black text-ink">5</dd>
+                  <dd className="font-display text-2xl font-black text-ink">6</dd>
                 </div>
                 <div>
                   <dt className="text-xs text-slate">Organizaciones</dt>
@@ -182,7 +190,7 @@ export default function ServicesPage() {
                   </Link>
                 ))}
                 <div className="flex flex-col justify-center rounded-2xl bg-night p-3 text-white">
-                  <span className="font-display text-xl font-black">5</span>
+                  <span className="font-display text-xl font-black">6</span>
                   <span className="text-[11px] leading-tight text-slate-300/80">líneas que se combinan</span>
                 </div>
               </div>
@@ -262,13 +270,13 @@ export default function ServicesPage() {
                           href={`/services/${service.slug}/`}
                           className="inline-flex items-center gap-1 text-sm font-bold text-magenta hover:underline"
                         >
-                          Ver servicio completo →
+                          Ver servicio completo â†’
                         </Link>
                         <Link
                           href="/contact/"
                           className="inline-flex items-center gap-1 text-sm font-bold text-ink transition hover:text-magenta"
                         >
-                          {detail.cta} →
+                          {detail.cta} â†’
                         </Link>
                       </div>
                     </div>
@@ -365,3 +373,4 @@ export default function ServicesPage() {
     </>
   );
 }
+

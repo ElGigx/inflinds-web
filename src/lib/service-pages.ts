@@ -3,7 +3,8 @@ export type ServiceSlug =
   | "desarrollo"
   | "automatizacion"
   | "inteligencia-artificial"
-  | "consultoria";
+  | "consultoria"
+  | "seo-geo";
 
 export type ServiceProcessStep = {
   name: string;
@@ -448,6 +449,86 @@ export const servicePages: ServicePage[] = [
       title: "¿Diez iniciativas y ningún orden?",
       text: "Cuéntanos qué decisiones tienes pendientes este año. Salimos con una prioridad clara y lo que cuesta cada camino.",
       label: "Pedir diagnóstico",
+    },
+  },
+  {
+    slug: "seo-geo",
+    tag: "Visibilidad",
+    title: "SEO técnico y GEO: que te encuentren Google y los asistentes",
+    promise: "Aparecer cuando buscan lo que vendes, también cuando preguntan a una IA.",
+    intro:
+      "El tráfico ya no empieza solo en Google: empieza en una pregunta a un asistente. Trabajamos las dos puertas con la misma base: un sitio que se puede rastrear, páginas que responden una intención concreta y datos estructurados que cualquier motor puede leer. Sin trucos ni contenido inflado.",
+    signals: [
+      "Buscas lo que vendes en Google y no apareces, o apareces por el nombre de tu competencia.",
+      "Le preguntas a un asistente por tu categoría y no te menciona, o te confunde con otro negocio.",
+      "Rediseñaste el sitio y el tráfico no se movió: no sabes qué páginas indexan ni por qué.",
+      "Publicas contenido, pero no sabes qué consultas trae ni qué páginas convierten.",
+    ],
+    deliverables: [
+      "Auditoría técnica: indexación, canónicos, sitemap, robots, redirecciones y rendimiento.",
+      "Arquitectura de contenidos: qué página responde a cada intención y cómo se enlazan.",
+      "Datos estructurados: Organization, Service, FAQPage, Breadcrumb y BlogPosting validados.",
+      "Archivo llms.txt y política de rastreo para motores generativos, decidida y no por defecto.",
+      "Contenido con fuente y fecha: hechos verificables que un asistente puede citar.",
+      "Ficha de cada página: título, descripción, encabezados y enlaces internos.",
+      "Medición: Search Console, analítica y seguimiento de menciones en asistentes.",
+      "Informe mensual con qué se movió, qué no y qué se hace después.",
+    ],
+    process: [
+      { name: "Auditoría", outcome: "Sabes qué está roto, qué falta y qué ya funciona antes de tocar nada." },
+      { name: "Arquitectura", outcome: "Cada intención tiene una página y cada página tiene un propósito." },
+      { name: "Implementación", outcome: "Rastreo, canónicos, sitemap y datos estructurados quedan validados." },
+      { name: "Contenido", outcome: "Páginas que responden con hechos, fuentes y límites claros." },
+      { name: "Medición", outcome: "Un tablero con consultas, páginas y menciones; decisiones con números." },
+    ],
+    stack: ["Google Search Console", "GA4", "schema.org", "llms.txt", "robots.txt", "Next.js", "Merez"],
+    proof: {
+      client: "Inflinds y Merez",
+      sector: "Sitios propios del ecosistema",
+      summary:
+        "Aplicamos el método en nuestros propios sitios y queda verificable: sitemap con fecha real por URL, datos estructurados en casi todas las páginas, llms.txt y robots abierto a los rastreadores de IA.",
+      facts: [
+        "74 URLs en el sitemap de Merez y 62 en el de Inflinds, con lastmod por página.",
+        "FAQPage, BreadcrumbList y Service/SoftwareApplication en las páginas que los necesitan.",
+        "llms.txt en ambos sitios y política explícita para GPTBot, ClaudeBot, PerplexityBot y Google-Extended.",
+        "Contenido con fuente, fecha y límites escritos en la sección de motores de Merez.",
+      ],
+    },
+    whenNot: [
+      {
+        title: "Necesitas resultados en dos semanas",
+        reason:
+          "La indexación y la confianza tardan. Se puede mejorar la base rápido, pero prometer posiciones en dos semanas es vender humo. Si la urgencia es esa, conviene invertir en pauta mientras se construye la base.",
+      },
+      {
+        title: "No hay una oferta clara que posicionar",
+        reason:
+          "Si el sitio no dice qué vende ni a quién, el SEO solo trae más gente a la misma confusión. Primero se ordena la oferta y el sitio.",
+      },
+    ],
+    faq: [
+      {
+        q: "¿Qué es GEO y en qué se diferencia del SEO?",
+        a: "GEO es optimizar para que un asistente te encuentre y te cite: datos estructurados, hechos con fuente, archivos de contexto como llms.txt y contenido que responde preguntas completas. El SEO clásico busca el clic en Google; GEO busca la mención en una respuesta. La base técnica es la misma.",
+      },
+      {
+        q: "¿Garantizan la primera posición?",
+        a: "No. Nadie que controle el algoritmo puede garantizarla. Lo que sí se garantiza es el trabajo: auditoría, implementación, contenido y medición con un informe que puedes revisar.",
+      },
+      {
+        q: "¿Cuánto tarda en moverse?",
+        a: "La base técnica se nota en semanas; el contenido y la autoridad toman entre tres y seis meses. El primer informe dice qué se movió y qué falta, con datos de Search Console, no con impresiones.",
+      },
+      {
+        q: "¿Sirve si mi sitio está en WordPress o en Merez?",
+        a: "Sí. El método es del sitio, no de la herramienta. En Merez el blog ya trae datos estructurados y sitemap; en WordPress se implementa con el tema y los plugins necesarios.",
+      },
+    ],
+    related: ["diseno", "desarrollo", "inteligencia-artificial"],
+    cta: {
+      title: "¿No apareces, ni en Google ni en los asistentes?",
+      text: "Pide una auditoría: revisamos rastreo, contenido y datos estructurados, y salimos con las cinco acciones que más mueven la aguja.",
+      label: "Pedir auditoría de visibilidad",
     },
   },
 ];

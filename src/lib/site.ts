@@ -107,6 +107,20 @@ export const services = [
     ],
     accent: "magenta" as const,
   },
+  {
+    slug: "seo-geo",
+    tag: "Visibilidad",
+    title: "SEO técnico y GEO: Google y los asistentes",
+    summary:
+      "Que te encuentren cuando buscan lo que vendes y cuando preguntan a una IA. Rastreo, contenido con intención, datos estructurados y medición.",
+    points: [
+      "Auditoría técnica: indexación, canónicos, sitemap, robots y rendimiento",
+      "Datos estructurados y archivo llms.txt para motores generativos",
+      "Contenido con fuente y fecha, pensado para responder y ser citado",
+      "Medición en Search Console, analítica y menciones en asistentes",
+    ],
+    accent: "brand" as const,
+  },
 ];
 
 // Metodología / Workflow (Workflow.md — 10 fases).

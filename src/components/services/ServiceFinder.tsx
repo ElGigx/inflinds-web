@@ -51,6 +51,14 @@ const problems = [
     text: "Diagnóstico corto: qué duele, qué se puede resolver sin desarrollo y qué sí exige construirlo. Con prioridades y costos, no con una lista de deseos.",
     cta: "Ver consultoría",
   },
+  {
+    id: "visibilidad",
+    label: "No aparezco ni en Google ni en los asistentes",
+    service: "seo-geo",
+    title: "Existir no es aparecer",
+    text: "Rastreo, canónicos, datos estructurados y contenido con fuente. La misma base sirve para el buscador y para la respuesta de una IA.",
+    cta: "Ver visibilidad",
+  },
 ];
 
 export default function ServiceFinder() {
