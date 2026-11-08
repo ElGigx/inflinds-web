@@ -86,7 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...ROUTES.map(({ path, priority, changeFrequency }) => ({
       url: `${BASE}${path}`,
-      lastModified,
+      lastModified: CONTENT_DATES[path] ? new Date(CONTENT_DATES[path]) : lastModified,
       changeFrequency,
       priority,
     })),
