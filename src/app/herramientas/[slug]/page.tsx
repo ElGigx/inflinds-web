@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Icon from "@/components/Icon";
 import ToolBody from "@/components/tools/ToolBody";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getTool, tools } from "@/lib/tools";
+import { FAMILIES, familyOf, relatedSlugs } from "@/lib/tool-taxonomy";
 
 export const dynamicParams = false;
 
@@ -49,7 +51,15 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   if (!tool) notFound();
 
   const url = `https://inflinds.com/herramientas/${slug}/`;
-  const related = tools.filter((item) => item.slug !== slug).slice(0, 3);
+  const family = FAMILIES[familyOf(slug)];
+  const curated = relatedSlugs(slug)
+    .map((relatedSlug) => getTool(relatedSlug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+  const related = curated.length > 0
+    ? curated
+    : tools
+        .filter((item) => item.slug !== slug && familyOf(item.slug) === family.key)
+        .slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -111,9 +121,13 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </h1>
           <p className="mt-4 max-w-2xl text-lg font-semibold text-ink">{tool.promise}</p>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate">{tool.description}</p>
-          <p className="mt-4 text-sm text-slate">
-            Sin cuenta · {tool.minutes} min · los datos no salen de tu navegador
-          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate">
+            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${family.chip}`}>
+              <Icon name={family.icon} className="h-3 w-3" />
+              {family.label}
+            </span>
+            <span>Sin cuenta · {tool.minutes} min · los datos no salen de tu navegador</span>
+          </div>
         </Container>
       </section>
 
@@ -183,19 +197,32 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
             <div>
               <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-magenta">
-                Otras herramientas
+                Se usa junto con
               </p>
               <div className="mt-4 space-y-2">
-                {related.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/herramientas/${item.slug}/`}
-                    className="flex items-center justify-between gap-3 rounded-xl border border-line bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:border-magenta"
-                  >
-                    {item.title}
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                ))}
+                {related.map((item) => {
+                  const meta = FAMILIES[familyOf(item.slug)];
+                  return (
+                    <Link
+                      key={item.slug}
+                      href={`/herramientas/${item.slug}/`}
+                      className="group flex items-start gap-3 rounded-xl border border-line bg-white p-3.5 transition hover:border-magenta"
+                    >
+                      <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg ${meta.tile}`}>
+                        <Icon name={meta.icon} className="h-4 w-4" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-ink group-hover:text-magenta">
+                          {item.title}
+                        </span>
+                        <span className="mt-0.5 block text-xs leading-relaxed text-slate">{item.promise}</span>
+                      </span>
+                      <span aria-hidden="true" className="ml-auto self-center text-magenta">
+                        →
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
               <div className="mt-6 rounded-2xl bg-night p-6 text-white">
                 <p className="font-display text-lg font-black">¿Quieres guardar esto?</p>
