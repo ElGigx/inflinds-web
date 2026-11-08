@@ -1,0 +1,10 @@
+/* EQUIPO */
+Estudio: Inflinds
+Diseño: gigx (https://x.com/Gigx)
+
+/* SITIO */
+Sitio: Inflinds (https://inflinds.com)
+Plataforma: Merez (https://www.merez.co)
+Estándares: HTML5, CSS3, ARIA
+Tecnología: Next.js, React
+Idioma: es-CO

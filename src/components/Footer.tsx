@@ -81,7 +81,35 @@ export default function Footer() {
             <Link href="/terms/" className="hover:text-white transition-colors">
               Términos
             </Link>
-            <span>Parte del ecosistema Gigx.</span>
+            <details className="relative">
+              <summary className="cursor-pointer list-none hover:text-white transition-colors">
+                Créditos
+              </summary>
+              <div className="absolute bottom-full right-0 z-10 mb-2 min-w-[190px] overflow-hidden rounded-lg border border-white/10 bg-night py-1 shadow-lg">
+                <a
+                  href="https://www.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block px-3 py-2 text-slate-200 hover:bg-white/5"
+                >
+                  Plataforma · Merez
+                </a>
+                <a
+                  href="https://x.com/Gigx"
+                  target="_blank"
+                  rel="noopener me"
+                  className="block border-t border-white/10 px-3 py-2 text-slate-200 hover:bg-white/5"
+                >
+                  Diseño · gigx
+                </a>
+                <a
+                  href="/humans.txt"
+                  className="block border-t border-white/10 px-3 py-2 text-slate-400 hover:bg-white/5"
+                >
+                  humans.txt
+                </a>
+              </div>
+            </details>
           </div>
         </div>
       </div>
