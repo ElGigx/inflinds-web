@@ -50,6 +50,25 @@ export default function ToolsPage() {
 
       <section className="pb-16">
         <Container>
+          <a
+            href="https://www.merez.co/"
+            className="mb-4 flex items-center gap-4 rounded-2xl bg-night p-4 text-white transition hover:bg-night-800"
+          >
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-yellow font-display text-xl font-black text-ink">
+              M
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-yellow">Destacado</span>
+              <span className="block font-display text-lg font-black leading-tight">Merez · la plataforma</span>
+              <span className="block truncate text-xs text-slate-300/80">
+                Catálogo, cotizaciones, pedidos y agentes: lo que la calculadora no guarda.
+              </span>
+            </span>
+            <span aria-hidden="true" className="shrink-0 text-yellow">
+              ↗
+            </span>
+          </a>
+
           <ToolsExplorer tools={explorerTools} />
 
           <div className="mt-12 rounded-2xl bg-night p-6 text-white sm:p-8">

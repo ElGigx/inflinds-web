@@ -135,24 +135,6 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
         {family !== "todas" && <> en {FAMILIES[family].label}</>}
       </p>
 
-      {/* Destacado: la plataforma que recoge lo que la herramienta no guarda */}
-      <a
-        href="https://www.merez.co/"
-        className="mt-4 flex items-center gap-4 rounded-2xl bg-night p-4 text-white transition hover:bg-night-800"
-      >
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-yellow font-display text-xl font-black text-ink">
-          M
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-yellow">Destacado</span>
-          <span className="block font-display text-lg font-black leading-tight">Merez · la plataforma</span>
-          <span className="block truncate text-xs text-slate-300/80">
-            Catálogo, cotizaciones, pedidos y agentes: lo que la calculadora no guarda.
-          </span>
-        </span>
-        <Icon name="external" className="h-5 w-5 shrink-0 text-yellow" />
-      </a>
-
       {results.length === 0 ? (
         <div className="mt-6 rounded-2xl border border-dashed border-line bg-white p-8 text-center">
           <p className="font-display text-lg font-bold text-ink">No hay una herramienta con eso.</p>
