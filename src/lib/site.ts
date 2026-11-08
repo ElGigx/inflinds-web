@@ -28,6 +28,7 @@ export const clients = [
 export const nav = [
   { href: "/", label: "Inicio" },
   { href: "/services/", label: "Servicios" },
+  { href: "/herramientas/", label: "Herramientas" },
   { href: "/pricing/", label: "Precios" },
   { href: "/blog/", label: "Blog" },
   { href: "/contact/", label: "Contacto" },

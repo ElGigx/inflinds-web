@@ -20,6 +20,12 @@ const BASE = "https://inflinds.com";
 const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "monthly" },
   { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/herramientas/", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/herramientas/precio-de-venta/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/herramientas/costo-real-de-un-crm/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/herramientas/pasarela-o-breb/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/herramientas/horas-que-se-pierden/", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/herramientas/punto-de-equilibrio/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/pricing/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/blog/", priority: 0.8, changeFrequency: "weekly" },
   { path: "/log/", priority: 0.7, changeFrequency: "weekly" },
