@@ -10,7 +10,7 @@ import { cases, ogImage, profile } from "../_data";
 
 const title = "Portafolio — Miguel Angel Yañez";
 const description =
-  "Portafolio de Miguel Angel Yañez, Design Engineer, Product Designer y Forward Deployed Engineer: casos de estudio, línea de tiempo, sitios, producto y diseño, de una idea a software en producción.";
+  "Casos de estudio de Miguel Yañez: sitios, plataformas, design systems y producto propio, de la idea al software en producción.";
 
 export const metadata: Metadata = {
   title,

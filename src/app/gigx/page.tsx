@@ -5,9 +5,9 @@ import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { ChipRow, ExternalLink, Kicker } from "./_components/parts";
 import { doing, faq, featured, ogImage, path, profile, stack, teaching } from "./_data";
 
-const title = "Miguel Angel Yañez — Founder & Product Designer · Design Engineer";
+const title = "Miguel Yañez — Founder & Product Designer";
 const description =
-  "Founder & Product Designer y Design Engineer en Bogotá. Cinco años y medio diseñando producto digital: design systems para siete marcas, identidad y empaque, investigación con usuarios, producto propio con agentes de IA y más de 30 proyectos en producción.";
+  "Founder y Product Designer en Bogotá. Diseño y construyo producto digital: design systems, sitios, plataformas y agentes de IA.";
 
 export const metadata: Metadata = {
   title,

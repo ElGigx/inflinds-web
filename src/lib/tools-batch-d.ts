@@ -7,7 +7,7 @@ export const batchD: Tool[] = [
     eyebrow: "Nómina",
     promise: "Lo que cuesta de verdad un salario, con aportes y prestaciones.",
     description:
-      "Suma salario, auxilio, prestaciones, seguridad social y parafiscales para ver el costo mensual, el anual y el costo por día hábil. Cambia cada porcentaje si tu caso es distinto.",
+      "Suma salario, prestaciones, seguridad social y parafiscales: costo mensual, anual y por día hábil. Cada porcentaje es editable.",
     category: "diario",
     minutes: 2,
     inflinds: {

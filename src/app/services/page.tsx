@@ -9,7 +9,7 @@ import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Diseño de producto, desarrollo web y plataformas, automatización, inteligencia artificial aplicada y consultoría: cinco líneas que se combinan según el problema de tu negocio.",
+    "Diseño de producto, desarrollo, automatización, IA y consultoría: cinco líneas que se combinan según el problema de tu negocio.",
   alternates: { canonical: "https://inflinds.com/services/" },
 };
 
