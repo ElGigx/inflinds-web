@@ -56,7 +56,8 @@ export default async function LogPage() {
             son irregulares: una puede ser el cierre de un proyecto de tres meses y la siguiente, un
             ajuste de una tarde. Lo que sí se mantiene es el criterio: qué se intentó, qué salió mal
             y qué quedó funcionando. Es la misma bitácora que usamos para no repetir errores entre
-            proyectos.
+            proyectos: cada entrada deja una decisión documentada y una pregunta que el siguiente
+            proyecto ya no tiene que volver a hacerse.
           </p>
         </Container>
       </section>
