@@ -5,6 +5,7 @@ import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
 import ServiceArt from "@/components/services/ServiceArt";
 import ServiceProcess from "@/components/services/ServiceProcess";
+import SeoScope from "@/components/services/SeoScope";
 import { Container, Eyebrow, PrimaryButton, SecondaryButton } from "@/components/ui";
 import { getServicePage, servicePages, servicePath, type ServicePage } from "@/lib/service-pages";
 
@@ -202,6 +203,14 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
           </div>
         </Container>
       </section>
+
+      {page.slug === "seo-geo" && (
+        <section className="py-12 sm:py-16">
+          <Container>
+            <SeoScope />
+          </Container>
+        </section>
+      )}
 
       <section className="py-12 sm:py-16">
         <Container>
