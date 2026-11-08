@@ -62,6 +62,11 @@ export default function Footer() {
                   inflinds.com
                 </a>
               </li>
+              <li>
+                <Link href="/gigx/" className="hover:text-white transition-colors">
+                  Miguel Yañez · Founder
+                </Link>
+              </li>
             </ul>
             <Link
               href="/contact/"

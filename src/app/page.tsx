@@ -281,6 +281,51 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* ---------- DETRÁS DEL ESTUDIO ---------- */}
+      <section className="pb-4">
+        <Container>
+          <div className="grid items-center gap-8 rounded-3xl border border-line bg-white p-6 sm:p-10 md:grid-cols-[220px_1fr]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/gigx/miguel.jpg"
+              alt="Miguel Yañez, fundador de Inflinds"
+              width={400}
+              height={400}
+              loading="lazy"
+              className="h-52 w-52 rounded-2xl object-cover ring-1 ring-line md:h-56 md:w-56"
+            />
+            <div>
+              <Eyebrow>Detrás del estudio</Eyebrow>
+              <h2 className="mt-3 font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
+                Miguel Yañez · Fundador y CTO de Inflinds, fundador de Merez.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate sm:text-base">
+                Diseño producto y arquitectura la solución: la misma persona que entiende el negocio
+                escribe el brief, decide el sistema y responde cuando algo falla. Orquesto modelos de
+                IA como equipo de ingeniería, con verificación y costo medido — la IA potencia el
+                criterio, no lo reemplaza.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/gigx/"
+                  className="inline-flex items-center rounded-xl border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition hover:border-magenta"
+                >
+                  Ver el perfil completo →
+                </Link>
+                <a
+                  href="https://www.merez.co/about/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-xl px-2 py-2.5 text-sm font-bold text-magenta hover:underline"
+                >
+                  Cómo construyo Merez →
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* ---------- METODOLOGÍA ---------- */}
       <section className="py-20">
         <Container>
