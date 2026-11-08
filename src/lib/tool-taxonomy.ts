@@ -1,10 +1,11 @@
-export type FamilyKey = "accounts" | "operations" | "deadlines" | "sales" | "company" | "decisions";
+﻿export type FamilyKey = "accounts" | "operations" | "deadlines" | "sales" | "company" | "decisions";
 
 export type Family = {
   key: FamilyKey;
   label: string;
   blurb: string;
   icon: string;
+  iconClass: string;
   chip: string;
   tile: string;
   hover: string;
@@ -14,17 +15,19 @@ export const FAMILIES: Record<FamilyKey, Family> = {
   accounts: {
     key: "accounts",
     label: "Cuentas",
-    blurb: "Impuestos, descuentos, margen, cuotas: la plata del día.",
+    blurb: "Impuestos, descuentos, margen, cuotas: la plata del dÃ­a.",
     icon: "pie",
+    iconClass: "text-magenta",
     chip: "bg-magenta/10 text-magenta",
     tile: "bg-magenta/10 text-magenta",
     hover: "hover:border-magenta",
   },
   operations: {
     key: "operations",
-    label: "Operación",
+    label: "OperaciÃ³n",
     blurb: "Inventario, compras, viajes y lo que se mueve en la bodega.",
     icon: "layers",
+    iconClass: "text-brand-700",
     chip: "bg-brand/10 text-brand-700",
     tile: "bg-brand/10 text-brand-700",
     hover: "hover:border-brand",
@@ -34,6 +37,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     label: "Plazos",
     blurb: "Fechas, vencimientos y cartera.",
     icon: "calendar",
+    iconClass: "text-orange-600",
     chip: "bg-orange/10 text-orange-600",
     tile: "bg-orange/10 text-orange-600",
     hover: "hover:border-orange",
@@ -41,8 +45,9 @@ export const FAMILIES: Record<FamilyKey, Family> = {
   sales: {
     key: "sales",
     label: "Ventas y datos",
-    blurb: "Lo que se manda al cliente: enlaces, teléfonos, firmas, mensajes.",
+    blurb: "Lo que se manda al cliente: enlaces, telÃ©fonos, firmas, mensajes.",
     icon: "send",
+    iconClass: "text-ink",
     chip: "bg-yellow text-ink",
     tile: "bg-yellow/25 text-ink",
     hover: "hover:border-yellow-600",
@@ -52,6 +57,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     label: "Empresa y ley",
     blurb: "Contratar, liquidar, declarar y montar empresa en Colombia.",
     icon: "building",
+    iconClass: "text-brand-800",
     chip: "bg-brand-100 text-brand-800",
     tile: "bg-brand-100 text-brand-800",
     hover: "hover:border-brand-400",
@@ -61,6 +67,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     label: "Decisiones",
     blurb: "Las cuentas grandes: costo real, cobros, equilibrio.",
     icon: "target",
+    iconClass: "text-night",
     chip: "bg-night/10 text-night",
     tile: "bg-night/10 text-night",
     hover: "hover:border-night",
@@ -222,3 +229,4 @@ const RELATED: Record<string, string[]> = {
 export function relatedSlugs(slug: string): string[] {
   return RELATED[slug] ?? [];
 }
+

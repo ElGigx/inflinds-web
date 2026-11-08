@@ -157,8 +157,8 @@ export default function Header() {
                                 onClick={() => setMenu(null)}
                                 className="flex items-center gap-2 rounded-xl p-2.5 transition hover:bg-white/5"
                               >
-                                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg ${meta.tile}`}>
-                                  <Icon name={meta.icon} className="h-4 w-4" />
+                                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/10">
+                                  <Icon name={meta.icon} className={`h-4 w-4 ${meta.iconClass}`} />
                                 </span>
                                 <span className="min-w-0">
                                   <span className="block text-sm font-semibold leading-tight text-white">
