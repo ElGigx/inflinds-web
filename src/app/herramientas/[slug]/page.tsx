@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Icon from "@/components/Icon";
 import ToolBody from "@/components/tools/ToolBody";
+import ToolMark from "@/components/tools/ToolMark";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import { getTool, tools } from "@/lib/tools";
 import { FAMILIES, familyOf, iconOf, relatedSlugs } from "@/lib/tool-taxonomy";
@@ -113,7 +114,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             <span aria-hidden="true">/</span>
             <span className="text-ink">{tool.title}</span>
           </nav>
-          <div className="mt-6">
+          <div className="mt-5 flex items-center gap-3">
+            <ToolMark slug={slug} size={44} />
             <Eyebrow>{tool.eyebrow}</Eyebrow>
           </div>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-ink sm:text-5xl">

@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Icon from "@/components/Icon";
-import { FAMILIES, FAMILY_ORDER, iconOf, type FamilyKey } from "@/lib/tool-taxonomy";
+import ToolMark from "./ToolMark";
+import { FAMILIES, FAMILY_ORDER, type FamilyKey } from "@/lib/tool-taxonomy";
 
 export type ExplorerTool = {
   slug: string;
@@ -77,7 +78,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar: IVA, descuento, WhatsApp, cartera, teléfonos…"
+            placeholder="Buscar: IVA, nómina, retención, WhatsApp, cartera…"
             className="w-full bg-transparent py-2 text-base text-ink outline-none placeholder:text-slate/70"
             autoComplete="off"
           />
@@ -134,11 +135,29 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
         {family !== "todas" && <> en {FAMILIES[family].label}</>}
       </p>
 
+      {/* Destacado: la plataforma que recoge lo que la herramienta no guarda */}
+      <a
+        href="https://www.merez.co/"
+        className="mt-4 flex items-center gap-4 rounded-2xl bg-night p-4 text-white transition hover:bg-night-800"
+      >
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-yellow font-display text-xl font-black text-ink">
+          M
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-yellow">Destacado</span>
+          <span className="block font-display text-lg font-black leading-tight">Merez · la plataforma</span>
+          <span className="block truncate text-xs text-slate-300/80">
+            Catálogo, cotizaciones, pedidos y agentes: lo que la calculadora no guarda.
+          </span>
+        </span>
+        <Icon name="external" className="h-5 w-5 shrink-0 text-yellow" />
+      </a>
+
       {results.length === 0 ? (
         <div className="mt-6 rounded-2xl border border-dashed border-line bg-white p-8 text-center">
           <p className="font-display text-lg font-bold text-ink">No hay una herramienta con eso.</p>
           <p className="mt-2 text-sm text-slate">
-            Prueba con «IVA», «plazo», «inventario» o «WhatsApp». También puedes limpiar el filtro.
+            Prueba con «IVA», «nómina», «retención» o «WhatsApp». También puedes limpiar el filtro.
           </p>
           <button
             type="button"
@@ -152,49 +171,55 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
           </button>
         </div>
       ) : (
-        <div className="mt-2 space-y-10">
+        <div className="mt-2 space-y-8">
           {grouped.map((group) => {
             const meta = FAMILIES[group.key];
             return (
               <section key={group.key} aria-labelledby={`familia-${group.key}`}>
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <h2
                     id={`familia-${group.key}`}
-                    className="inline-flex items-center gap-2 font-display text-xl font-black text-ink"
+                    className="inline-flex items-center gap-2 font-display text-lg font-black text-ink"
                   >
-                    <span className={`grid h-7 w-7 place-items-center rounded-lg ${meta.tile}`}>
-                      <Icon name={meta.icon} className="h-4 w-4" />
+                    <span className={`grid h-6 w-6 place-items-center rounded-md ${meta.tile}`}>
+                      <Icon name={meta.icon} className="h-3.5 w-3.5" />
                     </span>
                     {meta.label}
                   </h2>
-                  <p className="text-sm text-slate">{meta.blurb}</p>
+                  <p className="text-xs text-slate">{meta.blurb}</p>
                 </div>
 
-                <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Móvil: carril horizontal. Escritorio: rejilla. */}
+                <div
+                  className={
+                    activeFilter
+                      ? "mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3"
+                      : "-mx-5 mt-3 flex snap-x snap-mandatory gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
+                  }
+                >
                   {group.items.map((tool) => (
                     <Link
                       key={tool.slug}
                       href={`/herramientas/${tool.slug}/`}
-                      className={`group flex h-full flex-col rounded-2xl border border-line bg-white p-5 transition ${meta.hover}`}
+                      className={`group flex items-center gap-3 rounded-xl border border-line bg-white p-2.5 transition ${meta.hover} ${
+                        activeFilter ? "" : "min-w-[250px] snap-start sm:min-w-0"
+                      }`}
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${meta.chip}`}>
-                          <Icon name={meta.icon} className="h-3 w-3" />
-                          {meta.label}
+                      <ToolMark slug={tool.slug} size={40} />
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-bold text-ink group-hover:text-magenta">
+                          {tool.title}
                         </span>
-                        <span className={`grid h-7 w-7 place-items-center rounded-lg ${meta.tile}`}>
-                          <Icon name={iconOf(tool.slug)} className="h-4 w-4" />
-                        </span>
-                      </div>
-                      <h3 className="mt-3 font-display text-lg font-black leading-tight text-ink group-hover:text-magenta">
-                        {tool.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm font-semibold text-ink">{tool.promise}</p>
-                      <p className="mt-1.5 text-sm leading-relaxed text-slate">{tool.description}</p>
-                      <span className="mt-auto pt-4 text-sm font-bold text-magenta">Abrir →</span>
+                        <span className="block truncate text-[11px] leading-snug text-slate">{tool.promise}</span>
+                      </span>
+                      <Icon name="external" className="h-4 w-4 shrink-0 text-slate/60 group-hover:text-magenta" />
                     </Link>
                   ))}
                 </div>
+
+                {!activeFilter && (
+                  <p className="mt-1 text-[11px] text-slate sm:hidden">Desliza para ver todas →</p>
+                )}
               </section>
             );
           })}
@@ -216,4 +241,3 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
     </div>
   );
 }
-
