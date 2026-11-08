@@ -7,7 +7,7 @@ import ToolsExplorer from "@/components/tools/ToolsExplorer";
 export const metadata: Metadata = {
   title: "Herramientas",
   description:
-    "Calculadoras de uso único para el día a día de un negocio: IVA, porcentajes, divisas, deadlines, inventario, teléfonos, WhatsApp y más. También las de decisión: margen, CRM, cobros y equilibrio. Sin cuenta.",
+    "41 calculadoras de uso único para el día a día: IVA, nómina, retenciones, inventario, plazos y precios. Sin cuenta.",
   alternates: { canonical: "https://inflinds.com/tools/" },
 };
 
