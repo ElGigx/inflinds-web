@@ -201,18 +201,23 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                     <Link
                       key={tool.slug}
                       href={`/tools/${tool.slug}/`}
-                      className={`group flex items-center gap-3 rounded-xl border border-line bg-white p-2.5 transition ${meta.hover} ${
-                        activeFilter ? "" : "min-w-[250px] snap-start sm:min-w-0"
+                      className={`group flex items-center gap-2 rounded-xl border border-line bg-white p-2 transition sm:gap-3 sm:p-2.5 ${meta.hover} ${
+                        activeFilter ? "" : "min-w-[152px] snap-start sm:min-w-0"
                       }`}
                     >
-                      <ToolMark slug={tool.slug} size={40} />
+                      <ToolMark slug={tool.slug} className="h-9 w-9 sm:h-10 sm:w-10" />
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-bold text-ink group-hover:text-magenta">
+                        <span className="block text-[13px] font-bold leading-tight text-ink group-hover:text-magenta sm:truncate sm:text-sm">
                           {tool.title}
                         </span>
-                        <span className="block truncate text-[11px] leading-snug text-slate">{tool.promise}</span>
+                        <span className="hidden truncate text-[11px] leading-snug text-slate sm:block">
+                          {tool.promise}
+                        </span>
                       </span>
-                      <Icon name="external" className="h-4 w-4 shrink-0 text-slate/60 group-hover:text-magenta" />
+                      <Icon
+                        name="external"
+                        className="hidden h-4 w-4 shrink-0 text-slate/60 group-hover:text-magenta sm:block"
+                      />
                     </Link>
                   ))}
                 </div>

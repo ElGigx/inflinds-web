@@ -5,28 +5,20 @@ import { FAMILIES, familyOf, iconOf } from "@/lib/tool-taxonomy";
 
 export default function ToolMark({
   slug,
-  size = 44,
-  className = "",
+  className = "h-10 w-10",
 }: {
   slug: string;
-  size?: number;
   className?: string;
 }) {
   const family = FAMILIES[familyOf(slug)];
   const hash = [...slug].reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const variant = hash % 4;
-  const dot = [
-    "right-1 top-1",
-    "right-1 bottom-1",
-    "left-1 top-1",
-    "left-1 bottom-1",
-  ][variant];
+  const dot = ["right-1 top-1", "right-1 bottom-1", "left-1 top-1", "left-1 bottom-1"][variant];
   const dotColor = variant % 2 === 0 ? "bg-yellow" : "bg-magenta";
 
   return (
     <span
       className={`relative grid shrink-0 place-items-center rounded-xl ring-1 ring-inset ring-black/5 ${family.tile} ${className}`}
-      style={{ width: size, height: size }}
       aria-hidden="true"
     >
       <Icon name={iconOf(slug)} className="h-[46%] w-[46%]" />

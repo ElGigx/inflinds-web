@@ -115,7 +115,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             <span className="text-ink">{tool.title}</span>
           </nav>
           <div className="mt-5 flex items-center gap-3">
-            <ToolMark slug={slug} size={44} />
+            <ToolMark slug={slug} className="h-11 w-11" />
             <Eyebrow>{tool.eyebrow}</Eyebrow>
           </div>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-ink sm:text-5xl">
