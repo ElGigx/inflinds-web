@@ -15,6 +15,8 @@ import { allAuthors, allEntries, allPosts, authorPath, entryPath, postPath } fro
  */
 export const revalidate = 300;
 
+import { CONTENT_DATES } from "@/lib/content-dates";
+
 const BASE = "https://inflinds.com";
 
 const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [

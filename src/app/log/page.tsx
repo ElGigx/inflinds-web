@@ -44,6 +44,13 @@ export default async function LogPage() {
             </Link>
             .
           </p>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
+            La bitácora es el registro corto del estudio: qué se construyó, qué se aprendió y qué
+            cambió en el camino. No es un boletín ni una lista de logros: cada entrada cuenta una
+            decisión concreta —un rediseño, una migración, una integración— y qué se hizo para
+            resolverla. Si buscas el porqué de una decisión de producto, empieza por aquí; si buscas
+            el paso a paso para repetirla, está en el blog.
+          </p>
         </Container>
       </section>
 

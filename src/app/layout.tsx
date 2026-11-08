@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   // canónico: `www` redirige 308 aquí). Sin esto no se emitía NINGÚN
   // `<link rel="canonical">` y el buscador tenía que adivinar entre los dos
   // hosts, que sirven exactamente lo mismo.
-  alternates: { canonical: "./" },
+  alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
   keywords: [
     "digital product studio",
     "diseño UX/UI",

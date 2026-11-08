@@ -93,6 +93,23 @@ export default async function AuthorPage({ params }: { params: Promise<Params> }
           </div>
           {author.bio && <p className="mt-6 text-lg leading-relaxed text-slate">{author.bio}</p>}
           {author.expertise && <p className="mt-4 leading-relaxed text-slate">{author.expertise}</p>}
+          <div className="mt-8 rounded-2xl border border-line bg-white p-5">
+            <h2 className="font-display text-xl font-black text-ink">Cómo escribe y qué revisa</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate">
+              Cada texto sale de un trabajo real: un sitio, una migración, una integración o una
+              operación que hubo que resolver. No publicamos comparativas sin haber usado la
+              herramienta ni cifras que no se puedan sostener. Cuando un dato viene de un proveedor,
+              se dice; cuando es una estimación, también.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-slate">
+              La revisión busca tres cosas: que el paso se pueda repetir, que el límite esté escrito
+              y que la decisión tenga un porqué. Esa es la misma vara con la que se construye en
+              Inflinds y con la que se documenta Merez.
+            </p>
+            <Link href="/gigx/" className="mt-3 inline-block text-sm font-bold text-magenta hover:underline">
+              Ver el perfil completo →
+            </Link>
+          </div>
           {author.same_as && author.same_as.length > 0 && (
             <ul className="mt-4 flex flex-wrap gap-3 text-sm">
               {author.same_as.map((link) => (
