@@ -55,6 +55,32 @@ export default function ContactPage() {
           </div>
         </div>
       </Container>
+
+      <Container>
+        <div className="grid gap-6 pb-16 sm:grid-cols-3">
+          <div className="rounded-2xl border border-line bg-white p-5">
+            <p className="font-display text-lg font-bold text-ink">1. Leemos el caso</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate">
+              Revisamos cómo vendes, qué herramientas usas y qué te está frenando. No mandamos un
+              catálogo ni una propuesta genérica: primero entendemos la operación.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-line bg-white p-5">
+            <p className="font-display text-lg font-bold text-ink">2. Hablamos 30 minutos</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate">
+              Una llamada corta para confirmar el problema y ver si el estudio es el indicado. Si no
+              lo es, te lo decimos ahí mismo y te orientamos.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-line bg-white p-5">
+            <p className="font-display text-lg font-bold text-ink">3. Decides con números</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate">
+              Si avanza, recibes alcance, tiempos y precio en pesos. Sin rangos ambiguos ni letra
+              pequeña: lo que se cotiza es lo que se entrega.
+            </p>
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }

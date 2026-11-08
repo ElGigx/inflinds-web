@@ -51,6 +51,13 @@ export default async function LogPage() {
             resolverla. Si buscas el porqué de una decisión de producto, empieza por aquí; si buscas
             el paso a paso para repetirla, está en el blog.
           </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
+            Escribimos cuando hay algo que contar, no para llenar un calendario. Por eso las entradas
+            son irregulares: una puede ser el cierre de un proyecto de tres meses y la siguiente, un
+            ajuste de una tarde. Lo que sí se mantiene es el criterio: qué se intentó, qué salió mal
+            y qué quedó funcionando. Es la misma bitácora que usamos para no repetir errores entre
+            proyectos.
+          </p>
         </Container>
       </section>
 
