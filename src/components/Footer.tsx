@@ -83,9 +83,9 @@ export default function Footer() {
             </Link>
             <details className="relative">
               <summary className="cursor-pointer list-none hover:text-white transition-colors">
-                Créditos
+                Ecosistema
               </summary>
-              <div className="absolute bottom-full right-0 z-10 mb-2 min-w-[190px] overflow-hidden rounded-lg border border-white/10 bg-night py-1 shadow-lg">
+              <div className="absolute bottom-full right-0 z-10 mb-2 min-w-[210px] overflow-hidden rounded-lg border border-white/10 bg-night py-1 shadow-lg">
                 <a
                   href="https://www.merez.co"
                   target="_blank"
@@ -93,6 +93,30 @@ export default function Footer() {
                   className="block px-3 py-2 text-slate-200 hover:bg-white/5"
                 >
                   Plataforma · Merez
+                </a>
+                <a
+                  href="https://app.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block border-t border-white/10 px-3 py-2 text-slate-200 hover:bg-white/5"
+                >
+                  Panel · app.merez.co
+                </a>
+                <a
+                  href="https://docs.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block border-t border-white/10 px-3 py-2 text-slate-200 hover:bg-white/5"
+                >
+                  Documentación · docs.merez.co
+                </a>
+                <a
+                  href="https://api.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block border-t border-white/10 px-3 py-2 text-slate-200 hover:bg-white/5"
+                >
+                  API · api.merez.co
                 </a>
                 <a
                   href="https://x.com/Gigx"
