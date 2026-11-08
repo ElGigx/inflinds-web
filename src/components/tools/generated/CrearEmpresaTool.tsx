@@ -29,7 +29,7 @@ export default function CrearEmpresaTool() {
       <div className={`${cardClass} space-y-3`}>
         <div className="grid gap-3 sm:grid-cols-2">
           <Field
-            label="Matrícula cámara de comercio"
+            label="Matrícula mercantil"
             value={matricula}
             onChange={setMatricula}
             step={50000}

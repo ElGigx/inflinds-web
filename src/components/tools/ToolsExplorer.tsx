@@ -77,7 +77,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar: IVA, descuento, WhatsApp, cartera, telÃ©fonosâ€¦"
+            placeholder="Buscar: IVA, descuento, WhatsApp, cartera, teléfonos…"
             className="w-full bg-transparent py-2 text-base text-ink outline-none placeholder:text-slate/70"
             autoComplete="off"
           />
@@ -104,7 +104,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
               family === "todas" ? "bg-night text-white" : "bg-paper-soft text-ink hover:bg-line/60"
             }`}
           >
-            Todas Â· {tools.length}
+            Todas · {tools.length}
           </button>
           {FAMILY_ORDER.map((key) => {
             const meta = FAMILIES[key];
@@ -121,7 +121,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                 }`}
               >
                 <Icon name={meta.icon} className="h-3.5 w-3.5" />
-                {meta.label} Â· {count}
+                {meta.label} · {count}
               </button>
             );
           })}
@@ -130,7 +130,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
 
       <p className="mt-4 text-sm text-slate" aria-live="polite">
         {results.length} herramienta{results.length === 1 ? "" : "s"}
-        {query.trim() && <> para Â«{query.trim()}Â»</>}
+        {query.trim() && <> para «{query.trim()}»</>}
         {family !== "todas" && <> en {FAMILIES[family].label}</>}
       </p>
 
@@ -138,7 +138,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
         <div className="mt-6 rounded-2xl border border-dashed border-line bg-white p-8 text-center">
           <p className="font-display text-lg font-bold text-ink">No hay una herramienta con eso.</p>
           <p className="mt-2 text-sm text-slate">
-            Prueba con Â«IVAÂ», Â«plazoÂ», Â«inventarioÂ» o Â«WhatsAppÂ». TambiÃ©n puedes limpiar el filtro.
+            Prueba con «IVA», «plazo», «inventario» o «WhatsApp». También puedes limpiar el filtro.
           </p>
           <button
             type="button"
@@ -191,7 +191,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
                       </h3>
                       <p className="mt-1.5 text-sm font-semibold text-ink">{tool.promise}</p>
                       <p className="mt-1.5 text-sm leading-relaxed text-slate">{tool.description}</p>
-                      <span className="mt-auto pt-4 text-sm font-bold text-magenta">Abrir â†’</span>
+                      <span className="mt-auto pt-4 text-sm font-bold text-magenta">Abrir →</span>
                     </Link>
                   ))}
                 </div>
@@ -210,7 +210,7 @@ export default function ToolsExplorer({ tools }: { tools: ExplorerTool[] }) {
           }}
           className="mt-8 text-sm font-semibold text-slate underline underline-offset-2 hover:text-magenta"
         >
-          Limpiar bÃºsqueda y ver las {tools.length}
+          Limpiar búsqueda y ver las {tools.length}
         </button>
       )}
     </div>
