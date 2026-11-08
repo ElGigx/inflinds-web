@@ -15,7 +15,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
   accounts: {
     key: "accounts",
     label: "Cuentas",
-    blurb: "Impuestos, descuentos, margen, cuotas: la plata del dÃ­a.",
+    blurb: "Impuestos, descuentos, margen, cuotas: la plata del día.",
     icon: "pie",
     iconClass: "text-magenta",
     chip: "bg-magenta/10 text-magenta",
@@ -24,7 +24,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
   },
   operations: {
     key: "operations",
-    label: "OperaciÃ³n",
+    label: "Operación",
     blurb: "Inventario, compras, viajes y lo que se mueve en la bodega.",
     icon: "layers",
     iconClass: "text-brand-700",
@@ -45,7 +45,7 @@ export const FAMILIES: Record<FamilyKey, Family> = {
   sales: {
     key: "sales",
     label: "Ventas y datos",
-    blurb: "Lo que se manda al cliente: enlaces, telÃ©fonos, firmas, mensajes.",
+    blurb: "Lo que se manda al cliente: enlaces, teléfonos, firmas, mensajes.",
     icon: "send",
     iconClass: "text-ink",
     chip: "bg-yellow text-ink",
