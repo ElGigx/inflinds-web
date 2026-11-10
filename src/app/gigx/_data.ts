@@ -847,6 +847,74 @@ export const cases: CaseStudy[] = [
     ],
     stack: ["PHP", "API de Merez", "Hostinger"],
   },
+  {
+    id: "wompi",
+    kicker: "2026 · UX/UI de una integración de pagos",
+    title: "Wompi — la pantalla que se volvió simple quitando piezas",
+    summary:
+      "Conectar una pasarela de pagos no es llenar un formulario: son dos ambientes, cuatro llaves, secretos que no se pueden volver a mostrar y el riesgo de cobrar en pruebas o probar en producción. La versión final se siente obvia porque casi todo lo que tenía antes desapareció.",
+    problem:
+      "La primera versión heredaba el patrón del resto del panel: una lista de integraciones que se desplegaba como acordeón. Con ocho integraciones, configurar Wompi era bajar por la lista, abrir la tarjeta, encontrar el campo entre los demás, guardar y volver a subir para ver qué había pasado. El riesgo no era estético: una llave pegada a medias o un modo equivocado se ve igual que una configuración correcta hasta que alguien intenta pagar.",
+    did: [
+      "La lista dejó de configurarse en línea. Cada integración tiene su propia página: una sola tarea, un solo Guardar y una vuelta clara a Integraciones.",
+      "Los dos ambientes —producción y pruebas— conviven en paralelo, con el modo activo marcado en el título. Se quitó el selector superior porque repetía lo que las tarjetas ya decían y competía por la misma decisión. El modo se cambia desde el bloque; al guardar, el que deja de estar activo pierde «En uso» y el nuevo lo gana.",
+      "Cada llave muestra su prefijo real por ambiente —pub_prod_, prv_test_, prod_events_, test_integrity_— en el propio campo, no en una ayuda aparte. El prefijo es la primera pista de que se está pegando la llave correcta.",
+      "Las llaves guardadas nunca vuelven al navegador. El servidor descifra en memoria, envía solo un fragmento enmascarado y el panel permite ver un poco más bajo demanda. No se puede comparar lo que no se expone.",
+      "Editar una llave es un clic: el campo entra en edición con el cursor dentro, listo para pegar. Se eliminaron los botones «Cambiar» y «Cancelar» al lado del input; el ojo para revelar y la X para cancelar viven dentro del campo.",
+      "La URL de eventos dejó de ser un dato escondido en la documentación: está visible, con botón de copiar y, en móvil, se despliega con «Ver más» para no robar espacio.",
+      "La navegación se ordenó por niveles: Ajustes → Integraciones → Wompi. En móvil hay un solo volver y hace una sola cosa; el sitio se eligió una vez y se quitó el que se repetía en el encabezado.",
+      "El texto que explicaba cada pantalla pasó a un icono de información con tooltip. La explicación sigue ahí cuando se busca, pero deja de ocupar una línea permanente en todas las pantallas de ajustes.",
+      "El chip «Modo pruebas» quedó solo en el listado y solo cuando esa integración tiene activo su modo de pruebas. La cinta diagonal que lo repetía se eliminó: el estado se lee una vez.",
+    ],
+    figures: [
+      { value: "2", label: "ambientes en la misma pantalla, sin selector aparte" },
+      { value: "4", label: "llaves con prefijo propio por ambiente" },
+      { value: "1", label: "clic para editar una llave" },
+    ],
+    tables: [
+      {
+        title: "Lo que se quitó y por qué",
+        head: ["Lo que había", "La decisión", "El motivo"],
+        rows: [
+          ["Acordeón dentro de la lista", "Página por integración", "Ocho tarjetas abiertas compiten entre sí; una página enfoca una sola tarea."],
+          ["Selector de modo arriba", "Cambio desde el bloque y «En uso» en el título", "Dos controles para la misma decisión obligan a pensar cuál manda."],
+          ["Botones «Cambiar» y «Cancelar» al lado", "Campo editable en un clic, acciones dentro del input", "El botón lateral rompía la lectura y añadía un paso a la intención real: pegar."],
+          ["«Guardado y cifrado» en cada campo", "Fragmento enmascarado y una sola nota de seguridad", "Repetir la misma frase cuatro veces informa menos que mostrar la llave."],
+          ["URL de eventos en la documentación", "URL visible con copiar y despliegue en móvil", "Si hay que buscarla fuera, se copia mal."],
+          ["Dos volver en móvil", "Un volver por nivel", "Dos botones que hacen lo mismo son una decisión pendiente para el usuario."],
+        ],
+      },
+    ],
+    images: [
+      {
+        src: "/gigx/shots/wompi-panel.webp",
+        alt: "Detalle de Wompi en el panel de Merez: llaves de producción y pruebas en paralelo, modo en uso y URL de eventos",
+        w: 1440,
+        h: 1000,
+        size: "full",
+        caption: "La integración · dos ambientes a la vista",
+      },
+      {
+        src: "/gigx/shots/wompi-keys.webp",
+        alt: "Campo de llave privada en edición dentro del panel, con el prefijo del ambiente y las acciones dentro del campo",
+        w: 1600,
+        h: 717,
+        size: "full",
+        caption: "Editar una llave · un clic y el cursor dentro",
+      },
+      {
+        src: "/gigx/shots/wompi-mobile.webp",
+        alt: "La misma integración en móvil, con un solo volver y los campos de producción",
+        w: 390,
+        h: 844,
+        size: "phone",
+        caption: "Móvil · un volver por nivel",
+      },
+    ],
+    footnote:
+      "Lo que parece simple es lo que queda después de quitar: dos ambientes sin selector, cuatro llaves sin exponerlas, una URL sin buscarla y un solo camino de vuelta. La simplicidad no fue el punto de partida; fue el resultado de cada decisión sobre qué no mostrar.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Laravel", "Wompi", "Diseño de producto"],
+  },
 ];
 
 export type TimelineEntry = { year: string; title: string; items: string[] };
