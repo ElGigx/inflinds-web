@@ -849,14 +849,16 @@ export const cases: CaseStudy[] = [
   },
   {
     id: "wompi",
-    kicker: "2026 · UX/UI de una integración de pagos",
-    title: "Wompi — la pantalla que se volvió simple quitando piezas",
+    kicker: "2026 · UX/UI de Ajustes y una integración de pagos",
+    title: "Wompi y Ajustes — la pantalla que se volvió simple quitando piezas",
     summary:
-      "Conectar una pasarela de pagos no es llenar un formulario: son dos ambientes, cuatro llaves, secretos que no se pueden volver a mostrar y el riesgo de cobrar en pruebas o probar en producción. En producción sigue la versión anterior; este caso compara ese acordeón real con el rediseño implementado en local, todavía sin desplegar.",
+      "Conectar Wompi no fue solo llenar un formulario: obligó a reestructurar Ajustes. Dos ambientes, cuatro llaves, secretos que no se pueden volver a mostrar y una navegación que se repetía. En producción sigue la estructura anterior; este caso compara ese Ajustes real con el rediseño implementado en local, todavía sin desplegar.",
     problem:
-      "La versión que está publicada hoy hereda el patrón del resto del panel: una lista de integraciones que se despliega como acordeón. Con ocho integraciones, configurar Wompi es bajar por la lista, abrir la tarjeta, encontrar el campo entre los demás, guardar y volver a subir para ver qué pasó. El riesgo no es estético: una llave pegada a medias o un modo equivocado se ve igual que una configuración correcta hasta que alguien intenta pagar.",
+      "La versión publicada hoy hereda el patrón viejo: la lista de integraciones se despliega como acordeón, el encabezado repite el sitio y cada integración se configura dentro de una lista larga. Con Wompi —dos modos, cuatro llaves— eso obliga a bajar, abrir, encontrar el campo, guardar y volver a subir. El riesgo no es estético: una llave a medias o un modo equivocado se ve igual que una configuración correcta hasta que alguien intenta pagar.",
     did: [
-      "La lista dejó de configurarse en línea. Cada integración tiene su propia página: una sola tarea, un solo Guardar y una vuelta clara a Integraciones.",
+      "La integración empujó una reestructuración de Ajustes: la lista dejó de configurarse en línea y cada integración pasó a tener su propia página. Una sola tarea, un solo Guardar y una vuelta clara a Integraciones.",
+      "El encabezado de Ajustes dejó de ser un título genérico: ahora muestra la miga Ajustes → Integraciones → Wompi, y en móvil hay un solo volver que sube un nivel.",
+      "Se quitó el sitio repetido: estaba como «de Inflinds» a la izquierda y otra vez en el selector de la derecha. Queda una sola vez.",
       "Los dos ambientes —producción y pruebas— conviven en paralelo, con el modo activo marcado en el título. Se quitó el selector superior porque repetía lo que las tarjetas ya decían y competía por la misma decisión. El modo se cambia desde el bloque; al guardar, el que deja de estar activo pierde «En uso» y el nuevo lo gana.",
       "Cada llave muestra su prefijo real por ambiente —pub_prod_, prv_test_, prod_events_, test_integrity_— en el propio campo, no en una ayuda aparte. El prefijo es la primera pista de que se está pegando la llave correcta.",
       "Las llaves guardadas nunca vuelven al navegador. El servidor descifra en memoria, envía solo un fragmento enmascarado y el panel permite ver un poco más bajo demanda. No se puede comparar lo que no se expone.",
@@ -876,6 +878,8 @@ export const cases: CaseStudy[] = [
         title: "Lo que se quitó y por qué",
         head: ["Lo que había", "La decisión", "El motivo"],
         rows: [
+          ["Sitio repetido en el encabezado", "Un solo selector de sitio", "El mismo dato dos veces hace dudar de cuál manda."],
+          ["Título genérico «Ajustes» en todo", "Miga Ajustes → Integraciones → Wompi", "El encabezado dice dónde estás, no solo que estás en Ajustes."],
           ["Acordeón dentro de la lista", "Página por integración", "Ocho tarjetas abiertas compiten entre sí; una página enfoca una sola tarea."],
           ["Selector de modo arriba", "Cambio desde el bloque y «En uso» en el título", "Dos controles para la misma decisión obligan a pensar cuál manda."],
           ["Botones «Cambiar» y «Cancelar» al lado", "Campo editable en un clic, acciones dentro del input", "El botón lateral rompía la lectura y añadía un paso a la intención real: pegar."],
@@ -886,6 +890,14 @@ export const cases: CaseStudy[] = [
       },
     ],
     images: [
+      {
+        src: "/gigx/shots/ajustes-produccion.webp",
+        alt: "Ajustes en producción hoy: encabezado con el sitio repetido, sidebar de secciones, lista de integraciones en acordeón y Wompi abierto",
+        w: 1440,
+        h: 1000,
+        size: "full",
+        caption: "Ajustes en producción hoy · sitio repetido, acordeón y selector de modo",
+      },
       {
         src: "/gigx/shots/wompi-produccion.webp",
         alt: "Wompi en producción dentro del panel de Merez: acordeón de integraciones, selector de modo y credenciales como «Guardado y cifrado»",
@@ -920,7 +932,7 @@ export const cases: CaseStudy[] = [
       },
     ],
     footnote:
-      "La comparación es contra lo que el cliente ve hoy en producción, no contra una maqueta: el acordeón real arriba, el rediseño abajo. Lo que parece simple es lo que queda después de quitar; el rediseño todavía no está desplegado.",
+      "La comparación es contra lo que el cliente ve hoy en producción, no contra una maqueta: Ajustes y Wompi reales arriba, el rediseño abajo. Lo que parece simple es lo que queda después de quitar; el rediseño todavía no está desplegado.",
     stack: ["React", "TypeScript", "Tailwind CSS", "Laravel", "Wompi", "Diseño de producto"],
   },
 ];
