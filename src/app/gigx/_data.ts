@@ -899,14 +899,6 @@ export const cases: CaseStudy[] = [
         caption: "Ajustes en producción hoy · sitio repetido, acordeón y selector de modo",
       },
       {
-        src: "/gigx/shots/wompi-produccion.webp",
-        alt: "Wompi en producción dentro del panel de Merez: acordeón de integraciones, selector de modo y credenciales como «Guardado y cifrado»",
-        w: 1600,
-        h: 717,
-        size: "full",
-        caption: "Producción hoy · acordeón, selector y credenciales repetidas",
-      },
-      {
         src: "/gigx/shots/wompi-panel.webp",
         alt: "Rediseño local de Wompi en el panel de Merez: llaves de producción y pruebas en paralelo, modo en uso y URL de eventos",
         w: 1440,
