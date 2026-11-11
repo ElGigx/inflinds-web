@@ -862,7 +862,8 @@ export const cases: CaseStudy[] = [
       "Los dos ambientes —producción y pruebas— conviven en paralelo, con el modo activo marcado en el título. Se quitó el selector superior porque repetía lo que las tarjetas ya decían y competía por la misma decisión. El modo se cambia desde el bloque; al guardar, el que deja de estar activo pierde «En uso» y el nuevo lo gana.",
       "Cada llave muestra su prefijo real por ambiente —pub_prod_, prv_test_, prod_events_, test_integrity_— en el propio campo, no en una ayuda aparte. El prefijo es la primera pista de que se está pegando la llave correcta.",
       "Las llaves guardadas nunca vuelven al navegador. El servidor descifra en memoria, envía solo un fragmento enmascarado y el panel permite ver un poco más bajo demanda. No se puede comparar lo que no se expone.",
-      "Editar una llave es un clic: el campo entra en edición con el cursor dentro, listo para pegar. Se eliminaron los botones «Cambiar» y «Cancelar» al lado del input; el ojo para revelar y la X para cancelar viven dentro del campo.",
+      "Las llaves guardadas salen como «Guardado y cifrado», sin el valor a la vista, y cada una se edita con su propio botón «Cambiar»: el campo entra en edición con el ojo para revelar y la X para cancelar dentro del input.",
+      "El bloque de ayuda dejó de estar siempre desplegado: «¿Dónde encuentro estos datos?» está ahí y estorba solo cuando no se usa, no en todas las pantallas.",
       "La URL de eventos dejó de ser un dato escondido en la documentación: está visible, con botón de copiar y, en móvil, se despliega con «Ver más» para no robar espacio.",
       "La navegación se ordenó por niveles: Ajustes → Integraciones → Wompi. En móvil hay un solo volver y hace una sola cosa; el sitio se eligió una vez y se quitó el que se repetía en el encabezado.",
       "El texto que explicaba cada pantalla pasó a un icono de información con tooltip. La explicación sigue ahí cuando se busca, pero deja de ocupar una línea permanente en todas las pantallas de ajustes.",
@@ -871,7 +872,7 @@ export const cases: CaseStudy[] = [
     figures: [
       { value: "2", label: "ambientes en la misma pantalla, sin selector aparte" },
       { value: "4", label: "llaves con prefijo propio por ambiente" },
-      { value: "1", label: "clic para editar una llave" },
+      { value: "1", label: "bot?n propio para cambiar cada llave" },
     ],
     tables: [
       {
@@ -882,8 +883,7 @@ export const cases: CaseStudy[] = [
           ["Título genérico «Ajustes» en todo", "Miga Ajustes → Integraciones → Wompi", "El encabezado dice dónde estás, no solo que estás en Ajustes."],
           ["Acordeón dentro de la lista", "Página por integración", "Ocho tarjetas abiertas compiten entre sí; una página enfoca una sola tarea."],
           ["Selector de modo arriba", "Cambio desde el bloque y «En uso» en el título", "Dos controles para la misma decisión obligan a pensar cuál manda."],
-          ["Botones «Cambiar» y «Cancelar» al lado", "Campo editable en un clic, acciones dentro del input", "El botón lateral rompía la lectura y añadía un paso a la intención real: pegar."],
-          ["«Guardado y cifrado» en cada campo", "Fragmento enmascarado y una sola nota de seguridad", "Repetir la misma frase cuatro veces informa menos que mostrar la llave."],
+          ["Ayuda siempre desplegada", "Bloque «¿Dónde encuentro estos datos?» plegable", "La explicación se busca cuando hace falta, no ocupa sitio todo el tiempo."],
           ["URL de eventos en la documentación", "URL visible con copiar y despliegue en móvil", "Si hay que buscarla fuera, se copia mal."],
           ["Dos volver en móvil", "Un volver por nivel", "Dos botones que hacen lo mismo son una decisión pendiente para el usuario."],
         ],
@@ -912,7 +912,7 @@ export const cases: CaseStudy[] = [
         w: 1600,
         h: 717,
         size: "full",
-        caption: "Rediseño · editar una llave en un clic (local)",
+        caption: "Rediseño · llave en edición, con el prefijo del ambiente (local)",
       },
       {
         src: "/gigx/shots/wompi-mobile.webp",
