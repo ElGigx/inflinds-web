@@ -852,9 +852,9 @@ export const cases: CaseStudy[] = [
     kicker: "2026 · UX/UI de una integración de pagos",
     title: "Wompi — la pantalla que se volvió simple quitando piezas",
     summary:
-      "Conectar una pasarela de pagos no es llenar un formulario: son dos ambientes, cuatro llaves, secretos que no se pueden volver a mostrar y el riesgo de cobrar en pruebas o probar en producción. La versión final se siente obvia porque casi todo lo que tenía antes desapareció.",
+      "Conectar una pasarela de pagos no es llenar un formulario: son dos ambientes, cuatro llaves, secretos que no se pueden volver a mostrar y el riesgo de cobrar en pruebas o probar en producción. En producción sigue la versión anterior; este caso compara ese acordeón real con el rediseño implementado en local, todavía sin desplegar.",
     problem:
-      "La primera versión heredaba el patrón del resto del panel: una lista de integraciones que se desplegaba como acordeón. Con ocho integraciones, configurar Wompi era bajar por la lista, abrir la tarjeta, encontrar el campo entre los demás, guardar y volver a subir para ver qué había pasado. El riesgo no era estético: una llave pegada a medias o un modo equivocado se ve igual que una configuración correcta hasta que alguien intenta pagar.",
+      "La versión que está publicada hoy hereda el patrón del resto del panel: una lista de integraciones que se despliega como acordeón. Con ocho integraciones, configurar Wompi es bajar por la lista, abrir la tarjeta, encontrar el campo entre los demás, guardar y volver a subir para ver qué pasó. El riesgo no es estético: una llave pegada a medias o un modo equivocado se ve igual que una configuración correcta hasta que alguien intenta pagar.",
     did: [
       "La lista dejó de configurarse en línea. Cada integración tiene su propia página: una sola tarea, un solo Guardar y una vuelta clara a Integraciones.",
       "Los dos ambientes —producción y pruebas— conviven en paralelo, con el modo activo marcado en el título. Se quitó el selector superior porque repetía lo que las tarjetas ya decían y competía por la misma decisión. El modo se cambia desde el bloque; al guardar, el que deja de estar activo pierde «En uso» y el nuevo lo gana.",
@@ -887,32 +887,40 @@ export const cases: CaseStudy[] = [
     ],
     images: [
       {
-        src: "/gigx/shots/wompi-panel.webp",
-        alt: "Detalle de Wompi en el panel de Merez: llaves de producción y pruebas en paralelo, modo en uso y URL de eventos",
-        w: 1440,
-        h: 1000,
-        size: "full",
-        caption: "La integración · dos ambientes a la vista",
-      },
-      {
-        src: "/gigx/shots/wompi-keys.webp",
-        alt: "Campo de llave privada en edición dentro del panel, con el prefijo del ambiente y las acciones dentro del campo",
+        src: "/gigx/shots/wompi-produccion.webp",
+        alt: "Wompi en producción dentro del panel de Merez: acordeón de integraciones, selector de modo y credenciales como «Guardado y cifrado»",
         w: 1600,
         h: 717,
         size: "full",
-        caption: "Editar una llave · un clic y el cursor dentro",
+        caption: "Producción hoy · acordeón, selector y credenciales repetidas",
+      },
+      {
+        src: "/gigx/shots/wompi-panel.webp",
+        alt: "Rediseño local de Wompi en el panel de Merez: llaves de producción y pruebas en paralelo, modo en uso y URL de eventos",
+        w: 1440,
+        h: 1000,
+        size: "full",
+        caption: "Rediseño · dos ambientes a la vista (local, sin desplegar)",
+      },
+      {
+        src: "/gigx/shots/wompi-keys.webp",
+        alt: "Campo de llave privada en edición dentro del rediseño local, con el prefijo del ambiente y las acciones dentro del campo",
+        w: 1600,
+        h: 717,
+        size: "full",
+        caption: "Rediseño · editar una llave en un clic (local)",
       },
       {
         src: "/gigx/shots/wompi-mobile.webp",
-        alt: "La misma integración en móvil, con un solo volver y los campos de producción",
+        alt: "El rediseño local de la integración en móvil, con un solo volver y los campos de producción",
         w: 390,
         h: 844,
         size: "phone",
-        caption: "Móvil · un volver por nivel",
+        caption: "Rediseño móvil · un volver por nivel (local)",
       },
     ],
     footnote:
-      "Lo que parece simple es lo que queda después de quitar: dos ambientes sin selector, cuatro llaves sin exponerlas, una URL sin buscarla y un solo camino de vuelta. La simplicidad no fue el punto de partida; fue el resultado de cada decisión sobre qué no mostrar.",
+      "La comparación es contra lo que el cliente ve hoy en producción, no contra una maqueta: el acordeón real arriba, el rediseño abajo. Lo que parece simple es lo que queda después de quitar; el rediseño todavía no está desplegado.",
     stack: ["React", "TypeScript", "Tailwind CSS", "Laravel", "Wompi", "Diseño de producto"],
   },
 ];
