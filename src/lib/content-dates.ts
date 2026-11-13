@@ -48,6 +48,7 @@ export const CONTENT_DATES: Record<string, string> = {
   "/tools/social-character-count/": "2026-11-08",
   "/tools/social-security/": "2026-11-08",
   "/tools/stacked-discounts/": "2026-11-08",
+  "/tools/time-billing/": "2026-11-08",
   "/tools/tip-and-bill/": "2026-11-08",
   "/tools/true-crm-cost/": "2026-11-08",
   "/tools/unit-conversion/": "2026-11-08",

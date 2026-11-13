@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   async redirects() {
     return [
+    { source: "/herramientas/cobro-por-tiempo/", destination: "/tools/time-billing/", permanent: true },
+    { source: "/tools/cobro-por-tiempo/", destination: "/tools/time-billing/", permanent: true },
     { source: "/herramientas/iva-y-totales/", destination: "/tools/vat-and-totals/", permanent: true },
     { source: "/tools/iva-y-totales/", destination: "/tools/vat-and-totals/", permanent: true },
     { source: "/herramientas/porcentajes/", destination: "/tools/percentages/", permanent: true },

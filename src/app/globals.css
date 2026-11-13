@@ -213,3 +213,11 @@ body {
   font-weight: 900;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
+
+/* En Cobro por tiempo, el chat flotante del SDK (div.mzc) se monta encima de
+   la barra fija de "Usar" en móvil. Se oculta solo ahí y solo en móvil. */
+@media (max-width: 767px) {
+  body:has([data-time-billing]) .mzc {
+    display: none !important;
+  }
+}

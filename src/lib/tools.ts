@@ -3,6 +3,7 @@ import { batchB } from "./tools-batch-b";
 import { batchC } from "./tools-batch-c";
 import { batchD } from "./tools-batch-d";
 import { batchE } from "./tools-batch-e";
+import { batchF } from "./tools-batch-f";
 
 export type Tool = {
   slug: string;
@@ -240,7 +241,7 @@ const coreTools: Tool[] = [
   },
 ];
 
-export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE];
+export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE, ...batchF];
 
 export function getTool(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);

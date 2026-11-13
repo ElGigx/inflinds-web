@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAF8F4">
+<title>Cobro por tiempo</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cobro">
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --bg: #FAF8F4;
+    --surface: #FFFFFF;
+    --ink: #1B1E22;
+    --muted: #6A6F76;
+    --line: #E6E0D4;
+    --line-strong: #D6CFC0;
+    --accent: #F8049C;
+    --accent-ink: #FFFFFF;
+    --green: #2E7D4F;
+    --amber: #A86500;
+    --red: #A33A32;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --shadow: 0 1px 2px rgba(27, 30, 34, .06), 0 10px 30px rgba(27, 30, 34, .08);
+    color-scheme: light;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.4 var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [hidden] { display: none !important; }
+
+  button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+  input, select { font: inherit; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  .app {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 16px calc(88px + env(safe-area-inset-bottom));
+    min-height: 100dvh;
+  }
+
+  .top {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 12px; padding: 20px 0 16px;
+  }
+  .top-main { min-width: 0; }
+  .eyebrow {
+    margin: 0 0 2px; font-size: 12px; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px;
+  }
+  .top h1 { margin: 0; font-size: 22px; line-height: 1.1; letter-spacing: -.025em; }
+  .today { text-align: right; flex: none; }
+  .today span {
+    display: block; font-size: 11px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .today strong { font-size: 20px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+
+  .rate-chips {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .rate-chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex: 0 0 auto; min-width: 96px; min-height: 54px;
+    display: flex; flex-direction: column; justify-content: center; gap: 1px;
+    padding: 6px 12px; text-align: left;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+  }
+  .chip strong { font-size: 14px; font-weight: 650; }
+  .chip span { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chip[aria-checked="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .chip[aria-checked="true"] span { color: rgba(250, 248, 244, .72); }
+
+  .entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin-top: 10px; }
+
+  input[type="text"], input[type="number"], input[type="time"], select {
+    min-height: 52px; width: 100%; padding: 0 12px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface); color: var(--ink);
+  }
+
+  #plate {
+    min-width: 0;
+    min-height: 54px; font-size: 18px; font-weight: 650;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  #plate::placeholder {
+    font-size: 15px; font-weight: 400; letter-spacing: 0;
+    text-transform: none; color: var(--muted);
+  }
+
+  button.primary {
+    min-height: 54px; padding: 0 22px; border: 0; border-radius: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    font-size: 16px; font-weight: 650;
+  }
+  button.primary:active { transform: translateY(1px); }
+  button.primary:disabled { opacity: .45; cursor: not-allowed; }
+
+  button.secondary {
+    min-height: 52px; padding: 0 18px; border: 1px solid var(--line-strong);
+    border-radius: 10px; background: var(--surface); font-weight: 600;
+  }
+
+  button.ghost {
+    min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px;
+    background: transparent; color: var(--muted); font-weight: 600;
+  }
+
+  .list-head { display: flex; align-items: baseline; gap: 8px; margin: 24px 0 4px; }
+  .list-head h2 { margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -.01em; }
+  .count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .open-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .open-list li { border-bottom: 1px solid var(--line); }
+
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+    width: 100%; min-height: 70px; padding: 13px 2px;
+    border: 0; background: none; text-align: left;
+  }
+  .row-main { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .row-label {
+    font-size: 17px; font-weight: 650; letter-spacing: .01em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .row-meta { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .row-amount {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 1px;
+    font-size: 19px; font-weight: 650; letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums; text-align: right;
+  }
+  .row-amount small { font-size: 11.5px; font-weight: 500; color: var(--muted); }
+
+  .empty {
+    margin: 18px 0 0; padding: 26px 16px; text-align: center;
+    border: 1px dashed var(--line-strong); border-radius: 12px;
+    color: var(--muted); font-size: 14px; line-height: 1.5;
+  }
+  .empty-inline { margin: 0; font-size: 13px; color: var(--muted); }
+
+  .day-head { padding: 4px 0 14px; }
+  .day-head h2 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+  .muted { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
+
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat {
+    padding: 12px 14px; border: 1px solid var(--line);
+    border-radius: 12px; background: var(--surface);
+  }
+  .stat.wide { grid-column: 1 / -1; }
+  .stat span { display: block; font-size: 12px; color: var(--muted); }
+  .stat strong {
+    display: block; margin-top: 2px; font-size: 22px;
+    font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  }
+  .stat.wide strong { font-size: 30px; }
+
+  .card {
+    margin-top: 16px; padding: 16px;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+  }
+  .card h3 { margin: 0 0 12px; font-size: 15px; font-weight: 650; }
+  .card label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
+  .card .diff { margin: 8px 0 12px; font-size: 13px; }
+  .diff.good { color: var(--green); }
+  .diff.warn { color: var(--amber); }
+  .diff.bad { color: var(--red); }
+
+  .closed-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .closed-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+    padding: 12px 2px; border-bottom: 1px solid var(--line);
+  }
+  .tag-owed { color: var(--amber); font-weight: 600; }
+
+  .days-history { margin-top: 18px; }
+  .days-history .sub { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .day-row {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 10px;
+    align-items: baseline; padding: 9px 0;
+    border-bottom: 1px solid var(--line); font-size: 13px;
+  }
+  .day-row strong { font-variant-numeric: tabular-nums; }
+  .day-row small { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .rate-card {
+    margin-bottom: 10px; border: 1px solid var(--line);
+    border-radius: 12px; background: var(--surface);
+  }
+  .rate-card summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    min-height: 58px; padding: 0 14px; list-style: none; cursor: pointer;
+  }
+  .rate-card summary::-webkit-details-marker { display: none; }
+  .rate-card summary strong { display: block; font-size: 15px; }
+  .rate-card summary small {
+    display: block; font-size: 12px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .rate-card summary::after { content: "Editar"; font-size: 12px; color: var(--muted); }
+  .rate-card[open] summary::after { content: "Cerrar"; }
+
+  .fields {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding: 12px 14px 14px; border-top: 1px solid var(--line);
+  }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field span { font-size: 12px; color: var(--muted); }
+  .field:first-child { grid-column: 1 / -1; }
+  .fields .link-danger { grid-column: 1 / -1; justify-self: start; }
+
+  .link-danger {
+    min-height: 44px; padding: 0 4px; border: 0;
+    background: none; color: var(--red); font-size: 13px; font-weight: 600;
+  }
+
+  .fineprint { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
+
+  .tabs {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    display: flex; max-width: 520px; margin: 0 auto;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(255, 255, 255, .96);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+  }
+  .tab {
+    position: relative; flex: 1; min-height: 58px;
+    border: 0; background: none; font-size: 13px; font-weight: 600; color: var(--muted);
+  }
+  .tab.is-active { color: var(--ink); }
+  .tab.is-active::before {
+    content: ""; position: absolute; top: -1px; left: 50%;
+    width: 30px; height: 2px; margin-left: -15px;
+    background: var(--accent); border-radius: 2px;
+  }
+
+  .sheet {
+    width: 100%; max-width: 520px; max-height: 92dvh; overflow: auto;
+    margin: auto auto 0; padding: 0; border: 0;
+    border-radius: 18px 18px 0 0; background: var(--surface); color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .sheet::backdrop { background: rgba(27, 30, 34, .38); }
+  .sheet[open] { animation: rise 180ms cubic-bezier(.2, .8, .2, 1); }
+  @keyframes rise {
+    from { transform: translateY(14px); opacity: .5; }
+    to { transform: none; opacity: 1; }
+  }
+  .sheet-inner { padding: 18px 18px calc(20px + env(safe-area-inset-bottom)); }
+  .sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .sheet-head h2 { margin: 0; font-size: 21px; letter-spacing: -.02em; }
+  .sheet-head p { margin: 2px 0 0; }
+
+  .big {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    margin: 16px 0 2px;
+  }
+  .big strong {
+    font-size: 36px; line-height: 1; letter-spacing: -.035em;
+    font-variant-numeric: tabular-nums;
+  }
+  .big span { font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .breakdown { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+  .ticket-rule { position: relative; margin: 16px -18px; border-top: 1px dashed var(--line-strong); }
+  .ticket-rule::before, .ticket-rule::after {
+    content: ""; position: absolute; top: -8px;
+    width: 16px; height: 16px; border-radius: 50%; background: var(--bg);
+  }
+  .ticket-rule::before { left: -8px; }
+  .ticket-rule::after { right: -8px; }
+
+  .pay { display: grid; gap: 10px; }
+  .pay label { font-size: 12px; color: var(--muted); }
+  #payAmount {
+    font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums;
+  }
+
+  .segmented {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg);
+  }
+  .seg {
+    min-height: 44px; border: 0; border-radius: 8px; background: none;
+    font-size: 14px; font-weight: 600; color: var(--muted);
+  }
+  .seg.is-active {
+    background: var(--surface); color: var(--ink);
+    box-shadow: 0 1px 2px rgba(27, 30, 34, .08);
+  }
+
+  .entry-edit { margin-top: 14px; }
+  .entry-edit summary {
+    min-height: 44px; display: flex; align-items: center;
+    font-size: 13px; color: var(--muted); cursor: pointer;
+  }
+  .entry-edit .row-2 { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+
+  /* Configuración de la primera vez */
+  .setup {
+    width: calc(100% - 24px); max-width: 480px; max-height: 92dvh; overflow: auto;
+    margin: auto; padding: 0; border: 0; border-radius: 18px;
+    background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
+  }
+  .setup::backdrop { background: rgba(27, 30, 34, .45); }
+  .setup-inner { padding: 22px; }
+  .setup-head { display: flex; align-items: center; gap: 12px; }
+  .setup-head img { width: 44px; height: 44px; border-radius: 10px; }
+  .setup-kicker {
+    margin: 0; font-size: 11px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .setup h2 { margin: 2px 0 0; font-size: 21px; letter-spacing: -.02em; }
+  .setup .muted { margin: 10px 0 4px; }
+  .setup label, .setup-label { display: block; margin: 16px 0 6px; font-size: 12px; color: var(--muted); }
+  .setup input { width: 100%; }
+  .setup-templates { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .template {
+    min-height: 76px; padding: 10px 12px; text-align: left;
+    display: flex; flex-direction: column; gap: 2px;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+  }
+  .template strong { font-size: 15px; }
+  .template span { font-size: 12px; color: var(--muted); }
+  .template[aria-checked="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+  .setup-sample {
+    margin: 12px 0 0; font-size: 12.5px; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  #setupStart { width: 100%; margin-top: 16px; }
+  .setup .fineprint { text-align: center; }
+
+  #installBtn { width: 100%; margin-top: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sheet[open] { animation: none; }
+    button.primary:active { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="top">
+    <div class="top-main">
+      <p class="eyebrow" id="businessName">Parqueadero</p>
+      <h1>Cobro por tiempo</h1>
+    </div>
+    <div class="today"><span>Hoy</span><strong id="todayTotal">$0</strong></div>
+  </header>
+
+  <main>
+    <section id="view-charge" class="view">
+      <div class="rate-chips" id="rateChips" role="radiogroup" aria-label="Tarifa"></div>
+
+      <div class="entry">
+        <label class="sr-only" for="plate">Placa o nombre</label>
+        <input id="plate" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="14" placeholder="Placa o nombre (opcional)">
+        <button id="startBtn" class="primary" type="button">Entrar</button>
+      </div>
+
+      <div class="list-head">
+        <h2>Abiertos</h2>
+        <span class="count" id="openCount">0</span>
+      </div>
+      <ul class="open-list" id="openList"></ul>
+      <p class="empty" id="emptyOpen" hidden>No hay carros abiertos.<br>Escribe la placa y toca Entrar.</p>
+    </section>
+
+    <section id="view-day" class="view" hidden>
+      <div class="day-head">
+        <h2>El día</h2>
+        <p class="muted" id="dayDate"></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat wide"><span>Cobrado hoy</span><strong id="statPaid">$0</strong></div>
+        <div class="stat"><span>Efectivo</span><strong id="statCash">$0</strong></div>
+        <div class="stat"><span>Transferencia</span><strong id="statTransfer">$0</strong></div>
+        <div class="stat"><span>Por cobrar</span><strong id="statOwed">$0</strong></div>
+        <div class="stat"><span>Abiertos</span><strong id="statOpen">0</strong></div>
+      </div>
+
+      <div class="card">
+        <h3>Cuadre de caja</h3>
+        <label for="cashCount">Efectivo contado</label>
+        <input id="cashCount" type="number" inputmode="numeric" min="0" step="100" placeholder="0">
+        <p class="diff" id="cashDiff">Escribe cuánto efectivo contaste.</p>
+        <button type="button" class="secondary" data-action="close-day">Cerrar el día</button>
+        <p class="fineprint" id="dayMsg" role="status"></p>
+      </div>
+
+      <div class="list-head">
+        <h2>Por cobrar</h2>
+        <span class="count" id="owedCount">0</span>
+      </div>
+      <ul class="open-list" id="owedList"></ul>
+      <p class="empty" id="emptyOwed" hidden>No te deben nada.</p>
+
+      <div class="list-head">
+        <h2>Cerrados hoy</h2>
+        <span class="count" id="closedCount">0</span>
+      </div>
+      <ul class="closed-list" id="closedList"></ul>
+      <p class="empty" id="emptyClosed" hidden>Todavía no has cobrado nada hoy.</p>
+
+      <button type="button" class="ghost" data-action="export">Exportar datos (JSON)</button>
+      <div class="days-history" id="daysHistory"></div>
+    </section>
+
+    <section id="view-settings" class="view" hidden>
+      <div class="card">
+        <label for="bizInput">Nombre del negocio</label>
+        <input id="bizInput" type="text" maxlength="40" autocomplete="off">
+      </div>
+
+      <div class="list-head">
+        <h2>Tarifas</h2>
+        <button type="button" class="ghost" data-action="add-rate">Añadir</button>
+      </div>
+      <div id="rateList"></div>
+
+      <div class="card">
+        <h3>Acceso directo</h3>
+        <p class="muted">Guarda la herramienta en la pantalla del teléfono, con su propio icono.</p>
+        <button id="installBtn" type="button" class="secondary">Añadir a pantalla de inicio</button>
+        <p class="fineprint" id="installHint"></p>
+      </div>
+
+      <div class="card">
+        <h3>Datos</h3>
+        <p class="muted">Todo vive en este teléfono. Si lo cambias o lo borras, se pierde.</p>
+        <button type="button" class="link-danger" data-action="clear">Borrar todos los datos</button>
+      </div>
+
+      <p class="fineprint">Prototipo v0 · sin cuenta y sin nube.</p>
+    </section>
+  </main>
+</div>
+
+<nav class="tabs" aria-label="Secciones">
+  <button type="button" class="tab is-active" data-tab="charge">Cobrar</button>
+  <button type="button" class="tab" data-tab="day">Día</button>
+  <button type="button" class="tab" data-tab="settings">Ajustes</button>
+</nav>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheetTitle"></dialog>
+
+<dialog class="setup" id="setup" aria-labelledby="setupTitle">
+  <div class="setup-inner">
+    <div class="setup-head">
+      <img src="icons/icon-192.png" alt="" width="44" height="44">
+      <div>
+        <p class="setup-kicker">Primera vez</p>
+        <h2 id="setupTitle">Configura tu herramienta</h2>
+      </div>
+    </div>
+    <p class="muted">Elige qué vas a cobrar. Después puedes cambiar tarifas y nombre en Ajustes.</p>
+
+    <label for="setupName">Nombre del negocio</label>
+    <input id="setupName" type="text" maxlength="40" placeholder="Mi negocio" autocomplete="off">
+
+    <p class="setup-label">¿Qué vas a cobrar?</p>
+    <div class="setup-templates" role="radiogroup" aria-label="Qué vas a cobrar">
+      <button type="button" class="template" data-template="vehicles" role="radio" aria-checked="true">
+        <strong>Carro y moto</strong><span>Por hora, con día</span>
+      </button>
+      <button type="button" class="template" data-template="inflables" role="radio" aria-checked="false">
+        <strong>Inflables</strong><span>Bloques de 15 o 20 min</span>
+      </button>
+      <button type="button" class="template" data-template="rental" role="radio" aria-checked="false">
+        <strong>Alquiler</strong><span>Por hora o por día</span>
+      </button>
+      <button type="button" class="template" data-template="other" role="radio" aria-checked="false">
+        <strong>Otro</strong><span>Una tarifa por hora</span>
+      </button>
+    </div>
+
+    <p class="setup-sample" id="setupSample">Carro $3.000/h · Moto $2.000/h · Día $15.000</p>
+
+    <button type="button" class="primary" id="setupStart">Empezar</button>
+    <p class="fineprint">Gratis · sin cuenta · los datos quedan en este teléfono.</p>
+  </div>
+</dialog>
+
+<noscript>Esta herramienta necesita JavaScript para funcionar.</noscript>
+
+<script src="tarifa.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

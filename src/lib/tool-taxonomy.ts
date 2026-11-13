@@ -1,4 +1,4 @@
-﻿export type FamilyKey = "accounts" | "operations" | "deadlines" | "sales" | "company" | "decisions";
+export type FamilyKey = "accounts" | "operations" | "deadlines" | "sales" | "company" | "decisions";
 
 export type Family = {
   key: FamilyKey;
@@ -95,6 +95,7 @@ const BY_SLUG: Record<string, FamilyKey> = {
   "unit-conversion": "operations",
   "price-per-pound": "operations",
   "sales-average": "operations",
+  "time-billing": "operations",
 
   "business-days": "deadlines",
   "days-between-dates": "deadlines",
@@ -148,6 +149,7 @@ const ICON_BY_SLUG: Record<string, string> = {
   "unit-conversion": "scale",
   "price-per-pound": "scale",
   "sales-average": "bars",
+  "time-billing": "clock",
 
   "business-days": "calendar",
   "days-between-dates": "calendar",
@@ -205,6 +207,7 @@ const RELATED: Record<string, string[]> = {
   "true-crm-cost": ["break-even", "lost-hours"],
   "gateway-or-breb": ["invoice-with-withholdings", "sales-commissions"],
   "lost-hours": ["hiring-cost", "true-crm-cost"],
+  "time-billing": ["lost-hours", "break-even"],
   "break-even": ["sale-price", "hiring-cost"],
   porcentajes: ["vat-and-totals", "real-margin"],
   divisas: ["unit-price", "cost-per-trip"],

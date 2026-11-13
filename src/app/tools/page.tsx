@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { tools } from "@/lib/tools";
 import { familyOf } from "@/lib/tool-taxonomy";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
+import Icon from "@/components/Icon";
 import ToolsExplorer from "@/components/tools/ToolsExplorer";
 
 export const metadata: Metadata = {
   title: "Herramientas",
   description:
-    "41 calculadoras de uso único para el día a día: IVA, nómina, retenciones, inventario, plazos y precios. Sin cuenta.",
+    "42 herramientas para el día a día: IVA, nómina, retenciones, inventario, plazos, precios y cobro por tiempo. Sin cuenta.",
   alternates: { canonical: "https://inflinds.com/tools/" },
 };
 
@@ -32,9 +34,9 @@ export default function ToolsPage() {
             Busca la cuenta que necesitas. Sin crear cuenta.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
-            {tools.length} herramientas de uso único, agrupadas por el trabajo que resuelven. Primero
-            las del día a día; abajo las de decidir. Todas calculan en tu navegador: no piden cuenta y
-            no se guardan nada.
+            {tools.length} herramientas, agrupadas por el trabajo que resuelven. Casi todas se usan y
+            se cierran; una se queda abierta todo el día. Todas calculan en tu navegador: no piden
+            cuenta y no se guardan nada en nuestros servidores.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <PrimaryButton href="/contact/">Necesito ayuda con esto</PrimaryButton>
@@ -68,6 +70,27 @@ export default function ToolsPage() {
               ↗
             </span>
           </a>
+
+          <Link
+            href="/tools/time-billing/"
+            className="mb-4 flex items-center gap-4 rounded-2xl border border-magenta/30 bg-white p-4 transition hover:border-magenta"
+          >
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-magenta/10 text-magenta">
+              <Icon name="clock" className="h-5 w-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-magenta">Nueva</span>
+              <span className="block font-display text-lg font-black leading-tight text-ink">
+                Cobro por tiempo
+              </span>
+              <span className="block truncate text-xs text-slate">
+                Entra, mira el tiempo y cobra. Se queda abierta todo el día.
+              </span>
+            </span>
+            <span aria-hidden="true" className="shrink-0 text-magenta">
+              →
+            </span>
+          </Link>
 
           <ToolsExplorer tools={explorerTools} />
 
