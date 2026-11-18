@@ -37,6 +37,13 @@ const merezIcons: Record<string, string> = {
 /* ---------- Mockup decorativo del hero (dashboard ilustrativo, datos ficticios) ---------- */
 
 function HeroMockup() {
+  const familyCounts = FAMILY_ORDER.map((key) => ({
+    key,
+    meta: FAMILIES[key],
+    count: toolbox.filter((tool) => familyOf(tool.slug) === key).length,
+  }));
+  const maxFamily = Math.max(...familyCounts.map((family) => family.count));
+
   return (
     <div className="relative hidden lg:block select-none" aria-hidden="true">
       <div className="absolute -inset-10 rounded-full bg-brand-600/30 blur-3xl" />
@@ -55,82 +62,56 @@ function HeroMockup() {
           ))}
         </div>
 
-        {/* Tarjeta principal con gráfica */}
+        {/* Tarjeta principal: los fuertes reales */}
         <div className="flex-1 rounded-2xl border border-white/10 bg-night-800/90 p-4">
-          <p className="text-sm font-bold text-white">Resumen del proyecto</p>
-          <svg viewBox="0 0 260 110" className="mt-3 w-full">
-            <defs>
-              <linearGradient id="mock-line" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#751cb4" />
-                <stop offset="0.55" stopColor="#f8049c" />
-                <stop offset="1" stopColor="#ff8e00" />
-              </linearGradient>
-              <linearGradient id="mock-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#f8049c" stopOpacity="0.22" />
-                <stop offset="1" stopColor="#f8049c" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            {[0, 1, 2, 3].map((i) => (
-              <line
-                key={i}
-                x1="0"
-                x2="260"
-                y1={20 + i * 25}
-                y2={20 + i * 25}
-                stroke="rgba(255,255,255,0.07)"
-              />
-            ))}
-            <path
-              d="M0 92 C28 88 40 72 66 78 C92 84 104 58 132 54 C158 50 172 64 196 42 C216 24 240 18 260 10 L260 110 L0 110 Z"
-              fill="url(#mock-fill)"
-            />
-            <path
-              d="M0 92 C28 88 40 72 66 78 C92 84 104 58 132 54 C158 50 172 64 196 42 C216 24 240 18 260 10"
-              fill="none"
-              stroke="url(#mock-line)"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="mt-1 flex justify-between text-[10px] font-semibold text-slate-500">
-            {["Ene", "Feb", "Mar", "Abr", "May", "Jun"].map((m) => (
-              <span key={m}>{m}</span>
+          <p className="text-sm font-bold text-white">Nuestros fuertes</p>
+          <p className="text-[10px] text-slate-400">Lo que ya tenemos montado</p>
+          <div className="mt-3 space-y-1.5">
+            {familyCounts.map(({ key, meta, count }) => (
+              <div key={key} className="flex items-center gap-2">
+                <Icon name={meta.icon} className={`h-3.5 w-3.5 shrink-0 ${meta.iconClass}`} />
+                <span className="w-[70px] shrink-0 text-[10px] font-semibold text-slate-300">
+                  {meta.label}
+                </span>
+                <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+                  <span
+                    className="block h-full rounded-full bg-gradient-to-r from-brand-400 via-magenta to-orange"
+                    style={{ width: `${Math.max(8, (count / maxFamily) * 100)}%` }}
+                  />
+                </span>
+                <span className="w-4 text-right text-[10px] font-bold text-white">{count}</span>
+              </div>
             ))}
           </div>
-          <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-night/70 p-3">
+          <div className="mt-3 flex items-center gap-3 rounded-xl border border-white/10 bg-night/70 p-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-cta text-white">
-              <Icon name="zap" className="h-4 w-4" />
+              <Icon name="sparkles" className="h-4 w-4" />
             </span>
             <div>
-              <p className="text-xs text-slate-400">Automatización activa</p>
-              <p className="text-sm font-bold text-white">
-                24 procesos <span className="font-normal text-slate-400">ahorrando tiempo</span>
-              </p>
+              <p className="text-xs text-slate-400">Merez · operación</p>
+              <p className="text-sm font-bold text-white">{merezModules.length} módulos</p>
             </div>
           </div>
         </div>
 
-        {/* Columna de métricas */}
+        {/* Columna de datos reales */}
         <div className="w-44 shrink-0 space-y-3">
           <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
-            <p className="text-xs text-slate-400">Ventas totales</p>
-            <p className="mt-1 font-display font-black text-lg text-white">$ 124.580.000</p>
-            <p className="mt-1 text-[11px] font-bold text-yellow">↑ 24% vs mes anterior</p>
+            <p className="text-xs text-slate-400">Herramientas</p>
+            <p className="mt-1 font-display text-lg font-black text-white">{toolbox.length}</p>
+            <p className="mt-1 text-[11px] font-bold text-yellow">
+              {FAMILY_ORDER.length} familias
+            </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
-            <div className="flex -space-x-2">
-              {["bg-brand-400", "bg-magenta", "bg-orange", "bg-brand-300"].map((c, i) => (
-                <span
-                  key={i}
-                  className={`h-8 w-8 rounded-full border-2 border-night-800 ${c}`}
-                />
-              ))}
-            </div>
+            <p className="text-xs text-slate-400">Aplicaciones</p>
+            <p className="mt-1 font-display text-lg font-black text-white">{apps.length}</p>
+            <p className="mt-1 text-[11px] font-bold text-magenta">con estado</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
-            <p className="text-xs text-slate-400">Usuarios activos</p>
-            <p className="mt-1 font-display font-black text-lg text-white">1.428</p>
-            <p className="mt-1 text-[11px] font-bold text-yellow">↑ 16% vs mes</p>
+            <p className="text-xs text-slate-400">Servicios</p>
+            <p className="mt-1 font-display text-lg font-black text-white">{services.length}</p>
+            <p className="mt-1 text-[11px] font-bold text-orange">a la medida</p>
           </div>
         </div>
       </div>
