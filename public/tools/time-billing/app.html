@@ -439,6 +439,12 @@
         <input id="bizInput" type="text" maxlength="40" autocomplete="off">
       </div>
 
+      <div class="card">
+        <label for="maxHours">Tope por sesión (horas)</label>
+        <input id="maxHours" type="number" inputmode="numeric" min="1" max="48" step="1">
+        <p class="fineprint">12 h por defecto. Al llegar, se cobra la tarifa de día si la tienes.</p>
+      </div>
+
       <div class="list-head">
         <h2>Tarifas</h2>
         <button type="button" class="ghost" data-action="add-rate">Añadir</button>
@@ -510,7 +516,7 @@
 
 <noscript>Esta herramienta necesita JavaScript para funcionar.</noscript>
 
-<script src="tarifa.js"></script>
-<script src="app.js"></script>
+<script src="tarifa.js?v=20261117"></script>
+<script src="app.js?v=20261117"></script>
 </body>
 </html>

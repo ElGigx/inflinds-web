@@ -15,7 +15,8 @@
       selectedRate: null,
       rates: [],
       sessions: [],
-      days: []
+      days: [],
+      maxHours: 12
     };
   }
 
@@ -30,6 +31,7 @@
       s.rates = Array.isArray(s.rates) ? s.rates : [];
       s.sessions = Array.isArray(s.sessions) ? s.sessions : [];
       s.days = Array.isArray(s.days) ? s.days : [];
+      if (!s.maxHours || Number(s.maxHours) < 1) s.maxHours = 12;
       return s;
     } catch (err) {
       return seedState();
@@ -37,6 +39,8 @@
   }
 
   var state = loadState();
+  normalizeState(state);
+  saveState();
 
   function saveState() {
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (err) { /* sigue en memoria */ }
@@ -102,6 +106,68 @@
     return null;
   }
 
+  function dayPriceFor(rate, rates) {
+    if (rate && rate.mode === 'day') return Number(rate.price) || 0;
+    var list = rates || state.rates || [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].mode === 'day' && Number(list[i].price) > 0) return Number(list[i].price);
+    }
+    return 0;
+  }
+
+  function maxHoursFor(s, fallbackState) {
+    var st = fallbackState || state;
+    var hours = Number((s && s.maxHours) || (st && st.maxHours) || 12);
+    return hours > 0 ? hours : 12;
+  }
+
+  function computeSession(s, end, fallbackState) {
+    var st = fallbackState || state;
+    var rate = s.rate || {};
+    var dayPrice = s.dayPrice != null ? s.dayPrice : dayPriceFor(rate, st.rates);
+    return Tarifa.compute(rate, s.start, end, {
+      maxMinutes: maxHoursFor(s, st) * 60,
+      dayPrice: dayPrice
+    });
+  }
+
+  function capEnd(s, endIso) {
+    var startMs = new Date(s.start).getTime();
+    var maxMs = maxHoursFor(s) * 3600000;
+    var endMs = endIso ? new Date(endIso).getTime() : Date.now();
+    return new Date(Math.min(endMs, startMs + maxMs)).toISOString();
+  }
+
+  function normalizeState(s) {
+    if (!s.maxHours || Number(s.maxHours) < 1) s.maxHours = 12;
+    s.rates = Array.isArray(s.rates) ? s.rates : [];
+    s.sessions = Array.isArray(s.sessions) ? s.sessions : [];
+    var fallbackDayPrice = dayPriceFor(null, s.rates);
+    s.sessions.forEach(function (session) {
+      if (!session.rate) return;
+      if (!session.maxHours) session.maxHours = Number(s.maxHours) || 12;
+      if (session.dayPrice == null) {
+        session.dayPrice = dayPriceFor(session.rate, s.rates) || fallbackDayPrice;
+      }
+      if (!session.end) return;
+      var startMs = new Date(session.start).getTime();
+      var endMs = new Date(session.end).getTime();
+      var maxMs = Number(session.maxHours) * 3600000;
+      if (!isFinite(startMs) || !isFinite(endMs) || endMs - startMs <= maxMs) return;
+      session.end = new Date(startMs + maxMs).toISOString();
+      session.closedAt = session.end;
+      if ((session.status === 'paid' || session.status === 'owed') && !session.adjustment) {
+        session.amount = computeSession(session, session.end, s).charge;
+      }
+    });
+    return s;
+  }
+
+  function hoursText(minutes) {
+    var h = Math.round((Number(minutes) / 60) * 10) / 10;
+    return String(h).replace('.', ',') + ' h';
+  }
+
   function rateLabel(r) {
     if (r.mode === 'hour') {
       var extra = r.fraction && r.fraction !== 60 ? ' · ' + r.fraction + 'm' : '';
@@ -122,9 +188,14 @@
       }
       return 'Sin cobro';
     }
+    var timeNote = res.cappedByTime && res.maxMinutes > 0 ? 'máximo ' + hoursText(res.maxMinutes) : '';
+    if (res.capKind === 'day') {
+      return (timeNote ? 'Máximo ' + hoursText(res.maxMinutes) + ' · ' : '') + 'tarifa día ' + money(res.capAmount);
+    }
     var unit = res.units === 1 ? res.unit.one : res.unit.many;
     var text = res.units + ' ' + unit + ' × ' + money(Tarifa.unitPrice(rate));
-    if (res.capped) text += ' · tope ' + money(rate.cap);
+    if (res.capped && res.capKind === 'rate') text += ' · tope ' + money(res.capAmount);
+    if (timeNote) text += ' · ' + timeNote;
     return text;
   }
 
@@ -221,6 +292,7 @@
   var emptyOwed = $('emptyOwed');
   var daysHistory = $('daysHistory');
   var bizInput = $('bizInput');
+  var maxHoursInput = $('maxHours');
   var rateList = $('rateList');
   var sheet = $('sheet');
   var viewCharge = $('view-charge');
@@ -261,7 +333,7 @@
     emptyOpen.hidden = open.length > 0;
     var now = new Date().toISOString();
     openList.innerHTML = open.map(function (s) {
-      var res = Tarifa.compute(s.rate, s.start, now);
+      var res = computeSession(s, now);
       return '<li><button type="button" class="row" data-action="open" data-id="' + s.id + '">' +
         '<span class="row-main">' +
           '<span class="row-label">' + esc(s.label) + '</span>' +
@@ -286,7 +358,7 @@
     closedCount.textContent = String(closed.length);
     emptyClosed.hidden = closed.length > 0;
     closedList.innerHTML = closed.map(function (s) {
-      var res = Tarifa.compute(s.rate, s.start, s.end);
+      var res = computeSession(s, s.end);
       var tag = '<small>' + (s.method === 'transfer' ? 'Transferencia' : 'Efectivo') + '</small>';
       return '<li class="closed-row">' +
         '<span class="row-main">' +
@@ -304,7 +376,7 @@
     owedCount.textContent = String(owed.length);
     emptyOwed.hidden = owed.length > 0;
     owedList.innerHTML = owed.map(function (s) {
-      var res = Tarifa.compute(s.rate, s.start, s.end);
+      var res = computeSession(s, s.end);
       return '<li><button type="button" class="row" data-action="settle" data-id="' + s.id + '">' +
         '<span class="row-main">' +
           '<span class="row-label">' + esc(s.label) + '</span>' +
@@ -426,7 +498,7 @@
       var id = nodes[i].getAttribute('data-elapsed');
       var s = sessionById(id);
       if (!s) continue;
-      var res = Tarifa.compute(s.rate, s.start, now);
+      var res = computeSession(s, now);
       nodes[i].textContent = metaLine(s, res);
       var amountNode = document.querySelector('[data-amount="' + id + '"]');
       if (amountNode) amountNode.textContent = money(res.charge);
@@ -434,7 +506,7 @@
     if (sheet.open && sheetSessionId) {
       var current = sessionById(sheetSessionId);
       if (current && current.status === 'open') {
-        var r = Tarifa.compute(current.rate, current.start, now);
+        var r = computeSession(current, now);
         var amountEl = $('sheetAmount');
         var timeEl = $('sheetTime');
         var breakdownEl = $('sheetBreakdown');
@@ -469,6 +541,8 @@
       label: label.toUpperCase(),
       start: new Date().toISOString(),
       end: null,
+      maxHours: state.maxHours || 12,
+      dayPrice: dayPriceFor(r, state.rates),
       status: 'open',
       amount: null,
       method: null,
@@ -513,7 +587,7 @@
       renderSettleSheet(s);
       return;
     }
-    var res = Tarifa.compute(s.rate, s.start, new Date().toISOString());
+    var res = computeSession(s, new Date().toISOString());
     sheet.innerHTML = '<div class="sheet-inner">' +
       '<div class="sheet-head">' +
         '<div>' +
@@ -584,13 +658,14 @@
     var s = sessionById(sheetSessionId);
     if (!s || s.status !== 'open') return;
     var now = new Date().toISOString();
-    var res = Tarifa.compute(s.rate, s.start, now);
+    var end = capEnd(s, now);
+    var res = computeSession(s, end);
     var input = $('payAmount');
     var amount = amountDirty
       ? Math.max(0, Math.round(Number(input ? input.value : 0) || 0))
       : res.charge;
-    s.end = now;
-    s.closedAt = now;
+    s.end = end;
+    s.closedAt = end;
     s.status = 'paid';
     s.amount = amount;
     s.adjustment = amount - res.charge;
@@ -603,13 +678,14 @@
     var s = sessionById(sheetSessionId);
     if (!s || s.status !== 'open') return;
     var now = new Date().toISOString();
-    var res = Tarifa.compute(s.rate, s.start, now);
+    var end = capEnd(s, now);
+    var res = computeSession(s, end);
     var input = $('payAmount');
     var amount = amountDirty
       ? Math.max(0, Math.round(Number(input ? input.value : 0) || 0))
       : res.charge;
-    s.end = now;
-    s.closedAt = now;
+    s.end = end;
+    s.closedAt = end;
     s.status = 'owed';
     s.amount = amount;
     s.adjustment = amount - res.charge;
@@ -636,8 +712,9 @@
     var s = sessionById(sheetSessionId);
     if (!s || s.status !== 'open') return;
     var now = new Date().toISOString();
-    s.end = now;
-    s.closedAt = now;
+    var end = capEnd(s, now);
+    s.end = end;
+    s.closedAt = end;
     s.status = 'void';
     s.amount = 0;
     s.method = null;
@@ -747,6 +824,7 @@
     try { localStorage.removeItem(KEY); } catch (err) { /* nada */ }
     state = seedState();
     bizInput.value = state.business;
+    if (maxHoursInput) maxHoursInput.value = state.maxHours || 12;
     cashCount.value = '';
     dayMsg.textContent = '';
     if (sheet.open) sheet.close();
@@ -932,6 +1010,15 @@
     businessName.textContent = state.business || 'Mi negocio';
   });
 
+  if (maxHoursInput) {
+    maxHoursInput.addEventListener('change', function () {
+      state.maxHours = Math.max(1, Math.min(48, Math.round(Number(maxHoursInput.value) || 12)));
+      maxHoursInput.value = state.maxHours;
+      saveState();
+      renderAll();
+    });
+  }
+
   cashCount.addEventListener('input', updateCashDiff);
 
   rateList.addEventListener('change', function (e) {
@@ -975,6 +1062,7 @@
     state.selectedRate = state.rates.length ? state.rates[0].id : null;
   }
   bizInput.value = state.business || '';
+  if (maxHoursInput) maxHoursInput.value = state.maxHours || 12;
   renderAll();
   switchTab('charge');
   wireInstall();
