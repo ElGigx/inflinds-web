@@ -4,6 +4,7 @@ import { batchC } from "./tools-batch-c";
 import { batchD } from "./tools-batch-d";
 import { batchE } from "./tools-batch-e";
 import { batchF } from "./tools-batch-f";
+import { batchG } from "./tools-batch-g";
 
 export type Tool = {
   slug: string;
@@ -13,6 +14,7 @@ export type Tool = {
   description: string;
   category: "diario" | "negocio";
   minutes: number;
+  kind?: "calculator" | "app";
   inflinds: { title: string; text: string; href: string };
   merez: { title: string; text: string; href: string };
 };
@@ -241,7 +243,7 @@ const coreTools: Tool[] = [
   },
 ];
 
-export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE, ...batchF];
+export const tools: Tool[] = [...coreTools, ...batchA, ...batchB, ...batchC, ...batchD, ...batchE, ...batchF, ...batchG];
 
 export function getTool(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);

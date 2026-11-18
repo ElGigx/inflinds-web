@@ -10,6 +10,7 @@ export const batchF: Tool[] = [
       "Para parqueaderos, inflables y alquiler por horas. Se configuran las tarifas una vez y después son dos toques por cliente: entrar y cobrar.",
     category: "negocio",
     minutes: 1,
+    kind: "app",
     inflinds: {
       title: "Te lo adapto a tu negocio",
       text: "Si son tres bahías, si el ticket lleva el logo o si necesita un reporte propio, se ajusta. La herramienta es el punto de partida, no el techo.",

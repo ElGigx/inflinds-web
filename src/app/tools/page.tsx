@@ -9,7 +9,7 @@ import ToolsExplorer from "@/components/tools/ToolsExplorer";
 export const metadata: Metadata = {
   title: "Herramientas",
   description:
-    "42 herramientas para el día a día: IVA, nómina, retenciones, inventario, plazos, precios y cobro por tiempo. Sin cuenta.",
+    "43 herramientas para el día a día: IVA, nómina, retenciones, inventario, plazos, precios, cobro por tiempo y cuentas claras. Sin cuenta.",
   alternates: { canonical: "https://inflinds.com/tools/" },
 };
 
@@ -35,7 +35,7 @@ export default function ToolsPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
             {tools.length} herramientas, agrupadas por el trabajo que resuelven. Casi todas se usan y
-            se cierran; una se queda abierta todo el día. Todas calculan en tu navegador: no piden
+            se cierran; dos se quedan abiertas todo el día. Todas calculan en tu navegador: no piden
             cuenta y no se guardan nada en nuestros servidores.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -72,19 +72,19 @@ export default function ToolsPage() {
           </a>
 
           <Link
-            href="/tools/time-billing/"
+            href="/tools/cuentas-claras/"
             className="mb-4 flex items-center gap-4 rounded-2xl border border-magenta/30 bg-white p-4 transition hover:border-magenta"
           >
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-magenta/10 text-magenta">
-              <Icon name="clock" className="h-5 w-5" />
+              <Icon name="banknote" className="h-5 w-5" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-magenta">Nueva</span>
               <span className="block font-display text-lg font-black leading-tight text-ink">
-                Cobro por tiempo
+                Cuentas claras
               </span>
               <span className="block truncate text-xs text-slate">
-                Entra, mira el tiempo y cobra. Se queda abierta todo el día.
+                Quién te debe, cuánto y desde cuándo. Sin cuaderno.
               </span>
             </span>
             <span aria-hidden="true" className="shrink-0 text-magenta">
