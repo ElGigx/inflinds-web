@@ -28,7 +28,7 @@ export const clients = [
 ];
 
 export const nav = [
-  { href: "/tools/", label: "Calculadoras" },
+  { href: "/tools/", label: "Herramientas" },
   { href: "/apps/", label: "Aplicaciones" },
   { href: "/services/", label: "Servicios" },
   { href: "/pricing/", label: "Precios" },
@@ -37,11 +37,11 @@ export const nav = [
   { href: "/login/", label: "Clientes" },
 ];
 
-// Los tres frentes del catálogo: las calculadoras (responden y se cierran) y
-// las aplicaciones (tienen estado y se quedan abiertas). Los servicios viven
-// aparte en `services`.
+// Los tres frentes del catálogo: las herramientas (se abren, se usan y se
+// cierran) y las aplicaciones (tienen estado y se quedan abiertas). Los
+// servicios viven aparte en `services`.
 export const apps = tools.filter((tool) => tool.kind === "app");
-export const calculators = tools.filter((tool) => tool.kind !== "app");
+export const toolbox = tools.filter((tool) => tool.kind !== "app");
 
 // Las 5 líneas de servicio (Services.md).
 export const services = [

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { tools } from "@/lib/tools";
+import { apps, toolbox } from "@/lib/site";
 import { familyOf } from "@/lib/tool-taxonomy";
 import { Container, Eyebrow, PrimaryButton } from "@/components/ui";
 import Icon from "@/components/Icon";
@@ -9,7 +10,7 @@ import ToolsExplorer from "@/components/tools/ToolsExplorer";
 export const metadata: Metadata = {
   title: "Herramientas",
   description:
-    "43 herramientas para el día a día: IVA, nómina, retenciones, inventario, plazos, precios, cobro por tiempo y cuentas claras. Sin cuenta.",
+    "41 herramientas —muchas de ellas calculadoras— y 2 aplicaciones para el día a día: IVA, nómina, retenciones, inventario, plazos, precios, cobro por tiempo y cuentas claras. Sin cuenta.",
   alternates: { canonical: "https://inflinds.com/tools/" },
 };
 
@@ -31,15 +32,24 @@ export default function ToolsPage() {
         <Container className="relative py-14 sm:py-16">
           <Eyebrow>Herramientas</Eyebrow>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-ink sm:text-5xl">
-            Busca la cuenta que necesitas. Sin crear cuenta.
+            Busca la herramienta que necesitas. Sin crear cuenta.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
-            {tools.length} herramientas, agrupadas por el trabajo que resuelven. Casi todas se usan y
-            se cierran; dos se quedan abiertas todo el día. Todas calculan en tu navegador: no piden
-            cuenta y no se guardan nada en nuestros servidores.
+            {toolbox.length} herramientas —muchas de ellas calculadoras— que abres, usas y cierras, y{" "}
+            {apps.length} aplicaciones que se quedan abiertas todo el día. Todas funcionan en tu
+            navegador: no piden cuenta y no se guardan nada en nuestros servidores.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <PrimaryButton href="/contact/">Necesito ayuda con esto</PrimaryButton>
+            <Link
+              href="/apps/"
+              className="inline-flex items-center justify-center rounded-xl border border-line bg-white px-6 py-3 font-bold text-ink transition hover:border-magenta"
+            >
+              Ver las {apps.length} aplicaciones
+              <span aria-hidden="true" className="ml-2">
+                →
+              </span>
+            </Link>
             <a
               href="https://www.merez.co/pricing/"
               className="inline-flex items-center justify-center rounded-xl border border-line bg-white px-6 py-3 font-bold text-ink transition hover:border-magenta"

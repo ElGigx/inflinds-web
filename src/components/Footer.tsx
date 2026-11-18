@@ -1,51 +1,136 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { nav, services, site } from "@/lib/site";
+import { apps, services, site, toolbox } from "@/lib/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-night text-slate-100 border-t border-white/10">
       <div className="mx-auto max-w-6xl px-5 py-14">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-1">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-1">
             <Logo light />
-            <p className="mt-4 text-sm leading-relaxed text-slate-300/80 max-w-xs">
-              Digital Product Studio. Diseño, desarrollo, automatización e IA para
-              acelerar tu transformación digital.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-300/80">
+              Herramientas, aplicaciones y servicios para los distintos frentes de tu negocio.
+              Diseño, desarrollo, automatización e IA.
             </p>
+            <Link
+              href="/contact/"
+              className="mt-5 inline-flex items-center rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+            >
+              Hablemos
+              <span aria-hidden="true" className="ml-1">
+                →
+              </span>
+            </Link>
           </div>
 
           <div>
             <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
-              Navegación
+              Soluciones
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-slate-300/80 hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/tools/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Herramientas <span className="text-slate-500">({toolbox.length})</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/apps/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Aplicaciones <span className="text-slate-500">({apps.length})</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Servicios <span className="text-slate-500">({services.length})</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Precios
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
-              Servicios
+              Merez
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {services.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href="/services/"
-                    className="text-slate-300/80 hover:text-white transition-colors"
-                  >
-                    {s.tag}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="https://www.merez.co/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-300/80 hover:text-white transition-colors"
+                >
+                  La plataforma
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.merez.co/pricing/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-300/80 hover:text-white transition-colors"
+                >
+                  Precios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://app.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-300/80 hover:text-white transition-colors"
+                >
+                  Entrar al panel
+                </a>
+              </li>
+              <li>
+                <Link href="/login/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Clientes
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://docs.merez.co"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-300/80 hover:text-white transition-colors"
+                >
+                  Documentación
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-display font-bold text-magenta text-sm uppercase tracking-wider">
+              Recursos
+            </h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link href="/blog/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/log/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Log
+                </Link>
+              </li>
+              <li>
+                <Link href="/gigx/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Gigx
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Contacto
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -68,17 +153,13 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-            <Link
-              href="/contact/"
-              className="mt-5 inline-flex items-center rounded-full bg-gradient-cta px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
-            >
-              Iniciar un proyecto
-            </Link>
           </div>
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
-          <p>© {year} {site.legalName}. Todos los derechos reservados.</p>
+          <p>
+            © {year} {site.legalName}. Todos los derechos reservados.
+          </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy/" className="hover:text-white transition-colors">
               Privacidad
