@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { apps, clients, merezModules, services, toolbox } from "@/lib/site";
+import { apps, clients, merezModules, plans, services, toolbox } from "@/lib/site";
 import { FAMILIES, FAMILY_ORDER, familyOf } from "@/lib/tool-taxonomy";
 import Icon from "@/components/Icon";
 import ToolMark from "@/components/tools/ToolMark";
-import ProcessStrip from "@/components/ProcessStrip";
 import {
   Container,
   SectionHeading,
@@ -11,15 +10,6 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from "@/components/ui";
-
-const serviceIcons: Record<string, string> = {
-  diseno: "pen",
-  desarrollo: "code",
-  automatizacion: "settings",
-  "inteligencia-artificial": "sparkles",
-  consultoria: "target",
-  "seo-geo": "target",
-};
 
 const merezIcons: Record<string, string> = {
   "CRM Inteligente": "users",
@@ -34,7 +24,7 @@ const merezIcons: Record<string, string> = {
   Pagos: "card",
 };
 
-/* ---------- Mockup decorativo del hero (dashboard ilustrativo, datos ficticios) ---------- */
+/* ---------- Mockup decorativo del hero (datos reales del catálogo) ---------- */
 
 function HeroMockup() {
   const familyCounts = FAMILY_ORDER.map((key) => ({
@@ -119,7 +109,37 @@ function HeroMockup() {
   );
 }
 
+const processSteps = [
+  {
+    title: "Entendemos el negocio",
+    desc: "Qué te cuesta hoy, qué quieres mover y qué no vale la pena tocar.",
+  },
+  {
+    title: "Diseñamos la solución",
+    desc: "Alcance, arquitectura y pantallas antes de escribir una línea de código.",
+  },
+  {
+    title: "Construimos y probamos",
+    desc: "Entregas revisables, QA y puesta en producción sin sorpresas.",
+  },
+  {
+    title: "Evolucionamos",
+    desc: "Medición, soporte y nuevas funciones cuando el negocio cambia.",
+  },
+];
+
 export default function Home() {
+  const landing = plans.find((plan) => plan.slug === "landing");
+  const merezHighlights = [
+    "CRM Inteligente",
+    "Agente de ventas",
+    "Automatizaciones",
+    "Cotizaciones PDF",
+    "Analítica",
+    "Pagos",
+  ];
+  const merezFeatured = merezModules.filter((module) => merezHighlights.includes(module.name));
+
   return (
     <>
       {/* ---------- HERO ---------- */}
@@ -128,45 +148,30 @@ export default function Home() {
         <Container className="relative py-20 sm:py-24">
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <Eyebrow tone="dark">Herramientas · Aplicaciones · Servicios</Eyebrow>
+              <Eyebrow tone="dark">Digital Product Studio</Eyebrow>
               <h1 className="mt-4 font-display font-black text-4xl sm:text-5xl xl:text-6xl leading-[1.05] tracking-tight">
-                Calcula, opera y{" "}
-                <span className="text-gradient-warm">construye</span>.
+                Diseñamos y construimos{" "}
+                <span className="text-gradient-warm">productos digitales</span>, no solo páginas
+                web.
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-slate-300">
-                {toolbox.length} herramientas que abres, usas y cierras —muchas de ellas
-                calculadoras—; {apps.length} aplicaciones que se quedan abiertas con tu operación; y{" "}
-                {services.length} servicios para lo que no cabe en una herramienta. Todo empieza en
-                tu navegador; lo que necesita vivir con el negocio, en Merez.
+                Combinamos negocio, diseño, tecnología e inteligencia artificial para acelerar la
+                transformación digital de empresas y emprendedores. Un lanzamiento nunca es el
+                final del proyecto: es donde empieza la evolución.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <PrimaryButton href="/tools/">
-                  Explorar las {toolbox.length} herramientas
+                <PrimaryButton href="/contact/">
+                  Cuéntanos tu proyecto
                   <span aria-hidden="true" className="ml-2">
                     →
                   </span>
                 </PrimaryButton>
-                <SecondaryButton href="/apps/" tone="dark">
-                  Ver las {apps.length} aplicaciones
+                <SecondaryButton href="/services/" tone="dark">
+                  Ver servicios
                   <span aria-hidden="true" className="ml-2">
                     →
                   </span>
                 </SecondaryButton>
-              </div>
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
-                <Link
-                  href="/services/"
-                  className="font-semibold text-slate-300 transition-colors hover:text-white"
-                >
-                  Servicios a la medida →
-                </Link>
-                <span className="text-slate-600">·</span>
-                <Link
-                  href="/contact/"
-                  className="font-semibold text-slate-300 transition-colors hover:text-white"
-                >
-                  Hablemos →
-                </Link>
               </div>
             </div>
 
@@ -194,11 +199,20 @@ export default function Home() {
       {/* ---------- TRES FRENTES ---------- */}
       <section className="py-20">
         <Container>
-          <SectionHeading
-            eyebrow="Tres frentes"
-            title="Un mismo criterio, tres formas de resolver"
-            intro="No todo se resuelve igual. Algunas cosas caben en una herramienta que se cierra; otras necesitan una aplicación que guarde el estado; otras, un proyecto a la medida."
-          />
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="Tres frentes"
+              title="Empieza por donde más te duele"
+              intro="Una calculadora para hoy, una app para tu operación, un proyecto para crecer. No todo se resuelve igual: por eso hay tres formas de entrar."
+            />
+            <Link
+              href="/pricing/"
+              className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all hover:gap-2"
+            >
+              Ver precios <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             <Link
               href="/tools/"
@@ -210,17 +224,23 @@ export default function Home() {
                 </span>
                 <span className="font-display text-4xl font-black text-ink">{toolbox.length}</span>
               </div>
-              <h3 className="mt-4 font-display text-xl font-black text-ink">Herramientas</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                Calculadoras, conversores y generadores: se abren, resuelven y se cierran. Sin
-                cuenta y sin dejar datos.
+              <h3 className="mt-5 font-display text-xl font-black text-ink">Herramientas</h3>
+              <p className="mt-2 text-base font-semibold leading-snug text-ink">
+                Resuelve hoy lo que te está quitando la tarde.
               </p>
-              <ul className="mt-4 space-y-1 text-sm text-slate">
-                <li>IVA, nómina, precios, fechas...</li>
-                <li>Enlaces de WhatsApp, firmas, teléfonos...</li>
-                <li>Muchas calculan; otras generan.</li>
-              </ul>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
+              <p className="mt-2 text-sm leading-relaxed text-slate">
+                41 calculadoras, conversores y generadores que abres, usas y cierras. Sin cuenta y
+                sin dejar datos.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  Sin registro
+                </span>
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  En tu navegador
+                </span>
+              </div>
+              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
                 Ver las {toolbox.length} herramientas <span aria-hidden="true">→</span>
               </span>
             </Link>
@@ -235,17 +255,23 @@ export default function Home() {
                 </span>
                 <span className="font-display text-4xl font-black text-ink">{apps.length}</span>
               </div>
-              <h3 className="mt-4 font-display text-xl font-black text-ink">Aplicaciones</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                Las que tienen estado: abres al día siguiente y sigue todo. Instalables, sin cuenta
-                y con los datos en tu navegador.
+              <h3 className="mt-5 font-display text-xl font-black text-ink">Aplicaciones</h3>
+              <p className="mt-2 text-base font-semibold leading-snug text-ink">
+                Tu operación, fuera de la hoja de cálculo.
               </p>
-              <ul className="mt-4 space-y-1 text-sm text-slate">
-                <li>Cobro por tiempo</li>
-                <li>Cuentas claras</li>
-                <li>Export a JSON y PWA</li>
-              </ul>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-magenta underline decoration-magenta decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
+              <p className="mt-2 text-sm leading-relaxed text-slate">
+                2 apps que guardan el estado: cobra por tiempo y sabe quién te debe desde cuándo.
+                Sin instalar nada.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  Offline
+                </span>
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  Export
+                </span>
+              </div>
+              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-magenta underline decoration-magenta decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
                 Ver las {apps.length} aplicaciones <span aria-hidden="true">→</span>
               </span>
             </Link>
@@ -260,17 +286,23 @@ export default function Home() {
                 </span>
                 <span className="font-display text-4xl font-black text-ink">{services.length}</span>
               </div>
-              <h3 className="mt-4 font-display text-xl font-black text-ink">Servicios</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                Diseño, desarrollo, automatización, IA, consultoría y SEO: el trabajo que no cabe en
-                una herramienta.
+              <h3 className="mt-5 font-display text-xl font-black text-ink">Servicios</h3>
+              <p className="mt-2 text-base font-semibold leading-snug text-ink">
+                Cuando el problema es del negocio, no de la herramienta.
               </p>
-              <ul className="mt-4 space-y-1 text-sm text-slate">
-                <li>Producto y sitios web</li>
-                <li>Integraciones y automatización</li>
-                <li>IA aplicada y visibilidad</li>
-              </ul>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-orange underline decoration-orange decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
+              <p className="mt-2 text-sm leading-relaxed text-slate">
+                6 líneas para diseñar, construir y automatizar lo que tu operación necesita de
+                verdad.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  A la medida
+                </span>
+                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                  Con IA
+                </span>
+              </div>
+              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-orange underline decoration-orange decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
                 Ver los {services.length} servicios <span aria-hidden="true">→</span>
               </span>
             </Link>
@@ -283,8 +315,8 @@ export default function Home() {
         <Container>
           <SectionHeading
             eyebrow="Aplicaciones"
-            title="Las que no se cierran: se quedan con tu operación"
-            intro="Dos apps instalables, sin cuenta y con los datos en tu navegador. Se abren al día siguiente con todo lo que dejaste."
+            title="Dos apps que no se cierran: se quedan con tu operación"
+            intro="Cobra por hora y sabe quién te debe. Sin cuenta, sin instalar y con los datos en tu navegador: abre al día siguiente y sigue todo."
           />
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             {apps.map((app) => (
@@ -344,15 +376,39 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ---------- HERRAMIENTAS POR FAMILIA ---------- */}
-      <section id="herramientas" className="py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Herramientas"
-            title={`${toolbox.length} herramientas, muchas de ellas calculadoras`}
-            intro="Agrupadas por el trabajo que resuelven. Se abren, resuelven y se cierran: sin cuenta y sin dejar datos en servidores."
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ---------- HERRAMIENTAS ---------- */}
+      <section id="herramientas" className="relative overflow-hidden bg-night py-20 text-white">
+        <div
+          className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-magenta/20 blur-3xl"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-brand-600/25 blur-3xl"
+          aria-hidden="true"
+        />
+        <Container className="relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="min-w-0">
+            <Eyebrow tone="dark">Herramientas</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl font-black leading-tight sm:text-4xl">
+              Lo que hoy te quita la tarde, resuelto en minutos.
+            </h2>
+            <p className="mt-4 max-w-lg text-lg leading-relaxed text-slate-300">
+              {toolbox.length} herramientas para las cuentas, los plazos y las decisiones del día a
+              día. Muchas son calculadoras; otras generan lo que necesitas. Se abren, resuelven y
+              se cierran.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <PrimaryButton href="/tools/">Explorar las {toolbox.length} herramientas</PrimaryButton>
+              <Link
+                href="/tools/"
+                className="inline-flex items-center gap-1 text-sm font-bold text-slate-300 transition-colors hover:text-white"
+              >
+                Ver por familia <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid min-w-0 gap-2 sm:grid-cols-2">
             {FAMILY_ORDER.map((key) => {
               const meta = FAMILIES[key];
               const count = toolbox.filter((tool) => familyOf(tool.slug) === key).length;
@@ -360,65 +416,94 @@ export default function Home() {
                 <Link
                   key={key}
                   href={`/tools/#familia-${key}`}
-                  className={`group rounded-2xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-lg ${meta.hover}`}
+                  className="group flex min-w-0 items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
                 >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`flex h-11 w-11 items-center justify-center rounded-full ${meta.tile}`}
-                    >
-                      <Icon name={meta.icon} className="h-5 w-5" />
-                    </span>
-                    <span className="font-display text-2xl font-black text-ink">{count}</span>
-                  </div>
-                  <h3 className="mt-4 font-display text-lg font-black text-ink">{meta.label}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate">{meta.blurb}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-ink transition-all group-hover:gap-2">
-                    Ver las {count} <span aria-hidden="true">→</span>
+                  <span
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${meta.tile}`}
+                  >
+                    <Icon name={meta.icon} className="h-4 w-4" />
                   </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-bold text-white">{meta.label}</span>
+                    <span className="block text-[11px] leading-snug text-slate-400">
+                      {meta.blurb}
+                    </span>
+                  </span>
+                  <span className="font-display text-lg font-black text-white">{count}</span>
                 </Link>
               );
             })}
-          </div>
-          <div className="mt-8">
-            <Link
-              href="/tools/"
-              className="inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
-            >
-              Ver el catálogo completo <span aria-hidden="true">→</span>
-            </Link>
           </div>
         </Container>
       </section>
 
       {/* ---------- SERVICIOS ---------- */}
-      <section id="servicios" className="bg-paper-soft py-20">
+      <section id="servicios" className="py-20">
         <Container>
-          <SectionHeading
-            eyebrow="Servicios"
-            title="Seis líneas de servicio, un solo criterio"
-            intro="Diseño, desarrollo, automatización, inteligencia artificial, consultoría y visibilidad. Se combinan según lo que tu negocio realmente necesita."
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <article
-                key={s.slug}
-                className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100 text-ink">
-                  <Icon name={serviceIcons[s.slug]} />
-                </span>
-                <h3 className="mt-4 font-display font-black text-lg leading-snug text-ink">
-                  {s.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{s.summary}</p>
-                <Link
-                  href={`/services/#${s.slug}`}
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2"
-                >
-                  Conocer más <span aria-hidden="true">→</span>
-                </Link>
-              </article>
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <Eyebrow>Servicios</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+                Cuando la herramienta no alcanza, construimos.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate">
+                Diseño, desarrollo, automatización, IA, consultoría y visibilidad. Se combinan
+                según lo que tu negocio necesita, no según un paquete.
+              </p>
+
+              {landing?.price && (
+                <div className="mt-6 rounded-2xl border border-line bg-paper-soft p-5">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-magenta">
+                    Para empezar
+                  </p>
+                  <p className="mt-2 font-display text-xl font-black text-ink">
+                    Landing page desde {landing.price}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate">
+                    Entrega en 10 días hábiles. Dominio, hosting y correo incluidos.
+                  </p>
+                  <Link
+                    href="/pricing/"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+                  >
+                    Ver planes y precios <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              )}
+
+              <PrimaryButton href="/contact/" className="mt-6">
+                Hablemos de tu proyecto
+              </PrimaryButton>
+            </div>
+
+            <ol className="divide-y divide-line border-y border-line">
+              {services.map((service, index) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/#${service.slug}`}
+                    className="group flex items-start gap-5 py-5"
+                  >
+                    <span className="mt-1 font-display text-sm font-black text-magenta">
+                      0{index + 1}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-lg font-black leading-snug text-ink transition-colors group-hover:text-magenta">
+                        {service.title}
+                      </span>
+                      <span className="mt-1 block text-sm leading-relaxed text-slate">
+                        {service.summary}
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="mt-1 text-slate-400 transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </div>
         </Container>
       </section>
@@ -433,106 +518,112 @@ export default function Home() {
           <div className="max-w-2xl">
             <Eyebrow tone="dark">Construimos plataforma</Eyebrow>
             <h2 className="mt-3 font-display font-black text-3xl leading-tight tracking-tight sm:text-4xl">
-              Lo que construimos con <span className="text-gradient-warm">Merez</span>
+              La operación que tu negocio necesita,{" "}
+              <span className="text-gradient-warm">ya construida</span>.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-300">
-              Inflinds no solo integra y configura: diseñamos, desarrollamos y operamos nuestra
-              propia plataforma SaaS, <strong className="text-white">Merez</strong>. Eso significa
-              que dominamos de punta a punta cada uno de estos módulos y podemos construirlos o
-              adaptarlos a la medida de cada proyecto.
+              Merez es nuestra propia plataforma: CRM, ventas, automatización y pagos. La usamos,
+              la operamos y la adaptamos. No improvisamos tu operación sobre un plugin.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {merezModules.map((m) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {merezFeatured.map((module) => (
               <div
-                key={m.name}
+                key={module.name}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-magenta">
-                  <Icon name={merezIcons[m.name]} className="h-4 w-4" />
+                  <Icon name={merezIcons[module.name]} className="h-4 w-4" />
                 </span>
-                <h3 className="mt-3 font-display font-bold text-white">{m.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{m.desc}</p>
+                <h3 className="mt-3 font-display font-bold text-white">{module.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">{module.desc}</p>
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-2xl text-sm text-slate-400">
-            Todos estos módulos se pueden activar por separado o integrarse entre sí. Así
-            construimos soluciones escalables, medibles y realmente conectadas.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <a
-              href="https://www.merez.co/"
-              className="inline-flex items-center rounded-xl bg-yellow px-5 py-3 text-sm font-bold text-ink transition hover:brightness-95"
-            >
-              Conocer Merez <span aria-hidden="true" className="ml-2">→</span>
-            </a>
-            <Link
-              href="/login/"
-              className="inline-flex items-center rounded-xl border border-white/25 px-5 py-3 text-sm font-bold text-white transition hover:border-yellow/70"
-            >
-              Entrar al panel
-            </Link>
-          </div>
-        </Container>
-      </section>
 
-      {/* ---------- DETRÁS DEL ESTUDIO ---------- */}
-      <section className="pb-4 pt-20">
-        <Container>
-          <div className="grid items-center gap-8 rounded-3xl border border-line bg-white p-6 sm:p-10 md:grid-cols-[220px_1fr]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/gigx/miguel.jpg"
-              alt="Miguel Yañez, fundador de Inflinds"
-              width={400}
-              height={400}
-              loading="lazy"
-              className="h-52 w-52 rounded-2xl object-cover ring-1 ring-line md:h-56 md:w-56"
-            />
-            <div>
-              <Eyebrow>Detrás del estudio</Eyebrow>
-              <h2 className="mt-3 font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
-                Miguel Yañez · Fundador y CTO de Inflinds, fundador de Merez.
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate sm:text-base">
-                Diseño producto y arquitectura la solución: la misma persona que entiende el negocio
-                escribe el brief, decide el sistema y responde cuando algo falla. Orquesto modelos de
-                IA como equipo de ingeniería, con verificación y costo medido — la IA potencia el
-                criterio, no lo reemplaza.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Link
-                  href="/gigx/"
-                  className="inline-flex items-center rounded-xl border border-line bg-white px-5 py-2.5 text-sm font-bold text-ink transition hover:border-magenta"
-                >
-                  Ver el perfil completo →
-                </Link>
-                <a
-                  href="https://www.merez.co/about/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center rounded-xl px-2 py-2.5 text-sm font-bold text-magenta hover:underline"
-                >
-                  Cómo construyo Merez →
-                </a>
-              </div>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-xl text-sm text-slate-400">
+              {merezModules.length} módulos en total. Se activan por separado y se conectan entre
+              sí: tu operación completa, en un solo lugar.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://www.merez.co/"
+                className="inline-flex items-center rounded-xl bg-yellow px-5 py-3 text-sm font-bold text-ink transition hover:brightness-95"
+              >
+                Conocer Merez <span aria-hidden="true" className="ml-2">→</span>
+              </a>
+              <Link
+                href="/login/"
+                className="inline-flex items-center rounded-xl border border-white/25 px-5 py-3 text-sm font-bold text-white transition hover:border-yellow/70"
+              >
+                Entrar al panel
+              </Link>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ---------- METODOLOGÍA ---------- */}
-      <section className="py-20">
+      {/* ---------- DETRÁS DEL ESTUDIO + CÓMO TRABAJAMOS ---------- */}
+      <section className="bg-paper-soft py-20">
         <Container>
-          <SectionHeading
-            eyebrow="Cómo trabajamos"
-            title="Un proceso de 10 fases, de la idea a la evolución"
-            intro="Transparencia, método e iteración constante para entregar resultados reales."
-          />
-          <div className="mt-12">
-            <ProcessStrip />
+          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+            <div>
+              <Eyebrow>Detrás del estudio</Eyebrow>
+              <div className="mt-5 flex items-center gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/gigx/miguel.jpg"
+                  alt="Miguel Yañez, fundador de Inflinds"
+                  width={160}
+                  height={160}
+                  loading="lazy"
+                  className="h-16 w-16 rounded-2xl object-cover ring-1 ring-line"
+                />
+                <div>
+                  <p className="font-display text-lg font-black text-ink">Miguel Yañez</p>
+                  <p className="text-sm text-slate">Fundador y CTO · fundador de Merez</p>
+                </div>
+              </div>
+              <p className="mt-4 text-lg leading-relaxed text-slate">
+                La misma persona que entiende el negocio escribe el brief, decide la arquitectura y
+                responde cuando algo falla. Orquesto modelos de IA como equipo de ingeniería —con
+                verificación y costo medido—: la IA potencia el criterio, no lo reemplaza.
+              </p>
+              <Link
+                href="/gigx/"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+              >
+                Ver el perfil completo <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+
+            <div>
+              <Eyebrow>Cómo trabajamos</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+                Cuatro pasos. Cero sorpresas.
+              </h2>
+              <ol className="mt-6 space-y-4">
+                {processSteps.map((step, index) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-night font-display text-xs font-black text-yellow">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="font-display font-black text-ink">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate">{step.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <Link
+                href="/services/"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+              >
+                Ver el proceso completo de 10 fases <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
@@ -542,12 +633,15 @@ export default function Home() {
         <Container>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-banner px-8 py-10 sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-10">
             <div className="max-w-xl">
-              <h2 className="font-display font-black text-2xl leading-tight text-white sm:text-3xl">
-                ¿Tienes una idea o un problema que resolver?
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
+                Siguiente paso
+              </p>
+              <h2 className="mt-2 font-display font-black text-2xl leading-tight text-white sm:text-3xl">
+                ¿Qué te está costando dinero hoy?
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
-                Cuéntanos qué necesitas. Te ayudamos a convertirlo en un producto digital que
-                funcione y evolucione con tu negocio.
+                Una calculadora, una app o un proyecto a la medida. Cuéntanos el problema y te
+                decimos por dónde empezar —sin compromiso.
               </p>
             </div>
             <div className="mt-8 flex shrink-0 flex-wrap gap-4 lg:mt-0">
@@ -555,7 +649,7 @@ export default function Home() {
                 href="/contact/"
                 className="inline-flex items-center rounded-xl bg-white px-7 py-3 font-bold text-brand-700 shadow-sm transition-transform hover:-translate-y-0.5"
               >
-                Iniciar un proyecto <span aria-hidden="true" className="ml-2">→</span>
+                Cuéntanos tu proyecto <span aria-hidden="true" className="ml-2">→</span>
               </Link>
               <Link
                 href="/pricing/"
