@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apps, clients, merezModules, plans, services, toolbox } from "@/lib/site";
+import { apps, clients, merezModules, services, toolbox } from "@/lib/site";
 import { FAMILIES, FAMILY_ORDER, familyOf } from "@/lib/tool-taxonomy";
 import Icon from "@/components/Icon";
 import {
@@ -128,17 +128,6 @@ const processSteps = [
 ];
 
 export default function Home() {
-  const landing = plans.find((plan) => plan.slug === "landing");
-  const merezHighlights = [
-    "CRM Inteligente",
-    "Agente de ventas",
-    "Automatizaciones",
-    "Cotizaciones PDF",
-    "Analítica",
-    "Pagos",
-  ];
-  const merezFeatured = merezModules.filter((module) => merezHighlights.includes(module.name));
-
   return (
     <>
       {/* ---------- HERO ---------- */}
@@ -461,29 +450,26 @@ export default function Home() {
                 según lo que tu negocio necesita, no según un paquete.
               </p>
 
-              {landing?.price && (
-                <div className="mt-6 rounded-2xl border border-line bg-paper-soft p-5">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-magenta">
-                    Para empezar
-                  </p>
-                  <p className="mt-2 font-display text-xl font-black text-ink">
-                    Landing page desde {landing.price}
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-slate">
-                    Entrega en 10 días hábiles. Dominio, hosting y correo incluidos.
-                  </p>
-                  <Link
-                    href="/pricing/"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
-                  >
-                    Ver planes y precios <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
-              )}
-
-              <PrimaryButton href="/contact/" className="mt-6">
-                Hablemos de tu proyecto
-              </PrimaryButton>
+              <div className="mt-6 rounded-2xl border border-line bg-white p-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-magenta">
+                  Destacado
+                </p>
+                <p className="mt-2 font-display text-xl font-black text-ink">
+                  Merez · la plataforma
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate">
+                  La operación completa, sin cobro por usuario.
+                </p>
+                <a
+                  href="https://www.merez.co/"
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-magenta hover:underline"
+                >
+                  Conocer Merez <span aria-hidden="true">→</span>
+                </a>
+                <PrimaryButton href="/contact/" className="mt-4 w-full justify-center">
+                  Cuéntanos tu proyecto
+                </PrimaryButton>
+              </div>
             </div>
 
             <ol className="divide-y divide-line border-y border-line">
@@ -528,17 +514,18 @@ export default function Home() {
           <div className="max-w-2xl">
             <Eyebrow tone="dark">Construimos plataforma</Eyebrow>
             <h2 className="mt-3 font-display font-black text-3xl leading-tight tracking-tight sm:text-4xl">
-              La operación que tu negocio necesita,{" "}
-              <span className="text-gradient-warm">ya construida</span>.
+              Lo que construimos con <span className="text-gradient-warm">Merez</span>
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-300">
-              Merez es nuestra propia plataforma: CRM, ventas, automatización y pagos. La usamos,
-              la operamos y la adaptamos. No improvisamos tu operación sobre un plugin.
+              Inflinds no solo integra y configura: diseñamos, desarrollamos y operamos nuestra
+              propia plataforma SaaS, <strong className="text-white">Merez</strong>. Eso significa
+              que dominamos de punta a punta cada uno de estos módulos y podemos construirlos o
+              adaptarlos a la medida de cada proyecto.
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {merezFeatured.map((module) => (
+            {merezModules.map((module) => (
               <div
                 key={module.name}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
@@ -553,9 +540,9 @@ export default function Home() {
           </div>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-xl text-sm text-slate-400">
-              {merezModules.length} módulos en total. Se activan por separado y se conectan entre
-              sí: tu operación completa, en un solo lugar.
+            <p className="max-w-2xl text-sm text-slate-400">
+              Todos estos módulos se pueden activar por separado o integrarse entre sí. Así
+              construimos soluciones escalables, medibles y realmente conectadas.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
