@@ -55,6 +55,10 @@ const recursosLinks = [
   { label: "Contacto", desc: "Hablemos de tu proyecto", href: "/contact/", icon: "mail" },
 ];
 
+const featuredTools = ["vat-and-totals", "percentages", "sale-price"].flatMap((slug) =>
+  toolbox.filter((tool) => tool.slug === slug),
+);
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -137,9 +141,19 @@ export default function Header() {
 
             {menu === "soluciones" && (
               <div className="fixed left-1/2 top-16 z-50 max-h-[calc(100vh-5rem)] w-[min(1120px,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/10 bg-night-800 p-4 shadow-2xl">
+                <div className="mb-3 flex items-end justify-between gap-4 px-1">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-yellow">
+                      Soluciones
+                    </p>
+                    <p className="mt-1 font-display text-lg font-black leading-tight text-white">
+                      Herramientas para hoy. Apps para operar. Servicios para crecer.
+                    </p>
+                  </div>
+                </div>
                 <div className="grid grid-cols-[1.15fr_1fr_1.1fr] gap-3">
                   {/* Herramientas */}
-                  <div className="rounded-xl bg-white/5 p-4">
+                  <div className="flex flex-col rounded-xl bg-white/5 p-4">
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-yellow/15 text-yellow">
                         <Icon name="calculator" className="h-5 w-5" />
@@ -170,18 +184,37 @@ export default function Header() {
                         );
                       })}
                     </div>
-                    <Link
-                      href="/tools/"
-                      onClick={() => setMenu(null)}
-                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-yellow hover:bg-white/10"
-                    >
-                      Ver las {toolbox.length} herramientas
-                      <span aria-hidden="true">→</span>
-                    </Link>
+                    <div className="mb-3 mt-3 border-t border-white/10 pt-3">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        Destacadas
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {featuredTools.map((tool) => (
+                          <Link
+                            key={tool.slug}
+                            href={`/tools/${tool.slug}/`}
+                            onClick={() => setMenu(null)}
+                            className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:bg-white/10"
+                          >
+                            {tool.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="mt-auto pt-3">
+                      <Link
+                        href="/tools/"
+                        onClick={() => setMenu(null)}
+                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-yellow hover:bg-white/10"
+                      >
+                        Ver las {toolbox.length} herramientas
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Aplicaciones */}
-                  <div className="rounded-xl bg-white/5 p-4">
+                  <div className="flex flex-col rounded-xl bg-white/5 p-4">
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-magenta/15 text-magenta">
                         <Icon name="receivables" className="h-5 w-5" />
@@ -223,18 +256,45 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
+                    <div className="mb-3 mt-3 rounded-lg border border-white/10 bg-night/60 p-2.5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        Hechas para el día a día
+                      </p>
+                      <p className="mt-1 text-[11px] leading-snug text-slate-300">
+                        Sin cuenta · funciona sin señal · export
+                      </p>
+                    </div>
+                    <div className="mb-3 rounded-lg border border-white/10 bg-night/60 p-2.5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        El respaldo
+                      </p>
+                      <p className="mt-1 text-[11px] leading-snug text-slate-300">
+                        El historial y el cierre del mes viven en Merez. Si el teléfono falla, el
+                        registro no se va con él.
+                      </p>
+                    </div>
                     <Link
-                      href="/apps/"
+                      href="/contact/"
                       onClick={() => setMenu(null)}
-                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-magenta hover:bg-white/10"
+                      className="mb-3 flex items-center gap-2 rounded-lg border border-dashed border-white/15 px-3 py-2.5 text-[11px] text-slate-300 transition-colors hover:border-magenta/50 hover:text-white"
                     >
-                      Ver las {apps.length} aplicaciones
-                      <span aria-hidden="true">→</span>
+                      <Icon name="sparkles" className="h-3.5 w-3.5 shrink-0 text-magenta" />
+                      ¿Necesitas otra app? Te la construimos →
                     </Link>
+                    <div className="mt-auto pt-3">
+                      <Link
+                        href="/apps/"
+                        onClick={() => setMenu(null)}
+                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-magenta hover:bg-white/10"
+                      >
+                        Ver las {apps.length} aplicaciones
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Servicios */}
-                  <div className="rounded-xl bg-white/5 p-4">
+                  <div className="flex flex-col rounded-xl bg-white/5 p-4">
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange/15 text-orange">
                         <Icon name="code" className="h-5 w-5" />
@@ -263,18 +323,20 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
-                    <Link
-                      href="/services/"
-                      onClick={() => setMenu(null)}
-                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-orange hover:bg-white/10"
-                    >
-                      Ver los {services.length} servicios
-                      <span aria-hidden="true">→</span>
-                    </Link>
+                    <div className="mt-auto pt-3">
+                      <Link
+                        href="/services/"
+                        onClick={() => setMenu(null)}
+                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-orange hover:bg-white/10"
+                      >
+                        Ver los {services.length} servicios
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-night px-4 py-3">
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-night px-4 py-3">
                   <Link
                     href="/pricing/"
                     onClick={() => setMenu(null)}
@@ -282,6 +344,14 @@ export default function Header() {
                   >
                     Precios <span className="text-slate-500">·</span>{" "}
                     <span className="font-normal text-slate-400">proyectos y planes</span>
+                  </Link>
+                  <Link
+                    href="/contact/"
+                    onClick={() => setMenu(null)}
+                    className="text-[13px] font-bold text-white transition-colors hover:text-yellow"
+                  >
+                    ¿No sabes qué necesitas? Hablemos{" "}
+                    <span aria-hidden="true">→</span>
                   </Link>
                   <a
                     href="https://www.merez.co/"
