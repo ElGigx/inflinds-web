@@ -34,89 +34,103 @@ const merezIcons: Record<string, string> = {
   Pagos: "card",
 };
 
-/* ---------- Mockup del hero: los tres frentes + el puente a Merez ---------- */
+/* ---------- Mockup decorativo del hero (dashboard ilustrativo, datos ficticios) ---------- */
 
-function FrontsMockup() {
+function HeroMockup() {
   return (
-    <div className="relative hidden select-none lg:block" aria-hidden="true">
-      <div className="absolute -inset-8 rounded-full bg-brand-600/25 blur-3xl" />
-      <div className="relative space-y-3">
-        <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-yellow/15 text-yellow">
-                <Icon name="calculator" className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="text-xs text-slate-400">Herramientas</p>
-                <p className="font-display text-lg font-black leading-none text-white">
-                  {toolbox.length}
-                </p>
-              </div>
-            </div>
-            <span className="rounded-full bg-yellow/15 px-2 py-1 text-[10px] font-bold text-yellow">
-              se cierran
+    <div className="relative hidden lg:block select-none" aria-hidden="true">
+      <div className="absolute -inset-10 rounded-full bg-brand-600/30 blur-3xl" />
+      <div className="relative flex items-start gap-3">
+        {/* Barra lateral */}
+        <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-night-800/90 p-2">
+          {["users", "chat", "zap", "file", "bars", "grid"].map((n, i) => (
+            <span
+              key={n}
+              className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                i === 0 ? "bg-magenta text-white" : "text-slate-400"
+              }`}
+            >
+              <Icon name={n} className="h-4 w-4" />
             </span>
-          </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
-            IVA, nómina, precios, fechas... y también conversores y generadores. Muchas calculan;
-            otras no.
-          </p>
+          ))}
         </div>
 
-        <div className="rounded-2xl border border-magenta/30 bg-night-800/90 p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-magenta/15 text-magenta">
-                <Icon name="receivables" className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="text-xs text-slate-400">Aplicaciones</p>
-                <p className="font-display text-lg font-black leading-none text-white">
-                  {apps.length}
-                </p>
-              </div>
-            </div>
-            <span className="rounded-full bg-magenta/15 px-2 py-1 text-[10px] font-bold text-magenta">
-              se quedan abiertas
-            </span>
+        {/* Tarjeta principal con gráfica */}
+        <div className="flex-1 rounded-2xl border border-white/10 bg-night-800/90 p-4">
+          <p className="text-sm font-bold text-white">Resumen del proyecto</p>
+          <svg viewBox="0 0 260 110" className="mt-3 w-full">
+            <defs>
+              <linearGradient id="mock-line" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#751cb4" />
+                <stop offset="0.55" stopColor="#f8049c" />
+                <stop offset="1" stopColor="#ff8e00" />
+              </linearGradient>
+              <linearGradient id="mock-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#f8049c" stopOpacity="0.22" />
+                <stop offset="1" stopColor="#f8049c" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {[0, 1, 2, 3].map((i) => (
+              <line
+                key={i}
+                x1="0"
+                x2="260"
+                y1={20 + i * 25}
+                y2={20 + i * 25}
+                stroke="rgba(255,255,255,0.07)"
+              />
+            ))}
+            <path
+              d="M0 92 C28 88 40 72 66 78 C92 84 104 58 132 54 C158 50 172 64 196 42 C216 24 240 18 260 10 L260 110 L0 110 Z"
+              fill="url(#mock-fill)"
+            />
+            <path
+              d="M0 92 C28 88 40 72 66 78 C92 84 104 58 132 54 C158 50 172 64 196 42 C216 24 240 18 260 10"
+              fill="none"
+              stroke="url(#mock-line)"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+          <div className="mt-1 flex justify-between text-[10px] font-semibold text-slate-500">
+            {["Ene", "Feb", "Mar", "Abr", "May", "Jun"].map((m) => (
+              <span key={m}>{m}</span>
+            ))}
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
-            Cobro por tiempo y Cuentas claras: estado, export y PWA.
-          </p>
+          <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-night/70 p-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-cta text-white">
+              <Icon name="zap" className="h-4 w-4" />
+            </span>
+            <div>
+              <p className="text-xs text-slate-400">Automatización activa</p>
+              <p className="text-sm font-bold text-white">
+                24 procesos <span className="font-normal text-slate-400">ahorrando tiempo</span>
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-orange/15 text-orange">
-                <Icon name="code" className="h-4 w-4" />
-              </span>
-              <div>
-                <p className="text-xs text-slate-400">Servicios</p>
-                <p className="font-display text-lg font-black leading-none text-white">
-                  {services.length}
-                </p>
-              </div>
-            </div>
-            <span className="rounded-full bg-orange/15 px-2 py-1 text-[10px] font-bold text-orange">
-              a la medida
-            </span>
+        {/* Columna de métricas */}
+        <div className="w-44 shrink-0 space-y-3">
+          <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
+            <p className="text-xs text-slate-400">Ventas totales</p>
+            <p className="mt-1 font-display font-black text-lg text-white">$ 124.580.000</p>
+            <p className="mt-1 text-[11px] font-bold text-yellow">↑ 24% vs mes anterior</p>
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
-            Diseño, desarrollo, automatización, IA, consultoría y SEO.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-night px-4 py-3">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-yellow font-display text-sm font-black text-ink">
-            M
-          </span>
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">
-              El puente
-            </p>
-            <p className="text-sm font-bold text-white">Merez: la operación que sí guarda el dato</p>
+          <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
+            <div className="flex -space-x-2">
+              {["bg-brand-400", "bg-magenta", "bg-orange", "bg-brand-300"].map((c, i) => (
+                <span
+                  key={i}
+                  className={`h-8 w-8 rounded-full border-2 border-night-800 ${c}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-night-800/90 p-4">
+            <p className="text-xs text-slate-400">Usuarios activos</p>
+            <p className="mt-1 font-display font-black text-lg text-white">1.428</p>
+            <p className="mt-1 text-[11px] font-bold text-yellow">↑ 16% vs mes</p>
           </div>
         </div>
       </div>
@@ -175,7 +189,7 @@ export default function Home() {
               </div>
             </div>
 
-            <FrontsMockup />
+            <HeroMockup />
           </div>
         </Container>
       </section>
