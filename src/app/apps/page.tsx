@@ -183,7 +183,14 @@ export default function AppsPage() {
                 </div>
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-3">
-                    <ToolMark slug={app.slug} className="h-11 w-11" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/tools/${app.slug}/icons/icon-192.png`}
+                      alt={`Logo de ${app.title}`}
+                      width={44}
+                      height={44}
+                      className="h-11 w-11 rounded-xl ring-1 ring-line"
+                    />
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-magenta">
                         {app.eyebrow}

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { apps, clients, merezModules, plans, services, toolbox } from "@/lib/site";
 import { FAMILIES, FAMILY_ORDER, familyOf } from "@/lib/tool-taxonomy";
 import Icon from "@/components/Icon";
-import ToolMark from "@/components/tools/ToolMark";
 import {
   Container,
   SectionHeading,
@@ -322,35 +321,46 @@ export default function Home() {
             {apps.map((app) => (
               <article
                 key={app.slug}
-                className="group overflow-hidden rounded-3xl border border-line bg-white transition-shadow hover:shadow-lg"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg sm:flex-row"
               >
-                <div className="relative flex h-[340px] items-center justify-center overflow-hidden bg-night p-5">
-                  <div className="absolute inset-0 hero-glow-night opacity-60" aria-hidden="true" />
+                <div className="relative flex shrink-0 items-center justify-center overflow-hidden bg-night-800 p-6 sm:w-[200px]">
+                  <div className="absolute inset-0 hero-glow-night opacity-70" aria-hidden="true" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/tools/${app.slug}/app-preview.png`}
-                    alt={`Vista de la app ${app.title}`}
-                    width={520}
-                    height={844}
-                    loading="lazy"
-                    className="relative h-full w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
+                    src={`/tools/${app.slug}/icons/icon-512.png`}
+                    alt={`Logo de ${app.title}`}
+                    width={512}
+                    height={512}
+                    className="relative h-28 w-28 rounded-[26px] shadow-2xl ring-1 ring-white/20 transition-transform group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3">
-                    <ToolMark slug={app.slug} className="h-10 w-10" />
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-magenta">
-                        {app.eyebrow}
-                      </p>
-                      <h3 className="font-display text-xl font-black leading-tight text-ink">
-                        {app.title}
-                      </h3>
-                    </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-magenta">
+                      {app.eyebrow} · app
+                    </p>
+                    <span className="rounded-full bg-magenta/10 px-2.5 py-1 text-[10px] font-bold text-magenta">
+                      PWA
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm font-semibold leading-relaxed text-ink">{app.promise}</p>
+                  <h3 className="mt-2 font-display text-2xl font-black leading-tight text-ink">
+                    {app.title}
+                  </h3>
+                  <p className="mt-2 text-sm font-semibold leading-snug text-ink">{app.promise}</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate">{app.description}</p>
-                  <div className="mt-5 flex flex-wrap items-center gap-4">
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                      Sin cuenta
+                    </span>
+                    <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                      Funciona sin señal
+                    </span>
+                    <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
+                      Export
+                    </span>
+                  </div>
+                  <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-5">
                     <Link
                       href={`/tools/${app.slug}/`}
                       className="inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2"

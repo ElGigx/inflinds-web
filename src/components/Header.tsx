@@ -199,16 +199,26 @@ export default function Header() {
                           key={app.slug}
                           href={`/tools/${app.slug}/`}
                           onClick={() => setMenu(null)}
-                          className="block rounded-lg px-2.5 py-2.5 hover:bg-white/10"
+                          className="flex items-start gap-2.5 rounded-lg px-2.5 py-2.5 hover:bg-white/10"
                         >
-                          <span className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-white">{app.title}</span>
-                            <span className="rounded-full bg-magenta/20 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-magenta">
-                              Nuevo
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={`/tools/${app.slug}/icons/icon-192.png`}
+                            alt=""
+                            width={36}
+                            height={36}
+                            className="mt-0.5 h-9 w-9 shrink-0 rounded-lg ring-1 ring-white/10"
+                          />
+                          <span className="min-w-0">
+                            <span className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-white">{app.title}</span>
+                              <span className="rounded-full bg-magenta/20 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-magenta">
+                                Nuevo
+                              </span>
                             </span>
-                          </span>
-                          <span className="mt-1 block text-[11px] leading-snug text-slate-400">
-                            {app.promise}
+                            <span className="mt-1 block text-[11px] leading-snug text-slate-400">
+                              {app.promise}
+                            </span>
                           </span>
                         </Link>
                       ))}
@@ -496,10 +506,20 @@ export default function Header() {
                   key={app.slug}
                   href={`/tools/${app.slug}/`}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-2 py-2 hover:bg-white/5"
+                  className="flex items-start gap-2.5 rounded-lg px-2 py-2 hover:bg-white/5"
                 >
-                  <span className="text-sm font-semibold text-white">{app.title}</span>
-                  <span className="block text-[11px] text-slate-400">{app.promise}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/tools/${app.slug}/icons/icon-192.png`}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="mt-0.5 h-7 w-7 shrink-0 rounded-md ring-1 ring-white/10"
+                  />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-white">{app.title}</span>
+                    <span className="block text-[11px] text-slate-400">{app.promise}</span>
+                  </span>
                 </Link>
               ))}
               <Link
