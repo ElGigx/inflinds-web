@@ -136,22 +136,22 @@ export default function Header() {
             </button>
 
             {menu === "soluciones" && (
-              <div className="fixed left-1/2 top-16 z-50 max-h-[calc(100vh-5rem)] w-[min(860px,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/10 bg-night-800 p-3 shadow-2xl">
-                <div className="grid grid-cols-[1.1fr_0.9fr_1fr] gap-2">
+              <div className="fixed left-1/2 top-16 z-50 max-h-[calc(100vh-5rem)] w-[min(1120px,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/10 bg-night-800 p-4 shadow-2xl">
+                <div className="grid grid-cols-[1.15fr_1fr_1.1fr] gap-3">
                   {/* Herramientas */}
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 place-items-center rounded-lg bg-yellow/15 text-yellow">
-                        <Icon name="calculator" className="h-4 w-4" />
+                  <div className="rounded-xl bg-white/5 p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-yellow/15 text-yellow">
+                        <Icon name="calculator" className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="font-display text-sm font-bold text-white">Herramientas</p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="font-display text-base font-bold text-white">Herramientas</p>
+                        <p className="text-xs text-slate-400">
                           {toolbox.length} · muchas calculadoras
                         </p>
                       </div>
                     </div>
-                    <div className="mt-2 grid grid-cols-2 gap-0.5">
+                    <div className="mt-3 grid grid-cols-2 gap-1">
                       {counts.map(({ key: familyKey, count }) => {
                         const meta = FAMILIES[familyKey];
                         return (
@@ -159,13 +159,13 @@ export default function Header() {
                             key={familyKey}
                             href={`/tools/#familia-${familyKey}`}
                             onClick={() => setMenu(null)}
-                            className="flex items-center gap-1.5 rounded-lg px-1.5 py-1.5 hover:bg-white/10"
+                            className="flex items-center gap-2 rounded-lg px-2 py-2 hover:bg-white/10"
                           >
-                            <Icon name={meta.icon} className={`h-3.5 w-3.5 ${meta.iconClass}`} />
-                            <span className="text-[11px] font-semibold text-slate-200">
+                            <Icon name={meta.icon} className={`h-4 w-4 ${meta.iconClass}`} />
+                            <span className="text-xs font-semibold text-slate-200">
                               {meta.label}
                             </span>
-                            <span className="ml-auto text-[10px] text-slate-500">{count}</span>
+                            <span className="ml-auto text-[11px] text-slate-500">{count}</span>
                           </Link>
                         );
                       })}
@@ -173,7 +173,7 @@ export default function Header() {
                     <Link
                       href="/tools/"
                       onClick={() => setMenu(null)}
-                      className="mt-2 flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-2 text-[11px] font-bold text-yellow hover:bg-white/10"
+                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-yellow hover:bg-white/10"
                     >
                       Ver las {toolbox.length} herramientas
                       <span aria-hidden="true">→</span>
@@ -181,33 +181,33 @@ export default function Header() {
                   </div>
 
                   {/* Aplicaciones */}
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 place-items-center rounded-lg bg-magenta/15 text-magenta">
-                        <Icon name="receivables" className="h-4 w-4" />
+                  <div className="rounded-xl bg-white/5 p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-magenta/15 text-magenta">
+                        <Icon name="receivables" className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="font-display text-sm font-bold text-white">Aplicaciones</p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="font-display text-base font-bold text-white">Aplicaciones</p>
+                        <p className="text-xs text-slate-400">
                           {apps.length} · se quedan abiertas
                         </p>
                       </div>
                     </div>
-                    <div className="mt-2 space-y-1">
+                    <div className="mt-3 space-y-1.5">
                       {apps.map((app) => (
                         <Link
                           key={app.slug}
                           href={`/tools/${app.slug}/`}
                           onClick={() => setMenu(null)}
-                          className="block rounded-lg px-2 py-2 hover:bg-white/10"
+                          className="block rounded-lg px-2.5 py-2.5 hover:bg-white/10"
                         >
                           <span className="flex items-center gap-1.5">
-                            <span className="text-[11px] font-bold text-white">{app.title}</span>
+                            <span className="text-xs font-bold text-white">{app.title}</span>
                             <span className="rounded-full bg-magenta/20 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-magenta">
                               Nuevo
                             </span>
                           </span>
-                          <span className="mt-0.5 block text-[10px] leading-snug text-slate-400">
+                          <span className="mt-1 block text-[11px] leading-snug text-slate-400">
                             {app.promise}
                           </span>
                         </Link>
@@ -216,7 +216,7 @@ export default function Header() {
                     <Link
                       href="/apps/"
                       onClick={() => setMenu(null)}
-                      className="mt-2 flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-2 text-[11px] font-bold text-magenta hover:bg-white/10"
+                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-magenta hover:bg-white/10"
                     >
                       Ver las {apps.length} aplicaciones
                       <span aria-hidden="true">→</span>
@@ -224,30 +224,30 @@ export default function Header() {
                   </div>
 
                   {/* Servicios */}
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 place-items-center rounded-lg bg-orange/15 text-orange">
-                        <Icon name="code" className="h-4 w-4" />
+                  <div className="rounded-xl bg-white/5 p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange/15 text-orange">
+                        <Icon name="code" className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="font-display text-sm font-bold text-white">Servicios</p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="font-display text-base font-bold text-white">Servicios</p>
+                        <p className="text-xs text-slate-400">
                           {services.length} · a la medida
                         </p>
                       </div>
                     </div>
-                    <div className="mt-2 space-y-0.5">
+                    <div className="mt-3 space-y-0.5">
                       {services.map((service) => (
                         <Link
                           key={service.slug}
                           href={`/services/#${service.slug}`}
                           onClick={() => setMenu(null)}
-                          className="block rounded-lg px-2 py-1.5 hover:bg-white/10"
+                          className="block rounded-lg px-2.5 py-2 hover:bg-white/10"
                         >
-                          <span className="block text-[11px] font-semibold leading-tight text-white">
+                          <span className="block text-xs font-semibold leading-tight text-white">
                             {service.tag}
                           </span>
-                          <span className="block truncate text-[10px] text-slate-400">
+                          <span className="block truncate text-[11px] text-slate-400">
                             {service.title}
                           </span>
                         </Link>
@@ -256,7 +256,7 @@ export default function Header() {
                     <Link
                       href="/services/"
                       onClick={() => setMenu(null)}
-                      className="mt-2 flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-2 text-[11px] font-bold text-orange hover:bg-white/10"
+                      className="mt-3 flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-orange hover:bg-white/10"
                     >
                       Ver los {services.length} servicios
                       <span aria-hidden="true">→</span>
@@ -264,11 +264,11 @@ export default function Header() {
                   </div>
                 </div>
 
-                <div className="mt-2 flex items-center justify-between gap-3 rounded-xl bg-night px-3 py-2.5">
+                <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-night px-4 py-3">
                   <Link
                     href="/pricing/"
                     onClick={() => setMenu(null)}
-                    className="text-[12px] font-bold text-slate-200 hover:text-white"
+                    className="text-[13px] font-bold text-slate-200 hover:text-white"
                   >
                     Precios <span className="text-slate-500">·</span>{" "}
                     <span className="font-normal text-slate-400">proyectos y planes</span>
@@ -276,7 +276,7 @@ export default function Header() {
                   <a
                     href="https://www.merez.co/"
                     onClick={() => setMenu(null)}
-                    className="inline-flex items-center gap-1 text-[12px] font-bold text-yellow hover:underline"
+                    className="inline-flex items-center gap-1 text-[13px] font-bold text-yellow hover:underline"
                   >
                     Merez, la plataforma <span aria-hidden="true">→</span>
                   </a>
