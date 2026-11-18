@@ -1,6 +1,8 @@
 // Fuente única de datos de contenido del sitio de Inflinds.
 // Precios reales tomados de gigxOS/BRANDS/Inflinds/Pricing.md (v1.0.0, COP).
 
+import { tools } from "./tools";
+
 export const site = {
   name: "Inflinds",
   legalName: "INFLINDS S.A.S.",
@@ -26,14 +28,20 @@ export const clients = [
 ];
 
 export const nav = [
-  { href: "/", label: "Inicio" },
+  { href: "/tools/", label: "Calculadoras" },
+  { href: "/apps/", label: "Aplicaciones" },
   { href: "/services/", label: "Servicios" },
-  { href: "/tools/", label: "Herramientas" },
   { href: "/pricing/", label: "Precios" },
   { href: "/blog/", label: "Blog" },
   { href: "/contact/", label: "Contacto" },
   { href: "/login/", label: "Clientes" },
 ];
+
+// Los tres frentes del catálogo: las calculadoras (responden y se cierran) y
+// las aplicaciones (tienen estado y se quedan abiertas). Los servicios viven
+// aparte en `services`.
+export const apps = tools.filter((tool) => tool.kind === "app");
+export const calculators = tools.filter((tool) => tool.kind !== "app");
 
 // Las 5 líneas de servicio (Services.md).
 export const services = [

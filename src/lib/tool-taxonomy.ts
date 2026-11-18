@@ -151,7 +151,7 @@ const ICON_BY_SLUG: Record<string, string> = {
   "price-per-pound": "scale",
   "sales-average": "bars",
   "time-billing": "clock",
-  "accounts-receivable": "banknote",
+  "accounts-receivable": "receivables",
 
   "business-days": "calendar",
   "days-between-dates": "calendar",

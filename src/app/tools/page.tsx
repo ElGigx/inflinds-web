@@ -76,7 +76,7 @@ export default function ToolsPage() {
             className="mb-4 flex items-center gap-4 rounded-2xl border border-magenta/30 bg-white p-4 transition hover:border-magenta"
           >
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-magenta/10 text-magenta">
-              <Icon name="banknote" className="h-5 w-5" />
+              <Icon name="receivables" className="h-5 w-5" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-magenta">Nueva</span>

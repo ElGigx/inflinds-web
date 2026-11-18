@@ -198,6 +198,13 @@ const ICON_PATHS: Record<string, ReactNode> = {
       <polyline points="12 6 12 12 16 14" />
     </>
   ),
+  receivables: (
+    <>
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <path d="M8 6h8M8 10h8M8 14h4" />
+      <polyline points="13 18 15 20 19 16" />
+    </>
+  ),
   "user-plus": (
     <>
       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />

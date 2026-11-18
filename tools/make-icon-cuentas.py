@@ -1,59 +1,64 @@
-"""Icono de Cuentas claras: una libreta con un cheque y una moneda."""
-from PIL import Image, ImageDraw
+"""Genera el icono de "Cuentas claras" en la misma línea que el de "Cobro por tiempo".
 
-SIZE = 512
-BG = (117, 28, 180)        # magenta de marca Inflinds
-PAPER = (250, 248, 244)    # papel
-INK = (27, 30, 34)         # tinta
-ACCENT = (248, 4, 156)     # magenta
-YELLOW = (255, 216, 10)    # amarillo
-GREEN = (46, 125, 79)
+El anterior: fondo noche, cronómetro blanco, manecilla magenta y moneda amarilla
+con "$" al frente y abajo a la derecha. Este: la libreta con renglones y un
+check magenta, y la misma moneda en el mismo sitio. Se dibuja a 1024 y se
+reduce, para que el borde quede limpio en 192 y 180.
+"""
+from pathlib import Path
 
+from PIL import Image, ImageDraw, ImageFont
 
-def rounded(draw, box, radius, fill):
-    draw.rounded_rectangle(box, radius=radius, fill=fill)
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "public" / "tools" / "accounts-receivable" / "icons"
+OUT.mkdir(parents=True, exist_ok=True)
 
+S = 1024
+NIGHT = (14, 10, 27, 255)
+WHITE = (255, 255, 255, 255)
+MAGENTA = (248, 4, 156, 255)
+YELLOW = (255, 216, 10, 255)
 
-def make(size):
-    s = size / SIZE
-    img = Image.new("RGBA", (size, size), BG + (255,))
-    d = ImageDraw.Draw(img)
+img = Image.new("RGBA", (S, S), NIGHT)
+d = ImageDraw.Draw(img)
 
-    # hoja de libreta
-    x0, y0, x1, y1 = int(96 * s), int(86 * s), int(416 * s), int(426 * s)
-    rounded(d, (x0, y0, x1, y1), int(28 * s), PAPER)
-    # lomo
-    rounded(d, (x0, y0, int(150 * s), y1), int(28 * s), (233, 226, 212))
-    d.rectangle((int(150 * s), y0, int(158 * s), y1), fill=(214, 207, 192))
+# La libreta: página, lomo y renglones.
+d.rounded_rectangle([250, 240, 770, 760], radius=48, outline=WHITE, width=64)
+d.line([(350, 300), (350, 700)], fill=WHITE, width=40)
+for y in (390, 470, 550):
+    d.line([(420, y), (670, y)], fill=WHITE, width=40)
 
-    # renglones
-    for i, yy in enumerate((170, 220, 270, 320)):
-        right = int(380 * s) if i < 3 else int(300 * s)
-        d.rounded_rectangle((int(190 * s), int(yy * s), right, int((yy + 14) * s)),
-                            radius=int(7 * s), fill=(214, 207, 192))
+# El check, en magenta, como la manecilla del cronómetro.
+d.line(
+    [(470, 600), (540, 665), (700, 505)],
+    fill=MAGENTA,
+    width=64,
+    joint="curve",
+)
 
-    # cheque
-    cx, cy = int(330 * s), int(360 * s)
-    d.ellipse((cx - int(54 * s), cy - int(54 * s), cx + int(54 * s), cy + int(54 * s)),
-              fill=ACCENT)
-    d.line((cx - int(26 * s), cy, cx - int(6 * s), cy + int(20 * s), cx + int(30 * s), cy - int(22 * s)),
-           fill=PAPER, width=int(16 * s), joint="curve")
+# La moneda, al frente y abajo a la derecha, igual que en el anterior.
+coin_x, coin_y, coin_r = 792, 780, 118
+d.ellipse(
+    [coin_x - coin_r - 18, coin_y - coin_r - 18, coin_x + coin_r + 18, coin_y + coin_r + 18],
+    fill=NIGHT,
+)
+d.ellipse(
+    [coin_x - coin_r, coin_y - coin_r, coin_x + coin_r, coin_y + coin_r],
+    fill=YELLOW,
+)
 
-    # moneda
-    mx, my = int(370 * s), int(150 * s)
-    d.ellipse((mx - int(44 * s), my - int(44 * s), mx + int(44 * s), my + int(44 * s)),
-              fill=YELLOW)
-    d.ellipse((mx - int(30 * s), my - int(30 * s), mx + int(30 * s), my + int(30 * s)),
-              fill=BG)
-    d.ellipse((mx - int(12 * s), my - int(12 * s), mx + int(12 * s), my + int(12 * s)),
-              fill=YELLOW)
+font = ImageFont.truetype("C:/Windows/Fonts/arialbd.ttf", 150)
+d.text((coin_x, coin_y + 8), "$", font=font, fill=NIGHT, anchor="mm")
 
-    return img
+# Exportación en los cuatro tamaños que usa la PWA.
+img = img.convert("RGB")
 
+for size, name in [
+    (512, "icon-512.png"),
+    (192, "icon-192.png"),
+    (180, "apple-touch-icon.png"),
+    (32, "favicon-32.png"),
+]:
+    img.resize((size, size), Image.LANCZOS).save(OUT / name, "PNG", optimize=True)
 
-base = make(SIZE)
-base.save("public/tools/accounts-receivable/icons/icon-512.png")
-base.resize((192, 192), Image.LANCZOS).save("public/tools/accounts-receivable/icons/icon-192.png")
-base.resize((180, 180), Image.LANCZOS).save("public/tools/accounts-receivable/icons/apple-touch-icon.png")
-base.resize((32, 32), Image.LANCZOS).save("public/tools/accounts-receivable/icons/favicon-32.png")
-print("iconos de Cuentas claras listos")
+print("ok:", ", ".join(p.name for p in sorted(OUT.glob("*.png"))))
