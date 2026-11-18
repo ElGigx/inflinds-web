@@ -185,6 +185,8 @@
   var customerFormTitle = $('customerFormTitle');
   var customerNameInput = $('customerNameInput');
   var customerPhoneInput = $('customerPhoneInput');
+  var quickAddForm = $('quickAddForm');
+  var quickAddName = $('quickAddName');
   var entrySheet = $('entrySheet');
   var entryForm = $('entryForm');
   var entryTitle = $('entryTitle');
@@ -244,7 +246,7 @@
     emptyCustomers.hidden = visible.length > 0;
     emptyCustomers.innerHTML = q
       ? 'No encontramos a nadie.<br>Prueba con otro nombre.'
-      : 'Aún no tienes cuentas.<br>Toca «Nuevo» y empieza por el primero.';
+      : 'Aún no tienes cuentas.<br>Escribe el nombre arriba y toca «Agregar».';
     renderHeader();
   }
 
@@ -412,6 +414,20 @@
     if (currentCustomerId) renderCustomer();
     toast('Cliente guardado.');
     track(wasEditing ? 'customer_edited' : 'customer_created', { has_phone: !!phone });
+  }
+
+  function quickAddCustomer(event) {
+    event.preventDefault();
+    var name = (quickAddName.value || '').trim();
+    if (!name) { toast('Escribe el nombre.'); quickAddName.focus(); return; }
+
+    state.customers.push({ id: uid(), name: name, phone: '', createdAt: new Date().toISOString() });
+    saveState();
+    quickAddForm.reset();
+    renderAll();
+    toast('Cliente agregado.');
+    track('customer_created', { has_phone: false, quick: true });
+    quickAddName.focus();
   }
 
   function deleteCustomer() {
@@ -671,6 +687,7 @@
   });
 
   customerForm.addEventListener('submit', saveCustomer);
+  quickAddForm.addEventListener('submit', quickAddCustomer);
   entryForm.addEventListener('submit', saveEntry);
   search.addEventListener('input', renderCustomers);
 

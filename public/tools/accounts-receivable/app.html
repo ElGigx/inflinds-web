@@ -362,7 +362,9 @@
     button.primary:active { transform: none; }
   }
   /* Cuentas claras */
-  .list-head .add { margin-left: auto; min-height: 36px; padding: 0 10px; font-size: 13px; }
+  .quick-add { display: flex; gap: 8px; margin-top: 10px; }
+  .quick-add input { flex: 1; min-width: 0; }
+  .quick-add .primary { flex: 0 0 auto; padding: 0 18px; white-space: nowrap; }
   .search { margin-top: 2px; }
   input[type="search"], input[type="date"], input[type="tel"] {
     min-height: 52px; width: 100%; padding: 0 12px;
@@ -452,13 +454,17 @@
     <section id="view-cuentas" class="view">
       <label class="sr-only" for="search">Buscar</label>
       <input id="search" class="search" type="search" placeholder="Buscar por nombre o teléfono" autocomplete="off">
+      <form class="quick-add" id="quickAddForm">
+        <label class="sr-only" for="quickAddName">Nombre del cliente</label>
+        <input id="quickAddName" type="text" maxlength="40" placeholder="Nombre del cliente" autocomplete="off">
+        <button type="submit" class="primary">Agregar</button>
+      </form>
       <div class="list-head">
         <h2>Cuentas</h2>
         <span class="count" id="customerCount">0</span>
-        <button type="button" class="ghost add" data-action="new-customer">Nuevo</button>
       </div>
       <ul class="open-list" id="customerList"></ul>
-      <p class="empty" id="emptyCustomers" hidden>Aún no tienes cuentas.<br>Toca «Nuevo» y empieza por el primero.</p>
+      <p class="empty" id="emptyCustomers" hidden>Aún no tienes cuentas.<br>Escribe el nombre arriba y toca «Agregar».</p>
     </section>
 
     <section id="view-dia" class="view" hidden>
@@ -625,6 +631,6 @@
 <noscript>Esta herramienta necesita JavaScript para funcionar.</noscript>
 
 <script src="cuentas.js?v=20261117"></script>
-<script src="app.js?v=20261117"></script>
+<script src="app.js?v=20261118"></script>
 </body>
 </html>
