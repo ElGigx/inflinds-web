@@ -221,32 +221,40 @@ export default function Header() {
                     </div>
                     <div className="mt-3 space-y-1.5">
                       {apps.map((app) => (
-                        <Link
+                        <div
                           key={app.slug}
-                          href={`/tools/${app.slug}/`}
-                          onClick={() => setMenu(null)}
                           className="flex items-start gap-2.5 rounded-lg px-2.5 py-2.5 hover:bg-white/10"
                         >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={`/tools/${app.slug}/icons/icon-192.png`}
-                            alt=""
-                            width={36}
-                            height={36}
-                            className="mt-0.5 h-9 w-9 shrink-0 rounded-lg ring-1 ring-white/10"
-                          />
-                          <span className="min-w-0">
-                            <span className="flex items-center gap-1.5">
-                              <span className="text-xs font-bold text-white">{app.title}</span>
-                              <span className="rounded-full bg-magenta/20 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-magenta">
-                                Nuevo
+                          <Link
+                            href={`/tools/${app.slug}/`}
+                            onClick={() => setMenu(null)}
+                            className="flex min-w-0 flex-1 items-start gap-2.5"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={`/tools/${app.slug}/icons/icon-192.png`}
+                              alt=""
+                              width={36}
+                              height={36}
+                              className="mt-0.5 h-9 w-9 shrink-0 rounded-lg ring-1 ring-white/10"
+                            />
+                            <span className="min-w-0">
+                              <span className="block text-xs font-bold text-white">
+                                {app.title}
+                              </span>
+                              <span className="mt-1 block text-[11px] leading-snug text-slate-400">
+                                {app.promise}
                               </span>
                             </span>
-                            <span className="mt-1 block text-[11px] leading-snug text-slate-400">
-                              {app.promise}
-                            </span>
-                          </span>
-                        </Link>
+                          </Link>
+                          <Link
+                            href={`/tools/${app.slug}/app.html`}
+                            onClick={() => setMenu(null)}
+                            className="mt-0.5 shrink-0 rounded-lg bg-magenta px-2.5 py-1.5 text-[10px] font-bold text-white transition hover:brightness-110"
+                          >
+                            Entrar
+                          </Link>
+                        </div>
                       ))}
                     </div>
                     <div className="mb-3 mt-3 rounded-lg border border-white/10 bg-night/60 p-2.5">
