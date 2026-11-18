@@ -2,7 +2,7 @@ import type { Tool } from "./tools";
 
 export const batchG: Tool[] = [
   {
-    slug: "cuentas-claras",
+    slug: "accounts-receivable",
     title: "Cuentas claras",
     eyebrow: "Operación",
     promise: "Quién te debe, cuánto y desde cuándo. Sin cuaderno y sin señal.",

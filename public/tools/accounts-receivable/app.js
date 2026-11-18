@@ -128,7 +128,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         keepalive: true,
-        body: JSON.stringify({ app: 'cuentas-claras', anon: anonId, events: queue })
+        body: JSON.stringify({ app: 'accounts-receivable', anon: anonId, events: queue })
       }).then(function (res) {
         if (res.ok) writeEvents([]);
       }).catch(function () { /* se reintenta al volver la red */ });
@@ -539,7 +539,7 @@
   function exportData() {
     var data = {
       v: 1,
-      app: 'cuentas-claras',
+      app: 'accounts-receivable',
       exportedAt: new Date().toISOString(),
       business: state.business,
       phone: state.phone,
@@ -559,7 +559,7 @@
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
-    a.download = 'cuentas-claras-' + todayKey() + '.json';
+    a.download = 'accounts-receivable-' + todayKey() + '.json';
     document.body.appendChild(a);
     a.click();
     a.remove();

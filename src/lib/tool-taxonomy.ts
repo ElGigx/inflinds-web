@@ -96,7 +96,7 @@ const BY_SLUG: Record<string, FamilyKey> = {
   "price-per-pound": "operations",
   "sales-average": "operations",
   "time-billing": "operations",
-  "cuentas-claras": "operations",
+  "accounts-receivable": "operations",
 
   "business-days": "deadlines",
   "days-between-dates": "deadlines",
@@ -151,7 +151,7 @@ const ICON_BY_SLUG: Record<string, string> = {
   "price-per-pound": "scale",
   "sales-average": "bars",
   "time-billing": "clock",
-  "cuentas-claras": "banknote",
+  "accounts-receivable": "banknote",
 
   "business-days": "calendar",
   "days-between-dates": "calendar",
@@ -209,8 +209,8 @@ const RELATED: Record<string, string[]> = {
   "true-crm-cost": ["break-even", "lost-hours"],
   "gateway-or-breb": ["invoice-with-withholdings", "sales-commissions"],
   "lost-hours": ["hiring-cost", "true-crm-cost"],
-  "time-billing": ["lost-hours", "break-even", "cuentas-claras"],
-  "cuentas-claras": ["time-billing", "receivables-age", "whatsapp-link"],
+  "time-billing": ["lost-hours", "break-even", "accounts-receivable"],
+  "accounts-receivable": ["time-billing", "receivables-age", "whatsapp-link"],
   "break-even": ["sale-price", "hiring-cost"],
   porcentajes: ["vat-and-totals", "real-margin"],
   divisas: ["unit-price", "cost-per-trip"],

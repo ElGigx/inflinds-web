@@ -52,8 +52,8 @@ def make(size):
 
 
 base = make(SIZE)
-base.save("public/tools/cuentas-claras/icons/icon-512.png")
-base.resize((192, 192), Image.LANCZOS).save("public/tools/cuentas-claras/icons/icon-192.png")
-base.resize((180, 180), Image.LANCZOS).save("public/tools/cuentas-claras/icons/apple-touch-icon.png")
-base.resize((32, 32), Image.LANCZOS).save("public/tools/cuentas-claras/icons/favicon-32.png")
+base.save("public/tools/accounts-receivable/icons/icon-512.png")
+base.resize((192, 192), Image.LANCZOS).save("public/tools/accounts-receivable/icons/icon-192.png")
+base.resize((180, 180), Image.LANCZOS).save("public/tools/accounts-receivable/icons/apple-touch-icon.png")
+base.resize((32, 32), Image.LANCZOS).save("public/tools/accounts-receivable/icons/favicon-32.png")
 print("iconos de Cuentas claras listos")

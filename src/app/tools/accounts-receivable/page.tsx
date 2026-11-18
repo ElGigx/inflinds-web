@@ -8,8 +8,8 @@ import { Container, Eyebrow } from "@/components/ui";
 import { getTool } from "@/lib/tools";
 import { FAMILIES, familyOf, iconOf, relatedSlugs } from "@/lib/tool-taxonomy";
 
-const CANONICAL = "https://inflinds.com/tools/cuentas-claras/";
-const APP = "/tools/cuentas-claras/app.html";
+const CANONICAL = "https://inflinds.com/tools/accounts-receivable/";
+const APP = "/tools/accounts-receivable/app.html";
 
 export const metadata: Metadata = {
   title: "Cuentas claras",
@@ -55,7 +55,7 @@ const CHECKS = [
 ] as const;
 
 export default function CuentasClarasPage() {
-  const tool = getTool("cuentas-claras");
+  const tool = getTool("accounts-receivable");
   if (!tool) notFound();
 
   const family = FAMILIES[familyOf(tool.slug)];
@@ -143,7 +143,7 @@ export default function CuentasClarasPage() {
             <div className="hidden lg:block">
               <div className="mx-auto w-[390px] max-w-full rounded-[2rem] bg-night p-2 shadow-2xl">
                 <Image
-                  src="/tools/cuentas-claras/app-preview.png"
+                  src="/tools/accounts-receivable/app-preview.png"
                   alt="Cuentas claras en el teléfono, con la lista de quién debe"
                   width={390}
                   height={844}

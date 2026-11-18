@@ -72,7 +72,7 @@ export default function ToolsPage() {
           </a>
 
           <Link
-            href="/tools/cuentas-claras/"
+            href="/tools/accounts-receivable/"
             className="mb-4 flex items-center gap-4 rounded-2xl border border-magenta/30 bg-white p-4 transition hover:border-magenta"
           >
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-magenta/10 text-magenta">
