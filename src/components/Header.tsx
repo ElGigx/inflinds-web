@@ -33,15 +33,8 @@ const merezLinks = [
     external: true,
   },
   {
-    label: "Clientes",
-    desc: "Acceso y soporte",
-    href: "/login/",
-    icon: "users",
-    external: false,
-  },
-  {
     label: "Documentación",
-    desc: "Guías de la plataforma",
+    desc: "Guías de Merez",
     href: "https://docs.merez.co",
     icon: "file",
     external: true,
@@ -71,7 +64,7 @@ export default function Header() {
   const solucionesActive = ["/tools/", "/apps/", "/services/", "/pricing/"].some((href) =>
     pathname.startsWith(href),
   );
-  const merezActive = pathname.startsWith("/login/");
+  const clientesActive = pathname.startsWith("/login/");
   const recursosActive = ["/blog/", "/log/", "/gigx/"].some((href) =>
     pathname.startsWith(href),
   );
@@ -377,7 +370,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={() => setMenu(menu === "merez" ? null : "merez")}
               className={`inline-flex items-center gap-1 ${linkBase} ${
-                merezActive || menu === "merez" ? active : inactive
+                menu === "merez" ? active : inactive
               }`}
             >
               Merez
@@ -494,6 +487,13 @@ export default function Header() {
             className={`${linkBase} ${contactoActive ? active : inactive}`}
           >
             Contacto
+          </Link>
+
+          <Link
+            href="/login/"
+            className={`${linkBase} ${clientesActive ? active : inactive}`}
+          >
+            Clientes
           </Link>
 
           <Link

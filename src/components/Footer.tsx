@@ -89,11 +89,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/login/" className="text-slate-300/80 hover:text-white transition-colors">
-                  Clientes
-                </Link>
-              </li>
-              <li>
                 <a
                   href="https://docs.merez.co"
                   target="_blank"
@@ -129,6 +124,11 @@ export default function Footer() {
               <li>
                 <Link href="/contact/" className="text-slate-300/80 hover:text-white transition-colors">
                   Contacto
+                </Link>
+              </li>
+              <li>
+                <Link href="/login/" className="text-slate-300/80 hover:text-white transition-colors">
+                  Área de clientes
                 </Link>
               </li>
             </ul>
