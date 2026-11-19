@@ -233,8 +233,8 @@ export default function Home() {
                     Herramientas
                   </span>
                   <span className="mt-1 block text-sm leading-relaxed text-slate">
-                    Resuelve hoy lo que te quita la tarde. {toolbox.length} calculadoras y
-                    conversores, sin cuenta.
+                    Resuelve hoy lo que te quita la tarde. {toolbox.length} herramientas
+                    —calculadoras, conversores y generadores—, sin cuenta.
                   </span>
                 </span>
                 <span className="font-display text-4xl font-black leading-none text-ink/15 transition-colors group-hover:text-yellow sm:text-5xl">

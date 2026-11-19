@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { services } from "@/lib/site";
+import { clients, services } from "@/lib/site";
 import ProcessStrip from "@/components/ProcessStrip";
 import ServiceArt from "@/components/services/ServiceArt";
 import ServiceFinder from "@/components/services/ServiceFinder";
@@ -162,15 +162,15 @@ export default function ServicesPage() {
               <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-white/10 pt-5">
                 <div>
                   <dt className="text-xs text-slate-400">Líneas</dt>
-                  <dd className="font-display text-2xl font-black text-white">6</dd>
+                  <dd className="font-display text-2xl font-black text-white">{services.length}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate-400">Organizaciones</dt>
-                  <dd className="font-display text-2xl font-black text-white">10</dd>
+                  <dt className="text-xs text-slate-400">Clientes</dt>
+                  <dd className="font-display text-2xl font-black text-white">{clients.length}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate-400">En producción</dt>
-                  <dd className="font-display text-2xl font-black text-white">4</dd>
+                  <dt className="text-xs text-slate-400">Casos</dt>
+                  <dd className="font-display text-2xl font-black text-white">{cases.length}</dd>
                 </div>
               </dl>
             </div>
@@ -295,7 +295,7 @@ export default function ServicesPage() {
             <div>
               <p className="font-display text-lg font-black">¿Antes de contratar, quieres hacer una cuenta?</p>
               <p className="mt-1 text-sm text-slate-300/80">
-                41 calculadoras de uso único, sin cuenta y sin guardar datos.
+                41 herramientas, muchas de ellas calculadoras, sin cuenta y sin guardar datos.
               </p>
             </div>
             <Link
