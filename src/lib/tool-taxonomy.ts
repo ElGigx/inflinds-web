@@ -6,8 +6,10 @@ export type Family = {
   blurb: string;
   icon: string;
   iconClass: string;
+  darkIconClass: string;
   chip: string;
   tile: string;
+  darkTile: string;
   hover: string;
 };
 
@@ -18,8 +20,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Impuestos, descuentos, margen, cuotas: la plata del día.",
     icon: "pie",
     iconClass: "text-magenta",
+    darkIconClass: "text-pink-300",
     chip: "bg-magenta/10 text-magenta",
     tile: "bg-magenta/10 text-magenta",
+    darkTile: "bg-pink-500/15 text-pink-300",
     hover: "hover:border-magenta",
   },
   operations: {
@@ -28,8 +32,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Inventario, compras, viajes y lo que se mueve en la bodega.",
     icon: "layers",
     iconClass: "text-brand-700",
+    darkIconClass: "text-brand-300",
     chip: "bg-brand/10 text-brand-700",
     tile: "bg-brand/10 text-brand-700",
+    darkTile: "bg-brand-500/15 text-brand-300",
     hover: "hover:border-brand",
   },
   deadlines: {
@@ -38,8 +44,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Fechas, vencimientos y cartera.",
     icon: "calendar",
     iconClass: "text-orange-600",
+    darkIconClass: "text-orange-300",
     chip: "bg-orange/10 text-orange-600",
     tile: "bg-orange/10 text-orange-600",
+    darkTile: "bg-orange-500/15 text-orange-300",
     hover: "hover:border-orange",
   },
   sales: {
@@ -48,8 +56,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Lo que se manda al cliente: enlaces, teléfonos, firmas, mensajes.",
     icon: "send",
     iconClass: "text-ink",
+    darkIconClass: "text-yellow",
     chip: "bg-yellow text-ink",
     tile: "bg-yellow/25 text-ink",
+    darkTile: "bg-yellow/15 text-yellow",
     hover: "hover:border-yellow-600",
   },
   company: {
@@ -58,8 +68,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Contratar, liquidar, declarar y montar empresa en Colombia.",
     icon: "building",
     iconClass: "text-brand-800",
+    darkIconClass: "text-brand-200",
     chip: "bg-brand-100 text-brand-800",
     tile: "bg-brand-100 text-brand-800",
+    darkTile: "bg-brand-500/15 text-brand-200",
     hover: "hover:border-brand-400",
   },
   decisions: {
@@ -68,8 +80,10 @@ export const FAMILIES: Record<FamilyKey, Family> = {
     blurb: "Las cuentas grandes: costo real, cobros, equilibrio.",
     icon: "target",
     iconClass: "text-night",
+    darkIconClass: "text-slate-200",
     chip: "bg-night/10 text-night",
     tile: "bg-night/10 text-night",
+    darkTile: "bg-white/10 text-slate-200",
     hover: "hover:border-night",
   },
 };

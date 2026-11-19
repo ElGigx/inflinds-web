@@ -168,11 +168,11 @@ export default function Header() {
                             onClick={() => setMenu(null)}
                             className="flex items-center gap-2 rounded-lg px-2 py-2 hover:bg-white/10"
                           >
-                            <Icon name={meta.icon} className={`h-4 w-4 ${meta.iconClass}`} />
+                            <Icon name={meta.icon} className={`h-4 w-4 ${meta.darkIconClass}`} />
                             <span className="text-xs font-semibold text-slate-200">
                               {meta.label}
                             </span>
-                            <span className="ml-auto text-[11px] text-slate-500">{count}</span>
+                            <span className="ml-auto text-[11px] text-slate-400">{count}</span>
                           </Link>
                         );
                       })}
@@ -242,7 +242,7 @@ export default function Header() {
                               <span className="block text-xs font-bold text-white">
                                 {app.title}
                               </span>
-                              <span className="mt-1 block text-[11px] leading-snug text-slate-400">
+                              <span className="mt-1 block text-[11px] leading-snug text-slate-300">
                                 {app.promise}
                               </span>
                             </span>
@@ -250,7 +250,7 @@ export default function Header() {
                           <Link
                             href={`/tools/${app.slug}/app.html`}
                             onClick={() => setMenu(null)}
-                            className="mt-0.5 shrink-0 rounded-lg bg-magenta px-2.5 py-1.5 text-[10px] font-bold text-white transition hover:brightness-110"
+                            className="mt-0.5 shrink-0 rounded-lg bg-magenta-600 px-2.5 py-1.5 text-[10px] font-bold text-white transition hover:brightness-110"
                           >
                             Entrar
                           </Link>
@@ -286,7 +286,7 @@ export default function Header() {
                       <Link
                         href="/apps/"
                         onClick={() => setMenu(null)}
-                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-magenta hover:bg-white/10"
+                        className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2.5 text-xs font-bold text-pink-400 hover:bg-white/10 hover:text-white"
                       >
                         Ver las {apps.length} aplicaciones
                         <span aria-hidden="true">→</span>
@@ -318,7 +318,7 @@ export default function Header() {
                           <span className="block text-xs font-semibold leading-tight text-white">
                             {service.tag}
                           </span>
-                          <span className="block truncate text-[11px] text-slate-400">
+                          <span className="block truncate text-[11px] text-slate-300">
                             {service.title}
                           </span>
                         </Link>
@@ -555,7 +555,7 @@ export default function Header() {
                     onClick={() => setOpen(false)}
                     className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-white"
                   >
-                    <Icon name={meta.icon} className={`h-4 w-4 ${meta.iconClass}`} />
+                    <Icon name={meta.icon} className={`h-4 w-4 ${meta.darkIconClass}`} />
                     {meta.label}
                   </Link>
                 );

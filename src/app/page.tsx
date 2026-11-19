@@ -71,7 +71,7 @@ function HeroMockup() {
           <div className="mt-3 space-y-1.5">
             {familyCounts.map(({ key, meta, count }) => (
               <div key={key} className="flex items-center gap-2">
-                <Icon name={meta.icon} className={`h-3.5 w-3.5 shrink-0 ${meta.iconClass}`} />
+                <Icon name={meta.icon} className={`h-3.5 w-3.5 shrink-0 ${meta.darkIconClass}`} />
                 <span className="w-[70px] shrink-0 text-[10px] font-semibold text-slate-300">
                   {meta.label}
                 </span>
@@ -426,13 +426,13 @@ export default function Home() {
                   className="group flex min-w-0 items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
                 >
                   <span
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${meta.tile}`}
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${meta.darkTile}`}
                   >
                     <Icon name={meta.icon} className="h-4 w-4" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-bold text-white">{meta.label}</span>
-                    <span className="block text-[11px] leading-snug text-slate-400">
+                    <span className="block text-[11px] leading-snug text-slate-300">
                       {meta.blurb}
                     </span>
                   </span>
@@ -582,12 +582,12 @@ export default function Home() {
                 key={module.name}
                 className="flex items-center gap-3 border-b border-white/10 py-3.5"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-magenta">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-pink-300">
                   <Icon name={merezIcons[module.name]} className="h-4 w-4" />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-sm font-bold text-white">{module.name}</span>
-                  <span className="block truncate text-[11px] text-slate-400">
+                  <span className="block truncate text-[11px] text-slate-300">
                     {merezShort[module.name]}
                   </span>
                 </span>
