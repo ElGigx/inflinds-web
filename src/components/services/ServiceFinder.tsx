@@ -63,35 +63,66 @@ const problems = [
 
 export default function ServiceFinder() {
   return (
-    <div className="rounded-3xl border border-line bg-white p-5 sm:p-8">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-display text-2xl font-black text-ink">¿Qué te está pasando?</h2>
-        <p className="text-xs text-slate">Elige lo que más se parezca. Te dice por dónde entrar.</p>
+    <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+      <div className="lg:sticky lg:top-24 lg:self-start">
+        <span className="inline-block rounded-md bg-yellow px-2.5 py-1 font-display text-xs font-bold uppercase tracking-[0.18em] text-ink">
+          Diagnóstico
+        </span>
+        <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+          ¿Qué te está pasando?
+        </h2>
+        <p className="mt-4 text-lg leading-relaxed text-slate">
+          Elige lo que más se parezca. Te dice por dónde entrar.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-slate">
+          Siete problemas típicos. Si el tuyo no está en la lista, se parece a alguno.
+        </p>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {problems.map((problem) => (
-          <a
-            key={problem.id}
-            href={`#${problem.service}`}
-            className="rounded-full border border-line bg-paper-soft px-3.5 py-2 text-xs font-bold text-ink transition hover:border-magenta hover:text-magenta"
-          >
-            {problem.label}
-          </a>
-        ))}
-      </div>
-
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {problems.map((problem) => (
-          <article key={problem.id} className="rounded-2xl border border-line p-4 transition hover:border-magenta">
-            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-magenta">{problem.label}</p>
-            <h3 className="mt-2 font-display text-base font-bold leading-tight text-ink">{problem.title}</h3>
-            <p className="mt-2 text-xs leading-relaxed text-slate">{problem.text}</p>
-            <Link href={`#${problem.service}`} className="mt-3 inline-block text-xs font-bold text-magenta hover:underline">
-              {problem.cta} →
-            </Link>
-          </article>
-        ))}
+      <div className="grid gap-3 sm:grid-cols-2">
+        {problems.map((problem, index) => {
+          const wide = index === problems.length - 1;
+          return (
+            <article
+              key={problem.id}
+              className={`rounded-2xl border p-5 transition ${
+                wide
+                  ? "border-night bg-night text-white sm:col-span-2"
+                  : "border-line bg-white hover:border-magenta"
+              }`}
+            >
+              <p
+                className={`text-[10px] font-bold uppercase tracking-[0.12em] ${
+                  wide ? "text-yellow" : "text-magenta"
+                }`}
+              >
+                {problem.label}
+              </p>
+              <h3
+                className={`mt-2 font-display text-lg font-black leading-tight ${
+                  wide ? "text-white" : "text-ink"
+                }`}
+              >
+                {problem.title}
+              </h3>
+              <p
+                className={`mt-2 text-sm leading-relaxed ${
+                  wide ? "text-slate-300" : "text-slate"
+                }`}
+              >
+                {problem.text}
+              </p>
+              <Link
+                href={`#${problem.service}`}
+                className={`mt-3 inline-block text-sm font-bold hover:underline ${
+                  wide ? "text-yellow" : "text-magenta"
+                }`}
+              >
+                {problem.cta} →
+              </Link>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

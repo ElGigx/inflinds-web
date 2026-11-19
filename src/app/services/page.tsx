@@ -203,7 +203,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="pb-10">
+      <section className="py-16 sm:py-20">
         <Container>
           <ServiceFinder />
         </Container>
@@ -211,49 +211,60 @@ export default function ServicesPage() {
 
       <section className="bg-paper-soft py-16 sm:py-20">
         <Container>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+            <div className="lg:sticky lg:top-24 lg:self-start">
               <Eyebrow>Las seis líneas</Eyebrow>
               <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
                 Lo que podemos construir.
               </h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate">
+                Cada línea tiene su ficha completa: qué incluye, cuándo se nota y cómo se trabaja.
+              </p>
+              <Link
+                href="/contact/"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+              >
+                ¿No sabes cuál? Hablemos <span aria-hidden="true">→</span>
+              </Link>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-slate">
-              Cada línea tiene su ficha completa: qué incluye, cuándo se nota y cómo se trabaja.
-            </p>
-          </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => {
-              const detail = details[service.slug];
-              return (
-                <Link
-                  key={service.slug}
-                  id={service.slug}
-                  href={`/services/${service.slug}/`}
-                  className="group flex scroll-mt-24 flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="relative h-40 border-b border-line bg-paper-soft p-4">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate">
+            <div className="border-t border-line">
+              {services.map((service, index) => {
+                const detail = details[service.slug];
+                return (
+                  <Link
+                    key={service.slug}
+                    id={service.slug}
+                    href={`/services/${service.slug}/`}
+                    className="group grid scroll-mt-24 grid-cols-[1fr_auto] items-center gap-4 border-b border-line py-5 sm:grid-cols-[auto_1fr_150px_auto] sm:gap-6"
+                  >
+                    <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-magenta sm:block">
                       0{index + 1} · {service.tag}
                     </span>
-                    <div className="mt-1 h-28">
-                      <ServiceArt slug={service.slug} />
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <h2 className="font-display text-xl font-black leading-tight text-ink transition-colors group-hover:text-magenta">
-                      {service.title}
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-slate">{service.summary}</p>
-                    <p className="mt-3 text-xs leading-relaxed text-slate-400">{detail.signal[0]}</p>
-                    <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-bold text-magenta">
-                      Ver servicio completo <span aria-hidden="true">→</span>
+                    <span className="min-w-0">
+                      <span className="block font-display text-xl font-black leading-tight text-ink transition-colors group-hover:text-magenta sm:text-2xl">
+                        {service.title}
+                      </span>
+                      <span className="mt-1 block text-sm leading-relaxed text-slate">
+                        {service.summary}
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-slate-400">
+                        {detail.signal[0]}
+                      </span>
                     </span>
-                  </div>
-                </Link>
-              );
-            })}
+                    <span className="hidden h-20 w-[150px] shrink-0 sm:block">
+                      <ServiceArt slug={service.slug} />
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="text-slate-400 transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </Container>
       </section>
@@ -263,37 +274,68 @@ export default function ServicesPage() {
           className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-600/25 blur-3xl"
           aria-hidden="true"
         />
-        <Container className="relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="font-display text-2xl font-black text-white sm:text-3xl">
-              Cómo se trabaja
+        <Container className="relative grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+          <div>
+            <Eyebrow tone="dark">Cómo se trabaja</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl font-black leading-tight sm:text-4xl">
+              Diez fases. Cero cajas negras.
             </h2>
-            <p className="max-w-md text-sm text-slate-400">
-              Diez fases, de la idea a la evolución. Cada una deja algo que se puede revisar.
+            <p className="mt-4 text-lg leading-relaxed text-slate-300">
+              Cada fase deja algo que se puede revisar: alcance, pantallas, código, pruebas o
+              accesos. Tú ves el avance, no solo el resultado.
             </p>
           </div>
-          <div className="mt-8">
-            <ProcessStrip tone="dark" />
-          </div>
+          <ProcessStrip tone="dark" />
         </Container>
       </section>
 
-      <section className="py-12 sm:py-16">
+      <section className="py-16 sm:py-20">
         <Container>
-          <h2 className="font-display text-2xl font-black text-ink sm:text-3xl">Lo que ya está en producción</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {cases.map((item) => (
-              <article key={item.name} className="rounded-2xl border border-line bg-white p-5">
-                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-magenta">{item.sector}</p>
-                <h3 className="mt-2 font-display text-lg font-black text-ink">{item.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate">{item.fact}</p>
-              </article>
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <Eyebrow>En producción</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+                Lo que ya está en producción.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate">
+                No son mockups: son sitios y plataformas que están operando hoy.
+              </p>
+              <Link
+                href="/gigx/portfolio/"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+              >
+                Ver el portafolio <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+
+            <div className="border-t border-line">
+              {cases.map((item, index) => (
+                <div
+                  key={item.name}
+                  className="grid grid-cols-[auto_1fr] gap-4 border-b border-line py-6 sm:grid-cols-[auto_1fr_auto] sm:gap-6"
+                >
+                  <span className="font-mono text-[10px] text-magenta">0{index + 1}</span>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-magenta">
+                      {item.sector}
+                    </p>
+                    <h3 className="mt-1 font-display text-2xl font-black text-ink">{item.name}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate">{item.fact}</p>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="hidden font-display text-5xl font-black text-ink/10 sm:block"
+                  >
+                    0{index + 1}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 rounded-2xl bg-night p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-night p-6 text-white sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-display text-lg font-black">¿Antes de contratar, quieres hacer una cuenta?</p>
+              <p className="font-display text-lg font-black">¿Antes de contratar, quieres probar?</p>
               <p className="mt-1 text-sm text-slate-300/80">
                 41 herramientas, muchas de ellas calculadoras, sin cuenta y sin guardar datos.
               </p>
