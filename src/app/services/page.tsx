@@ -69,16 +69,19 @@ const cases = [
     name: "Fusion Pipe Tools",
     sector: "Distribución industrial",
     fact: "Catálogo de 41 fichas, sitio público y un mini-CRM para cotizar, sobre el mismo dato.",
+    image: "/gigx/shots/fusion-home.webp",
   },
   {
     name: "Acertar",
     sector: "Certificación documental",
     fact: "Portal de certificados con consulta pública y verificación por código, sobre Merez.",
+    image: "/gigx/shots/acertar-home.webp",
   },
   {
     name: "Merez",
     sector: "Producto propio",
     fact: "Plataforma multi-tenant que reúne catálogo, cotizaciones, pedidos, cobros y agentes.",
+    image: "/gigx/shots/merez-industrial.webp",
   },
 ];
 
@@ -301,8 +304,8 @@ export default function ServicesPage() {
 
       <section className="py-16 sm:py-20">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-            <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
               <Eyebrow>En producción</Eyebrow>
               <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
                 Lo que ya está en producción.
@@ -310,37 +313,47 @@ export default function ServicesPage() {
               <p className="mt-4 text-lg leading-relaxed text-slate">
                 No son mockups: son sitios y plataformas que están operando hoy.
               </p>
-              <Link
-                href="/gigx/portfolio/"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
-              >
-                Ver el portafolio <span aria-hidden="true">→</span>
-              </Link>
             </div>
+            <Link
+              href="/gigx/portfolio/"
+              className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+            >
+              Ver el portafolio <span aria-hidden="true">→</span>
+            </Link>
+          </div>
 
-            <div className="border-t border-line">
-              {cases.map((item, index) => (
-                <div
-                  key={item.name}
-                  className="grid grid-cols-[auto_1fr] gap-4 border-b border-line py-6 sm:grid-cols-[auto_1fr_auto] sm:gap-6"
-                >
-                  <span className="font-mono text-[10px] text-magenta">0{index + 1}</span>
-                  <div>
+          <div className="mt-10 grid gap-4">
+            {cases.map((item, index) => (
+              <Link
+                key={item.name}
+                href="/gigx/portfolio/#casos"
+                className="group grid overflow-hidden rounded-3xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg md:grid-cols-[400px_1fr]"
+              >
+                <div className="relative h-52 overflow-hidden bg-night md:h-[250px]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={`${item.name}, en producción`}
+                    width={1440}
+                    height={900}
+                    className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-col justify-center p-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] text-magenta">0{index + 1}</span>
                     <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-magenta">
                       {item.sector}
                     </p>
-                    <h3 className="mt-1 font-display text-2xl font-black text-ink">{item.name}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate">{item.fact}</p>
                   </div>
-                  <span
-                    aria-hidden="true"
-                    className="hidden font-display text-5xl font-black text-ink/10 sm:block"
-                  >
-                    0{index + 1}
+                  <h3 className="mt-2 font-display text-2xl font-black text-ink">{item.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate">{item.fact}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-magenta">
+                    Ver en el portafolio <span aria-hidden="true">→</span>
                   </span>
                 </div>
-              ))}
-            </div>
+              </Link>
+            ))}
           </div>
 
           <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-night p-6 text-white sm:flex-row sm:items-center sm:justify-between">
