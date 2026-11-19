@@ -163,44 +163,36 @@ export default function AppsPage() {
       {/* ---------- LAS DOS APPS ---------- */}
       <section className="py-20">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-6">
             {apps.map((app) => (
               <article
                 key={app.slug}
-                className="overflow-hidden rounded-3xl border border-line bg-white"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all hover:shadow-lg md:flex-row"
               >
-                <div className="relative flex h-[360px] items-center justify-center overflow-hidden bg-night p-6">
-                  <div className="absolute inset-0 hero-glow-night opacity-60" aria-hidden="true" />
+                <div className="relative flex shrink-0 items-center justify-center overflow-hidden bg-night-800 p-8 md:w-[300px]">
+                  <div className="absolute inset-0 hero-glow-night opacity-70" aria-hidden="true" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/tools/${app.slug}/app-preview.png`}
-                    alt={`Vista de la app ${app.title}`}
-                    width={520}
-                    height={844}
-                    loading="lazy"
-                    className="relative h-full w-auto rounded-2xl shadow-2xl ring-1 ring-white/10"
+                    src={`/tools/${app.slug}/icons/icon-512.png`}
+                    alt={`Logo de ${app.title}`}
+                    width={512}
+                    height={512}
+                    className="relative h-40 w-40 rounded-[32px] shadow-2xl ring-1 ring-white/20 transition-transform group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6 sm:p-8">
-                  <div className="flex items-center gap-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/tools/${app.slug}/icons/icon-192.png`}
-                      alt={`Logo de ${app.title}`}
-                      width={44}
-                      height={44}
-                      className="h-11 w-11 rounded-xl ring-1 ring-line"
-                    />
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-magenta">
-                        {app.eyebrow}
-                      </p>
-                      <h2 className="font-display text-2xl font-black leading-tight text-ink">
-                        {app.title}
-                      </h2>
-                    </div>
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-magenta">
+                      {app.eyebrow} · app
+                    </p>
+                    <span className="rounded-full bg-magenta/10 px-2.5 py-1 text-[10px] font-bold text-magenta">
+                      PWA
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm font-semibold leading-relaxed text-ink">{app.promise}</p>
+                  <h2 className="mt-2 font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
+                    {app.title}
+                  </h2>
+                  <p className="mt-2 text-sm font-semibold leading-relaxed text-ink">{app.promise}</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate">{app.description}</p>
                   <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                     {appDetails[app.slug].map((feature) => (
@@ -210,7 +202,7 @@ export default function AppsPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="mt-auto flex flex-wrap gap-3 pt-6">
                     <Link
                       href={`/tools/${app.slug}/app.html`}
                       className="inline-flex items-center rounded-xl bg-night px-5 py-3 text-sm font-bold text-white transition hover:bg-night-700"
