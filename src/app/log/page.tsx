@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
-import { allEntries, entryPath, longDate, paragraphs } from "@/lib/content";
+import { allEntries, entryPath, longDate, paragraphs, plainText } from "@/lib/content";
 
 export const revalidate = 300;
 
@@ -92,7 +92,9 @@ export default async function LogPage() {
                       {e.headline}
                     </Link>
                   </h2>
-                  {paragraphs(e.body)[0] && <p className="mt-3 leading-relaxed text-slate">{paragraphs(e.body)[0]}</p>}
+                  {plainText(paragraphs(e.body)[0]) && (
+                    <p className="mt-3 leading-relaxed text-slate">{plainText(paragraphs(e.body)[0])}</p>
+                  )}
                 </li>
               ))}
             </ol>

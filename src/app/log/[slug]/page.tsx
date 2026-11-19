@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container, PrimaryButton } from "@/components/ui";
+import RichText from "@/components/RichText";
 import JsonLd from "@/components/JsonLd";
-import { allEntries, EMPTY_SLUG, entryPath, longDate, paragraphs } from "@/lib/content";
+import { allEntries, EMPTY_SLUG, entryPath, longDate, paragraphs, plainText } from "@/lib/content";
 
 const BASE = "https://inflinds.com";
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const entry = await entryFor(slug);
   if (!entry) return { title: "Bitácora", robots: { index: false } };
-  const summary = paragraphs(entry.body)[0]?.slice(0, 155) ?? "Una entrada de la bitácora de Inflinds.";
+  const summary = plainText(paragraphs(entry.body)[0]).slice(0, 155) || "Una entrada de la bitácora de Inflinds.";
   const image = entry.main_image
     ? [{ url: entry.main_image, width: 1200, height: 630, alt: entry.headline }]
     : undefined;
@@ -112,9 +113,7 @@ export default async function LogEntryPage({ params }: { params: Promise<Params>
             />
           )}
           <div className="article-prose mt-8">
-            {paragraphs(entry.body).map((p) => (
-              <p key={p}>{p}</p>
-            ))}
+            <RichText text={entry.body} />
           </div>
           {entry.source_url && (
             <p className="mt-8 text-sm text-slate">

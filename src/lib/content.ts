@@ -185,6 +185,16 @@ export function paragraphs(text: string | null): string[] {
     .filter(Boolean);
 }
 
+export function plainText(text: string | null): string {
+  return (text ?? "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^[-*]\s+/gm, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function longDate(iso: string | null | undefined): string {
   if (!iso) return "";
   const dateOnly = iso.slice(0, 10);
