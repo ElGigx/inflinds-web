@@ -43,7 +43,7 @@ const merezLinks = [
 
 const recursosLinks = [
   { label: "Blog", desc: "Ideas y criterios de trabajo", href: "/blog/", icon: "edit" },
-  { label: "Log", desc: "Lo que construimos y aprendimos", href: "/log/", icon: "file" },
+  { label: "Bitácora", desc: "Lo que construimos y aprendimos", href: "/log/", icon: "file" },
   { label: "Gigx", desc: "El estudio detrás de Inflinds", href: "/gigx/", icon: "users" },
   { label: "Contacto", desc: "Hablemos de tu proyecto", href: "/contact/", icon: "mail" },
 ];

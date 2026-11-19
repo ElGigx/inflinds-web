@@ -113,7 +113,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/log/" className="text-slate-300/80 hover:text-white transition-colors">
-                  Log
+                  Bitácora
                 </Link>
               </li>
               <li>
@@ -158,7 +158,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>
-            © {year} {site.legalName}. Todos los derechos reservados.
+            © {year} {site.legalName} Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy/" className="hover:text-white transition-colors">
