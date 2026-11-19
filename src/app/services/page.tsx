@@ -274,18 +274,28 @@ export default function ServicesPage() {
           className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-600/25 blur-3xl"
           aria-hidden="true"
         />
-        <Container className="relative grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
-          <div>
+        <Container className="relative">
+          <div className="max-w-2xl">
             <Eyebrow tone="dark">Cómo se trabaja</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-black leading-tight sm:text-4xl">
-              Diez fases. Cero cajas negras.
+              Cuatro etapas. Diez fases. Cero cajas negras.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-300">
-              Cada fase deja algo que se puede revisar: alcance, pantallas, código, pruebas o
+              Cada etapa deja algo que puedes revisar: alcance, pantallas, código, pruebas y
               accesos. Tú ves el avance, no solo el resultado.
             </p>
           </div>
-          <ProcessStrip tone="dark" />
+          <div className="mt-10">
+            <ProcessStrip />
+          </div>
+          <div className="mt-8 flex justify-end">
+            <Link
+              href="/contact/"
+              className="text-sm font-bold text-yellow transition-colors hover:text-white"
+            >
+              Hablemos de tu proyecto <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </Container>
       </section>
 

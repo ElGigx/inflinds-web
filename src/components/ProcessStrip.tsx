@@ -1,47 +1,65 @@
-import Icon from "./Icon";
 import { methodology } from "@/lib/site";
 
-const stepIcons = [
-  "search",
-  "clipboard",
-  "flag",
-  "layers",
-  "layout",
-  "pen",
-  "code",
-  "check",
-  "send",
-  "trending",
+const stages = [
+  {
+    number: "01",
+    title: "Entender",
+    desc: "Qué duele, qué se puede resolver sin construir y qué sí exige un proyecto.",
+    deliverable: "Brief, alcance y prioridades.",
+    phases: methodology.slice(0, 3),
+  },
+  {
+    number: "02",
+    title: "Diseñar",
+    desc: "La solución antes de escribir código: arquitectura, flujos y pantallas.",
+    deliverable: "Arquitectura, prototipo y UI.",
+    phases: methodology.slice(3, 6),
+  },
+  {
+    number: "03",
+    title: "Construir",
+    desc: "Código, pruebas y puesta en producción con entregas que se pueden revisar.",
+    deliverable: "Producto en producción.",
+    phases: methodology.slice(6, 8),
+  },
+  {
+    number: "04",
+    title: "Evolucionar",
+    desc: "Medición, soporte y nuevas funciones cuando el negocio cambia.",
+    deliverable: "Soporte y siguiente iteración.",
+    phases: methodology.slice(8, 10),
+  },
 ];
 
-export default function ProcessStrip({ tone = "light" }: { tone?: "light" | "dark" }) {
-  const dark = tone === "dark";
+export default function ProcessStrip() {
   return (
-    <ol className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-      {methodology.map((step, i) => (
+    <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {stages.map((stage) => (
         <li
-          key={step.n}
-          className={`rounded-2xl border p-4 ${
-            dark ? "border-white/10 bg-white/5" : "border-line bg-white"
-          }`}
+          key={stage.number}
+          className="flex flex-col rounded-3xl border border-white/10 bg-white/5 p-6"
         >
-          <span
-            className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-              dark ? "bg-white/5 text-magenta" : "bg-paper-soft text-magenta"
-            }`}
-          >
-            <Icon name={stepIcons[i]} className="h-4 w-4" />
+          <span className="font-display text-4xl font-black leading-none text-yellow">
+            {stage.number}
           </span>
-          <p
-            className={`mt-3 font-display text-[10px] font-bold tracking-widest ${
-              dark ? "text-slate-400" : "text-slate"
-            }`}
-          >
-            {String(step.n).padStart(2, "0")}
-          </p>
-          <p className={`mt-1 text-sm font-bold leading-tight ${dark ? "text-white" : "text-ink"}`}>
-            {step.name}
-          </p>
+          <h3 className="mt-4 font-display text-xl font-black text-white">{stage.title}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-300">{stage.desc}</p>
+          <div className="mt-4 border-t border-white/10 pt-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-yellow">
+              Te queda
+            </p>
+            <p className="mt-1 text-sm text-slate-300">{stage.deliverable}</p>
+          </div>
+          <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
+            {stage.phases.map((phase) => (
+              <li
+                key={phase.n}
+                className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-slate-300"
+              >
+                {phase.name}
+              </li>
+            ))}
+          </ul>
         </li>
       ))}
     </ol>
