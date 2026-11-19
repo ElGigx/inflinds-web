@@ -9,6 +9,20 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Bitácora",
   description: "Los proyectos, lanzamientos y aprendizajes de Inflinds, contados a medida que pasan.",
+  alternates: { canonical: "/log/" },
+  openGraph: {
+    title: "Bitácora — Inflinds",
+    description: "Los proyectos, lanzamientos y aprendizajes de Inflinds, contados a medida que pasan.",
+    url: "https://inflinds.com/log/",
+    siteName: "Inflinds",
+    type: "website",
+    locale: "es_CO",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bitácora — Inflinds",
+    description: "Los proyectos, lanzamientos y aprendizajes de Inflinds, contados a medida que pasan.",
+  },
 };
 
 export default async function LogPage() {
@@ -26,7 +40,7 @@ export default async function LogPage() {
             "@type": "BlogPosting",
             headline: e.headline,
             url: `https://inflinds.com${entryPath(e)}`,
-            datePublished: e.happened_on,
+            datePublished: e.happened_on.slice(0, 10),
           })),
         }}
       />

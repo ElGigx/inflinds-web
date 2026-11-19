@@ -28,13 +28,30 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const entry = await entryFor(slug);
   if (!entry) return { title: "Bitácora", robots: { index: false } };
-  const summary = paragraphs(entry.body)[0]?.slice(0, 155);
+  const summary = paragraphs(entry.body)[0]?.slice(0, 155) ?? "Una entrada de la bitácora de Inflinds.";
+  const image = entry.main_image
+    ? [{ url: entry.main_image, width: 1200, height: 630, alt: entry.headline }]
+    : undefined;
 
   return {
     title: entry.headline,
     description: summary,
     alternates: { canonical: entryPath(entry) },
-    openGraph: { type: "article", title: entry.headline, description: summary, images: entry.main_image ? [entry.main_image] : undefined },
+    openGraph: {
+      type: "article",
+      title: entry.headline,
+      description: summary,
+      url: entryPath(entry),
+      images: image,
+      publishedTime: entry.happened_on.slice(0, 10),
+      modifiedTime: (entry.updated_at ?? entry.happened_on).slice(0, 10),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.headline,
+      description: summary,
+      images: entry.main_image ? [entry.main_image] : undefined,
+    },
   };
 }
 
@@ -54,8 +71,8 @@ export default async function LogEntryPage({ params }: { params: Promise<Params>
             "@type": "BlogPosting",
             headline: entry.headline,
             image: entry.main_image ? [entry.main_image] : undefined,
-            datePublished: entry.happened_on,
-            dateModified: entry.updated_at ?? entry.happened_on,
+            datePublished: entry.happened_on.slice(0, 10),
+            dateModified: (entry.updated_at ?? entry.happened_on).slice(0, 10),
             author: { "@type": "Organization", name: "Inflinds", url: BASE },
             publisher: { "@type": "Organization", name: "Inflinds", url: BASE, logo: { "@type": "ImageObject", url: `${BASE}/icon.svg` } },
             mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -85,7 +102,14 @@ export default async function LogEntryPage({ params }: { params: Promise<Params>
           </p>
           <h1 className="mt-3 font-display text-3xl font-black leading-tight tracking-tight text-ink sm:text-4xl">{entry.headline}</h1>
           {entry.main_image && (
-            <img src={entry.main_image} alt={entry.headline} className="mt-8 w-full rounded-3xl border border-line object-cover" />
+            <img
+              src={entry.main_image}
+              alt={entry.headline}
+              width={1200}
+              height={630}
+              loading="eager"
+              className="mt-8 w-full rounded-3xl border border-line object-cover"
+            />
           )}
           <div className="article-prose mt-8">
             {paragraphs(entry.body).map((p) => (
