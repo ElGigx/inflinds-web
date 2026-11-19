@@ -42,13 +42,20 @@ const palette: Record<
   },
 };
 
-export default function ServiceArt({ slug }: { slug: string }) {
+export default function ServiceArt({
+  slug,
+  compact = false,
+}: {
+  slug: string;
+  compact?: boolean;
+}) {
   const key = (slug in palette ? slug : "diseno") as ArtKey;
   const color = palette[key];
 
   return (
     <svg
       viewBox="0 0 320 220"
+      preserveAspectRatio={compact ? "xMidYMid slice" : undefined}
       className={`h-full w-full ${color.ink}`}
       aria-hidden="true"
       fill="none"

@@ -13,57 +13,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://inflinds.com/services/" },
 };
 
-const details: Record<string, { signal: string[]; proof: string; cta: string }> = {
-  diseno: {
-    signal: [
-      "La gente entra y no entiende qué vendes",
-      "Cada página se ve distinta y el equipo no encuentra dónde cambiar algo",
-    ],
-    proof: "Así se ordenó el catálogo de Fusion Pipe Tools: 41 fichas y una ficha técnica que se entiende sin llamar.",
-    cta: "Quiero ordenar el producto",
-  },
-  desarrollo: {
-    signal: [
-      "El pedido se pierde entre el chat, la hoja y el correo",
-      "Necesitas un panel para operar y hoy todo vive en Excel",
-    ],
-    proof: "El sitio y el mini-CRM de Fusion Pipe Tools corren sobre el mismo dato; Acertar resuelve certificados sobre Merez.",
-    cta: "Necesito construirlo",
-  },
-  automatizacion: {
-    signal: [
-      "Alguien copia datos entre dos herramientas todos los días",
-      "Las notificaciones dependen de que una persona se acuerde",
-    ],
-    proof: "Cada automatización arranca con una tarea concreta y una medida: cuántas veces se hace y cuánto tarda.",
-    cta: "Quiero quitarme lo manual",
-  },
-  "inteligencia-artificial": {
-    signal: [
-      "El equipo usa IA para todo, pero nadie verifica ni mide el costo",
-      "Quieres responder por el chat sin inventar precios ni disponibilidad",
-    ],
-    proof: "El agente de Merez responde con el catálogo del negocio y se detiene cuando hace falta una persona.",
-    cta: "Quiero IA con criterio",
-  },
-  consultoria: {
-    signal: [
-      "Hay diez iniciativas y no sabes cuál primero",
-      "Necesitas decidir si algo se construye o se compra",
-    ],
-    proof: "El diagnóstico termina en una hoja de ruta con costos y una recomendación: qué se hace, qué no, y por qué.",
-    cta: "Necesito rumbo",
-  },
-  "seo-geo": {
-    signal: [
-      "Buscas lo que vendes en Google y no apareces",
-      "Le preguntas a un asistente por tu categoría y no te menciona",
-    ],
-    proof: "Lo aplicamos en nuestros sitios: 74 y 62 URLs con lastmod por página, datos estructurados y llms.txt verificables hoy.",
-    cta: "Quiero aparecer",
-  },
-};
-
 const cases = [
   {
     name: "Fusion Pipe Tools",
@@ -232,41 +181,38 @@ export default function ServicesPage() {
             </div>
 
             <div className="border-t border-line">
-              {services.map((service, index) => {
-                const detail = details[service.slug];
-                return (
-                  <Link
-                    key={service.slug}
-                    id={service.slug}
-                    href={`/services/${service.slug}/`}
-                    className="group grid scroll-mt-24 grid-cols-[1fr_auto] items-center gap-4 border-b border-line py-5 sm:grid-cols-[auto_1fr_150px_auto] sm:gap-6"
+              {services.map((service, index) => (
+                <Link
+                  key={service.slug}
+                  id={service.slug}
+                  href={`/services/${service.slug}/`}
+                  className="group grid scroll-mt-24 grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-line py-5 sm:grid-cols-[auto_1fr_auto_auto] sm:gap-6"
+                >
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl">
+                    <ServiceArt slug={service.slug} compact />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-display text-xl font-black leading-tight text-ink transition-colors group-hover:text-magenta sm:text-2xl">
+                      {service.title}
+                    </span>
+                    <span className="mt-1 block text-sm leading-relaxed text-slate">
+                      {service.summary}
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="hidden font-display text-3xl font-black text-ink/10 sm:block sm:text-4xl"
                   >
-                    <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-magenta sm:block">
-                      0{index + 1} · {service.tag}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block font-display text-xl font-black leading-tight text-ink transition-colors group-hover:text-magenta sm:text-2xl">
-                        {service.title}
-                      </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-slate">
-                        {service.summary}
-                      </span>
-                      <span className="mt-1 block text-xs leading-relaxed text-slate-400">
-                        {detail.signal[0]}
-                      </span>
-                    </span>
-                    <span className="hidden h-20 w-[150px] shrink-0 sm:block">
-                      <ServiceArt slug={service.slug} />
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="text-slate-400 transition-transform group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </Link>
-                );
-              })}
+                    0{index + 1}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="text-slate-400 transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </Container>

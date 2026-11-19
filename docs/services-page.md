@@ -17,7 +17,7 @@ Objetivo: que alguien entienda qué hace Inflinds, se reconozca en un problema y
 | --- | --- | --- |
 | Hero | Decir qué es y a qué se parece | Oscuro, copy a la izquierda, panel de 6 líneas a la derecha |
 | Diagnóstico | Que el visitante se reconozca | Split: título a la izquierda, 7 problemas en 2 columnas; el último, oscuro a todo el ancho |
-| Las seis líneas | Mostrar el catálogo | Lista editorial: número, título, resumen, señal y arte |
+| Las seis líneas | Mostrar el catálogo | Lista editorial con icono, título, resumen, número fantasma y flecha (patrón de Tres frentes) |
 | Cómo se trabaja | Explicar el método sin aburrir | 4 etapas en tarjetas, con entregable y fases |
 | En producción | Probar que se construye | 3 fichas horizontales con captura real del sitio |
 | CTA de herramientas | Dar una salida de bajo compromiso | Barra oscura con “Ver herramientas” |
@@ -120,12 +120,25 @@ Decisiones:
 - `object-contain` para no cortar el sitio; fondo nocturno para unificar.
 - Imágenes eager: al estar lejos del viewport, `loading="lazy"` dejaba paneles negros en las capturas y en la primera visita.
 
+### 3.4 Las seis líneas: el patrón de Tres frentes
+
+**Antes:** cada línea con número/tag a la izquierda, resumen y señal, y una miniatura de arte a la derecha. Se leía como una tabla con imágenes y no emparentaba con la home.
+
+**Después:** el mismo patrón de “Tres frentes”: icono en tile, título, resumen, número fantasma y flecha. El arte pequeño va como icono, no como miniatura.
+
+| Antes | Después (desktop) | Después (móvil) |
+| --- | --- | --- |
+| ![Líneas anteriores](services/lines-before.png) | ![Líneas nuevas en desktop](services/lines-after-desktop.png) | ![Líneas nuevas en móvil](services/lines-after-mobile.png) |
+
+Decisión: una lista de seis líneas no necesita seis tarjetas ni seis miniaturas. El icono identifica, el número grande ordena y la flecha invita a entrar. Implementado en `src/app/services/page.tsx` y en `ServiceArt` (variante `compact`).
+
 ## 4. Reglas para la próxima iteración
 
 - No volver a una rejilla de 10 pasos iguales. Máximo 4 etapas visibles; las fases van dentro.
 - No usar `loading="lazy"` en imágenes de secciones que se capturan o se revisan fuera del viewport.
 - No inventar números: 41 herramientas, 6 clientes, 3 casos, 6 líneas y 10 fases salen de datos.
 - Reusar `ServiceArt` (tile-icono) y no volver al SVG de líneas finas.
+- Las listas de líneas/frentes usan icono + título + resumen + número fantasma + flecha; no volver a miniaturas de arte a la derecha.
 - En casos, la captura manda: `object-contain`, fondo oscuro y texto al lado.
 - Medir 1440 y 390 (`scrollWidth`) antes de dar una sección por buena.
 - Si una sección se siente “horrible”, cambiar la **composición**, no solo el color de fondo.
