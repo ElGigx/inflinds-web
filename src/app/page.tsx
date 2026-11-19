@@ -23,6 +23,19 @@ const merezIcons: Record<string, string> = {
   Pagos: "card",
 };
 
+const merezShort: Record<string, string> = {
+  "CRM Inteligente": "Pipeline y seguimiento",
+  "Agente de ventas": "Vende en el chat",
+  Automatizaciones: "Flujos que trabajan solos",
+  "Cotizaciones PDF": "Cotiza con consecutivo",
+  "Email Marketing": "Campañas medibles",
+  "Blog / SEO": "Contenido que posiciona",
+  Analítica: "Embudo y conversión",
+  Segmentación: "Contactos por perfil",
+  Integraciones: "Meta, GA4 y Clarity",
+  Pagos: "Wompi conciliado",
+};
+
 /* ---------- Mockup decorativo del hero (datos reales del catálogo) ---------- */
 
 function HeroMockup() {
@@ -189,113 +202,106 @@ export default function Home() {
       {/* ---------- TRES FRENTES ---------- */}
       <section className="py-20">
         <Container>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow="Tres frentes"
-              title="Empieza por donde más te duele"
-              intro="Una calculadora para hoy, una app para tu operación, un proyecto para crecer. No todo se resuelve igual: por eso hay tres formas de entrar."
-            />
-            <Link
-              href="/pricing/"
-              className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all hover:gap-2"
-            >
-              Ver precios <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div className="lg:self-center">
+              <Eyebrow>Tres frentes</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+                Empieza por donde más te duele.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate">
+                Una calculadora para hoy, una app para tu operación, un proyecto para crecer. No
+                todo se resuelve igual: por eso hay tres formas de entrar.
+              </p>
+              <Link
+                href="/pricing/"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all hover:gap-2"
+              >
+                Ver precios <span aria-hidden="true">→</span>
+              </Link>
+            </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            <Link
-              href="/tools/"
-              className="group flex flex-col rounded-3xl border border-line bg-white p-7 transition-all hover:-translate-y-1 hover:border-yellow-600 hover:shadow-lg"
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow/30 text-ink">
-                  <Icon name="calculator" />
+            <div className="border-t border-line">
+              <Link
+                href="/tools/"
+                className="group flex items-center gap-4 border-b border-line py-6 sm:gap-5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow/30 text-ink">
+                  <Icon name="calculator" className="h-5 w-5" />
                 </span>
-                <span className="font-display text-4xl font-black text-ink">{toolbox.length}</span>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-black text-ink">Herramientas</h3>
-              <p className="mt-2 text-base font-semibold leading-snug text-ink">
-                Resuelve hoy lo que te está quitando la tarde.
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                41 calculadoras, conversores y generadores que abres, usas y cierras. Sin cuenta y
-                sin dejar datos.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  Sin registro
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
+                    Herramientas
+                  </span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate">
+                    Resuelve hoy lo que te quita la tarde. {toolbox.length} calculadoras y
+                    conversores, sin cuenta.
+                  </span>
                 </span>
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  En tu navegador
+                <span className="font-display text-4xl font-black leading-none text-ink/15 transition-colors group-hover:text-yellow sm:text-5xl">
+                  {toolbox.length}
                 </span>
-              </div>
-              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
-                Ver las {toolbox.length} herramientas <span aria-hidden="true">→</span>
-              </span>
-            </Link>
+                <span
+                  aria-hidden="true"
+                  className="text-xl text-slate-400 transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
 
-            <Link
-              href="/apps/"
-              className="group flex flex-col rounded-3xl border border-line bg-white p-7 transition-all hover:-translate-y-1 hover:border-magenta hover:shadow-lg"
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-magenta/10 text-magenta">
-                  <Icon name="receivables" />
+              <Link
+                href="/apps/"
+                className="group flex items-center gap-4 border-b border-line py-6 sm:gap-5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-magenta/10 text-magenta">
+                  <Icon name="receivables" className="h-5 w-5" />
                 </span>
-                <span className="font-display text-4xl font-black text-ink">{apps.length}</span>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-black text-ink">Aplicaciones</h3>
-              <p className="mt-2 text-base font-semibold leading-snug text-ink">
-                Tu operación, fuera de la hoja de cálculo.
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                2 apps que guardan el estado: cobra por tiempo y sabe quién te debe desde cuándo.
-                Sin instalar nada.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  Offline
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
+                    Aplicaciones
+                  </span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate">
+                    Tu operación, fuera de la hoja de cálculo. Cobra por tiempo y sabe quién te
+                    debe, sin instalar nada.
+                  </span>
                 </span>
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  Export
+                <span className="font-display text-4xl font-black leading-none text-ink/15 transition-colors group-hover:text-magenta sm:text-5xl">
+                  {apps.length}
                 </span>
-              </div>
-              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-magenta underline decoration-magenta decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
-                Ver las {apps.length} aplicaciones <span aria-hidden="true">→</span>
-              </span>
-            </Link>
+                <span
+                  aria-hidden="true"
+                  className="text-xl text-slate-400 transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
 
-            <Link
-              href="/services/"
-              className="group flex flex-col rounded-3xl border border-line bg-white p-7 transition-all hover:-translate-y-1 hover:border-orange hover:shadow-lg"
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
-                  <Icon name="code" />
+              <Link
+                href="/services/"
+                className="group flex items-center gap-4 border-b border-line py-6 sm:gap-5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange/10 text-orange">
+                  <Icon name="code" className="h-5 w-5" />
                 </span>
-                <span className="font-display text-4xl font-black text-ink">{services.length}</span>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-black text-ink">Servicios</h3>
-              <p className="mt-2 text-base font-semibold leading-snug text-ink">
-                Cuando el problema es del negocio, no de la herramienta.
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                6 líneas para diseñar, construir y automatizar lo que tu operación necesita de
-                verdad.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  A la medida
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
+                    Servicios
+                  </span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate">
+                    Cuando el problema es del negocio: diseño, desarrollo, automatización, IA y
+                    visibilidad.
+                  </span>
                 </span>
-                <span className="rounded-full bg-paper-soft px-2.5 py-1 text-[11px] font-bold text-slate">
-                  Con IA
+                <span className="font-display text-4xl font-black leading-none text-ink/15 transition-colors group-hover:text-orange sm:text-5xl">
+                  {services.length}
                 </span>
-              </div>
-              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-bold text-orange underline decoration-orange decoration-[3px] underline-offset-4 transition-all group-hover:gap-2">
-                Ver los {services.length} servicios <span aria-hidden="true">→</span>
-              </span>
-            </Link>
+                <span
+                  aria-hidden="true"
+                  className="text-xl text-slate-400 transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
           </div>
         </Container>
       </section>
@@ -532,8 +538,12 @@ export default function Home() {
           className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-brand-600/30 blur-3xl"
           aria-hidden="true"
         />
-        <Container className="relative">
-          <div className="max-w-2xl">
+        <div
+          className="absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-magenta/15 blur-3xl"
+          aria-hidden="true"
+        />
+        <Container className="relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
             <Eyebrow tone="dark">Construimos plataforma</Eyebrow>
             <h2 className="mt-3 font-display font-black text-3xl leading-tight tracking-tight sm:text-4xl">
               Lo que construimos con <span className="text-gradient-warm">Merez</span>
@@ -544,42 +554,45 @@ export default function Home() {
               que dominamos de punta a punta cada uno de estos módulos y podemos construirlos o
               adaptarlos a la medida de cada proyecto.
             </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {merezModules.map((module) => (
-              <div
-                key={module.name}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-magenta">
-                  <Icon name={merezIcons[module.name]} className="h-4 w-4" />
-                </span>
-                <h3 className="mt-3 font-display font-bold text-white">{module.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{module.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-2xl text-sm text-slate-400">
-              Todos estos módulos se pueden activar por separado o integrarse entre sí. Así
-              construimos soluciones escalables, medibles y realmente conectadas.
-            </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="https://www.merez.co/"
                 className="inline-flex items-center rounded-xl bg-yellow px-5 py-3 text-sm font-bold text-ink transition hover:brightness-95"
               >
                 Conocer Merez <span aria-hidden="true" className="ml-2">→</span>
               </a>
-              <Link
-                href="/login/"
+              <a
+                href="https://app.merez.co"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center rounded-xl border border-white/25 px-5 py-3 text-sm font-bold text-white transition hover:border-yellow/70"
               >
                 Entrar al panel
-              </Link>
+              </a>
             </div>
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-400">
+              Los {merezModules.length} módulos se activan por separado o se conectan entre sí. Es
+              la misma plataforma que usamos y adaptamos en cada proyecto.
+            </p>
+          </div>
+
+          <div className="grid gap-x-6 sm:grid-cols-2">
+            {merezModules.map((module) => (
+              <div
+                key={module.name}
+                className="flex items-center gap-3 border-b border-white/10 py-3.5"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-magenta">
+                  <Icon name={merezIcons[module.name]} className="h-4 w-4" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-bold text-white">{module.name}</span>
+                  <span className="block truncate text-[11px] text-slate-400">
+                    {merezShort[module.name]}
+                  </span>
+                </span>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
