@@ -187,7 +187,8 @@ export function paragraphs(text: string | null): string[] {
 
 export function longDate(iso: string | null | undefined): string {
   if (!iso) return "";
+  const dateOnly = iso.slice(0, 10);
   return new Intl.DateTimeFormat("es-CO", { day: "numeric", month: "long", year: "numeric", timeZone: "America/Bogota" }).format(
-    new Date(iso.length === 10 ? `${iso}T12:00:00-05:00` : iso),
+    new Date(`${dateOnly}T12:00:00-05:00`),
   );
 }
