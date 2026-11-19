@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { apps, clients, merezModules, services, toolbox } from "@/lib/site";
+import { apps, clients, merezModules, plans, services, toolbox } from "@/lib/site";
 import { FAMILIES, FAMILY_ORDER, familyOf } from "@/lib/tool-taxonomy";
 import Icon from "@/components/Icon";
 import {
@@ -128,6 +128,8 @@ const processSteps = [
 ];
 
 export default function Home() {
+  const landing = plans.find((plan) => plan.slug === "landing");
+
   return (
     <>
       {/* ---------- HERO ---------- */}
@@ -470,6 +472,26 @@ export default function Home() {
                   Cuéntanos tu proyecto
                 </PrimaryButton>
               </div>
+
+              {landing?.price && (
+                <div className="mt-4 rounded-2xl border border-line bg-paper-soft p-5">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-magenta">
+                    Para empezar
+                  </p>
+                  <p className="mt-2 font-display text-xl font-black text-ink">
+                    Landing page desde {landing.price}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate">
+                    Entrega en 10 días hábiles. Dominio, hosting y correo incluidos.
+                  </p>
+                  <Link
+                    href="/pricing/"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-ink underline decoration-yellow decoration-[3px] underline-offset-4"
+                  >
+                    Ver planes y precios <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
             <ol className="divide-y divide-line border-y border-line">
