@@ -136,16 +136,16 @@ export default function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 hero-glow" aria-hidden="true" />
-        <Container className="relative py-12 sm:py-16">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="relative overflow-hidden bg-night text-white">
+        <div className="absolute inset-0 hero-glow-night" aria-hidden="true" />
+        <Container className="relative py-16 sm:py-20">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <Eyebrow>Servicios</Eyebrow>
-              <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.05] tracking-tight text-ink sm:text-5xl">
+              <Eyebrow tone="dark">Servicios</Eyebrow>
+              <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl">
                 Seis formas de construir producto. Una sola conversación.
               </h1>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate">
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
                 No vendemos una lista de servicios: elegimos la línea que resuelve el problema.
                 Diseño, desarrollo, automatización, IA y consultoría se combinan según lo que el
                 negocio necesite, no según lo que sepamos hacer.
@@ -154,45 +154,49 @@ export default function ServicesPage() {
                 <PrimaryButton href="/contact/">Cuéntanos tu proyecto</PrimaryButton>
                 <Link
                   href="/pricing/"
-                  className="inline-flex items-center rounded-xl border border-line bg-white px-6 py-3 font-bold text-ink transition hover:border-magenta"
+                  className="inline-flex items-center rounded-xl border-2 border-white/25 px-6 py-3 font-bold text-white transition hover:border-white/60 hover:bg-white/5"
                 >
                   Ver precios
                 </Link>
               </div>
-              <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-5">
+              <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-white/10 pt-5">
                 <div>
-                  <dt className="text-xs text-slate">Líneas</dt>
-                  <dd className="font-display text-2xl font-black text-ink">6</dd>
+                  <dt className="text-xs text-slate-400">Líneas</dt>
+                  <dd className="font-display text-2xl font-black text-white">6</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate">Organizaciones</dt>
-                  <dd className="font-display text-2xl font-black text-ink">10</dd>
+                  <dt className="text-xs text-slate-400">Organizaciones</dt>
+                  <dd className="font-display text-2xl font-black text-white">10</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate">En producción</dt>
-                  <dd className="font-display text-2xl font-black text-ink">4</dd>
+                  <dt className="text-xs text-slate-400">En producción</dt>
+                  <dd className="font-display text-2xl font-black text-white">4</dd>
                 </div>
               </dl>
             </div>
 
-            <div className="rounded-3xl border border-line bg-white p-4 shadow-sm sm:p-6">
+            <div className="rounded-3xl border border-white/10 bg-white p-4 shadow-2xl sm:p-5">
               <div className="grid grid-cols-2 gap-3">
                 {services.map((service) => (
                   <Link
                     key={service.slug}
-                    href={`#${service.slug}`}
-                    className="rounded-2xl border border-line p-3 transition hover:border-magenta"
+                    href={`/services/${service.slug}/`}
+                    className="group rounded-2xl border border-line bg-white p-3 transition hover:border-magenta"
                   >
-                    <span className="block h-16 w-full">
+                    <span className="block h-20 w-full">
                       <ServiceArt slug={service.slug} />
                     </span>
-                    <span className="mt-1 block text-xs font-bold text-ink">{service.tag}</span>
+                    <span className="mt-1 flex items-center justify-between">
+                      <span className="text-xs font-bold text-ink">{service.tag}</span>
+                      <span
+                        aria-hidden="true"
+                        className="text-slate-400 transition-transform group-hover:translate-x-0.5"
+                      >
+                        →
+                      </span>
+                    </span>
                   </Link>
                 ))}
-                <div className="flex flex-col justify-center rounded-2xl bg-night p-3 text-white">
-                  <span className="font-display text-xl font-black">6</span>
-                  <span className="text-[11px] leading-tight text-slate-300/80">líneas que se combinan</span>
-                </div>
               </div>
             </div>
           </div>
@@ -205,99 +209,71 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="pb-16">
+      <section className="bg-paper-soft py-16 sm:py-20">
         <Container>
-          <div className="space-y-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Eyebrow>Las seis líneas</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
+                Lo que podemos construir.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-slate">
+              Cada línea tiene su ficha completa: qué incluye, cuándo se nota y cómo se trabaja.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {
               const detail = details[service.slug];
-              const reverse = index % 2 === 1;
               return (
-                <article
+                <Link
                   key={service.slug}
                   id={service.slug}
-                  className="scroll-mt-24 rounded-3xl border border-line bg-white p-5 sm:p-8"
+                  href={`/services/${service.slug}/`}
+                  className="group flex scroll-mt-24 flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className={`grid gap-8 lg:grid-cols-[0.9fr_1.1fr] ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
-                    <div className="rounded-2xl border border-line bg-paper-soft p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate">
-                          0{index + 1} · {service.tag}
-                        </span>
-                        <span className="h-2 w-2 rounded-full bg-magenta" />
-                      </div>
-                      <div className="mt-2 h-44 sm:h-52">
-                        <ServiceArt slug={service.slug} />
-                      </div>
-                    </div>
-
-                    <div>
-                      <h2 className="font-display text-2xl font-black leading-tight text-ink sm:text-3xl">
-                        {service.title}
-                      </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-slate sm:text-base">{service.summary}</p>
-
-                      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink">Incluye</p>
-                          <ul className="mt-2 space-y-1.5">
-                            {service.points.map((point) => (
-                              <li key={point} className="flex gap-2 text-xs leading-relaxed text-slate">
-                                <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-magenta" />
-                                {point}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink">Lo notas cuando</p>
-                          <ul className="mt-2 space-y-1.5">
-                            {detail.signal.map((signal) => (
-                              <li key={signal} className="flex gap-2 text-xs leading-relaxed text-slate">
-                                <span aria-hidden="true" className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-yellow-600" />
-                                {signal}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div className="mt-5 rounded-xl bg-paper-soft p-3 text-xs leading-relaxed text-slate">
-                        {detail.proof}
-                      </div>
-
-                      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-                        <Link
-                          href={`/services/${service.slug}/`}
-                          className="inline-flex items-center gap-1 text-sm font-bold text-magenta hover:underline"
-                        >
-                          Ver servicio completo â†’
-                        </Link>
-                        <Link
-                          href="/contact/"
-                          className="inline-flex items-center gap-1 text-sm font-bold text-ink transition hover:text-magenta"
-                        >
-                          {detail.cta} â†’
-                        </Link>
-                      </div>
+                  <div className="relative h-40 border-b border-line bg-paper-soft p-4">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate">
+                      0{index + 1} · {service.tag}
+                    </span>
+                    <div className="mt-1 h-28">
+                      <ServiceArt slug={service.slug} />
                     </div>
                   </div>
-                </article>
+                  <div className="flex flex-1 flex-col p-5">
+                    <h2 className="font-display text-xl font-black leading-tight text-ink transition-colors group-hover:text-magenta">
+                      {service.title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-slate">{service.summary}</p>
+                    <p className="mt-3 text-xs leading-relaxed text-slate-400">{detail.signal[0]}</p>
+                    <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-bold text-magenta">
+                      Ver servicio completo <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
+                </Link>
               );
             })}
           </div>
         </Container>
       </section>
 
-      <section className="border-y border-line bg-paper-soft py-12 sm:py-16">
-        <Container>
+      <section className="relative overflow-hidden bg-night py-16 text-white sm:py-20">
+        <div
+          className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-600/25 blur-3xl"
+          aria-hidden="true"
+        />
+        <Container className="relative">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="font-display text-2xl font-black text-ink sm:text-3xl">Cómo se trabaja</h2>
-            <p className="max-w-md text-sm text-slate">
+            <h2 className="font-display text-2xl font-black text-white sm:text-3xl">
+              Cómo se trabaja
+            </h2>
+            <p className="max-w-md text-sm text-slate-400">
               Diez fases, de la idea a la evolución. Cada una deja algo que se puede revisar.
             </p>
           </div>
           <div className="mt-8">
-            <ProcessStrip />
+            <ProcessStrip tone="dark" />
           </div>
         </Container>
       </section>
