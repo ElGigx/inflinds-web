@@ -1155,9 +1155,27 @@ export const doing = [
 ];
 
 export const featured = [
-  { title: "Merez", text: "Plataforma SaaS con agentes de IA: veinte modulos, un modelo de cobro por creditos y 118 versiones en produccion.", href: "/gigx/portfolio/#merez", image: { src: "/gigx/shots/merez-industrial.webp", alt: "Landing de Merez para distribuidores industriales", w: 1440, h: 680 } },
-  { title: "Fusion Pipe Tools", text: "Un catalogo en PDF convertido en 41 fichas tecnicas y un flujo de cotizacion con CRM.", href: "/gigx/portfolio/#fusion-pipe-tools", image: { src: "/gigx/shots/fusion-home.webp", alt: "Pagina de inicio de Fusion Pipe Tools", w: 1440, h: 900 } },
-  { title: "Kreditime", text: "Compra ahora y paga despues: el sistema de diseno aplicado a credito dentro de las tiendas de retail.", href: "/gigx/portfolio/#pantou", image: { src: "/gigx/kreditime-detalle.webp", alt: "Landing de Kreditime: compra ahora y paga despues, dentro de una tienda de retail", w: 1000, h: 514 } },
+  {
+    title: "Merez",
+    result: "20 módulos · 118 versiones en producción",
+    text: "Plataforma SaaS con agentes de IA: veinte módulos, un modelo de cobro por créditos y 118 versiones en producción.",
+    href: "/gigx/portfolio/#merez",
+    image: { src: "/gigx/shots/merez-industrial.webp", alt: "Landing de Merez para distribuidores industriales", w: 1440, h: 680 },
+  },
+  {
+    title: "Fusion Pipe Tools",
+    result: "41 fichas · cotización con CRM",
+    text: "Un catálogo en PDF convertido en 41 fichas técnicas y un flujo de cotización con CRM.",
+    href: "/gigx/portfolio/#fusion-pipe-tools",
+    image: { src: "/gigx/shots/fusion-home.webp", alt: "Página de inicio de Fusion Pipe Tools", w: 1440, h: 900 },
+  },
+  {
+    title: "Kreditime",
+    result: "Design system aplicado a crédito en retail",
+    text: "Compra ahora y paga después: el sistema de diseño aplicado a crédito dentro de las tiendas de retail.",
+    href: "/gigx/portfolio/#pantou",
+    image: { src: "/gigx/kreditime-detalle.webp", alt: "Landing de Kreditime: compra ahora y paga después, dentro de una tienda de retail", w: 1000, h: 514 },
+  },
 ];
 
 export const path = [
@@ -1222,10 +1240,6 @@ export const faq = [
 export const teaching = [
   {
     place: "Universidad UNAN — Nicaragua",
-    what: "Capacitación a dos grupos de estudiantes en producción de multimedia.",
-  },
-  {
-    place: "Acertar",
-    what: "Formación de aprendices en trabajo seguro en alturas, dentro del producto que construí.",
+    what: "Participación en una serie de clases de una asignatura transversal dictada con invitados internacionales.",
   },
 ];

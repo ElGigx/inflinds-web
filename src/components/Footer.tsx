@@ -246,20 +246,20 @@ export default function Footer() {
         </div>
 
         {/* Legal */}
-        <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName} Todos los derechos reservados.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <span className="text-slate-600">Hecho en {site.country}</span>
-            <Link href="/privacy/" className="transition-colors hover:text-white">
+            <span className="text-slate-400">Hecho en {site.country}</span>
+            <Link href="/privacy/" className="inline-flex min-h-11 items-center transition-colors hover:text-white">
               Privacidad
             </Link>
-            <Link href="/terms/" className="transition-colors hover:text-white">
+            <Link href="/terms/" className="inline-flex min-h-11 items-center transition-colors hover:text-white">
               Términos
             </Link>
             <details className="relative">
-              <summary className="cursor-pointer list-none transition-colors hover:text-white">
+              <summary className="inline-flex min-h-11 cursor-pointer list-none items-center transition-colors hover:text-white">
                 Ecosistema
               </summary>
               <div className="absolute bottom-full right-0 z-10 mb-2 min-w-[210px] overflow-hidden rounded-lg border border-white/10 bg-night py-1 shadow-lg">

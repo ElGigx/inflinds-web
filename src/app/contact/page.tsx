@@ -26,6 +26,32 @@ export default function ContactPage() {
               y proponerte el camino — sin compromiso.
             </p>
 
+            <div className="mt-6 rounded-2xl border border-line bg-white p-5">
+              <p className="font-display text-sm font-black text-ink">¿Eres reclutador?</p>
+              <p className="mt-1 text-sm leading-relaxed text-slate">
+                Este formulario es para proyectos del estudio. Para roles, escríbeme por LinkedIn o
+                descarga el CV.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm font-bold">
+                <a
+                  href="https://www.linkedin.com/in/gigx"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center text-brand-600 hover:underline"
+                >
+                  LinkedIn ↗
+                </a>
+                <a
+                  href="/gigx/miguel-yanez-cv.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center text-brand-600 hover:underline"
+                >
+                  Descargar CV ↗
+                </a>
+              </div>
+            </div>
+
             <dl className="mt-10 space-y-6">
               <div>
                 <dt className="font-display font-bold text-ink">Cómo trabajamos</dt>
