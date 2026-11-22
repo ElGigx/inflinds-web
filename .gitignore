@@ -47,3 +47,4 @@ next-env.d.ts
 build.log
 start.log
 start.err.log
+!.env.example
