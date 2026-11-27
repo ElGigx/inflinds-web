@@ -10,7 +10,7 @@ type ConsentRecord = {
   policy: string;
 };
 
-const STORAGE_KEY = "inflinds.consent.v1";
+const CONSENT_STORAGE_NAME = "inflinds.consent.v1";
 const COOKIE_NAME = "inflinds_consent";
 const COOKIE_MAX_AGE = 183 * 24 * 60 * 60;
 const CHANGE_EVENT = "inflinds:consent-change";
@@ -70,7 +70,7 @@ function readCookieRaw(): string | null {
 
 function readStorageRaw(): string | null {
   try {
-    return window.localStorage.getItem(STORAGE_KEY);
+    return window.localStorage.getItem(CONSENT_STORAGE_NAME);
   } catch {
     return null;
   }
@@ -133,7 +133,7 @@ export function setConsent(choice: ConsentChoice): void {
   };
   const raw = JSON.stringify(record);
   try {
-    window.localStorage.setItem(STORAGE_KEY, raw);
+    window.localStorage.setItem(CONSENT_STORAGE_NAME, raw);
   } catch {
     cachedRaw = undefined;
   }
