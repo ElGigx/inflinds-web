@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useConsentGranted } from "@/lib/consent";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "1052833795244543";
 
@@ -10,20 +11,25 @@ const SNIPPET = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.c
 
 export default function MetaPixel() {
   const pathname = usePathname();
-  const first = useRef(true);
+  const granted = useConsentGranted();
+  const tracked = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!PIXEL_ID) {
+    if (!PIXEL_ID || !granted) {
+      tracked.current = null;
       return;
     }
-    if (first.current) {
-      first.current = false;
+    if (tracked.current === null) {
+      tracked.current = pathname;
       return;
     }
-    window.fbq?.("track", "PageView");
-  }, [pathname]);
+    if (tracked.current !== pathname) {
+      tracked.current = pathname;
+      window.fbq?.("track", "PageView");
+    }
+  }, [pathname, granted]);
 
-  if (!PIXEL_ID) {
+  if (!PIXEL_ID || !granted) {
     return null;
   }
 

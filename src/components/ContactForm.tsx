@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { projectTypes } from "@/lib/site";
 import { POLICY_VERSION } from "@/lib/policy";
+import { sendLead } from "@/lib/lead";
 
 type FormState = "idle" | "submitting" | "success" | "error" | "no-consent";
 
@@ -17,11 +18,6 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    if (!window.Merez) {
-      setState("error");
-      return;
-    }
-
     if (data.get("consent_granted") !== "1") {
       setState("no-consent");
       return;
@@ -30,7 +26,7 @@ export default function ContactForm() {
     setState("submitting");
 
     try {
-      const res = await window.Merez.lead({
+      const res = await sendLead({
         type: "contact",
         name: String(data.get("name") ?? ""),
         email: String(data.get("email") ?? ""),

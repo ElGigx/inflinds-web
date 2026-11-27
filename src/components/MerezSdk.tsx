@@ -2,10 +2,13 @@
 
 import Script from "next/script";
 import { MEREZ_API, MEREZ_INGEST_KEY, MEREZ_SDK_URL, PORTAL_PARTNER } from "@/lib/merez";
+import { useConsentGranted } from "@/lib/consent";
 import { POLICY_VERSION } from "@/lib/policy";
 
 export default function MerezSdk() {
-  if (!MEREZ_INGEST_KEY) return null;
+  const granted = useConsentGranted();
+
+  if (!MEREZ_INGEST_KEY || !granted) return null;
 
   return (
     <Script

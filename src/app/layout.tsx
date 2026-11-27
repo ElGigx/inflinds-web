@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import MerezAnalytics from "@/components/MerezAnalytics";
 import MerezSdk from "@/components/MerezSdk";
 import MetaPixel from "@/components/MetaPixel";
+import ConsentBanner from "@/components/ConsentBanner";
 
 // Display: Raleway (usamos hasta el peso Black 900 para titulares).
 const raleway = Raleway({
@@ -112,6 +113,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   );
