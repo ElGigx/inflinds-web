@@ -1,0 +1,5 @@
+[extend]
+useDefault = true
+
+[allowlist]
+regexes = ['''^cuentasClaras(\.[A-Za-z]+)*(\.v[0-9]+)?$''']
