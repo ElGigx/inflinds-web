@@ -105,7 +105,9 @@ export default function PrivacyPage() {
 
             <h2>6. Cookies y medición publicitaria</h2>
             <p>
-              Usamos cookies propias para medir las visitas y saber de qué
+              Solo activamos las cookies de medición y de publicidad si las aceptas en el aviso
+              que aparece al entrar; puedes rechazarlas y cambiar tu decisión cuando quieras desde
+              «Preferencias de cookies», al pie de cada página. Si las aceptas, usamos cookies propias para medir las visitas y saber de qué
               campaña llegaste (por ejemplo, un anuncio en redes sociales), y el{" "}
               <strong>píxel de Meta</strong> para medir la efectividad de nuestros
               anuncios y mostrar publicidad relevante a quienes ya visitaron el

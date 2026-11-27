@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import CookiePreferencesLink from "./CookiePreferencesLink";
 import { apps, services, site, toolbox } from "@/lib/site";
 
 const fronts = [
@@ -258,6 +259,7 @@ export default function Footer() {
             <Link href="/terms/" className="inline-flex min-h-11 items-center transition-colors hover:text-white">
               Términos
             </Link>
+            <CookiePreferencesLink className="inline-flex min-h-11 items-center transition-colors hover:text-white" />
             <details className="relative">
               <summary className="inline-flex min-h-11 cursor-pointer list-none items-center transition-colors hover:text-white">
                 Ecosistema

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { hasConsent } from "@/lib/consent";
 
 /**
  * Latido de medición por VISTA de página.
@@ -25,7 +26,7 @@ export default function MerezAnalytics() {
       isFirst.current = false;
       return;
     }
-    window.Merez?.track();
+    if (hasConsent()) window.Merez?.track();
   }, [pathname]);
 
   return null;
