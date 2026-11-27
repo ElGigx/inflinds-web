@@ -96,6 +96,7 @@ export default function PrivacyPage() {
               Nos apoyamos en proveedores que procesan datos por nuestra cuenta
               bajo estándares de seguridad, entre ellos: infraestructura y
               hosting (Vercel, Hostinger), mensajería y publicidad (Meta),
+              pagos en línea (Wompi),
               inteligencia artificial (DeepSeek y OpenAI), nuestra plataforma
               Merez y analítica. Algunos pueden estar
               fuera de Colombia, por lo que puede existir transferencia o
@@ -118,6 +119,14 @@ export default function PrivacyPage() {
               la configuración de tu cuenta de Meta. En los correos que te enviamos
               medimos si se abren y en qué enlaces se hace clic, para saber qué te
               sirve; al final de cada correo tienes un enlace para darte de baja.
+            </p>
+            <p>
+              <strong>Área de clientes.</strong> Cuando entras a tu área de clientes guardamos en tu
+              navegador una sola cosa, un código de sesión que te mantiene dentro. Es{" "}
+              <strong>necesario</strong> para que el área funcione: no sirve para medir ni para
+              publicidad y no depende del aviso de cookies. Se borra cuando sales de tu área, o vence a los 30 días. Si pagas en línea,
+              el pago lo procesa Wompi en su propia página (nunca vemos los datos de tu tarjeta), y
+              si adjuntas un comprobante de pago lo guardamos de forma privada, solo para confirmar tu pago.
             </p>
 
             <h2>7. Derechos del titular (Habeas Data)</h2>

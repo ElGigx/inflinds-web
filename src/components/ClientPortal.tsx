@@ -1,8 +1,8 @@
 "use client";
 
-import Script from "next/script";
 import { useEffect, useRef } from "react";
-import { MEREZ_API, MEREZ_SDK_URL } from "@/lib/merez";
+import MerezScript from "@/components/MerezScript";
+import { MEREZ_API } from "@/lib/merez";
 
 const WAIT_MS = 200;
 const MAX_TRIES = 75;
@@ -29,7 +29,7 @@ export default function ClientPortal({ partner }: { partner: string }) {
 
   return (
     <>
-      <Script id="merez-sdk" src={MEREZ_SDK_URL} strategy="afterInteractive" />
+      <MerezScript />
       <div ref={root} className="client-portal" />
     </>
   );
